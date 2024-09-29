@@ -1,0 +1,22 @@
+1)String Springboot Project [empIdEntityProject]
+2)Add dependency[Web,JPA,Postgress]
+3)Follow Package Structure(dao,model,controller,service)
+4)Add Dockerfile in your project
+# FROM maven:3.8.5-openjdk-17 # for Java 17
+FROM maven:3.8.2-jdk-8
+WORKDIR /empIdEntityProject
+COPY . .
+RUN mvn clean install
+CMD mvn spring-boot:run
+
+5)Publish to Github repo(Initial Commit)
+6)Create Entity Class and Push to Git with message (Entity Class Commit)
+7)Repository Class and Push to Git with message (Repository Class Commit)
+8)Controller Class and Push to Git with message (Controller Class Commit)
+9)Do Adhoc tesing to Ensure Every thing working
+10)Take pull of Github repository in Docker Playground
+11)Create Docker Image using Docker Build Command
+12)Docker login
+13)Create Docker Repository in Docker Hub
+14)Tag Image with Docker Repository
+15)Push Image to  Docker Repository

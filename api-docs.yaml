@@ -1,0 +1,720 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8088
+  description: Generated server url
+paths:
+  /updateproducts:
+    put:
+      tags:
+      - products-controller
+      operationId: updateProductInCatalogHandler
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Products'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Products'
+  /updateUser/{key}:
+    put:
+      tags:
+      - user-controller
+      operationId: updateUserCredentialController
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User'
+  /customers/addAddress/{customerId}:
+    put:
+      tags:
+      - customer-controller
+      operationId: addAddressCustomer
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /customers/:
+    put:
+      tags:
+      - customer-controller
+      operationId: updateCustomer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Customer'
+    post:
+      tags:
+      - customer-controller
+      operationId: saveCustomerHandler
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Customer'
+    delete:
+      tags:
+      - customer-controller
+      operationId: deleteCustomerDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /address/update:
+    put:
+      tags:
+      - address-controller
+      operationId: updateAddressHandler
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Address'
+  /regisrtration:
+    post:
+      tags:
+      - user-controller
+      operationId: saveUserController
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User'
+  /order/addFromCart/{customerId}:
+    post:
+      tags:
+      - order-controller
+      operationId: addOrderFromCart
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MyOrder'
+  /logout/{key}:
+    post:
+      tags:
+      - user-controller
+      operationId: userLogoutController
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /login:
+    post:
+      tags:
+      - user-controller
+      operationId: userLoginController
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDTO'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /address/:
+    post:
+      tags:
+      - address-controller
+      operationId: saveAddressHandler
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Address'
+  /addnewproducts:
+    post:
+      tags:
+      - products-controller
+      operationId: saveProductsHandler
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Products'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Products'
+  /Cart/addtocart/{id}/{custId}:
+    post:
+      tags:
+      - cart-controller
+      operationId: addorder
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: custId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cart'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Cart'
+  /products/{cat}:
+    get:
+      tags:
+      - products-controller
+      operationId: getCategoryWiseProducts
+      parameters:
+      - name: cat
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - MOBILES
+          - BOOKS
+          - CLOTHS
+          - FRUITS
+          - VEGETABLES
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductsDTO'
+  /product/{id}:
+    get:
+      tags:
+      - products-controller
+      operationId: getProductFromCatalogByIdHandler
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Products'
+  /order/findallOrder:
+    get:
+      tags:
+      - order-controller
+      operationId: viewAllOrder
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MyOrder'
+  /order/findOrderByUserName/{FirstName}/{LastName}/{mobileNo}:
+    get:
+      tags:
+      - order-controller
+      operationId: viewByUserName
+      parameters:
+      - name: FirstName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: LastName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: mobileNo
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MyOrder'
+  /order/findByCustomerId/{customerId}:
+    get:
+      tags:
+      - order-controller
+      operationId: viewOrderByCustomerID
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MyOrder'
+  /customers/{customerId}:
+    get:
+      tags:
+      - customer-controller
+      operationId: getCustomer
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /allproducts:
+    get:
+      tags:
+      - products-controller
+      operationId: getAllProducts
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Products'
+  /address/getall:
+    get:
+      tags:
+      - address-controller
+      operationId: getAllAddressHandler
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Address'
+  /address/getaddress/{id}:
+    get:
+      tags:
+      - address-controller
+      operationId: getAddressHandler
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Address'
+  /Cart/cart:
+    get:
+      tags:
+      - cart-controller
+      operationId: getAllProductsHandler
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+  /order/removeOrder/{customerId}:
+    delete:
+      tags:
+      - order-controller
+      operationId: removeOrderByCustomerID
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /deleteproduct/{id}:
+    delete:
+      tags:
+      - products-controller
+      operationId: deleteProductFromCatalogHandler
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /address/delete/{id}:
+    delete:
+      tags:
+      - address-controller
+      operationId: deleteAddressHandler
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Address'
+  /Cart/cart/{id}:
+    delete:
+      tags:
+      - cart-controller
+      operationId: removeCartProduct
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /Cart/cart/clear:
+    delete:
+      tags:
+      - cart-controller
+      operationId: clearCartHandler
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+components:
+  schemas:
+    Products:
+      required:
+      - manufacturer
+      - price
+      - productName
+      type: object
+      properties:
+        productId:
+          type: integer
+          format: int32
+        productName:
+          pattern: "(?i)(^[a-z]+)[a-z .,-]((?! .,-)$){1,25}$"
+          type: string
+        price:
+          type: number
+          format: double
+        color:
+          pattern: "(?i)(^[a-z]+)[a-z .,-]((?! .,-)$){1,25}$"
+          type: string
+        dimension:
+          type: string
+        specification:
+          type: string
+        manufacturer:
+          type: string
+        quantity:
+          minimum: 1
+          type: integer
+          format: int32
+        category:
+          type: string
+          enum:
+          - MOBILES
+          - BOOKS
+          - CLOTHS
+          - FRUITS
+          - VEGETABLES
+    User:
+      required:
+      - mobile
+      - name
+      - password
+      type: object
+      properties:
+        name:
+          type: string
+        mobile:
+          pattern: "[7896]{1}[0-9]{9}"
+          type: string
+        password:
+          type: string
+        userId:
+          type: integer
+          format: int32
+    Address:
+      required:
+      - buildingName
+      - city
+      - country
+      - state
+      - streetNo
+      type: object
+      properties:
+        addressId:
+          type: integer
+          format: int32
+        streetNo:
+          type: string
+        buildingName:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        pincode:
+          pattern: "([1-9]{1}[0-9]{5}|[1-9]{1}[0-9]{3}\\\\s[0-9]{3})"
+          type: string
+    Customer:
+      required:
+      - firstName
+      - lastName
+      - mobileNumber
+      type: object
+      properties:
+        customerId:
+          type: integer
+          format: int32
+        firstName:
+          pattern: "(?i)(^[a-z]+)[a-z .,-]((?! .,-)$){1,25}$"
+          type: string
+        lastName:
+          pattern: "(?i)(^[a-z]+)[a-z .,-]((?! .,-)$){1,25}$"
+          type: string
+        mobileNumber:
+          pattern: "[7896]{1}[0-9]{9}"
+          type: string
+        email:
+          pattern: ^(.+)@(\S+)$
+          type: string
+        addresslist:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+    MyOrder:
+      type: object
+      properties:
+        orderid:
+          type: integer
+          format: int32
+        localdtetime:
+          type: string
+          format: date-time
+        orderstatus:
+          type: string
+        customer:
+          $ref: '#/components/schemas/Customer'
+        productlist:
+          type: array
+          items:
+            $ref: '#/components/schemas/Products'
+        address:
+          $ref: '#/components/schemas/Address'
+    UserDTO:
+      required:
+      - mobileNo
+      - password
+      type: object
+      properties:
+        mobileNo:
+          pattern: "[7896]{1}[0-9]{9}"
+          type: string
+        password:
+          type: string
+    Cart:
+      type: object
+      properties:
+        cartItemId:
+          type: integer
+          format: int32
+        cartItem:
+          $ref: '#/components/schemas/Products'
+        customerlist:
+          $ref: '#/components/schemas/Customer'
+    ProductsDTO:
+      required:
+      - price
+      - productName
+      type: object
+      properties:
+        productName:
+          pattern: "(?i)(^[a-z]+)[a-z .,-]((?! .,-)$){1,25}$"
+          type: string
+        price:
+          type: number
+          format: double

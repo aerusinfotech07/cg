@@ -1,0 +1,209 @@
+### Case Study: Hospital Management System
+
+#### 1. **Overview**
+
+A **Hospital Management System (HMS)** automates administrative, medical, legal, and financial aspects of a hospital. It enables smooth operations by providing different modules for managing patients, doctors, appointments, billing, and reports.
+
+#### 2. **Key Functional Requirements**
+- **Patient Management**: Registration, viewing medical history, managing patient records.
+- **Doctor Management**: Manage doctor profiles, schedules, and availability.
+- **Appointment Management**: Book, update, and cancel appointments.
+- **Billing**: Generate and manage bills for treatment, consultation, and services.
+- **Reports**: Provide medical reports, billing details, and patient history.
+- **Pharmacy Management**: Track drugs, availability, and issue prescriptions.
+
+---
+
+#### 3. **System Design**
+
+##### **Entities**
+1. **Patient**
+   - `patientId`: Unique identifier
+   - `name`
+   - `age`
+   - `gender`
+   - `address`
+   - `contactNumber`
+   - `medicalHistory`: List of records of previous treatments and illnesses
+   
+2. **Doctor**
+   - `doctorId`: Unique identifier
+   - `name`
+   - `specialization`
+   - `experience`: Years of experience
+   - `schedule`: Available timings
+   
+3. **Appointment**
+   - `appointmentId`: Unique identifier
+   - `patientId`: Reference to patient
+   - `doctorId`: Reference to doctor
+   - `date`: Date of the appointment
+   - `time`: Time of the appointment
+   - `status`: Scheduled, Completed, or Canceled
+
+4. **Billing**
+   - `billId`: Unique identifier
+   - `patientId`: Reference to patient
+   - `appointmentId`: Reference to appointment
+   - `totalAmount`: Total amount to be paid
+   - `status`: Paid or Pending
+
+5. **Pharmacy**
+   - `medicineId`: Unique identifier
+   - `name`
+   - `availableStock`
+   - `prescriptions`: List of patient prescriptions
+
+---
+
+#### 4. **High-Level Design**
+
+##### **Modules**
+1. **Patient Management**:
+   - Register and update patient details.
+   - View patient medical history.
+   
+2. **Doctor Management**:
+   - Add and manage doctor profiles.
+   - Schedule doctor availability.
+
+3. **Appointment Management**:
+   - Book, reschedule, and cancel appointments.
+   - Send reminders for appointments.
+
+4. **Billing**:
+   - Generate and update bills.
+   - Track payment status.
+
+5. **Pharmacy**:
+   - Manage inventory of medicines.
+   - Track issued prescriptions and available stock.
+
+##### **Database Design**
+
+**Tables**:
+- **Patients** (`patientId`, `name`, `age`, `gender`, `address`, `contactNumber`, `medicalHistory`)
+- **Doctors** (`doctorId`, `name`, `specialization`, `experience`, `schedule`)
+- **Appointments** (`appointmentId`, `patientId`, `doctorId`, `date`, `time`, `status`)
+- **Bills** (`billId`, `patientId`, `appointmentId`, `totalAmount`, `status`)
+- **Pharmacy** (`medicineId`, `name`, `availableStock`)
+
+---
+
+#### 5. **Sample Mock APIs**
+
+Here are some sample APIs for the Hospital Management System:
+
+##### **1. Patient Registration API**
+- **Endpoint**: `POST /api/patients`
+- **Description**: Registers a new patient in the system.
+- **Request Body**:
+   ```json
+   {
+       "name": "John Doe",
+       "age": 35,
+       "gender": "Male",
+       "address": "123 Elm St",
+       "contactNumber": "555-1234"
+   }
+   ```
+- **Response**:
+   ```json
+   {
+       "patientId": 1,
+       "message": "Patient registered successfully"
+   }
+   ```
+
+##### **2. Doctor Availability API**
+- **Endpoint**: `GET /api/doctors/{doctorId}/availability`
+- **Description**: Get the availability schedule of a specific doctor.
+- **Response**:
+   ```json
+   {
+       "doctorId": 1,
+       "name": "Dr. Sarah Lee",
+       "specialization": "Cardiologist",
+       "availableTimings": [
+           "2023-09-14 10:00-12:00",
+           "2023-09-15 14:00-16:00"
+       ]
+   }
+   ```
+
+##### **3. Book Appointment API**
+- **Endpoint**: `POST /api/appointments`
+- **Description**: Books an appointment for a patient with a doctor.
+- **Request Body**:
+   ```json
+   {
+       "patientId": 1,
+       "doctorId": 2,
+       "date": "2023-09-14",
+       "time": "10:00",
+       "status": "Scheduled"
+   }
+   ```
+- **Response**:
+   ```json
+   {
+       "appointmentId": 1,
+       "message": "Appointment booked successfully"
+   }
+   ```
+
+##### **4. Generate Bill API**
+- **Endpoint**: `POST /api/bills`
+- **Description**: Generates a bill for a patient after an appointment.
+- **Request Body**:
+   ```json
+   {
+       "patientId": 1,
+       "appointmentId": 1,
+       "totalAmount": 500,
+       "status": "Pending"
+   }
+   ```
+- **Response**:
+   ```json
+   {
+       "billId": 1001,
+       "message": "Bill generated successfully"
+   }
+   ```
+
+##### **5. Pharmacy Management API**
+- **Endpoint**: `GET /api/pharmacy/{medicineId}`
+- **Description**: Gets details about a specific medicine, including available stock.
+- **Response**:
+   ```json
+   {
+       "medicineId": 101,
+       "name": "Paracetamol",
+       "availableStock": 250
+   }
+   ```
+
+---
+
+#### 6. **Technology Stack**
+
+- **Backend**: Java (Spring Boot), Node.js (Express)
+- **Frontend**: Angular, React.js, or Vue.js
+- **Database**: MySQL, PostgreSQL
+- **Authentication**: JWT (JSON Web Token) for secure access
+- **Other tools**: Swagger for API documentation, JUnit for testing
+
+---
+
+#### 7. **Workflow Example**
+
+1. **Patient Registration**: A patient fills out their information, and the system creates a record.
+2. **Doctor Availability**: A patient views available time slots for doctors before scheduling an appointment.
+3. **Appointment Booking**: The patient selects a suitable time and books an appointment.
+4. **Bill Generation**: After the appointment, a bill is generated and tracked for payment.
+5. **Pharmacy**: Prescriptions are issued, and the pharmacy stock is updated accordingly.
+
+---
+
+This case study gives a high-level overview of how a Hospital Management System can be designed, with a focus on entity modeling and APIs. You can expand it to add more features like patient notifications, insurance claims, and advanced medical reports depending on specific needs.

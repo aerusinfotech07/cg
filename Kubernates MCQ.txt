@@ -1,0 +1,1617 @@
+1. What is Kubernetes?
+
+a) An open-source container orchestration platform
+b) A container registry
+c) A container runtime
+d) A containerization tool
+
+Answer: a)
+
+Explanation: An open-source container orchestration platform. Kubernetes is a popular open-source platform used to automate the deployment, scaling, and management of containerized applications.
+
+2. What is a Kubernetes Pod?
+
+a) A group of containers
+b) A unit of deployment in Kubernetes
+c) A network segment
+d) A virtual machine
+
+Answer: a)
+
+Explanation: A group of containers. A Kubernetes Pod is the smallest unit of deployment in Kubernetes, and it can contain one or more containers.
+
+3. What is a Kubernetes ReplicaSet?
+
+a) A set of backup pods
+b) A group of nodes in a Kubernetes cluster
+c) A scaling mechanism for Pods
+d) A container registry
+
+Answer: c)
+
+Explanation: A scaling mechanism for Pods. A Kubernetes ReplicaSet is responsible for maintaining a set of identical replicas of Pods and can be used to scale the number of replicas up or down based on demand.
+
+4. What is a Kubernetes Deployment?
+
+a) A configuration file for a Pod
+b) A way to manage the deployment of containerized applications
+c) A tool for monitoring Kubernetes clusters
+d) A way to manage Docker images
+
+Answer: b)
+
+Explanation: A way to manage the deployment of containerized applications. A Kubernetes Deployment is a resource object in Kubernetes that defines how a set of Pods should be deployed, updated, and rolled back.
+
+5. What is a Kubernetes Service?
+
+a) A networking abstraction to access a set of Pods
+b) A tool for managing Kubernetes resources
+c) A way to manage container images
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A networking abstraction to access a set of Pods. A Kubernetes Service is an abstract way to expose a set of Pods to the network, providing a stable IP address and DNS name for clients to access.
+
+6. What is Kubernetes ConfigMap?
+
+a) A mechanism for storing configuration data in Kubernetes
+b) A tool for managing Docker images
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A mechanism for storing configuration data in Kubernetes. A Kubernetes ConfigMap is a Kubernetes object used to store configuration data in key-value pairs.
+
+7. What is Kubernetes Secret?
+
+a) A mechanism for storing sensitive data in Kubernetes
+b) A tool for managing Kubernetes resources
+c) A way to manage container images
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A mechanism for storing sensitive data in Kubernetes. A Kubernetes Secret is a Kubernetes object used to store sensitive information, such as passwords or API keys, in an encrypted format.
+
+8. What is a Kubernetes Namespace?
+
+a) A way to organize Kubernetes resources into virtual clusters
+b) A way to manage Docker images
+c) A tool for monitoring Kubernetes clusters
+d) A networking abstraction to access a set of Pods
+
+Answer: a)
+
+Explanation: A way to organize Kubernetes resources into virtual clusters. A Kubernetes Namespace is a virtual cluster used to partition a physical cluster into multiple virtual clusters, helping to organize and manage Kubernetes resources.
+
+9. What is Kubernetes RBAC?
+
+a) Role-Based Access Control
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: Role-Based Access Control. Kubernetes RBAC is a security mechanism that allows administrators to manage access to Kubernetes resources based on user roles and permissions.
+
+10. What is a Kubernetes Operator?
+
+a) An extension of Kubernetes that provides additional functionality
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A tool for managing Docker images
+
+Answer: a)
+
+Explanation: An extension of Kubernetes that provides additional functionality. A Kubernetes Operator is a custom controller that extends the functionality of Kubernetes by automating the management of complex applications and infrastructure.
+
+11. What is a Kubernetes StatefulSet?
+
+a) A controller that manages the deployment of stateful applications
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A controller that manages the deployment of stateful applications. A Kubernetes StatefulSet is a controller that manages the deployment of stateful applications, ensuring that each replica has a unique identity and that each replica is started and stopped in a specific order.
+
+12. What is Kubernetes Helm?
+
+a) A package manager for Kubernetes
+b) A tool for managing Docker images
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A package manager for Kubernetes. Kubernetes Helm is a package manager for Kubernetes that allows developers to define, install, and manage complex Kubernetes applications as a single package.
+
+13. What is a Kubernetes Ingress?
+
+a) A networking resource that manages external access to a cluster
+b) A tool for managing Kubernetes resources
+c) A way to manage container images
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A networking resource that manages external access to a cluster. A Kubernetes Ingress is a networking resource that manages external access to a Kubernetes cluster, providing a way to route traffic to specific services based on hostnames or paths.
+
+14. What is a Kubernetes DaemonSet?
+
+a) A controller that ensures a specific number of replicas are running
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A controller that ensures a pod runs on every node in a cluster
+
+Answer: d)
+
+Explanation: A controller that ensures a pod runs on every node in a cluster. A Kubernetes DaemonSet is a controller that ensures a pod runs on every node in a Kubernetes cluster, providing a way to run a specific set of tasks on every node in the cluster.
+
+15. What is a Kubernetes Volume?
+
+a) A way to store data in Kubernetes
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A way to store data in Kubernetes. A Kubernetes Volume is a way to store data in Kubernetes that can be shared between containers and persists even after a container has stopped running.
+
+16. What is Kubernetes Kubelet?
+
+a) The primary node agent that runs on each node in a Kubernetes cluster
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage container images
+
+Answer: a)
+
+Explanation: The primary node agent that runs on each node in a Kubernetes cluster. Kubernetes Kubelet is the primary node agent that runs on each node in a Kubernetes cluster, responsible for managing containers and reporting node status to the control plane.
+
+17. What is a Kubernetes HorizontalPodAutoscaler?
+
+a) A controller that automatically scales the number of replicas in a deployment
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A controller that automatically scales the number of replicas in a deployment. A Kubernetes HorizontalPodAutoscaler is a controller that automatically scales the number of replicas in a deployment based on demand, ensuring that the right amount of resources are allocated to meet the needs of the application.
+
+18. What is a Kubernetes Custom Resource?
+
+a) An extension of Kubernetes that allows for the creation of custom objects
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: An extension of Kubernetes that allows for the creation of custom objects. A Kubernetes Custom Resource is an extension of Kubernetes that allows developers to define and create their own custom objects, which can be used to represent specific applications or infrastructure components.
+
+19. What is Kubernetes CNI?
+
+a) A networking interface used by Kubernetes to interact with container runtimes
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A networking interface used by Kubernetes to interact with container runtimes. Kubernetes CNI (Container Network Interface) is a networking interface used by Kubernetes to interact with container runtimes, enabling the creation of network namespaces and the assignment of IP addresses to containers.
+
+20. What is a Kubernetes Secret?
+
+a) A way to store sensitive data in Kubernetes
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A way to store sensitive data in Kubernetes. A Kubernetes Secret is a way to store and manage sensitive data in Kubernetes, such as passwords or API keys, by encrypting the data at rest and providing access controls for managing access to the data.
+
+21. What is Kubernetes PodSecurityPolicy?
+
+a) A resource that controls the security settings of pods in a Kubernetes cluster
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A resource that controls the security settings of pods in a Kubernetes cluster. Kubernetes PodSecurityPolicy is a resource that controls the security settings of pods in a Kubernetes cluster, enabling administrators to enforce specific security policies on pods and containers.
+
+22. What is the Kubernetes Helm chart?
+
+a) A package that contains all the information necessary to deploy an application or service
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A package that contains all the information necessary to deploy an application or service. A Kubernetes Helm chart is a package that contains all the information necessary to deploy an application or service, including Kubernetes manifests, configurations, and dependencies.
+
+23. What is Kubernetes Kubectl?
+
+a) A command-line tool used to interact with Kubernetes clusters
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A command-line tool used to interact with Kubernetes clusters. Kubernetes Kubectl is a command-line tool used to interact with Kubernetes clusters, enabling administrators to manage Kubernetes resources, create, modify and delete resources, and troubleshoot cluster issues.
+
+24. What is Kubernetes StatefulSet?
+
+a) A way to manage stateful applications in Kubernetes
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A way to manage stateful applications in Kubernetes. Kubernetes StatefulSet is a way to manage stateful applications in Kubernetes, enabling administrators to deploy and manage applications that require persistent storage and stable network identities.
+
+25. What is Kubernetes DaemonSet?
+
+a) A way to ensure that a specific pod runs on every node in a Kubernetes cluster
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A way to ensure that a specific pod runs on every node in a Kubernetes cluster. Kubernetes DaemonSet is a way to ensure that a specific pod runs on every node in a Kubernetes cluster, enabling administrators to deploy background tasks or services that need to run on every node.
+
+26. What is Kubernetes Ingress?
+
+a) A networking abstraction to access a set of Pods
+b) A way to manage access to Kubernetes resources based on roles and permissions
+c) A way to manage Kubernetes nodes
+d) A way to expose HTTP and HTTPS routes from outside the cluster to services within the cluster
+
+Answer: d)
+
+Explanation: A way to expose HTTP and HTTPS routes from outside the cluster to services within the cluster. Kubernetes Ingress is a way to expose HTTP and HTTPS routes from outside the cluster to services within the cluster, enabling administrators to manage external access to services running in a Kubernetes cluster.
+
+27. What is Kubernetes Horizontal Pod Autoscaler (HPA)?
+
+a) A way to automatically scale the number of pods in a Kubernetes deployment based on resource utilization
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A way to automatically scale the number of pods in a Kubernetes deployment based on resource utilization. Kubernetes Horizontal Pod Autoscaler (HPA) is a way to automatically scale the number of pods in a Kubernetes deployment based on resource utilization, enabling administrators to ensure that their applications can handle varying levels of traffic and load.
+
+28. What is Kubernetes Service?
+
+a) A networking abstraction to access a set of Pods
+b) A tool for managing Kubernetes resources
+c) A way to manage access to Kubernetes resources based on roles and permissions
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A networking abstraction to access a set of Pods. Kubernetes Service is a networking abstraction to access a set of Pods, enabling administrators to expose their application as a network service that can be accessed by other applications or services within or outside the Kubernetes cluster.
+
+29. What is Kubernetes PersistentVolume?
+
+a) A way to manage persistent storage in Kubernetes
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A way to manage persistent storage in Kubernetes. Kubernetes PersistentVolume is a way to manage persistent storage in Kubernetes, enabling administrators to provision and manage storage resources that can be dynamically allocated to containers running in the cluster.
+
+30. What is Kubernetes Stateful Application?
+
+a) An application that requires persistent storage and stable network identities
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: An application that requires persistent storage and stable network identities. A Kubernetes Stateful Application is an application that requires persistent storage and stable network identities, such as databases or other applications that store state information.
+
+31. What is Kubernetes Pod?
+
+a) The smallest deployable unit in Kubernetes
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: The smallest deployable unit in Kubernetes. Kubernetes Pod is the smallest deployable unit in Kubernetes, representing a single instance of a running process in a cluster, and encapsulating one or more containers that share the same network and storage resources.
+
+32. What is Kubernetes Deployment?
+
+a) A way to manage the rollout and scaling of containers in Kubernetes
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A way to manage the rollout and scaling of containers in Kubernetes. Kubernetes Deployment is a way to manage the rollout and scaling of containers in Kubernetes, enabling administrators to declare the desired state of their application and Kubernetes to automatically manage the deployment and scaling of containers to meet that desired state.
+
+33. What is Kubernetes ReplicaSet?
+
+a) A tool for managing Kubernetes resources
+b) A networking abstraction to access a set of Pods
+c) A way to manage Kubernetes nodes
+d) A way to ensure that a specified number of identical pods are running at all times
+
+Answer: d)
+
+Explanation: A way to ensure that a specified number of identical pods are running at all times. Kubernetes ReplicaSet is a way to ensure that a specified number of identical pods are running at all times, enabling administrators to ensure high availability and reliability of their applications running in a Kubernetes cluster.
+
+34. What is Kubernetes Node?
+
+a) A worker machine in a Kubernetes cluster
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage access to Kubernetes resources based on roles and permissions
+
+Answer: a)
+
+Explanation: A worker machine in a Kubernetes cluster. Kubernetes Node is a worker machine in a Kubernetes cluster, running the container runtime and other necessary components to manage containers and run applications.
+
+35. What is Kubernetes Namespace?
+
+a) A way to isolate and manage resources in a Kubernetes cluster
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A way to isolate and manage resources in a Kubernetes cluster. Kubernetes Namespace is a way to isolate and manage resources in a Kubernetes cluster, enabling administrators to create virtual clusters within a physical cluster, and to manage access to resources based on namespace-level roles and permissions.
+
+36. What is Kubernetes Operator?
+
+a) An extension of the Kubernetes API that allows for custom controllers
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: An extension of the Kubernetes API that allows for custom controllers. Kubernetes Operator is an extension of the Kubernetes API that allows for custom controllers, enabling administrators to define and manage custom resources in a Kubernetes cluster using code, and to automate complex application operations and maintenance tasks.
+
+37. What is Kubernetes Job?
+
+a) A way to run a single task to completion in a Kubernetes cluster
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A way to run a single task to completion in a Kubernetes cluster. Kubernetes Job is a way to run a single task to completion in a Kubernetes cluster, enabling administrators to manage batch jobs and other tasks that need to run once and then exit, such as backups and data migrations.
+
+38. What is Kubernetes CronJob?
+
+a) A way to schedule periodic tasks in a Kubernetes cluster
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: a)
+
+Explanation: A way to schedule periodic tasks in a Kubernetes cluster. Kubernetes CronJob is a way to schedule periodic tasks in a Kubernetes cluster, enabling administrators to manage scheduled jobs and other recurring tasks, such as backups and database cleanup.
+
+39. What is Kubernetes HorizontalPodAutoscaler?
+
+a) A tool for managing Kubernetes resources
+b) A networking abstraction to access a set of Pods
+c) A way to manage Kubernetes nodes
+d) A way to automatically scale the number of Pods in a deployment based on resource usage
+
+Answer: d)
+
+Explanation: A way to automatically scale the number of Pods in a deployment based on resource usage. Kubernetes HorizontalPodAutoscaler is a way to automatically scale the number of Pods in a deployment based on resource usage, enabling administrators to manage the horizontal scaling of applications running in a Kubernetes cluster.
+
+40. What is Kubernetes VerticalPodAutoscaler?
+
+a) A way to automatically scale the number of Pods in a deployment based on resource usage
+b) A tool for managing Kubernetes resources
+c) A networking abstraction to access a set of Pods
+d) A way to manage Kubernetes nodes
+
+Answer: d)
+
+Explanation: A way to manage Kubernetes nodes. Kubernetes VerticalPodAutoscaler is a way to manage Kubernetes nodes, enabling administrators to automatically adjust the resource requests and limits of containers running in a pod to optimize their performance and efficiency.
+
+41. What is Kubernetes Volume?
+
+a) A networking abstraction to access a set of Pods
+b) A tool for managing Kubernetes resources
+c) A way to manage Kubernetes nodes
+d) A way to manage persistent storage for containers in a Kubernetes cluster
+
+Answer: d)
+
+Explanation: A way to manage persistent storage for containers in a Kubernetes cluster. Kubernetes Volume is a way to manage persistent storage for containers in a Kubernetes cluster, enabling administrators to manage the lifecycle of storage volumes separately from containers and to attach and detach volumes to and from containers as needed.
+
+42. What is the command to create a Kubernetes Namespace?
+
+a) kubectl create namespace [name]
+b) kubectl create -f namespace.yaml
+c) kubectl apply -f namespace.yaml
+d) kubectl create ns [name]
+
+Answer: d)
+
+Explanation: kubectl create ns [name]. This command creates a new Kubernetes Namespace with the specified name.
+
+43. What is the difference between Kubernetes Deployment and Kubernetes StatefulSet?
+
+a) Deployment manages stateful applications while StatefulSet manages stateless applications
+b) Deployment manages stateless applications while StatefulSet manages stateful applications
+c) Deployment is used for rolling updates and rollbacks while StatefulSet is not
+d) StatefulSet is used for rolling updates and rollbacks while Deployment is not
+
+Answer: b)
+
+Explanation: Deployment manages stateless applications while StatefulSet manages stateful applications. Deployment and StatefulSet are both ways to manage the deployment and scaling of applications in a Kubernetes cluster, but they differ in their support for stateful applications. Deployment is typically used for managing stateless applications, while StatefulSet is designed for managing stateful applications that require stable network identifiers, persistent storage, and ordered deployment and scaling.
+
+44. What is the Kubernetes Ingress resource?
+
+a) A networking abstraction to access a set of Pods
+b) A tool for managing Kubernetes resources
+c) A way to manage persistent storage for containers in a Kubernetes cluster
+d) A way to manage HTTP(S) routing rules for external traffic into a Kubernetes cluster
+
+Answer: d)
+
+Explanation: A way to manage HTTP(S) routing rules for external traffic into a Kubernetes cluster. Kubernetes Ingress is a way to manage HTTP(S) routing rules for external traffic into a Kubernetes cluster, enabling administrators to configure routing rules for incoming traffic based on URL paths or domain names.
+
+45. What is the command to create a Kubernetes Deployment?
+
+a) kubectl create deployment [name] –image=[image]
+b) kubectl create -f deployment.yaml
+c) kubectl apply -f deployment.yaml
+d) kubectl create deploy [name] –image=[image]
+
+Answer: a)
+
+Explanation: kubectl create deployment [name] –image=[image]. This command creates a new Kubernetes Deployment with the specified name and container image.
+
+46. What is the command to scale a Kubernetes Deployment?
+
+
+a) kubectl scale deployment [name] –replicas=[number]
+b) kubectl apply -f deployment.yaml
+c) kubectl create deployment [name] –image=[image]
+d) kubectl edit deployment [name]
+
+Answer: a)
+
+Explanation: kubectl scale deployment [name] –replicas=[number]. This command scales the number of replicas of a Kubernetes Deployment with the specified name to the specified number.
+
+47. What is the command to create a Kubernetes ConfigMap?
+
+a) kubectl create -f configmap.yaml
+b) kubectl create configmap [name] –from-file=[filename]
+c) kubectl apply -f configmap.yaml
+d) kubectl create cm [name] –from-file=[filename]
+
+Answer: b)
+
+Explanation: kubectl create configmap [name] –from-file=[filename]. This command creates a new Kubernetes ConfigMap with the specified name and data from the specified file.
+
+48. What is the command to create a Kubernetes Secret?
+
+a) kubectl create secret [name] –from-file=[filename]
+b) kubectl apply -f secret.yaml
+c) kubectl create -f secret.yaml
+d) kubectl create secret generic [name] –from-file=[filename]
+
+Answer: d)
+
+Explanation: kubectl create secret generic [name] –from-file=[filename]. This command creates a new Kubernetes Secret with the specified name and data from the specified file.
+
+49. What is the command to install a Kubernetes Helm chart?
+
+a) helm install [name] [chart]
+b) kubectl apply -f helm.yaml
+c) helm create [name]
+d) helm upgrade [name] [chart]
+
+Answer: a)
+
+Explanation: helm install [name] [chart]. This command installs a Kubernetes Helm chart with the specified name and chart.
+
+50. What is the command to create a Kubernetes Operator?
+
+a) kubectl create -f operator.yaml
+b) kubectl apply -f operator.yaml
+c) operator-sdk new [name]
+d) kubectl create operator [name]
+
+Answer: c)
+
+Explanation: operator-sdk new [name]. This command creates a new Kubernetes Operator with the specified name using the Operator SDK, which is a framework for building Kubernetes Operators.
+
+
+1 .Kubernetes or K8S was built by which company?
+A)
+Meta
+B)
+Apple
+C)
+Google
+D)
+Microsoft
+Correct Answer : Option (C) :   Google
+
+   
+2 .What is the basic operational unit of Kubernetes or K8S?
+A)
+Pod
+B)
+Task
+C)
+Nodes
+D)
+Container
+Correct Answer : Option (A) :   Pod
+
+Explanation : Containers are grouped into pods, the basic operational unit for Kubernetes and those pods scale to your desired state.
+
+   
+
+Powered By
+VDO.AI
+PauseUnmute
+Fullscreen
+3 .This volume type can be used to share contents within containers in a pod, but will not persist beyond the life of a pod.
+A)
+Local
+B)
+ConfigMap
+C)
+FlexVolume
+D)
+EmptyDir
+Correct Answer : Option (D) :   EmptyDir
+
+   
+4 .An abstraction in kubernetes which defines a logical set of pods and a policy to access them.
+A)
+Node
+B)
+Service
+C)
+Container
+D)
+Kubelet
+Correct Answer : Option (B) :   Service
+
+   
+5 .Which one of the following can be considered as the primary data store of Kubernetes ?
+A)
+pod
+B)
+etcd
+C)
+node
+D)
+None of the above
+Correct Answer : Option (B) :   etcd
+
+   
+6 .Which of the following runs on each node and ensures containers are running in a pod?
+A)
+Pod
+B)
+Etcd
+C)
+Kubelet
+D)
+Scheduler
+Correct Answer : Option (C) :   Kubelet
+
+Explanation : Kubelet runs on each node and ensures containers are running in a pod.
+
+   
+7 .Which of the below is/are container orchestration technologies
+A)
+Mesos
+B)
+Kubernetes
+C)
+Docker Swarm
+D)
+All of the above
+Correct Answer : Option (D) :   All of the above
+
+   
+8 .Which of the following are Kubernetes hosted solutions?
+A)
+Openshift Dedicated
+B)
+Google Container Engine
+C)
+Both (A) and (B)
+D)
+Amazon ECS
+Correct Answer : Option (C) :   Both (A) and (B)
+
+   
+9 .Select the first release version of kubernetes in 2021?
+A)
+1.21
+B)
+1.23
+C)
+1.25
+D)
+1.29
+Correct Answer : Option (A) :   1.21
+
+   
+10 .Which of the following are core Kubernetes objects?
+A)
+Pods
+B)
+Volumes
+C)
+Services
+D)
+All of the above
+Correct Answer : Option (D) :   All of the above
+
+1 .Which of the below are container runtimes?
+A)
+CRI-O
+B)
+Containerd
+C)
+DockerEngine
+D)
+All of the above
+Correct Answer : Option (D) :   All of the above
+
+   
+2 .Replication Controllers and Deployment Controllers are part of_________
+A)
+Kubeadm
+B)
+Master Controller Manager
+C)
+Etcd manager
+D)
+API Controller Manager
+Correct Answer : Option (B) :   Master Controller Manager
+
+   
+
+Powered By
+VDO.AI
+PlayUnmute
+Fullscreen
+3 .The Service Type_________works only if your cluster is setup to work with a cloud provider.
+A)
+NodePort
+B)
+ClusterIP
+C)
+LoadBalancer
+D)
+ExternalName
+Correct Answer : Option (C) :   LoadBalancer
+
+   
+4 .Kube-apiserver on kubernetes master is designed to scale.
+A)
+Vertically
+B)
+Horizontally
+C)
+Both (A) and (B)
+D)
+None of the above
+Correct Answer : Option (B) :   Horizontally
+
+   
+5 .What is Kubernetes?
+A)
+Portable platform
+B)
+Extensible platform
+C)
+Open-source platform
+D)
+All of the Above
+Correct Answer : Option (D) :   All of the Above
+
+Explanation : Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation.
+
+   
+6 .What was Kubernetes called before it got opensource?
+A)
+Borg
+B)
+Rocket
+C)
+Kubecon
+D)
+Containerd
+Correct Answer : Option (A) :   Borg
+
+   
+7 .What is the correct fqdn for service "nginx" in namespace "app"?
+A)
+nginx.local
+B)
+nginx.svc.cluster.local
+C)
+nginx.app.cluster.local
+D)
+nginx.app.svc.cluster.local
+Correct Answer : Option (D) :   nginx.app.svc.cluster.local
+
+   
+8 .What is not a valid affinity rule?
+A)
+Pod Affinity
+B)
+Node Affinity
+C)
+Node Anti Affinity
+D)
+Pod AntiAffinity
+Correct Answer : Option (C) :   Node Anti Affinity
+
+   
+9 .In kubernetes a node is_______
+A)
+developing tool
+B)
+A worker machine
+C)
+A tool for starting a kubernetes cluster on a local machine
+D)
+None of the above
+Correct Answer : Option (B) :   A worker machine
+
+   
+10 .Kubernetes is written in which language?
+A)
+Go
+B)
+C++
+C)
+Python
+D)
+Java spring framework
+Correct Answer : Option (A) :   Go
+
+1 .To create a new deployment in kubernetes, use the command________
+A)
+Kubectl run
+B)
+Kubernetes set deployment
+C)
+Kubernetes get deployment
+D)
+None of the above
+Correct Answer : Option (A) :   Kubectl run
+
+   
+2 .Which of the following command is used to create kubernetes service?
+A)
+Kubectl run
+B)
+Kubectl deploy
+C)
+Kubectl expose
+D)
+None of the above
+Correct Answer : Option (C) :   Kubectl expose
+
+   
+
+Powered By
+VDO.AI
+PlayUnmute
+Fullscreen
+3 .A service account is scoped to a namespace___
+A)
+True
+B)
+False
+C)
+None of the above
+D)
+--
+Correct Answer : Option (A) :   True
+
+   
+4 .A service account can be binded to?
+A)
+A role
+B)
+A clusterrole
+C)
+Both (A) and (B)
+D)
+A rolebinding
+Correct Answer : Option (C) :   Both (A) and (B)
+
+   
+5 .which of the following process runs on kubernetes non-master node?
+A)
+Kube-apiserver
+B)
+Kube-proxy
+C)
+Both (A) and (B)
+D)
+None of the above
+Correct Answer : Option (B) :   Kube-proxy
+
+   
+6 .Cronjobs in kubernetes run in_________
+A)
+GMT only
+B)
+UTC only
+C)
+Local time zone
+D)
+Server NTP settings
+Correct Answer : Option (B) :   UTC only
+
+   
+7 .Which of the following is a Kubernetes controllers?
+A)
+Replicaset
+B)
+Deployment
+C)
+Namespace
+D)
+Both (A) and (B)
+Correct Answer : Option (D) :   Both (A) and (B)
+
+   
+8 .Based on what do Networkpolicy resources select pods to define and apply rules?
+A)
+Labels
+B)
+Pod names
+C)
+Namespace name
+D)
+All of the above
+Correct Answer : Option (A) :   Labels
+
+   
+9 .Which description best fits a DaemonSet?
+A)
+A system to connect nodes and pods
+B)
+A method to manage clusters of pods
+C)
+A way to run a copy of a pod on all or some nodes
+D)
+A channel through which to pass information between two or more nodes
+   
+10 .Which of the following things are managed by a container orchestration platform?
+A)
+adding/removing containers
+B)
+re-scheduling failed containers
+C)
+Fixing a crashed container by itself
+D)
+Both (A) and (B)
+Correct Answer : Option (D) :   Both (A) and (B)
+
+
+1) What is the basic operational unit of Kubernetes?
+A. Task
+B.Nodes
+C.Pod
+D.Container
+Correct:B
+2) Kubernetes cluster data is stored in _______
+A. Etcd
+B.Kubelet
+C.Kube-apiserver
+D.None of them
+Correct:A
+3) Kubernetes version 1.8 introduced _________
+A. Secrets
+B.Taints and Tolerations
+C.Federated Clusters
+D.Cluster level Logging
+Correct:B
+4) Which of the following are core Kubernetes objects ?
+A. Pods
+B.Volumes
+C.Services
+D.All of them
+Correct:D
+5) Kubernetes Network proxy runs on which node ?
+A. Master Node
+B.Worker Node
+C.CIDR Node
+D.Both A & B
+Correct:D
+6) _______ runs on each node and ensures containers are running in a pod.
+A. Etcd
+B.Pod
+C.Kubelet
+D.Scheduler
+Correct:C
+7) Replication Controllers and Deployment Controllers are part of
+A. Etcd manager
+B.Kubeadm
+C.API Controller Manager
+D.Master Controller Manager
+Correct:D
+8) Kubernetes is written in _______
+A. C++
+B.Python
+C.Go
+D.Java
+Correct:C
+9) Which of them is a Kubernetes Controller ?
+A. ReplicaSet
+B.Deployment
+C.Rolling Updates
+D.Both A & B
+Correct:D
+10) Kubernetes is developed by _______
+A. IBM
+B.Microsoft
+C.Google
+D.None of them
+Correct:C
+11) ....................... are the Kubernetes controllers.
+A. Replicaset
+B.Deployment
+C.Namespace
+D.Both Replicaset & Deployment
+Correct:D
+12) Cronjobs in kubernetes run in .....................
+A. UTC only
+B.GMT only
+C.Local time zone
+D.None of the above
+Correct:A
+13) Kubernetes is the type of cluster management software.
+A. True
+B.False
+Correct:A
+14) What are the features of Kubernetes?
+A. Containerized infrastructure
+B.Auto-scalable infrastructure
+C.Higher density of resource utilization
+D.All of the above
+Correct:D
+15) Which of the following are the components of Kubernetes Master Machine?
+A. Scheduler
+B.Controller Manager
+C.API Server & etcd
+D.All of the above
+Correct:D
+16) Which of the followings are the Kubernetes Node Components?
+A. Docker
+B.Kubelet Service
+C.Kubernetes Proxy Service
+D.All of the above
+Correct:D
+17) Kubernetes images are the key building blocks of Containerized Infrastructure.
+A. True
+B.False
+Correct:A
+18) Kubernetes API currently supports ........... type of selectors.
+A. Set-based selectors
+B.Equality-based selectors
+C.both Set-based & Equality-based selectors
+D.None of the above
+Correct:C
+19) What are the some important functionalities of a Namespace in Kubernetes?
+A. Namespaces help pod-to-pod communication using the same namespace.
+B.Namespaces provide logical separation between the teams and their environments.
+C.Namespaces are virtual clusters that can sit on top of the same physical cluster.
+D.All of the above
+Correct:D
+20) There are ............ types of Pods in kubernets?
+A. 2
+B.3
+C.4
+D.6
+Correct:A
+
+
+1. What is the basic operational unit of Kubernetes?
+ Task
+ Pod
+ Nodes
+ Container
+
+Powered By
+VDO.AI
+
+PlayUnmute
+Fullscreen
+ Correct Answer:
+Pod
+Exp: Pod is the basic operational unit of Kubernetes.
+2. Which one of the following can be considered as the primary data store of Kubernetes?
+ pod
+ node
+ etcd
+ None of above
+ Correct Answer:
+3. Which of the following runs on each node and ensures containers are running in a pod?
+ Pod
+ Etcd
+ Kubelet
+ Scheduler
+ Correct Answer:
+Kubelet
+Exp: Kubelet runs on each node and ensures containers are running in a pod.
+4. Replication Controllers and Deployment Controllers are part of ................
+ Kubeadm
+ Etcd manager
+ API Controller Manager
+ Master Controller Manager
+ Correct Answer:
+5. Kubernetes was developed by .................
+ Google
+ IBM
+ Microsoft
+ None of above
+Download Free : Kubernetes MCQ PDF
+ Correct Answer:
+Google
+Exp: Kubernetes was developed by Google.
+6. What is Kubernetes?
+ Portable platform
+ Extensible platform
+ Open-source platform
+ All of the Above
+ Correct Answer:
+All of the Above
+Exp: Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation.
+7. what is the latest version of kubernetes?
+ 1.1
+ 2.0
+ 1.19
+ 1.20
+ Correct Answer:
+1.20
+Exp: 1.20 is the latest version of Kubernetes.
+8. In kubernetes a node is ................
+ A worker machine
+ A tool for starting a kubernetes cluster on a local machine
+ developing tool
+ None of above
+ Correct Answer:
+A worker machine
+9. What can you deploy on Kubernetes?
+ Containers
+ Virtual machines
+ System processes
+ None of above
+ Correct Answer:
+Containers
+10. At its core, Kubernetes is a platform for ...............
+ Packaging software in containers
+ Provisioning machines
+ Running and scheduling container applications on a cluster
+ None of above
+Read Best: Kubernetes Interview Questions
+ Correct Answer:
+Running and scheduling container applications on a cluster
+11. .................. manages the assigning nodes to pods depending on resource availability.
+ Etcd
+ Kubectl
+ Scheduler
+ None of above
+ Correct Answer:
+Scheduler
+12. Kubernetes is written in which language?
+ Go
+ C++
+ Python
+ Java spring framework
+ Correct Answer:
+Go
+13. To create a new deployment in kubernetes, use the command ..................
+ Kubectl run
+ Kubernetes get deployment
+ Kubernetes set deployment
+ None of above
+ Correct Answer:
+Kubectl run
+14. Which of the following command is used to create kubernetes service?
+ Kubectl run
+ Kubectl deploy
+ Kubectl expose
+ None of the above
+ Correct Answer:
+Kubectl expose
+15. Kube-apiserver on kubernetes master is designed to scale.
+ Vertically
+ Horizontally
+ Both Vertically & Horizontally
+ None of above
+Download Free: Kubernetes Interview Questions PDF
+ Correct Answer:
+Horizontally
+16. which of the following process runs on kubernetes non-master node?
+ Kube-proxy
+ Kube-apiserver
+ Both Kube-proxy & Kube-apiserver
+ None of above
+ Correct Answer:
+Kube-proxy
+17. ............ is responsible for health check of the pods running on individual nodes.
+ Kubectl
+ Kubelet
+ Kube scheduler
+ Kube controller manager
+ Correct Answer:
+Kubelet
+18. Cronjobs in kubernetes run in .....................
+ GMT only
+ UTC only
+ Local time zone
+ Server NTP settings
+ Correct Answer:
+UTC only
+19. Which of the following forms the core kubernetes objects?
+ Pod
+ Service
+ Volume
+ All of the Above
+ Correct Answer:
+All of the Above
+20. Which of the following is a Kubernetes controllers?
+ Replicaset
+ Deployment
+ Namespace
+ Both Replicaset & Deployment
+ Correct Answer:
+Both Replicaset & Deployment
+
+
+Questions and Answers
+1. 
+___________ runs on each node and ensures containers are running in a pod.
+
+A.
+Kubelet
+
+
+B.
+Etcd
+
+
+C.
+Scheduler
+
+
+D.
+Pod
+
+Correct Answer
+A. Kubelet
+Explanation
+The kubelet is responsible for running containers on each node in a Kubernetes cluster. It ensures that the containers specified in a pod are running and healthy. It communicates with the Kubernetes API server to receive instructions on which containers to run and monitors their status. The kubelet also performs tasks such as pulling container images, mounting volumes, and managing networking for the containers. Therefore, the kubelet is the component that runs on each node and ensures containers are running in a pod.
+
+ 2. 
+_______ manages the assigning nodes to pods depending on resource availability.
+
+A.
+Etcd
+
+
+B.
+Kubectl
+
+
+C.
+Scheduler
+
+
+D.
+Flanneld
+
+Correct Answer
+C. Scheduler
+Explanation
+The scheduler is responsible for managing the assignment of nodes to pods based on the availability of resources. It evaluates the resource requirements of each pod and determines the best node to schedule it on. This ensures efficient utilization of resources and optimal performance of the cluster.
+
+ 3. 
+As soon a service starts, .......... daemon running on each node add a set of environment variables on the pod for each active service.
+
+A.
+Kubectl
+
+
+B.
+Kubelet
+
+
+C.
+Kubeadm
+
+
+D.
+Service discovery
+
+Correct Answer
+B. Kubelet
+Explanation
+The kubelet is responsible for managing the state of each node in a Kubernetes cluster. When a service starts, the kubelet running on each node adds a set of environment variables on the pod for each active service. These environment variables provide important information and configuration details for the service to function correctly within the cluster.
+
+ 4. 
+Replication Controllers and Deployment Controllers are part of
+
+A.
+API Controller Manager
+
+
+B.
+Etcd manager
+
+
+C.
+Master Controller Manager
+
+
+D.
+Kubeadm
+
+Correct Answer
+C. Master Controller Manager
+Explanation
+The Master Controller Manager is responsible for managing different controllers in Kubernetes, such as Replication Controllers and Deployment Controllers. These controllers are crucial for ensuring the desired state of the cluster, managing the scaling and replication of pods, and handling updates and rollbacks. Therefore, the Master Controller Manager is the correct option as it encompasses the overall management of controllers in Kubernetes.
+
+
+ 5. 
+___________________ is a special namespace that is used for special purposes like bootstrapping a cluster.
+
+A.
+Kube-public
+
+
+B.
+Kube-private
+
+
+C.
+Kube-system
+
+
+D.
+Default
+
+Correct Answer
+A. Kube-public
+Explanation
+The kube-public namespace is a special namespace used for special purposes like bootstrapping a cluster. It is a publicly readable namespace that contains resources that should be accessible to all users and services in the cluster. This namespace is commonly used for storing cluster-wide resources that need to be accessed by multiple users or services, such as cluster-wide configuration maps or public secrets.
+
+ 6. 
+Kubernetes uses _______________________ to connect to ouath 2 providers to offload the authentication to external services.
+
+A.
+Webhook Token Authentication
+
+
+B.
+Keystone Password
+
+
+C.
+OpenID Connect Tokens
+
+
+D.
+Authentication Proxy
+
+Correct Answer
+C. OpenID Connect Tokens
+Explanation
+Kubernetes uses OpenID Connect Tokens to connect to OAuth 2 providers and offload the authentication process to external services. OpenID Connect is an identity layer on top of OAuth 2.0, which allows for secure authentication and authorization. By using OpenID Connect Tokens, Kubernetes can validate and verify user identities with the help of external authentication providers, ensuring secure access to the cluster.
+
+ 7. 
+To program additional authentication logic besides available authenticator modules, _______________ can be used.
+
+A.
+WebHook Authentication
+
+
+B.
+Authentication Proxy
+
+
+C.
+Keystone Password
+
+
+D.
+OpenID Connect Tokens
+
+Correct Answer
+B. Authentication Proxy
+Explanation
+To program additional authentication logic besides available authenticator modules, an Authentication Proxy can be used. An Authentication Proxy acts as an intermediary between the user and the authentication system, allowing for the implementation of custom authentication logic. It can authenticate users based on various factors such as user credentials, device information, or location, and then communicate with the authentication system to verify the user's identity. By using an Authentication Proxy, developers have the flexibility to add their own authentication logic on top of the existing authenticator modules.
+
+ 8. 
+Kubernetes is written in
+
+A.
+C++
+
+
+B.
+Go
+
+
+C.
+Python
+
+
+D.
+Java spring framework
+
+Correct Answer
+B. Go
+Explanation
+Kubernetes is written in Go. Go, also known as Golang, is a programming language developed by Google. It is known for its simplicity, efficiency, and strong support for concurrency. Go's fast execution speed and built-in features for networking and parallelism make it an ideal choice for developing highly scalable and efficient systems like Kubernetes. Additionally, Go's strong type system and garbage collection help ensure the reliability and stability of the Kubernetes codebase.
+
+ 9. 
+An abstraction in kubernetes which defines a logical set of pods and a policy to access them.
+
+A.
+Kubelet
+
+
+B.
+Service
+
+
+C.
+Node
+
+
+D.
+Container
+
+Correct Answer
+B. Service
+Explanation
+A service in Kubernetes is an abstraction that defines a logical set of pods and a policy to access them. It acts as a stable endpoint to connect to a group of pods, providing load balancing and service discovery functionality. By defining a service, applications can easily communicate with each other without needing to know the specific IP addresses or ports of individual pods.
+
+ 10. 
+To create a new deployment in kubernetes, use the command
+
+A.
+Kubernetes set deployment
+
+
+B.
+Kubernetes get deployment
+
+
+C.
+Kubectl run
+
+
+D.
+Kubectl deploy
+
+Correct Answer
+C. Kubectl run
+Explanation
+The correct answer is "kubectl run" because this command is used to create a new deployment in Kubernetes. It allows users to run a particular image on the cluster and manage it as a deployment. The "kubectl run" command is commonly used to quickly create and deploy containers in Kubernetes.
+
+ 11. 
+The command to create Kubernetes service is
+
+A.
+Kubectl expose
+
+
+B.
+Kubectl set service
+
+
+C.
+Kubectl run
+
+
+D.
+Kubectl deploy
+
+Correct Answer
+A. Kubectl expose
+Explanation
+The correct answer is "kubectl expose" because this command is used to create a Kubernetes service. It allows the user to expose a deployment, replication controller, or pod as a new service. This command is essential for setting up networking within a Kubernetes cluster and making the service accessible to other pods or external clients.
+
+ 12. 
+Kube-apiserver on kubernetes master is designed to scale. 
+
+A.
+Vertically
+
+
+B.
+Horizontally
+
+Correct Answer
+B. Horizontally
+Explanation
+The correct answer is horizontally. This means that the kube-apiserver on the Kubernetes master is designed to scale by adding more instances of the kube-apiserver horizontally. Horizontal scaling involves adding more machines or instances to distribute the workload and increase capacity. This allows for better performance and handling of increased traffic or demand in a Kubernetes cluster.
+
+ 13. 
+Following k8s resources do not associate with any namespace.
+
+A.
+DaemonSets
+
+
+B.
+PersistentVolumes
+
+
+C.
+ReplicaSets
+
+
+D.
+Nodes
+
+
+E.
+Services
+
+Correct Answer(s)
+B. PersistentVolumes
+D. Nodes
+Explanation
+PersistentVolumes and Nodes do not associate with any namespace in Kubernetes.
+
+PersistentVolumes are storage resources that exist independently of any namespace and can be accessed by any pod in the cluster. They provide a way to store data that needs to persist beyond the lifetime of a pod.
+
+Nodes, on the other hand, represent the worker machines in the cluster and are responsible for running pods. They are not associated with any specific namespace as they are part of the cluster infrastructure rather than an application or service running within a namespace.
+
+ 14. 
+The Service Type _____________ works only if your cluster is setup to work with a cloud provider.
+
+A.
+ClusterIP
+
+
+B.
+NodePort
+
+
+C.
+LoadBalancer
+
+
+D.
+ExternalName
+
+Correct Answer
+C. LoadBalancer
+Explanation
+The LoadBalancer service type works only if your cluster is set up to work with a cloud provider. This is because a LoadBalancer service type requires the cloud provider's load balancer to distribute traffic to the service. If the cluster is not set up with a cloud provider, the load balancer functionality will not be available, and therefore the LoadBalancer service type cannot be used.
+
+ 15. 
+This volume type can be used to share contents within containers in a pod, but will not persist beyond the life of a pod.
+
+A.
+EmptyDir
+
+
+B.
+FlexVolume
+
+
+C.
+ConfigMap
+
+
+D.
+Local
+
+Correct Answer
+A. EmptyDir
+Explanation
+The emptyDir volume type can be used to share contents within containers in a pod. It creates an empty directory on the host machine and mounts it into the pod. However, the contents of this volume will not persist beyond the life of the pod. Once the pod is terminated or restarted, the contents of the emptyDir volume will be lost.
+
+ 16. 
+__________________ is responsible for health check of the pods running on individual nodes
+
+A.
+Kubectl
+
+
+B.
+Kube controller manager
+
+
+C.
+Kube scheduler
+
+
+D.
+Kubelet
+
+Correct Answer
+D. Kubelet
+Explanation
+The kubelet is responsible for the health check of the pods running on individual nodes. It is an agent that runs on each node in the cluster and ensures that the containers in the pods are running and healthy. The kubelet communicates with the Kubernetes API server to receive instructions about which pods to run and monitor. It also reports the status of the pods back to the API server.
+
+ 17. 
+Cronjobs in kubernetes run in
+
+A.
+UTC only
+
+
+B.
+Server NTP settings
+
+
+C.
+Local time zone
+
+
+D.
+GMT only
+
+Correct Answer
+A. UTC only
+Explanation
+Cronjobs in Kubernetes run in UTC only. This means that the scheduled tasks will be executed based on Coordinated Universal Time, which is a standardized time used worldwide. The use of UTC ensures consistency and avoids any confusion caused by different time zones.
+
+ 18. 
+_________ service is automatically created for you k8s cluster creation and takes care of the internal routing of the cluster.
+
+A.
+NodePort
+
+
+B.
+ClusterIP
+
+
+C.
+Headless
+
+
+D.
+Load Balancer
+
+Correct Answer
+B. ClusterIP
+Explanation
+A ClusterIP service is automatically created for you during k8s cluster creation and it takes care of the internal routing of the cluster. ClusterIP is a type of service in Kubernetes that assigns a virtual IP address to a set of pods. This IP address allows communication between the pods within the cluster, but it is not accessible from outside the cluster. ClusterIP services are used for internal communication and are not exposed to the external network.

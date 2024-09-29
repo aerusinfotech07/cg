@@ -1,0 +1,236 @@
+### Hospital Management System Using Microservices (Java Spring Boot)
+
+#### 1. **Overview**
+
+In a **Microservices Architecture**, each service is independent, lightweight, and responsible for a specific part of the application. For a **Hospital Management System (HMS)**, different services (like Patient, Doctor, Appointment, Billing, and Pharmacy) will communicate over REST APIs.
+
+#### 2. **Key Functional Requirements**
+- **Patient Service**: Handles patient data management (registration, medical history).
+- **Doctor Service**: Manages doctor profiles, availability, and specializations.
+- **Appointment Service**: Schedules and updates appointments.
+- **Billing Service**: Manages patient billing and payments.
+- **Pharmacy Service**: Tracks drug inventory and manages prescriptions.
+- **API Gateway**: Provides a single entry point for all services, handling routing and security.
+- **Service Discovery**: Automatically detects services, making inter-service communication easier.
+- **Config Server**: Manages configuration settings for all services.
+
+---
+
+#### 3. **System Design**
+
+##### **Microservices**
+
+1. **Patient Service**
+   - `POST /api/patients`: Register a patient.
+   - `GET /api/patients/{id}`: Retrieve a patient's data.
+   - `PUT /api/patients/{id}`: Update a patient's data.
+
+2. **Doctor Service**
+   - `POST /api/doctors`: Add a doctor profile.
+   - `GET /api/doctors/{id}`: Retrieve doctor details.
+   - `PUT /api/doctors/{id}`: Update a doctor’s information.
+   - `GET /api/doctors/{id}/availability`: Get doctor availability.
+
+3. **Appointment Service**
+   - `POST /api/appointments`: Schedule an appointment.
+   - `GET /api/appointments/{id}`: Get appointment details.
+   - `PUT /api/appointments/{id}`: Update appointment status (Scheduled, Completed, or Canceled).
+
+4. **Billing Service**
+   - `POST /api/bills`: Generate a bill for a patient.
+   - `GET /api/bills/{id}`: Get billing details.
+   - `PUT /api/bills/{id}/pay`: Mark a bill as paid.
+
+5. **Pharmacy Service**
+   - `GET /api/pharmacy/{medicineId}`: Retrieve medicine stock.
+   - `PUT /api/pharmacy/{medicineId}`: Update medicine stock.
+   - `POST /api/pharmacy/issue`: Issue a prescription for a patient.
+
+---
+
+#### 4. **Microservices Architecture**
+
+##### **Services and Responsibilities**
+
+1. **Patient Service**: 
+   - Manages patient-related operations such as registration, updates, and retrieving patient history.
+   
+2. **Doctor Service**: 
+   - Handles doctor profiles, scheduling, and retrieving available doctors.
+
+3. **Appointment Service**: 
+   - Schedules, modifies, or cancels patient appointments with doctors.
+
+4. **Billing Service**: 
+   - Manages billing operations, including bill generation, status, and payments.
+
+5. **Pharmacy Service**: 
+   - Tracks inventory, manages medicine stock, and issues prescriptions to patients.
+
+##### **API Gateway**: 
+Acts as a single point of entry, routing requests to the appropriate microservices and managing cross-cutting concerns like security, authentication, and rate-limiting.
+
+##### **Service Discovery (Eureka)**: 
+Ensures that services register themselves and can be easily discovered by other services dynamically.
+
+##### **Config Server**: 
+Manages external configurations for each microservice (e.g., database connection settings, environment variables).
+
+---
+
+#### 5. **Sample Mock APIs**
+
+##### **1. Patient Service API**
+
+- **Endpoint**: `POST /api/patients`
+- **Description**: Registers a new patient.
+- **Request Body**:
+   ```json
+   {
+       "name": "John Doe",
+       "age": 35,
+       "gender": "Male",
+       "address": "123 Elm St",
+       "contactNumber": "555-1234"
+   }
+   ```
+- **Response**:
+   ```json
+   {
+       "patientId": 1,
+       "message": "Patient registered successfully"
+   }
+   ```
+
+##### **2. Doctor Service API**
+
+- **Endpoint**: `GET /api/doctors/{doctorId}/availability`
+- **Description**: Retrieves a doctor's availability schedule.
+- **Response**:
+   ```json
+   {
+       "doctorId": 10,
+       "name": "Dr. Sarah Lee",
+       "specialization": "Cardiologist",
+       "availableTimings": [
+           "2023-09-14 10:00-12:00",
+           "2023-09-15 14:00-16:00"
+       ]
+   }
+   ```
+
+##### **3. Appointment Service API**
+
+- **Endpoint**: `POST /api/appointments`
+- **Description**: Books an appointment for a patient with a doctor.
+- **Request Body**:
+   ```json
+   {
+       "patientId": 1,
+       "doctorId": 10,
+       "date": "2023-09-14",
+       "time": "10:00",
+       "status": "Scheduled"
+   }
+   ```
+- **Response**:
+   ```json
+   {
+       "appointmentId": 5001,
+       "message": "Appointment booked successfully"
+   }
+   ```
+
+##### **4. Billing Service API**
+
+- **Endpoint**: `POST /api/bills`
+- **Description**: Generates a bill for a patient after an appointment.
+- **Request Body**:
+   ```json
+   {
+       "patientId": 1,
+       "appointmentId": 5001,
+       "totalAmount": 500,
+       "status": "Pending"
+   }
+   ```
+- **Response**:
+   ```json
+   {
+       "billId": 1001,
+       "message": "Bill generated successfully"
+   }
+   ```
+
+##### **5. Pharmacy Service API**
+
+- **Endpoint**: `GET /api/pharmacy/{medicineId}`
+- **Description**: Gets details about a specific medicine, including available stock.
+- **Response**:
+   ```json
+   {
+       "medicineId": 101,
+       "name": "Paracetamol",
+       "availableStock": 250
+   }
+   ```
+
+---
+
+#### 6. **Database Design**
+
+Each microservice has its own database, ensuring **data isolation**. Here are some sample tables:
+
+**Patient Service Tables**:
+- **Patients** (`patientId`, `name`, `age`, `gender`, `address`, `contactNumber`)
+
+**Doctor Service Tables**:
+- **Doctors** (`doctorId`, `name`, `specialization`, `experience`, `schedule`)
+
+**Appointment Service Tables**:
+- **Appointments** (`appointmentId`, `patientId`, `doctorId`, `date`, `time`, `status`)
+
+**Billing Service Tables**:
+- **Bills** (`billId`, `patientId`, `appointmentId`, `totalAmount`, `status`)
+
+**Pharmacy Service Tables**:
+- **Pharmacy** (`medicineId`, `name`, `availableStock`)
+
+---
+
+#### 7. **Technology Stack**
+
+- **Backend**: Java Spring Boot for each microservice
+- **Database**: MySQL for individual service databases
+- **API Gateway**: Spring Cloud Gateway
+- **Service Discovery**: Spring Cloud Netflix Eureka
+- **Configuration Server**: Spring Cloud Config
+- **Authentication**: JWT for secure communication between services
+- **Message Queue**: RabbitMQ for inter-service communication (optional)
+
+---
+
+#### 8. **Service Interaction Workflow Example**
+
+1. **Patient Registration**: Patient Service registers a patient and stores their details in the `patients` table.
+2. **Doctor Availability**: Appointment Service queries the Doctor Service for available time slots before scheduling.
+3. **Appointment Booking**: Appointment Service books the appointment and confirms it by returning a unique appointment ID.
+4. **Bill Generation**: After an appointment, Billing Service generates a bill by referencing both Patient and Appointment data.
+5. **Pharmacy Interaction**: Pharmacy Service checks stock levels when issuing a prescription, updating stock after each issuance.
+
+---
+
+#### 9. **Communication Between Services**
+
+- **Synchronous Communication (REST)**: Services communicate with each other using HTTP requests via the API Gateway.
+- **Asynchronous Communication (Message Queues)**: RabbitMQ or Kafka can be used for event-driven communication between microservices.
+
+---
+
+#### 10. **Deployment Strategy**
+
+1. **Docker Containers**: Each service is containerized for isolated deployment.
+2. **Kubernetes (K8s)**: For orchestration of containers, enabling easy scaling and management of services.
+3. **CI/CD Pipeline**: Automated deployment using Jenkins or GitLab CI, with tests and environment-specific configurations managed via the config server.
+
+This design uses Spring Boot to implement microservices for a hospital management system, handling individual services (patients, doctors, billing, etc.) independently, ensuring loose coupling, and leveraging REST APIs for communication.

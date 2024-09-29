@@ -1,0 +1,1306 @@
+1. Which of the following view displays all of your containers and apps in real-time in Docker?
+
+Container
+Hub
+Images
+Answer: A) Container
+
+Explanation:
+
+The Containers view displays all of your containers and apps in real-time.
+
+
+
+2. ____ is a cloud registry service that allows you to obtain Docker images created by other communities.
+
+Container
+Hub
+Images
+Answer: B) Hub
+
+Explanation:
+
+Docker Hub is a cloud registry service that allows you to obtain Docker images created by other communities.
+
+
+
+3. Which of the following command displays all of the pictures that are presently installed on the system?
+
+See images
+Docker see images
+Docker images
+Docker pictures
+Answer: C) Docker images
+
+Explanation:
+
+Docker Images command displays all of the pictures that are presently installed on the system.
+
+
+
+4. A Container ____.
+
+Can be run on local machines, virtual machines, or deployed to the cloud.
+Is portable
+Is a runnable instance of an image
+All of the above
+Answer: D) All of the above
+
+Explanation:
+
+Container is a:
+
+Can be run on local machines, virtual machines, or deployed to the cloud.
+Is portable
+Is a runnable instance of an image
+
+
+5. Which of the following command can run the application in a container?
+
+Docker run
+Run
+Docker start
+Start
+Answer: A) Docker run
+
+Explanation:
+
+The docker run command can run the application in a container.
+
+
+
+6. Which of the following command you will use to list your containers?
+
+Docker list
+Docker Ps
+List
+Docker_container_list
+Answer: B) Docker Ps
+
+Explanation:
+
+Docker ps command will be used to list your containers.
+
+
+
+7. Which of the following statement is correct?
+
+To remove a container, you first need to stop it
+You can directly remove a container, without stopping it.
+Answer: A) To remove a container, you first need to stop it
+
+Explanation:
+
+Statement (A) is correct, to remove a container, you first need to stop it. Once it has stopped, you can remove it.
+
+
+
+8. To stop the container, which of the following command is used?
+
+Stop
+Docker end
+Docker stop
+Docker finish
+Answer: C) Docker stop
+
+Explanation:
+
+To stop the container, use the docker stop command.
+
+
+
+9. Once the container has stopped, which of the following command you will use to remove a container?
+
+Docker remove
+Docker Destroy
+Docker rm
+Docker del
+Answer: C) Docker rm
+
+Explanation:
+
+When the container has stopped, use the docker rm command to remove it.
+
+
+
+10. Which of the following is the default registry in docker?
+
+Docker images
+Docker hub
+Docker container
+Answer: B) Docker hub
+
+Explanation:
+
+Docker hub is the default registry.
+
+
+
+11. ____ allows you to connect specified filesystem paths of the container back to the host computer.
+
+Volumes
+Images
+Containers
+Answer: A) Volumes
+
+Explanation:
+
+Volumes allow you to connect specified filesystem paths of the container back to the host computer.
+
+
+
+12. How many types of volumes are there in Docker?
+
+3
+4
+5
+2
+Answer: D) 2
+
+Explanation:
+
+There are two types of volumes in docker:
+
+Named volumes
+Bind Mounts
+
+
+13. The ____ is the actual location on the disk where the data is stored.
+
+Disk point
+Container memory
+Mountpoint
+Answer: C) Mountpoint
+
+Explanation:
+
+The mountpoint is the actual location on the disk where the data is stored.
+
+
+
+14. Which of the following volume type allows you to share a directory from the host's filesystem into the container?
+
+Named volumes
+Bind Mounts
+Answer: B) Bind Mounts
+
+Explanation:
+
+The bind mount volume type allows you to share a directory from the host's filesystem into the container.
+
+
+
+15. In which of the following volume type docker chooses the host location?
+
+Named volumes
+Bind Mounts
+Answer: A) Named volumes
+
+Explanation:
+
+In the Named volume type docker chooses the host location, whereas you decide the host location in the bind mount type of volume.
+
+
+
+16. Which of the following is a tool that was built to assist define and distribute multi-container applications?
+
+Docker setup
+Docker compose
+Docker notify
+Answer: B) Docker compose
+
+Explanation:
+
+Docker Compose is a tool that was built to assist define and distribute multi-container applications.
+
+
+
+17. You can examine the command that was used to construct each layer within an image by using which of the following command?
+
+docker image layer
+docker image
+docker image history
+docker image history layer
+Answer: C) docker image history
+
+Explanation:
+
+You can examine the command that was used to construct each layer within an image by using the docker image history command.
+
+
+
+18. Which of the following command is used to display the statistics of a running container?
+
+Docker statistics
+Stats
+Docker statics
+Docker stats
+Answer: D) Docker stats
+
+Explanation:
+
+The stats command is used to display the statistics of a running container.
+
+
+
+19. Which of the following command is used to pause processes in a running container?
+
+Docker hold
+Docker halt
+Docker wait
+Docker pause
+Answer: D) Docker pause
+
+Explanation:
+
+Docker pause command is used to pause processes in a running container.
+
+
+
+20. Which command is used to terminate processes in a running container?
+
+Docker kill
+Docker terminate
+Docker Suspend
+Docker delete
+Answer: A) Docker kill
+
+Explanation:
+
+The docker kill command is used to terminate processes in a running container.
+
+
+
+21. Which command is used to terminate the Docker daemon process?
+
+Service kill
+Docker kill
+service docker stop
+service docker Terminate
+Answer: C) service docker stop
+
+Explanation:
+
+service docker stop command is used to terminate the Docker daemon process.
+
+
+
+22. Daemon level of logging has how many levels?
+
+2
+3
+4
+5
+Answer: C) 4
+
+Explanation:
+
+Daemon level of logging has 4 levels:
+
+Debug
+info
+Error
+Fatal
+
+
+23. How many components are there in Docker?
+
+3
+4
+5
+6
+Answer: A) 3
+
+Explanation:
+
+Docker has three components:
+
+Docker client
+Docker Host
+Docker Registry
+
+
+24. Which of the following component stores the docker images?
+
+Docker client
+Docker Host
+Docker Registry
+Answer: C) Docker Registry
+
+Explanation:
+
+Docker registry component stores the docker images.
+
+
+
+25. Among named volumes and bind mounts which is easier to back up or migrate?
+
+Named volumes (volume)
+Bind mounts
+Answer: A) Named volumes (volume)
+
+Explanation:
+
+Volumes are easier to back up or migrate than bind mounts.
+
+
+
+26. To save up space and eliminate any unnecessary volumes which of the command is used?
+
+docker volume delete
+docker volume remove_all
+docker volume rm
+docker volume prune
+Answer: D) docker volume prune
+
+Explanation:
+
+docker volume prune command is used to save up space and eliminate any unnecessary volumes.
+
+
+
+27. Which of the following networks are typically used when your apps operate in separate containers and need to interact with one another?
+
+Bridge
+Host
+Overlay
+ipvlan
+Answer: A) Bridge
+
+Explanation:
+
+Bridge networks are typically used when your apps operate in separate containers and need to interact with one another.
+
+
+
+28. Which of the following is the default network driver?
+
+Bridge
+Host
+Overlay
+ipvlan
+Answer: A) Bridge
+
+Explanation:
+
+Bridge is the default network driver.
+
+
+
+29. Which of the following networks are ideal when containers operating on various Docker hosts need to connect, or when numerous apps use swarm services to collaborate?
+
+Bridge
+Host
+Overlay
+ipvlan
+Answer: C) Overlay
+
+Explanation:
+
+Overlay networks are ideal when containers operating on various Docker hosts need to connect, or when numerous apps use swarm services to collaborate.
+
+
+
+30. Which of the following network driver gives users total control over both IPv4 and IPv6 addresses?
+
+Bridge
+Host
+Overlay
+Ipvlan
+Answer: D) Ipvlan
+
+Explanation:
+
+The IPvlan driver gives users total control over both IPv4 and IPv6 addressing.
+
+
+
+31. Which of the following concatenates a collection of strings into a single string and inserts a divider between each list item?
+
+Append
+Join
+Merge
+Concat
+Answer: B) Join
+
+Explanation:
+
+Join concatenates a collection of strings into a single string and inserts a divider between each list item.
+
+
+
+32. Each value is printed on a new line using ____.
+
+Print_new
+Print
+Prinline
+println
+Answer: D) println
+
+Explanation:
+
+Each value is printed on a new line using println.
+
+
+
+33. A ____ is a string-based key-value pair?
+
+Map
+Set
+Label
+List
+Answer: C) Label
+
+Explanation:
+
+A label is a string-based key-value pair.
+
+
+
+34. Label keys should begin and end with a ____ letter.
+
+lower-case
+upper-case
+any case
+Answer: A) lower-case
+
+Explanation:
+
+Label keys should begin and end with a lowercase letter.
+
+
+
+35. Docker provides how many modes for delivering messages from the container to the log driver?
+
+2
+3
+4
+5
+Answer: A) 2
+
+Explanation:
+
+Docker provides two modes for delivering messages from the container to the log driver:
+
+(default) direct, blocking delivery
+non-blocking delivery
+
+
+36. To list all the networks linked with Docker on the host, the ____ command is used.
+
+docker network list
+docker network ls
+docker ls
+network ls
+Answer: B) docker network ls
+
+Explanation:
+
+To list all the networks linked with Docker on the host, the docker network ls command is used.
+
+
+
+37. The ____ command is used to obtain all client and server version information.
+
+Version
+Info
+docker version
+Answer: C) docker version
+
+Explanation:
+
+The docker version command is used to obtain all client and server version information.
+
+
+
+38. Containerization is an abstract version of an application.
+
+True
+False
+Answer: A) True
+
+Explanation:
+
+Containerization is an abstract version of an application.
+
+
+
+39. A ____ is a piece of software that enables virtualization.
+
+Emulator
+Hypervisor
+Invertor
+Answer: B) Hypervisor
+
+Explanation:
+
+A hypervisor is a piece of software that enables virtualization.
+
+
+
+40. ____ is an abstract version of a real computer.
+
+Virtualization
+containerization
+Answer: A) Virtualization
+
+Explanation:
+
+virtualization is an abstract version of a real computer.
+
+
+
+41. How many types of hypervisors are there?
+
+5
+4
+3
+2
+Answer: D) 2
+
+Explanation:
+
+There are two types of hypervisors:
+
+Native hypervisor
+Hosted hypervisor
+
+
+42. Docker is a platform for ____.
+
+Developing an application
+Shipping an application
+Running an application
+All of the above
+Answer: D) All of the above
+
+Explanation:
+
+Docker is a platform for :
+
+Developing an application
+Shipping an application
+Running an application
+
+
+43. Which of the following architecture does Docker uses?
+
+Client-server
+Master-slave
+Layered
+Answer: A) Client-server
+
+Explanation:
+
+Docker uses a client-server architecture.
+
+
+
+44. Docker is written in which of the following programming language?
+
+Ruby
+Go
+Kotlin
+Swift
+Answer: B) Go
+
+Explanation:
+
+Docker is written in the Go programming language.
+
+
+1. Docker is a container management service.
+
+A. TRUE
+B. FALSE
+C. Can be true or false
+D. Can not say
+
+Ans : A
+Explanation: Docker is a container management service.
+
+
+2. which of the following is/are keywords of Docker?
+
+A. develop
+B. ship
+C. run
+D. All of the above
+
+Ans : D
+Explanation: The keywords of Docker are develop, ship and run anywhere.
+
+
+3. The initial release of Docker was in?
+
+A. 2011
+B. 2012
+C. 2013
+D. 2014
+
+Ans : C
+Explanation: The initial release of Docker was in March 2013 and since then, it has become the buzzword for modern world development, especially in the face of Agile-based projects.
+
+
+4. Which of the is true about Docker?
+
+A. Docker has the ability to reduce the size of development by providing a smaller footprint of the operating system via containers.
+B. Docker containers are pretty lightweight
+C. Docker are very easily scalable
+D. All of the above
+
+Ans : D
+Explanation: ALl of the above are true about docker.
+
+
+5. Docker License is?
+
+A. Free
+B. Paid
+C. Both A and B
+D. None of the above
+
+Ans : C
+Explanation: License: Free / Paid
+
+
+6. Docker Written in?
+
+A. C
+B. C++
+C. Go
+D. Java
+
+Ans : C
+Explanation: Written in: Go
+
+
+7. Docker available in which of the following Operating system?
+
+A. Linux
+B. Windows
+C. macOS
+D. Linux, Windows, macOS
+
+Ans : D
+Explanation: Operating system: Linux, Windows, macOS
+
+
+8. Docker Original author is?
+
+A. Robert Griesemer
+B. Solomon Hykes
+C. Ken Thompson
+D. Rob Pike
+
+Ans : B
+Explanation: Original author(s): Solomon Hykes
+
+
+9. Docker Compose is used to define applications using multiple Docker containers.
+
+A. Yes
+B. No
+C. Can be yes or no
+D. Can not say
+
+Ans : A
+Explanation: Yes, Docker Compose is used to define applications using multiple Docker containers.
+
+
+10. Which of the following is the registry which is used to host various Docker images?
+
+A. Docker Engine
+B. Docker Hub
+C. Docker Compose
+D. None of the above
+
+Ans : B
+Explanation: Docker Hub : This is the registry which is used to host various Docker images.
+
+1. ___________ are instances of Docker images that can be run using the Docker run command.
+
+A. Hub
+B. Container
+C. File
+D. Cloud
+
+Ans : B
+Explanation: Containers are instances of Docker images that can be run using the Docker run command.
+
+
+2. Running of containers is managed with the Docker ______ command.
+
+A. CREATE
+B. INSERT
+C. RUN
+D. SUDO
+
+Ans : C
+Explanation: Running of containers is managed with the Docker run command.
+
+
+3. One can list all of the containers on the machine via the ____________ command.
+
+A. docker run
+B. docker pc
+C. docker r
+D. docker ps
+
+Ans : D
+Explanation: One can list all of the containers on the machine via the docker ps command.
+
+
+4. Which of the following tells the docker ps command to list all of the containers on the system?
+
+A. -p
+B. -r
+C. -a
+D. -z
+
+Ans : C
+Explanation: ─a : It tells the docker ps command to list all of the containers on the system.
+
+
+5. Which command you can see all the commands that were run with an image via a container.
+
+A. ref
+B. history
+C. -a
+D. hist
+
+Ans : B
+Explanation: docker history ImageID
+
+
+6. ContainerID is the Container ID for which you want to see the top processes.
+
+A. TRUE
+B. FALSE
+C. Can be true or false
+D. Can not say
+
+Ans : A
+Explanation: ContainerID is the Container ID for which you want to see the top processes.
+
+
+7. which command is used to stop a running container?
+
+A. drop
+B. remove
+C. stop
+D. delete
+
+Ans : C
+Explanation: docker stop command is used to stop a running container.
+
+
+8. Which command is used to delete a container?
+
+A. delete
+B. remove
+C. rm
+D. drop
+
+Ans : C
+Explanation: docker rm command is used to delete a container.
+
+
+9. docker stats command is used to provide the statistics of a running container.
+
+A. TRUE
+B. FALSE
+C. Can be true or false
+D. Can not say
+
+Ans : A
+Explanation: True, docker stats command is used to provide the statistics of a running container.
+
+
+10. docker top you can see the top processes within a container.
+
+A. Yes
+B. No
+C. Can be yes or no
+D. Can not say
+
+Ans : A
+Explanation: Yes, docker top you can see the top processes within a container.
+
+
+1 .Who introduced docker?
+A)
+Linus Torvalds, Mark Zuckerberg and Brendan Eich
+B)
+Kamel Founadi, Solomon Hykes, and Sebastien Pahl
+C)
+Brendan Eich, Sebastien Pahl and Greg Duffy
+D)
+Mike Cagney, Suhail Doshi and Chris Wanstrath
+Correct Answer : Option (B) :   Kamel Founadi, Solomon Hykes, and Sebastien Pahl
+
+Explanation : Docker Inc. was founded by Kamel Founadi, Solomon Hykes, and Sebastien Pahl during the Y Combinator Summer 2010 startup incubator group and launched in 2011. The startup was also one of the 12 startups in Founder's Den first cohort.
+
+   
+2 .When was Docker Initially released?
+A)
+March 20, 2003
+B)
+March 20, 2007
+C)
+March 20, 2010
+D)
+March 20, 2013
+Correct Answer : Option (D) :   March 20, 2013
+
+Explanation :
+
+Docker debuted to the public in Santa Clara at PyCon in 2013. It was released as open-source in March 2013. At the time, it used LXC as its default execution environment.
+
+One year later, with the release of version 0.9, Docker replaced LXC with its own component, libcontainer, which was written in the Go programming language.
+ 
+In 2017, Docker created the Moby project for open research and development.
+   
+3 .The markup language used to write Docker configuration files is:
+A)
+XML
+B)
+HTML
+C)
+YAML
+D)
+JSON
+Correct Answer : Option (C) :   YAML
+
+Explanation : YAML stands for "YAML Ain't Markup Language." It is the structured, yet flexible syntax used to define how to configure a Docker image.
+
+   
+4 .Which programming language was used to write Docker?
+A)
+C
+B)
+C++
+C)
+Go
+D)
+Java
+Correct Answer : Option (C) :   Go
+
+Explanation :
+
+Go, also known as Golang, was the language used to code the implementation of the Docker container.
+ 
+Go is a compiled programming language that was first released in 2009. As you may have guessed by the two letters in the name, it was created by a group of developers at Google.
+   
+5 .
+Following Docker command:
+docker build -t my_user/repo_name:1.0
+is used to:
+A)
+Build an image
+B)
+Access a running container
+C)
+Activate default VM machine
+D)
+Commit changes done in a Docker image
+Correct Answer : Option (A) :   Build an image
+
+   
+6 .How do you map a host port to the container port?
+A)
+docker run -i : imagename
+B)
+docker run -p 5000:5000 flask_app:1.0
+C)
+docker run --expose 5000:5000 flask_app:1.0
+D)
+None of the above
+Correct Answer : Option (B) :   docker run -p 5000:5000 flask_app:1.0
+
+Explanation : -p is a short flag for --port option to map host port to container port.
+
+   
+7 .Which of these features is NOT provided by VMs?
+A)
+Scalabilty
+B)
+Better resource pooling
+C)
+Application portability guaranteed
+D)
+All of the options are features provided by
+Correct Answer : Option (C) :   Application portability guaranteed
+
+   
+8 .What is Docker?
+A)
+Docker is an open platform based on Linux containers for developing, shipping, and running applications.
+B)
+Docker is a closed platform based on Linux containers for developing, designing and deploying.
+C)
+Docker is an open platform based on Windows containers for developing, shipping, and running applications.
+D)
+None of the above
+Correct Answer : Option (A) :   Docker is an open platform based on Linux containers for developing, shipping, and running applications.
+
+   
+9 .Docker containers share the same OS
+A)
+True
+B)
+False
+C)
+Can not say
+D)
+--
+Correct Answer : Option (A) :   True
+
+   
+10 .Which sentence describes better Docker?
+A)
+Build once, run twice
+B)
+Build once, run everywhere
+C)
+Easy to run, is much more fun
+D)
+All of the above
+Correct Answer : Option (B) :   Build once, run everywhere
+
+   
+1 .
+Following Docker command:
+docker commit -m "My first update" container_ID user_name/repository_name
+is used to :
+A)
+Build an image
+B)
+Access a running container
+C)
+Activate default VM machine
+D)
+Commit changes done in a Docker image
+Correct Answer : Option (D) :   Commit changes done in a Docker image
+
+2 .
+Following Docker command:
+docker push user_name/repository_name
+is used to:
+A)
+Build an image
+B)
+Activate default VM machine
+C)
+Commit changes done in a Docker image.
+D)
+Push changes done in a docker image into Docker Hub.
+Correct Answer : Option (D) :   Push changes done in a docker image into Docker Hub.
+
+3 .Containers running on a single machine all share the same operating system kernel, so they start instantly and make more efficient use of RAM.
+A)
+True
+B)
+False
+C)
+Can not say
+D)
+--
+Correct Answer : Option (A) :   True
+
+4 .Which of the following is not a container-based alternative to Docker?
+A)
+Kubernetes
+B)
+Canonical's LXD
+C)
+CoreOS' rkt
+D)
+Windows Server Containers
+Correct Answer : Option (C) :   CoreOS' rkt
+
+Explanation : Kubernetes is an orchestration tool that manages Docker deployments, but it is not a Docker alternative. LXD, rkt and the Windows Server Containers are container implementation technologies that compete with Docker.
+
+5 .What happens if you attempt to perform a Docker build based on an image that has not been previously referenced on your machine?
+A)
+Docker will pull the image from GitHub.
+B)
+Docker will return a 404: file not found message.
+C)
+Docker will return a 408: image not found message.
+D)
+Docker will pull the image from Docker Hub.
+Correct Answer : Option (D) :   Docker will pull the image from Docker Hub.
+
+Explanation : Docker will look at the local image repository when a container image is referenced in a Dockerfile. If one is not found on the host, Docker will search for an image with the same name and version number on Docker Hub.
+
+6 .Information on how to build a Docker image is written in a file named:
+A)
+dockerimage
+B)
+Jenkinsfile
+C)
+Dockerfile
+D)
+docker-compose
+Correct Answer : Option (C) :   Dockerfile
+
+Explanation : The Docker naming convention recommends that users save information on how to build a container image in a file named Dockerfile.
+
+7 .Each virtual machine includes the application, the necessary binaries and libraries, and an entire guest operating system - All of which may be tens of GBs in size.
+A)
+True
+B)
+False
+C)
+Can not say
+D)
+--
+Correct Answer : Option (A) :   True
+
+8 .________is a cloud-hosted service from Docker that provides registry capabilities for public and private content.
+A)
+Docker Cloud
+B)
+Docker Hub
+C)
+Docker Swarm
+D)
+Docker Compose
+Correct Answer : Option (B) :   Docker Hub
+
+9 .________is a tool for defining and running multi-container Docker applications.
+A)
+Docker Cloud
+B)
+Docker Hub
+C)
+Docker Swarn
+D)
+Docker Compose
+Correct Answer : Option (D) :   Docker Compose
+
+10 .Docker main features are :
+A)
+Fast, Scalable, Reliable
+B)
+Lightweight, Standard, Secure
+C)
+Lightweight, Scalable, Fast
+D)
+Lightweight, Sociable, Secure
+Correct Answer : Option (B) :   Lightweight, Standard, Secure
+
+1 .Docker basics are :
+A)
+Image, Container, VM, App Manager
+B)
+Image, Container, Engine, App Manager
+C)
+Image, Container, Engine, Registry, Control Plane
+D)
+None of the above
+Correct Answer : Option (C) :   Image, Container, Engine, Registry, Control Plane
+
+   2 .VMs dynamically allocate RAM, CPU and other resources
+A)
+True
+B)
+False
+C)
+Can not say
+D)
+--
+   3 .________is native clustering for Docker. It turns a pool of Docker hosts into a single, virtual Docker host.
+A)
+Docker Swarm
+B)
+Docker Cloud
+C)
+Docker Hub
+D)
+Docker Compose
+Correct Answer : Option (A) :   Docker Swarm
+
+   4 .________is the enterprise-grade cluster management solution from Docker. It manages your whole cluster from a single place.
+A)
+Docker Hub
+B)
+Docker Swarm
+C)
+Docker Compose
+D)
+Docker Universal Control Plane
+Correct Answer : Option (D) :   Docker Universal Control Plane
+
+   5 .Docker host's IP address by default is 192.168.99.100
+A)
+True
+B)
+False
+C)
+Can not say
+D)
+--
+   6 .Which of the following statements is most correct in Docker?
+A)
+Docker allows you to run and build images.
+B)
+Docker allows you to run and build containers.
+C)
+Docker allows you to run containers and build images.
+D)
+Docker allows you to run images and build containers.
+Correct Answer : Option (C) :   Docker allows you to run containers and build images.
+
+Explanation : When a process based on a Docker image is started, it is referred to as a container. In contrast with containers, Docker images are built. And it is the container, which is based on the image, that is run.
+
+   7 .The Docker logo is :
+A)
+a butler
+B)
+a whale
+C)
+a sailboat
+D)
+an Octocat
+Correct Answer : Option (B) :   a whale
+
+Explanation :
+
+This may seem like a silly question, but when you find out that Kubernetes refers to a group of Docker containers as a "pod," some of the cloud-native naming patterns start to make sense.
+ 
+A butler is the Jenkins logo. The sailboat goes with Jakarta EE. And the Octocat is the GitHub logo.
+   8 ._______is a hosted service that provides a Registry with build and testing facilities for Dockerized application images, tools to help you set up and manage your host infrastructure, and deployment features to help you automate deploying your images to your infrastructure.
+A)
+Docker Hub
+B)
+Docker Cloud
+C)
+Docker Compose
+D)
+Docker Universal Control Plane
+Correct Answer : Option (B) :   Docker Cloud
+
+   9 .________is an open-source project built to simplify and streamline using Docker on a Mac or Windows. This tool automates the Docker installation and setup process and provides an intuitive graphical user interface (GUI) for running Docker containers.
+A)
+Docker Compose
+B)
+Docker Cloud
+C)
+Docker Universal Control Plane
+D)
+Docker Kitematic
+Correct Answer : Option (D) :   Docker Kitematic
+
+   10 .You can install Docker Engine directly to servers you have on cloud providers. The providers supported are :
+A)
+Digital Ocean
+B)
+Microsoft Azure
+C)
+Amazon Web Services (AWS)
+D)
+All of the above
+Correct Answer : Option (D) :   All of the above
+
+1 .Which of these statements about containers is false
+A)
+Containers are an improvement compared with VMs
+B)
+A container image is a lightweight, stand-alone, executable package of a piece of software
+C)
+A Container includes everything it needs to run: code, runtime, system tools, system libraries, settings.
+D)
+All of them are right
+Correct Answer : Option (D) :   All of them are right
+
+   
+2 .Docker containers are based on open standard_____________________.
+A)
+Allowing containers to run on all major Linux distributions only
+B)
+Allowing containers to run on all Microsoft operating systems only
+C)
+Allowing containers to run on all major Linux distributions and Microsoft operating systems
+D)
+All of the above
+Correct Answer : Option (C) :   Allowing containers to run on all major Linux distributions and Microsoft operating systems
+
+   
+3 .
+Following Docker command:
+eval $(docker-machine env default)
+is used to:
+A)
+Activate default VM machine
+B)
+Build an image
+C)
+Access a running container
+D)
+Commit changes done in a Docker image
+Correct Answer : Option (A) :   Activate default VM machine
+
+   
+4 .On Docker Hub, you get ten private repositories for free with your Docker Hub user account. If you need more accounts, you can upgrade your Docker Hub plan.
+A)
+True
+B)
+False
+C)
+Can not say
+D)
+--
+Correct Answer : Option (B) :   False
+
+   
+5 .At the OS level, the goal of independent application execution and failure isolation is achieved through the use of:
+A)
+namespaces
+B)
+Kubernetes
+C)
+control groups
+D)
+security groups
+Correct Answer : Option (A) :   namespaces
+
+Explanation :
+
+Namespaces make the isolation of the process that runs a Docker container possible.
+ 
+Control groups are what make it possible to limit the amount of CPU time and memory allocated to a given container.
+ 
+Security groups are typically associated with AWS configurations, and Kubernetes is a container orchestration tool.
+   
+6 .The history of application containerization is intimately tied to which OS?
+A)
+MacOS
+B)
+Linux
+C)
+Windows
+D)
+Android
+Correct Answer : Option (B) :   Linux
+
+Explanation : Linux added two features to its kernel, namely control groups and namespaces, that made it possible to run software in isolated containers. These two changes made the container revolution possible.
+
+   
+7 .A Docker container is often described as an improvement over what other technology?
+A)
+DevOps
+B)
+microservices
+C)
+cloud computing
+D)
+virtual machines
+Correct Answer : Option (D) :   virtual machines
+
+Explanation :
+
+Docker containers are often compared to VMs, as both provide the ability to deploy and run multiple, independent applications on the same physical machine.
+ 
+Docker containers are less resource intensive, as they provide process-level virtualization as opposed to full OS virtualization provided by a VM, which is one of the reasons the industry has shifted toward containers.   
