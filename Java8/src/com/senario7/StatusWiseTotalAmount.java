@@ -3,6 +3,7 @@ package com.senario7;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.*;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 /*
  * To get a status-wise total amount summary, you can group the orders by their status and calculate the total amount for each status using Java Streams and Collectors.groupingBy along with Collectors.summingDouble.
@@ -40,17 +41,17 @@ public class StatusWiseTotalAmount {
         orders.add(new OrderStatus(5, LocalDate.of(2023, Month.MARCH, 30), 100.0, "Completed"));
         orders.add(new OrderStatus(6, LocalDate.of(2023, Month.APRIL, 1), 250.0, "Pending"));
 
-        // Group orders by status and calculate the total amount for each status
-        Map<String, Double> statusSummary = orders.stream()
-                .collect(Collectors.groupingBy(
-                        OrderStatus::getStatus, 
-                        Collectors.summingDouble(OrderStatus::getAmount)
-                ));
-
-        // Print the status-wise total amount summary
-        statusSummary.forEach((status, totalAmount) -> {
-            System.out.println(status + ": " + totalAmount);
-        });
+        
+      Map<String, Double> ttalSumm=  orders.stream()
+    		  .collect(Collectors.groupingBy(OrderStatus::getStatus,
+    				  Collectors.summingDouble(OrderStatus::getAmount)));
+        
+      ttalSumm.forEach((k,v)->{
+    	  System.out.println(k+" "+v);
+      });
+        
+        
+       
     }
 }
 

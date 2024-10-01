@@ -9,20 +9,19 @@ import java.util.stream.*;
 class Student {
     private String name;
     private double grade;
+	public Student(String name, double grade) {
+		super();
+		this.name = name;
+		this.grade = grade;
+	}
+	public String getName() {
+		return name;
+	}
+	public double getGrade() {
+		return grade;
+	}
 
-    // Constructor, getters, and setters
-    public Student(String name, double grade) {
-        this.name = name;
-        this.grade = grade;
-    }
-
-    public double getGrade() {
-        return grade;
-    }
-
-    public String getName() {
-        return name;
-    }
+  
 }
 
 public class Main {

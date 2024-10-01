@@ -39,7 +39,14 @@ public class Main {
             .filter(t -> "COMPLETED".equals(t.getStatus()))
             .mapToDouble(Transaction::getAmount)
             .sum();
+        
+        double totalPENDINGAmount = transactions.stream()
+                .filter(t -> "PENDING".equals(t.getStatus()))
+                .mapToDouble(Transaction::getAmount)
+                .sum();
 
+        long count=transactions.stream() .filter(t -> "COMPLETED".equals(t.getStatus())).count();
+        
         System.out.println("Total amount of completed transactions: " + totalCompletedAmount);
     }
 }

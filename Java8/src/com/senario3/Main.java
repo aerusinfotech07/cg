@@ -44,6 +44,8 @@ public class Main {
             .filter(p -> "Electronics".equals(p.getCategory()))
             .sorted(Comparator.comparingDouble(Product::getPrice))
             .collect(Collectors.toList());
+        
+       
 
         filteredProducts.forEach(p -> 
             System.out.println(p.getName() + ": " + p.getPrice())

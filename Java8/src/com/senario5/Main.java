@@ -29,6 +29,13 @@ class Book {
     public int getYear() {
         return year;
     }
+
+	@Override
+	public String toString() {
+		return "Book [title=" + title + ", author=" + author + ", year=" + year + "]";
+	}
+    
+    
 }
 
 public class Main {
@@ -39,14 +46,14 @@ public class Main {
             new Book("Book C", "Author 1", 2010)
         );
 
-        Map<String, List<Book>> booksByAuthor = books.stream()
-            .collect(Collectors.groupingBy(Book::getAuthor));
-
-        booksByAuthor.forEach((author, booksList) -> {
-            System.out.println("Author: " + author);
-            booksList.forEach(book -> 
-                System.out.println("  " + book.getTitle() + " (" + book.getYear() + ")")
-            );
+        books.stream().collect(Collectors.groupingBy(Book::getAuthor)).forEach((k,v)->{
+        	System.out.println(k+" "+v.size());
+        	
+        	
         });
+     
+        
+        
+      
     }
 }

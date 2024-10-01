@@ -24,15 +24,49 @@ class Employee {
     public double getSalary() {
         return salary;
     }
+
+	public String getName() {
+		return name;
+	}
+    
+    
 }
 
 public class Main {
     public static void main(String[] args) {
         List<Employee> employees = Arrays.asList(
             new Employee("John", 35, 50000),
-            new Employee("Jane", 28, 60000),
+            new Employee("Smith", 28, 60000),
             new Employee("Jack", 40, 70000)
         );
+        
+        employees.forEach(emp->{
+        	System.out.println(emp.getName()+" "+emp.getAge()+" "+emp.getSalary());
+        });
+        
+        //list of emp salary greater than 60000
+        
+        employees.forEach(emp->{
+        	if(emp.getSalary()>=60000)
+        		System.out.println(emp.getName()+" "+emp.getAge()+" "+emp.getSalary());
+        });
+        
+        employees.stream().filter(emp->emp.getName().toLowerCase().startsWith("j")).forEach(emp->{
+        	System.out.println(emp.getName()+" "+emp.getAge()+" "+emp.getSalary());
+        });
+    
+        
+        
+        List<Employee> empList=new ArrayList<>();
+        empList.add( new Employee("John", 35, 50000));
+        empList.add(new Employee("Jane", 28, 60000));
+        empList.add( new Employee("Jack", 40, 70000));
+        
+        
+        
+        
+        
+        
 
         double averageSalary = employees.stream()
             .filter(e -> e.getAge() > 30)
