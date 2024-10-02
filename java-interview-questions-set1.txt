@@ -1,0 +1,203 @@
+1) - What is Java? 
+
+Java is a high-level, object-oriented programming language used for developing various applications and software. It was developed by James Gosling and released by Sun Microsystems in 1995. It is known for its platform independence, meaning Java applications can run on any operating system that has a Java Virtual Machine (JVM).
+
+2) What is the difference between an object and a class? 
+
+A class is a blueprint or template used for creating objects, while an object is an instance of a class. A class can have multiple objects, each with its set of properties and behaviors. In simpler terms, a class is like a car's design, and an object is the actual car manufactured based on that design.
+
+3) What are the features of Java? 
+
+Java is known for its simplicity, robustness, platform independence, object-oriented nature, and security. Its simplicity is reflected in its clean syntax and easy-to-learn syntax, while its robustness is evident in its ability to handle errors and exceptions efficiently. Java's object-oriented nature allows for code reuse and better organization of code.
+
+4) What is a constructor? 
+
+A constructor is a special method used for initializing objects of a class. It is called when an object is created using the ‘new’ keyword and is responsible for setting initial values to the object's state. Constructors can be parameterized or default, and they have the same name as the class.
+
+5) What is the difference between an interface and an abstract class? 
+
+An interface is a collection of abstract methods and constants, while an abstract class can have both abstract and non-abstract methods. A class can implement multiple interfaces, but it can only inherit from one abstract class. Interfaces are used to achieve multiple inheritance-like behavior in Java.
+
+6) What are wrapper classes in Java? 
+
+Wrapper classes are classes that wrap the primitive data types, such as int, char, and double, into objects. They provide a way to use primitive data types as objects and enable operations like conversion, retrieval of specific fields, and invoking methods on them.
+
+7) What is garbage collection in Java? 
+
+Garbage collection is a process used by Java to automatically manage memory by reclaiming unused objects. It runs periodically in the background, identifying and deleting objects that are no longer referenced by the program. This avoids memory leaks and makes memory management easier for developers.
+
+8) What are static and final keywords in Java? 
+
+Static keyword is used to declare a variable or a method that belongs to a class instead of an object. This means it can be accessed without creating an object of that class. Final keyword is used to declare a constant, meaning its value cannot be changed once initialized. Variables, methods, and classes can be made final.
+
+9) What is the difference between String, StringBuilder, and StringBuffer? 
+
+String is an immutable class, meaning its value cannot be changed once created. StringBuilder and StringBuffer, on the other hand, are mutable and can be used to modify the underlying string's content. StringBuilder is not thread-safe, while StringBuffer is thread-safe but slower.
+
+10) What is the use of ‘this’ keyword in Java? 
+
+‘this’ keyword refers to the current object and is used for various purposes, such as differentiating between instance variables and local variables with the same name, invoking other methods of the current class, and passing the current object as a parameter to a method.
+
+11) What is method overriding? 
+
+Method overriding is a process in which a subclass provides its implementation for a method defined in the superclass. It is used to achieve runtime polymorphism, where a parent class's reference variable can hold an object of a child class and call the overridden method, executing the child class's version.
+
+12) What is the use of Collection framework in Java? 
+
+Collection framework provides an efficient way of storing and manipulating groups of objects. It consists of interfaces, abstract classes, and concrete implementations, such as Lists, Sets, and Maps, to handle different types of collections. It offers various operations like adding, removing, and iterating over elements stored in these collections.
+
+
+
+
+
+13) What is a thread in Java? 
+
+A thread is a lightweight process that allows for concurrent execution within a program. It enables multiple tasks to be performed at the same time by dividing the CPU time among them. Since threads share memory, they can communicate and coordinate with each other, making them suitable for implementing multithreaded applications.
+
+14) What is an exception in Java? 
+
+An exception is an event that interrupts the normal flow of a program and can be caused by various factors, such as user input, system errors, or logic errors. Java provides a robust exception handling mechanism to catch and handle such errors, preventing the program from crashing and allowing for graceful error handling.
+
+15) What is the difference between equals() and == in Java? 
+
+‘==’ is used for reference equality, meaning it checks if both the operands point to the same object in memory. On the other hand, ‘equals()’ is used for value equality, meaning it compares the values of the objects and returns true if they have the same values, even if they are not the same object in memory.
+
+16) What are the access modifiers in Java? 
+
+Java has four access modifiers - public, private, protected, and default. Public allows access to a class, method, or variable from anywhere in the program. Private restricts access to within the same class. Protected allows access within the package and subclasses. Default allows access within the package.
+
+17) What is the use of ‘synchronized’ keyword in Java? 
+
+‘synchronized’ keyword is used to make a method or a block of code thread-safe, meaning only one thread can access it, and other threads are blocked until it is released. This is useful in preventing concurrent access issues and maintaining data consistency in multithreaded environments.
+
+18) What is the difference between a shallow copy and a deep copy? 
+
+A shallow copy creates a new object with the same values as the original object. But, if the original object contains references to other objects, the shallow copy will also point to the same referenced objects. In contrast, a deep copy creates new copies of the referenced objects as well.
+
+19) What is the use of the ‘continue’ statement? 
+
+The ‘continue’ statement is used inside loops to skip the current iteration and start the next one. It is often used in combination with conditional statements to skip certain iterations based on a condition. This allows for more efficient execution of repetitive tasks in a loop.
+
+20) What are annotations in Java? 
+
+Annotations are a special type of metadata used to provide additional information about a class, method, or variable at compile-time or runtime. They are used for various purposes, such as documentation, validation, and code generation, and are denoted by the ‘@’ symbol followed by the annotation name.
+
+21) How do you handle exceptions in Java? 
+
+In Java, exceptions are handled using the try-catch-finally block. The code that is susceptible to exceptions is placed in the ‘try’ block, and if an exception occurs, it is caught by the corresponding ‘catch’ block. The ‘finally’ block is executed regardless of whether an exception occurs or not.
+
+22) What is a static block in Java? 
+
+A static block is a block of code that is executed only once when the class is loaded into memory by the JVM. It is used to perform any static initialization tasks, such as initializing static variables or loading a resource file. It is executed before the class's constructor is called.
+
+23) What is autoboxing and unboxing in Java? 
+
+Autoboxing is the automatic conversion of primitive data types into their corresponding wrapper classes. For example, int can be automatically converted to Integer. Unboxing is the opposite, where a wrapper class's value is automatically converted back to its primitive type.
+
+24) What is the difference between a shallow clone and a deep clone? 
+
+A shallow clone creates a new object and copies the values of the fields from the original object to the new one. However, if the original object contains references to other objects, the new object will also reference the same objects as the original object. In contrast, a deep clone creates copies of the referenced objects as well.
+
+25) What is the difference between a HashMap and Hashtable in Java? 
+
+HashMap is non-synchronized and can have a null key and multiple null values. Hashtable is synchronized and does not allow null keys or values. HashMap allows for ‘put()’ and ‘get()’ operations, while Hashtable allows for ‘put()’, ‘get()’, and ‘contains()’ operations.
+
+26) What is the use of the ‘this()’ and ‘super()’ keywords? 
+
+‘this()’ refers to the current class's constructor and is used to call another constructor of the same class. ‘super()’ refers to the parent class's constructor and is used to call the parent class's constructor when the child class is instantiated.
+
+27) How do you implement inheritance in Java? 
+
+Inheritance is implemented using the ‘extends’ keyword, where a child class inherits the properties and methods of its parent class. This allows for code reuse and the creation of specialized, more specific classes based on a general, abstract parent class.
+
+28) What is the ‘finally’ block used for? 
+
+The ‘finally’ block is used to execute code that must be run regardless of whether an exception occurs or not. It is often used to perform cleanup tasks, close database connections, or release resources after the execution of the ‘try-catch’ block.
+
+29) What is the difference between a stack and a queue? 
+
+A stack is a data structure that follows the LIFO (last-in-first-out) principle, meaning the last element added is the first one removed. A queue, on the other hand, follows the FIFO (first-in-first-out) principle, meaning the first element added is the first one removed. Both can be implemented using the LinkedList class in Java.
+
+30) What is Type Erasure in Java? 
+
+Type Erasure is a process used by the Java compiler to remove the generic type information from the code and replace it with the appropriate casting. This is done to maintain backward compatibility with non-generic legacy code. It ensures that generics are only enforced during compile-time and not at runtime, making the code more efficient.
+
+31) What is the use of ‘transient’ keyword? 
+
+The ‘transient’ keyword is used to mark variables that should not be part of the serialization process. This means that when an object is serialized, the values of the transient variables will not be included. This is useful when you want to exclude sensitive information or variables that can be calculated at runtime.
+
+32) What is encapsulation in Java? 
+
+Encapsulation is a fundamental object-oriented programming concept that involves bundling data and methods within a class, hiding its implementation details, and exposing only the necessary information through public methods. This ensures data security, code reusability, and better code maintenance.
+
+33) What is the use of ‘interface’ in Java? 
+
+Interface is a language construct used to define a set of common methods and constants that can be implemented by various unrelated classes. It provides a way to achieve abstraction and polymorphism in Java, enabling code reuse and loose coupling. A class can implement multiple interfaces, but it can only inherit from one class.
+
+34) What is the use of ‘super’ keyword? 
+
+‘super’ keyword is used to refer to the parent class's members, including variables, methods, and constructors. It is often used when there is a naming conflict between a subclass and its parent class, to access the parent class's version of the member. It is also used to call the parent class's constructor from the child class.
+
+35) What is the difference between ‘==’ and ‘equals()’ in Java? 
+
+‘==’ is used for reference equality, meaning it checks if both the operands point to the same object in memory. ‘equals()’ is used for value equality, meaning it compares the values of the objects and returns true if they have the same values, even if they are not the same object in memory.
+
+36) What is the difference between a StringBuffer and StringBuilder in Java? 
+
+StringBuffer is thread-safe and can be used in a multithreaded environment, but it is slower than StringBuilder. StringBuilder is not thread-safe but is faster than StringBuffer. Both classes provide similar functionality, such as string concatenation, manipulation, and reverse operations.
+
+37) What is the use of ‘static’ keyword in Java? 
+
+Static keyword is used to declare a variable or a method that belongs to a class instead of an object. This means it can be accessed without creating an object of that class. Static variables are shared among all instances of the class, while static methods can be called directly without instantiating the class.
+
+38) What is the difference between a compiler and an interpreter? 
+
+A compiler translates the code from a high-level programming language into machine code, producing an executable file that can be run directly on a computer. An interpreter translates code line by line, executing the instructions as they are encountered. Java uses both the compiler and interpreter - it compiles the code to bytecode and then uses an interpreter to execute it.
+
+39) What is an applet in Java? 
+
+An applet is a special type of Java program that runs within a web browser. It is used to provide interactive content on a web page, such as animations, games, or graphical user interfaces. Applets were popular before the widespread use of JavaScript, but they are no longer as widely used due to security concerns.
+
+40) What are access modifiers in Java? 
+
+Java has four access modifiers - public, private, protected, and default. Public allows access to a class, method, or variable from anywhere in the program. Private restricts access to within the same class. Protected allows access within the package and subclasses. Default allows access within the package.
+
+41) What is the difference between local, instance, and static variables? 
+
+Local variables are declared within a method or block and are accessible only within that method or block. Instance variables are declared within a class and are accessible by all methods of that class. Static variables are also declared within a class, but they are shared among all instances of that class.
+
+42) What is the use of ‘break’ and ‘continue’ statements in loops? 
+
+‘break’ statement is used to stop the loop and resume execution after the loop. ‘continue’ statement is used to skip the current iteration and start the next one. Both are used to control the flow of a loop and can be combined with conditional statements for more precise control.
+
+43) What is the difference between Stack and Heap in Java? 
+
+Stack is used to store local variables, function calls, and method parameters. Heap is used to allocate memory for objects created at runtime. Stack memory is automatically freed after the method returns, while objects on the heap are managed by the garbage collector.
+
+44) What is an enum in Java? 
+
+An enum, short for enumeration, is a special data type used to represent a set of pre-defined constants. It is used to improve code readability, type safety, and to reduce the number of defined constants. Enums can have properties, methods, and constructors like a regular class.
+
+45) What is the difference between an ArrayList and LinkedList in Java? 
+
+ArrayList is backed by an array, while LinkedList is backed by a doubly-linked list. ArrayList is more suitable for random access, while LinkedList is efficient when adding or removing elements from the beginning or end of the list. ArrayList is also more efficient when dealing with large amounts of data.
+
+46) What is the difference between ‘sleep()’ and ‘wait()’ methods? 
+
+‘sleep()’ method is used to pause the execution of the current thread for a specified amount of time. ‘wait()’ method is used to temporarily suspend a thread and wait for a specific condition to occur. ‘wait()’ can only be used within a synchronized block or method, while ‘sleep()’ can be used anywhere.
+
+47) What is the use of ‘final’ keyword in Java? 
+
+‘final’ keyword is used to make a variable, method, or class immutable, meaning its value or implementation cannot change. Final variables must be initialized during declaration, and their value cannot be changed later. Final classes cannot be inherited, and final methods cannot be overridden.
+
+48) What is the difference between a shallow copy and a deep copy? 
+
+A shallow copy creates a new object with the same values as the original object. But, if the original object contains references to other objects, the shallow copy will also point to the same referenced objects. In contrast, a deep copy creates copies of the referenced objects as well.
+
+49) What is the use of ‘transient’ keyword in Java? 
+
+The ‘transient’ keyword is used to mark variables that should not be part of the serialization process. This means that when an object is serialized, the values of the transient variables will not be included. This is useful when you want to exclude sensitive information or variables that can be calculated at runtime.
+
+50) What is the use of ‘throws’ keyword in Java? 
+
+‘throws’ keyword is used to declare that a method may throw a particular type of exception. It is used to handle checked exceptions, where the compiler mandates that the exception be handled. This allows the caller to handle the exception or let it be handled by a higher layer in the application.
