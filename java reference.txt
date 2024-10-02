@@ -1,7 +1,7 @@
 https://datatrained.com/post/oops-concepts-with-real-time-examples/
 https://www.freecodecamp.org/news/object-oriented-programming-concepts-java/
 
-
+https://www.crsinfosolutions.com/scenario-based-java-interview-questions/
 https://www.geeksforgeeks.org/functional-programming-in-java-8-using-the-stream-api-with-example/
 https://in.indeed.com/career-advice/interviewing/java-interview-programs
 
@@ -17,5 +17,8 @@ https://repo1.maven.org/maven2/org/sonarsource/scanner/cli/sonar-scanner-cli/4.7
 This project is based on Online Shopping App using Java, Spring, SpringBoot, MySQL and Hibernate. There are 6 model classes in the project User, Customer, Address, Product, Cart and Order. The main goal of this project is to create a series of backend API’s so that the user can access the functionalities of the various types of functions of the models just like the functionalities one can get while shopping from any online website
 
 https://github.com/tuhinsaikh/Online-Shopping-App-SpringBoot-
+
+
+
 
  
