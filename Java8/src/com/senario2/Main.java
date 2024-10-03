@@ -2,9 +2,10 @@ package com.senario2;
 
 //Student Grades System
 //Question: You have a list of students with their names and grades. Find the name of the student who has the highest grade.
-
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 class Student {
     private String name;

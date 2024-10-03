@@ -2,9 +2,10 @@ package com.senario3;
 
 //Scenario 3: Product Filtering System
 //Question: You have a list of products with their names, categories, and prices. Write a program to filter out products that belong to a specific category and sort them by price in ascending order.
-
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 class Product {
     private String name;

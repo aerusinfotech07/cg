@@ -2,9 +2,8 @@ package com.senario4;
 
 //Scenario 4: Transaction Processing System
 //Question: You have a list of transactions with their IDs, amounts, and statuses. Write a program to calculate the total amount of all completed transactions.
-
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
 
 class Transaction {
     private String id;

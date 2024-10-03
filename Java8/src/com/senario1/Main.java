@@ -2,8 +2,9 @@ package com.senario1;
 
 // Employee Management System
 //Question: You have a list of employees with their names, ages, and salaries. Write a program to find the average salary of employees older than 30 using Java 8.
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 class Employee {
     private String name;

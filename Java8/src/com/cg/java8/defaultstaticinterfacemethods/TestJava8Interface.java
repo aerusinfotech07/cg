@@ -2,7 +2,6 @@ package com.cg.java8.defaultstaticinterfacemethods;
 
 import com.cg.java8.defaultstaticinterfacemethods.impl.Car;
 import com.cg.java8.defaultstaticinterfacemethods.impl.Motorbike;
-import com.cg.java8.defaultstaticinterfacemethods.impl.MultiAlarmCar;
 import com.cg.java8.defaultstaticinterfacemethods.interfaces.Vehicle;
 
 public class TestJava8Interface {

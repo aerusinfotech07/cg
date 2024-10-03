@@ -2,8 +2,9 @@ package com.senario7;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.*;
-import java.util.stream.Collector;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 /*
  * To get a status-wise total amount summary, you can group the orders by their status and calculate the total amount for each status using Java Streams and Collectors.groupingBy along with Collectors.summingDouble.

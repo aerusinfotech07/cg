@@ -1,16 +1,15 @@
 package com.cg.java8.datetime;
 
+import static java.time.temporal.ChronoUnit.YEARS;
+
+import java.time.DayOfWeek;
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
-import static java.time.temporal.ChronoUnit.YEARS;
-
-import java.time.DayOfWeek;
 import java.time.temporal.TemporalAdjusters;
-
-import java.time.Duration;
-import java.time.Instant;
 
 public class DateTimeDemo {
 	public static void main(String[] args) {

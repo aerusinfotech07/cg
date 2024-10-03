@@ -4,7 +4,7 @@ https://www.freecodecamp.org/news/object-oriented-programming-concepts-java/
 https://www.crsinfosolutions.com/scenario-based-java-interview-questions/
 https://www.geeksforgeeks.org/functional-programming-in-java-8-using-the-stream-api-with-example/
 https://in.indeed.com/career-advice/interviewing/java-interview-programs
-
+https://www.crsinfosolutions.com/accenture-java-interview-questions/
 
 https://www.codingninjas.com/studio/library/swagger-in-spring-boot
 
@@ -19,6 +19,11 @@ This project is based on Online Shopping App using Java, Spring, SpringBoot, MyS
 https://github.com/tuhinsaikh/Online-Shopping-App-SpringBoot-
 
 https://github.com/learning-zone/
+https://www.crsinfosolutions.com/best-practices-design-patterns-in-java/
+
+https://github.com/kunal-kushwaha/DSA-Bootcamp-Java/blob/main/assignments/08-strings.md
+
+https://github.com/KostiantynLuhovyi/java-strings.tasks-solution/tree/master
 
 
 
