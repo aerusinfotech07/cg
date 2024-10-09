@@ -1,0 +1,1639 @@
+Creating over 50 assignments based on an online shopping database schema can cover a variety of scenarios involving data manipulation, querying, and database management. Below is a list of assignments with a brief description of each scenario. Each assignment includes a potential solution.
+
+Designing a MySQL database schema for an online shopping scenario involves several entities and their relationships. Below is a simplified example of a database schema that could support an online shopping system, along with a brief explanation of each table. 
+
+### Database Schema
+
+1. **Users**
+   - `user_id` (INT, Primary Key, AUTO_INCREMENT)
+   - `username` (VARCHAR(50), UNIQUE)
+   - `password` (VARCHAR(255))
+   - `email` (VARCHAR(100), UNIQUE)
+   - `created_at` (DATETIME)
+   - `updated_at` (DATETIME)
+
+2. **Products**
+   - `product_id` (INT, Primary Key, AUTO_INCREMENT)
+   - `name` (VARCHAR(100))
+   - `description` (TEXT)
+   - `price` (DECIMAL(10,2))
+   - `stock_quantity` (INT)
+   - `category_id` (INT, Foreign Key to Categories)
+   - `created_at` (DATETIME)
+   - `updated_at` (DATETIME)
+
+3. **Categories**
+   - `category_id` (INT, Primary Key, AUTO_INCREMENT)
+   - `name` (VARCHAR(50))
+   - `description` (TEXT)
+   - `created_at` (DATETIME)
+   - `updated_at` (DATETIME)
+
+4. **Orders**
+   - `order_id` (INT, Primary Key, AUTO_INCREMENT)
+   - `user_id` (INT, Foreign Key to Users)
+   - `order_date` (DATETIME)
+   - `status` (ENUM('Pending', 'Shipped', 'Delivered', 'Canceled'))
+   - `total_amount` (DECIMAL(10,2))
+   - `created_at` (DATETIME)
+   - `updated_at` (DATETIME)
+
+5. **Order_Items**
+   - `order_item_id` (INT, Primary Key, AUTO_INCREMENT)
+   - `order_id` (INT, Foreign Key to Orders)
+   - `product_id` (INT, Foreign Key to Products)
+   - `quantity` (INT)
+   - `price` (DECIMAL(10,2))
+   - `created_at` (DATETIME)
+   - `updated_at` (DATETIME)
+
+6. **Shopping_Cart**
+   - `cart_id` (INT, Primary Key, AUTO_INCREMENT)
+   - `user_id` (INT, Foreign Key to Users)
+   - `created_at` (DATETIME)
+   - `updated_at` (DATETIME)
+
+7. **Cart_Items**
+   - `cart_item_id` (INT, Primary Key, AUTO_INCREMENT)
+   - `cart_id` (INT, Foreign Key to Shopping_Cart)
+   - `product_id` (INT, Foreign Key to Products)
+   - `quantity` (INT)
+   - `created_at` (DATETIME)
+   - `updated_at` (DATETIME)
+
+8. **Payments**
+   - `payment_id` (INT, Primary Key, AUTO_INCREMENT)
+   - `order_id` (INT, Foreign Key to Orders)
+   - `payment_date` (DATETIME)
+   - `amount` (DECIMAL(10,2))
+   - `payment_method` (ENUM('Credit Card', 'PayPal', 'Bank Transfer'))
+   - `status` (ENUM('Pending', 'Completed', 'Failed'))
+   - `created_at` (DATETIME)
+   - `updated_at` (DATETIME)
+
+9. **Reviews**
+   - `review_id` (INT, Primary Key, AUTO_INCREMENT)
+   - `product_id` (INT, Foreign Key to Products)
+   - `user_id` (INT, Foreign Key to Users)
+   - `rating` (INT CHECK (rating BETWEEN 1 AND 5))
+   - `comment` (TEXT)
+   - `created_at` (DATETIME)
+   - `updated_at` (DATETIME)
+
+### Relationships
+
+- **Users** can have multiple **Orders**.
+- **Orders** can contain multiple **Order_Items**.
+- **Products** can belong to one **Category** but can be referenced in multiple **Order_Items** and **Reviews**.
+- **Users** can have multiple **Reviews** for different **Products**.
+- Each **Shopping_Cart** belongs to one **User** and can contain multiple **Cart_Items**.
+
+### Notes
+
+This schema is designed to be extensible and could accommodate a variety of additional features, such as wishlists, promotional discounts, or advanced user management (like roles and permissions). You can adjust the data types and constraints based on the specific requirements of your application. 
+
+
+### Assignments
+
+1. **User Registration**
+   - **Scenario**: Insert a new user into the `Users` table.
+   - **Solution**: 
+     ```sql
+     INSERT INTO Users (username, password, email, created_at) 
+     VALUES ('john_doe', 'hashed_password', 'john@example.com', NOW());
+     ```
+
+2. **Product Addition**
+   - **Scenario**: Add a new product to the `Products` table.
+   - **Solution**: 
+     ```sql
+     INSERT INTO Products (name, description, price, stock_quantity, category_id, created_at) 
+     VALUES ('Laptop', 'High-end gaming laptop', 1200.00, 50, 1, NOW());
+     ```
+
+3. **View All Products**
+   - **Scenario**: Retrieve all products from the `Products` table.
+   - **Solution**: 
+     ```sql
+     SELECT * FROM Products;
+     ```
+
+4. **Update Product Stock**
+   - **Scenario**: Update the stock quantity of a product.
+   - **Solution**: 
+     ```sql
+     UPDATE Products 
+     SET stock_quantity = stock_quantity - 1 
+     WHERE product_id = 1;
+     ```
+
+5. **Delete a User**
+   - **Scenario**: Delete a user from the `Users` table.
+   - **Solution**: 
+     ```sql
+     DELETE FROM Users 
+     WHERE user_id = 1;
+     ```
+
+6. **Create an Order**
+   - **Scenario**: Insert a new order for a user.
+   - **Solution**: 
+     ```sql
+     INSERT INTO Orders (user_id, order_date, status, total_amount, created_at) 
+     VALUES (1, NOW(), 'Pending', 1200.00, NOW());
+     ```
+
+7. **Add Items to an Order**
+   - **Scenario**: Add items to an existing order.
+   - **Solution**: 
+     ```sql
+     INSERT INTO Order_Items (order_id, product_id, quantity, price, created_at) 
+     VALUES (1, 1, 1, 1200.00, NOW());
+     ```
+
+8. **View Order Details**
+   - **Scenario**: Retrieve details of an order and its items.
+   - **Solution**: 
+     ```sql
+     SELECT * FROM Orders 
+     JOIN Order_Items ON Orders.order_id = Order_Items.order_id 
+     WHERE Orders.order_id = 1;
+     ```
+
+9. **Search Products by Name**
+   - **Scenario**: Search for products by name.
+   - **Solution**: 
+     ```sql
+     SELECT * FROM Products 
+     WHERE name LIKE '%laptop%';
+     ```
+
+10. **View User Orders**
+    - **Scenario**: Retrieve all orders placed by a specific user.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Orders 
+      WHERE user_id = 1;
+      ```
+
+11. **Check Product Availability**
+    - **Scenario**: Check if a product is in stock.
+    - **Solution**: 
+      ```sql
+      SELECT stock_quantity FROM Products 
+      WHERE product_id = 1;
+      ```
+
+12. **Create a Shopping Cart**
+    - **Scenario**: Create a new shopping cart for a user.
+    - **Solution**: 
+      ```sql
+      INSERT INTO Shopping_Cart (user_id, created_at) 
+      VALUES (1, NOW());
+      ```
+
+13. **Add Items to Shopping Cart**
+    - **Scenario**: Add a product to a user's shopping cart.
+    - **Solution**: 
+      ```sql
+      INSERT INTO Cart_Items (cart_id, product_id, quantity, created_at) 
+      VALUES (1, 1, 1, NOW());
+      ```
+
+14. **View Shopping Cart**
+    - **Scenario**: Retrieve items in a user's shopping cart.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Cart_Items 
+      JOIN Products ON Cart_Items.product_id = Products.product_id 
+      WHERE Cart_Items.cart_id = 1;
+      ```
+
+15. **Remove Item from Shopping Cart**
+    - **Scenario**: Remove an item from a shopping cart.
+    - **Solution**: 
+      ```sql
+      DELETE FROM Cart_Items 
+      WHERE cart_item_id = 1;
+      ```
+
+16. **Checkout Order**
+    - **Scenario**: Convert a shopping cart into an order.
+    - **Solution**: 
+      ```sql
+      -- Assume cart_id is 1
+      INSERT INTO Orders (user_id, order_date, status, total_amount, created_at) 
+      VALUES (1, NOW(), 'Pending', (SELECT SUM(price * quantity) FROM Cart_Items JOIN Products ON Cart_Items.product_id = Products.product_id WHERE Cart_Items.cart_id = 1), NOW());
+      ```
+
+17. **Record Payment**
+    - **Scenario**: Record a payment for an order.
+    - **Solution**: 
+      ```sql
+      INSERT INTO Payments (order_id, payment_date, amount, payment_method, status, created_at) 
+      VALUES (1, NOW(), 1200.00, 'Credit Card', 'Completed', NOW());
+      ```
+
+18. **View Payments for an Order**
+    - **Scenario**: Retrieve payment details for a specific order.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Payments 
+      WHERE order_id = 1;
+      ```
+
+19. **Add a Product Review**
+    - **Scenario**: Allow a user to review a product.
+    - **Solution**: 
+      ```sql
+      INSERT INTO Reviews (product_id, user_id, rating, comment, created_at) 
+      VALUES (1, 1, 5, 'Excellent product!', NOW());
+      ```
+
+20. **View Product Reviews**
+    - **Scenario**: Retrieve all reviews for a specific product.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Reviews 
+      WHERE product_id = 1;
+      ```
+
+21. **Update User Information**
+    - **Scenario**: Update a user's email and password.
+    - **Solution**: 
+      ```sql
+      UPDATE Users 
+      SET email = 'john_new@example.com', password = 'new_hashed_password' 
+      WHERE user_id = 1;
+      ```
+
+22. **Count Total Users**
+    - **Scenario**: Count the total number of users registered.
+    - **Solution**: 
+      ```sql
+      SELECT COUNT(*) FROM Users;
+      ```
+
+23. **Find Top-Selling Products**
+    - **Scenario**: Find products with the highest sales.
+    - **Solution**: 
+      ```sql
+      SELECT product_id, SUM(quantity) AS total_sold 
+      FROM Order_Items 
+      GROUP BY product_id 
+      ORDER BY total_sold DESC 
+      LIMIT 5;
+      ```
+
+24. **Check User Purchase History**
+    - **Scenario**: Retrieve a user's purchase history.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Orders 
+      WHERE user_id = 1;
+      ```
+
+25. **View All Categories**
+    - **Scenario**: Retrieve all categories.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Categories;
+      ```
+
+26. **Add a New Category**
+    - **Scenario**: Insert a new category into the `Categories` table.
+    - **Solution**: 
+      ```sql
+      INSERT INTO Categories (name, description, created_at) 
+      VALUES ('Electronics', 'All electronic items', NOW());
+      ```
+
+27. **Update Category Description**
+    - **Scenario**: Update the description of a category.
+    - **Solution**: 
+      ```sql
+      UPDATE Categories 
+      SET description = 'Updated electronics description' 
+      WHERE category_id = 1;
+      ```
+
+28. **Delete a Product**
+    - **Scenario**: Remove a product from the database.
+    - **Solution**: 
+      ```sql
+      DELETE FROM Products 
+      WHERE product_id = 1;
+      ```
+
+29. **Get Average Rating of a Product**
+    - **Scenario**: Calculate the average rating for a specific product.
+    - **Solution**: 
+      ```sql
+      SELECT AVG(rating) FROM Reviews 
+      WHERE product_id = 1;
+      ```
+
+30. **List All Orders by Status**
+    - **Scenario**: Retrieve all orders with a specific status.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Orders 
+      WHERE status = 'Pending';
+      ```
+
+31. **Total Sales Amount**
+    - **Scenario**: Calculate the total sales amount from all orders.
+    - **Solution**: 
+      ```sql
+      SELECT SUM(total_amount) FROM Orders;
+      ```
+
+32. **List All Users with Orders**
+    - **Scenario**: Find users who have placed at least one order.
+    - **Solution**: 
+      ```sql
+      SELECT DISTINCT Users.* FROM Users 
+      JOIN Orders ON Users.user_id = Orders.user_id;
+      ```
+
+33. **Check User's Last Login**
+    - **Scenario**: Retrieve the last login timestamp for a user.
+    - **Solution**: 
+      ```sql
+      SELECT updated_at FROM Users 
+      WHERE user_id = 1;
+      ```
+
+34. **Find Products Under a Certain Price**
+    - **Scenario**: Retrieve products priced under a certain amount.
+    - **Solution**: 
+      ```sql
+
+
+      SELECT * FROM Products 
+      WHERE price < 500;
+      ```
+
+35. **Retrieve All Active Carts**
+    - **Scenario**: List all shopping carts that have items.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Shopping_Cart 
+      WHERE cart_id IN (SELECT DISTINCT cart_id FROM Cart_Items);
+      ```
+
+36. **View All Payments**
+    - **Scenario**: Retrieve all payment records.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Payments;
+      ```
+
+37. **Get Stock Levels for All Products**
+    - **Scenario**: List all products with their stock levels.
+    - **Solution**: 
+      ```sql
+      SELECT name, stock_quantity FROM Products;
+      ```
+
+38. **Get Total Reviews per Product**
+    - **Scenario**: Count total reviews for each product.
+    - **Solution**: 
+      ```sql
+      SELECT product_id, COUNT(*) AS review_count 
+      FROM Reviews 
+      GROUP BY product_id;
+      ```
+
+39. **User Login Simulation**
+    - **Scenario**: Simulate a user login by checking username and password.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Users 
+      WHERE username = 'john_doe' AND password = 'hashed_password';
+      ```
+
+40. **Get User Details with Orders**
+    - **Scenario**: Retrieve user details along with their orders.
+    - **Solution**: 
+      ```sql
+      SELECT Users.*, Orders.* FROM Users 
+      LEFT JOIN Orders ON Users.user_id = Orders.user_id 
+      WHERE Users.user_id = 1;
+      ```
+
+41. **Get Last N Orders of a User**
+    - **Scenario**: Retrieve the last 5 orders of a user.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Orders 
+      WHERE user_id = 1 
+      ORDER BY order_date DESC 
+      LIMIT 5;
+      ```
+
+42. **Find Products in a Specific Category**
+    - **Scenario**: List products belonging to a specific category.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Products 
+      WHERE category_id = 1;
+      ```
+
+43. **Check Payment Status of an Order**
+    - **Scenario**: Retrieve the payment status for a specific order.
+    - **Solution**: 
+      ```sql
+      SELECT status FROM Payments 
+      WHERE order_id = 1;
+      ```
+
+44. **List Products with Low Stock**
+    - **Scenario**: Find products that are low on stock.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Products 
+      WHERE stock_quantity < 10;
+      ```
+
+45. **Get User Reviews with Ratings**
+    - **Scenario**: Retrieve a user's reviews with ratings.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Reviews 
+      WHERE user_id = 1;
+      ```
+
+46. **View All Cart Items for a User**
+    - **Scenario**: List all items in a user's shopping cart.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Cart_Items 
+      WHERE cart_id = (SELECT cart_id FROM Shopping_Cart WHERE user_id = 1);
+      ```
+
+47. **Count Total Orders by User**
+    - **Scenario**: Count how many orders a user has placed.
+    - **Solution**: 
+      ```sql
+      SELECT COUNT(*) FROM Orders 
+      WHERE user_id = 1;
+      ```
+
+48. **Find All Users Who Reviewed a Product**
+    - **Scenario**: Retrieve all users who have reviewed a specific product.
+    - **Solution**: 
+      ```sql
+      SELECT DISTINCT Users.* FROM Users 
+      JOIN Reviews ON Users.user_id = Reviews.user_id 
+      WHERE Reviews.product_id = 1;
+      ```
+
+49. **Check Pending Payments**
+    - **Scenario**: Retrieve all pending payments.
+    - **Solution**: 
+      ```sql
+      SELECT * FROM Payments 
+      WHERE status = 'Pending';
+      ```
+
+50. **Get All Products with Reviews**
+    - **Scenario**: List all products along with their review ratings.
+    - **Solution**: 
+      ```sql
+      SELECT Products.*, AVG(Reviews.rating) AS average_rating 
+      FROM Products 
+      LEFT JOIN Reviews ON Products.product_id = Reviews.product_id 
+      GROUP BY Products.product_id;
+      ```
+Here are five additional scenarios that involve `JOIN` operations and `GROUP BY` clauses, along with their SQL solutions:
+
+### Scenario 1: Total Sales by Product
+**Description**: Retrieve the total quantity sold and total revenue for each product.
+
+**Solution**:
+```sql
+SELECT 
+    Products.product_id, 
+    Products.name, 
+    SUM(Order_Items.quantity) AS total_quantity_sold, 
+    SUM(Order_Items.price * Order_Items.quantity) AS total_revenue
+FROM 
+    Order_Items
+JOIN 
+    Products ON Order_Items.product_id = Products.product_id
+GROUP BY 
+    Products.product_id, Products.name
+ORDER BY 
+    total_revenue DESC;
+```
+
+### Scenario 2: Average Rating by Category
+**Description**: Find the average rating for products in each category.
+
+**Solution**:
+```sql
+SELECT 
+    Categories.category_id, 
+    Categories.name AS category_name, 
+    AVG(Reviews.rating) AS average_rating
+FROM 
+    Reviews
+JOIN 
+    Products ON Reviews.product_id = Products.product_id
+JOIN 
+    Categories ON Products.category_id = Categories.category_id
+GROUP BY 
+    Categories.category_id, Categories.name;
+```
+
+### Scenario 3: Number of Orders by User
+**Description**: Count the number of orders placed by each user.
+
+**Solution**:
+```sql
+SELECT 
+    Users.user_id, 
+    Users.username, 
+    COUNT(Orders.order_id) AS total_orders
+FROM 
+    Users
+LEFT JOIN 
+    Orders ON Users.user_id = Orders.user_id
+GROUP BY 
+    Users.user_id, Users.username
+ORDER BY 
+    total_orders DESC;
+```
+
+### Scenario 4: Total Payment Amount by User
+**Description**: Calculate the total payment amount made by each user.
+
+**Solution**:
+```sql
+SELECT 
+    Users.user_id, 
+    Users.username, 
+    SUM(Payments.amount) AS total_payment
+FROM 
+    Users
+JOIN 
+    Orders ON Users.user_id = Orders.user_id
+JOIN 
+    Payments ON Orders.order_id = Payments.order_id
+GROUP BY 
+    Users.user_id, Users.username
+ORDER BY 
+    total_payment DESC;
+```
+
+### Scenario 5: Product Review Counts by Product
+**Description**: Count the number of reviews for each product along with its details.
+
+**Solution**:
+```sql
+SELECT 
+    Products.product_id, 
+    Products.name, 
+    COUNT(Reviews.review_id) AS total_reviews
+FROM 
+    Products
+LEFT JOIN 
+    Reviews ON Products.product_id = Reviews.product_id
+GROUP BY 
+    Products.product_id, Products.name
+ORDER BY 
+    total_reviews DESC;
+```
+Here’s a list of 52 scenarios based on `JOIN` operations, along with SQL solutions for each scenario:
+
+### 1. User Orders
+**Description**: Retrieve all orders placed by each user.
+```sql
+SELECT Users.username, Orders.order_id, Orders.order_date
+FROM Users
+JOIN Orders ON Users.user_id = Orders.user_id;
+```
+
+### 2. Order Items
+**Description**: List all items in each order with product details.
+```sql
+SELECT Orders.order_id, Products.name AS product_name, Order_Items.quantity
+FROM Order_Items
+JOIN Orders ON Order_Items.order_id = Orders.order_id
+JOIN Products ON Order_Items.product_id = Products.product_id;
+```
+
+### 3. User Payments
+**Description**: Get payment details for each order made by users.
+```sql
+SELECT Users.username, Orders.order_id, Payments.amount, Payments.status
+FROM Users
+JOIN Orders ON Users.user_id = Orders.user_id
+JOIN Payments ON Orders.order_id = Payments.order_id;
+```
+
+### 4. Product Reviews
+**Description**: Show all reviews for each product along with user information.
+```sql
+SELECT Products.name AS product_name, Users.username, Reviews.rating, Reviews.comment
+FROM Reviews
+JOIN Products ON Reviews.product_id = Products.product_id
+JOIN Users ON Reviews.user_id = Users.user_id;
+```
+
+### 5. Category Products
+**Description**: List all products under each category.
+```sql
+SELECT Categories.name AS category_name, Products.name AS product_name
+FROM Products
+JOIN Categories ON Products.category_id = Categories.category_id;
+```
+
+### 6. Pending Orders
+**Description**: Find all pending orders along with user details.
+```sql
+SELECT Users.username, Orders.order_id, Orders.order_date
+FROM Orders
+JOIN Users ON Orders.user_id = Users.user_id
+WHERE Orders.status = 'Pending';
+```
+
+### 7. Order Totals
+**Description**: Calculate total amounts for each order along with user details.
+```sql
+SELECT Users.username, Orders.order_id, SUM(Order_Items.price * Order_Items.quantity) AS total_amount
+FROM Orders
+JOIN Users ON Orders.user_id = Users.user_id
+JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+GROUP BY Orders.order_id, Users.username;
+```
+
+### 8. Product Stock Levels
+**Description**: List products with their stock levels and category names.
+```sql
+SELECT Products.name AS product_name, Products.stock_quantity, Categories.name AS category_name
+FROM Products
+JOIN Categories ON Products.category_id = Categories.category_id;
+```
+
+### 9. User Carts
+**Description**: Retrieve all items in a user’s shopping cart with product details.
+```sql
+SELECT Users.username, Products.name AS product_name, Cart_Items.quantity
+FROM Cart_Items
+JOIN Shopping_Cart ON Cart_Items.cart_id = Shopping_Cart.cart_id
+JOIN Users ON Shopping_Cart.user_id = Users.user_id
+JOIN Products ON Cart_Items.product_id = Products.product_id;
+```
+
+### 10. Recent Reviews
+**Description**: Show recent reviews for each product, including user names.
+```sql
+SELECT Products.name AS product_name, Users.username, Reviews.rating, Reviews.comment
+FROM Reviews
+JOIN Products ON Reviews.product_id = Products.product_id
+JOIN Users ON Reviews.user_id = Users.user_id
+ORDER BY Reviews.created_at DESC;
+```
+
+### 11. Average Product Rating
+**Description**: Calculate the average rating for each product.
+```sql
+SELECT Products.name AS product_name, AVG(Reviews.rating) AS average_rating
+FROM Products
+LEFT JOIN Reviews ON Products.product_id = Reviews.product_id
+GROUP BY Products.product_id;
+```
+
+### 12. Sales by Category
+**Description**: Sum up total sales by category using order items.
+```sql
+SELECT Categories.name AS category_name, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+FROM Order_Items
+JOIN Products ON Order_Items.product_id = Products.product_id
+JOIN Categories ON Products.category_id = Categories.category_id
+GROUP BY Categories.category_id;
+```
+
+### 13. Top Users
+**Description**: Identify users who have placed the most orders.
+```sql
+SELECT Users.username, COUNT(Orders.order_id) AS order_count
+FROM Users
+LEFT JOIN Orders ON Users.user_id = Orders.user_id
+GROUP BY Users.user_id
+ORDER BY order_count DESC;
+```
+
+### 14. Order History
+**Description**: Display a complete order history for a specific user.
+```sql
+SELECT Orders.order_id, Orders.order_date, Orders.total_amount
+FROM Orders
+WHERE Orders.user_id = 1;  -- Replace 1 with the desired user_id
+```
+
+### 15. Active Shopping Carts
+**Description**: List all active shopping carts along with their items.
+```sql
+SELECT Users.username, Cart_Items.product_id, Cart_Items.quantity
+FROM Cart_Items
+JOIN Shopping_Cart ON Cart_Items.cart_id = Shopping_Cart.cart_id
+JOIN Users ON Shopping_Cart.user_id = Users.user_id;
+```
+
+### 16. Payment Status
+**Description**: Retrieve all payments and their statuses for each order.
+```sql
+SELECT Orders.order_id, Payments.amount, Payments.status
+FROM Payments
+JOIN Orders ON Payments.order_id = Orders.order_id;
+```
+
+### 17. User Registration Date
+**Description**: Show users along with the date of their first order.
+```sql
+SELECT Users.username, MIN(Orders.order_date) AS first_order_date
+FROM Users
+LEFT JOIN Orders ON Users.user_id = Orders.user_id
+GROUP BY Users.user_id;
+```
+
+### 18. Products with No Reviews
+**Description**: List products that have not received any reviews.
+```sql
+SELECT Products.name
+FROM Products
+LEFT JOIN Reviews ON Products.product_id = Reviews.product_id
+WHERE Reviews.review_id IS NULL;
+```
+
+### 19. Category Sale Trends
+**Description**: Analyze sales trends per category over time.
+```sql
+SELECT Categories.name AS category_name, MONTH(Orders.order_date) AS month, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+FROM Order_Items
+JOIN Products ON Order_Items.product_id = Products.product_id
+JOIN Categories ON Products.category_id = Categories.category_id
+JOIN Orders ON Order_Items.order_id = Orders.order_id
+GROUP BY Categories.category_id, month
+ORDER BY month;
+```
+
+### 20. Total Revenue by Product
+**Description**: Calculate total revenue generated by each product.
+```sql
+SELECT Products.name AS product_name, SUM(Order_Items.price * Order_Items.quantity) AS total_revenue
+FROM Order_Items
+JOIN Products ON Order_Items.product_id = Products.product_id
+GROUP BY Products.product_id;
+```
+
+### 21. Products with High Ratings
+**Description**: Find products that have a rating above a certain threshold.
+```sql
+SELECT Products.name AS product_name, AVG(Reviews.rating) AS average_rating
+FROM Products
+JOIN Reviews ON Products.product_id = Reviews.product_id
+GROUP BY Products.product_id
+HAVING average_rating > 4.5;  -- Replace 4.5 with the desired rating threshold
+```
+
+### 22. User Review Counts
+**Description**: Count how many reviews each user has submitted.
+```sql
+SELECT Users.username, COUNT(Reviews.review_id) AS review_count
+FROM Users
+LEFT JOIN Reviews ON Users.user_id = Reviews.user_id
+GROUP BY Users.user_id;
+```
+
+### 23. Order Item Details
+**Description**: Retrieve detailed order item information along with product names.
+```sql
+SELECT Orders.order_id, Products.name AS product_name, Order_Items.quantity, Order_Items.price
+FROM Order_Items
+JOIN Orders ON Order_Items.order_id = Orders.order_id
+JOIN Products ON Order_Items.product_id = Products.product_id;
+```
+
+### 24. Products in Multiple Categories
+**Description**: Identify products that belong to more than one category.
+```sql
+SELECT Products.name AS product_name, COUNT(Products.category_id) AS category_count
+FROM Products
+JOIN Categories ON Products.category_id = Categories.category_id
+GROUP BY Products.product_id
+HAVING category_count > 1;
+```
+
+### 25. Sales by User
+**Description**: Calculate total sales attributed to each user.
+```sql
+SELECT Users.username, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+FROM Users
+JOIN Orders ON Users.user_id = Orders.user_id
+JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+GROUP BY Users.user_id;
+```
+
+### 26. User Login History
+**Description**: List users with their last login date and order count.
+```sql
+SELECT Users.username, Users.last_login, COUNT(Orders.order_id) AS order_count
+FROM Users
+LEFT JOIN Orders ON Users.user_id = Orders.user_id
+GROUP BY Users.user_id;
+```
+
+### 27. Recent Payments
+**Description**: Show recent payments made by each user.
+```sql
+SELECT Users.username, Payments.amount, Payments.payment_date
+FROM Payments
+JOIN Orders ON Payments.order_id = Orders.order_id
+JOIN Users ON Orders.user_id = Users.user_id
+ORDER BY Payments.payment_date DESC;
+```
+
+### 28. User Feedback
+**Description**: Display user feedback with product details.
+```sql
+SELECT Users.username, Products.name AS product_name, Reviews.comment
+FROM Reviews
+JOIN Products ON Reviews.product_id = Products.product_id
+JOIN Users ON Reviews.user_id = Users.user_id;
+```
+
+### 29. Category Sales Analysis
+**Description**: Analyze total sales for each category in the last month.
+```sql
+SELECT Categories.name AS category_name, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+FROM Order_Items
+JOIN Products ON Order_Items.product_id = Products.product_id
+JOIN Categories ON Products.category_id = Categories.category_id
+JOIN Orders ON Order_Items.order_id = Orders.order_id
+WHERE Orders.order_date >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+GROUP BY Categories.category_id
+
+;
+```
+
+### 30. Top Reviewed Products
+**Description**: Find products with the most reviews and their average ratings.
+```sql
+SELECT Products.name AS product_name, COUNT(Reviews.review_id) AS review_count, AVG(Reviews.rating) AS average_rating
+FROM Products
+LEFT JOIN Reviews ON Products.product_id = Reviews.product_id
+GROUP BY Products.product_id
+ORDER BY review_count DESC;
+```
+
+### 31. User Purchase Patterns
+**Description**: Identify products frequently purchased together by users.
+```sql
+SELECT oi1.product_id AS product1, oi2.product_id AS product2, COUNT(*) AS frequency
+FROM Order_Items oi1
+JOIN Order_Items oi2 ON oi1.order_id = oi2.order_id AND oi1.product_id != oi2.product_id
+GROUP BY product1, product2
+ORDER BY frequency DESC;
+```
+
+### 32. Inactive Users
+**Description**: List users who haven’t placed an order in the last year.
+```sql
+SELECT Users.username
+FROM Users
+LEFT JOIN Orders ON Users.user_id = Orders.user_id
+WHERE Orders.order_date < DATE_SUB(NOW(), INTERVAL 1 YEAR) OR Orders.order_id IS NULL;
+```
+
+### 33. Stock Alerts
+**Description**: Find products that need restocking based on current stock and sales.
+```sql
+SELECT Products.name AS product_name, Products.stock_quantity, SUM(Order_Items.quantity) AS total_sold
+FROM Products
+LEFT JOIN Order_Items ON Products.product_id = Order_Items.product_id
+GROUP BY Products.product_id
+HAVING Products.stock_quantity < 10;  -- Replace 10 with the restock threshold
+```
+
+### 34. Most Popular Categories
+**Description**: Identify categories with the highest sales volume.
+```sql
+SELECT Categories.name AS category_name, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+FROM Order_Items
+JOIN Products ON Order_Items.product_id = Products.product_id
+JOIN Categories ON Products.category_id = Categories.category_id
+GROUP BY Categories.category_id
+ORDER BY total_sales DESC;
+```
+
+### 35. Payment Method Statistics
+**Description**: Analyze the usage of different payment methods by users.
+```sql
+SELECT Payments.method AS payment_method, COUNT(Payments.payment_id) AS usage_count
+FROM Payments
+GROUP BY Payments.method;
+```
+
+### 36. User Product Preferences
+**Description**: Retrieve user preferences based on their purchase history.
+```sql
+SELECT Users.username, Products.name AS preferred_product
+FROM Orders
+JOIN Users ON Orders.user_id = Users.user_id
+JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+JOIN Products ON Order_Items.product_id = Products.product_id
+GROUP BY Users.username, Products.name
+ORDER BY COUNT(Order_Items.product_id) DESC;
+```
+
+### 37. Order Cancellation Reasons
+**Description**: List all canceled orders with reasons provided by users.
+```sql
+SELECT Orders.order_id, Orders.cancellation_reason, Users.username
+FROM Orders
+JOIN Users ON Orders.user_id = Users.user_id
+WHERE Orders.status = 'Cancelled';
+```
+
+### 38. User Loyalty Program
+**Description**: Identify users eligible for a loyalty program based on their purchase frequency.
+```sql
+SELECT Users.username, COUNT(Orders.order_id) AS order_count
+FROM Users
+JOIN Orders ON Users.user_id = Orders.user_id
+GROUP BY Users.user_id
+HAVING order_count > 10;  -- Replace 10 with the loyalty threshold
+```
+
+### 39. Product Launches
+**Description**: Track products launched within the last month and their sales.
+```sql
+SELECT Products.name AS product_name, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+FROM Products
+LEFT JOIN Order_Items ON Products.product_id = Order_Items.product_id
+WHERE Products.launch_date >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+GROUP BY Products.product_id;
+```
+
+### 40. Category Review Insights
+**Description**: Analyze average ratings and review counts per category.
+```sql
+SELECT Categories.name AS category_name, AVG(Reviews.rating) AS average_rating, COUNT(Reviews.review_id) AS review_count
+FROM Categories
+LEFT JOIN Products ON Categories.category_id = Products.category_id
+LEFT JOIN Reviews ON Products.product_id = Reviews.product_id
+GROUP BY Categories.category_id;
+```
+
+### 41. Top Selling Products
+**Description**: Find the top-selling products based on total sales.
+```sql
+SELECT Products.name AS product_name, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+FROM Order_Items
+JOIN Products ON Order_Items.product_id = Products.product_id
+GROUP BY Products.product_id
+ORDER BY total_sales DESC
+LIMIT 10;  -- Top 10 products
+```
+
+### 42. User Demographics
+**Description**: Gather user demographics along with their order statistics.
+```sql
+SELECT Users.username, Users.email, COUNT(Orders.order_id) AS order_count
+FROM Users
+LEFT JOIN Orders ON Users.user_id = Orders.user_id
+GROUP BY Users.user_id;
+```
+
+### 43. Discount Usage
+**Description**: Analyze how discounts affect sales across different categories.
+```sql
+SELECT Categories.name AS category_name, SUM(Order_Items.price * Order_Items.quantity * (1 - Discounts.percentage)) AS total_discounted_sales
+FROM Order_Items
+JOIN Products ON Order_Items.product_id = Products.product_id
+JOIN Categories ON Products.category_id = Categories.category_id
+JOIN Discounts ON Products.discount_id = Discounts.discount_id
+GROUP BY Categories.category_id;
+```
+
+### 44. Inventory Turnover
+**Description**: Calculate inventory turnover for each product.
+```sql
+SELECT Products.name AS product_name, SUM(Order_Items.quantity) / AVG(Products.stock_quantity) AS inventory_turnover
+FROM Order_Items
+JOIN Products ON Order_Items.product_id = Products.product_id
+GROUP BY Products.product_id;
+```
+
+### 45. Payment Delays
+**Description**: Identify orders with delayed payments.
+```sql
+SELECT Orders.order_id, Users.username, Payments.payment_date, Orders.order_date
+FROM Payments
+JOIN Orders ON Payments.order_id = Orders.order_id
+JOIN Users ON Orders.user_id = Users.user_id
+WHERE Payments.payment_date > Orders.order_date + INTERVAL 5 DAY;  -- Assuming 5 days is the expected time frame
+```
+
+### 46. Top Product Reviewers
+**Description**: Find users who leave the most reviews for products.
+```sql
+SELECT Users.username, COUNT(Reviews.review_id) AS review_count
+FROM Reviews
+JOIN Users ON Reviews.user_id = Users.user_id
+GROUP BY Users.user_id
+ORDER BY review_count DESC;
+```
+
+### 47. Order Fulfillment Times
+**Description**: Analyze average fulfillment times for orders by product.
+```sql
+SELECT Products.name AS product_name, AVG(DATEDIFF(Orders.fulfillment_date, Orders.order_date)) AS average_fulfillment_time
+FROM Orders
+JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+JOIN Products ON Order_Items.product_id = Products.product_id
+GROUP BY Products.product_id;
+```
+
+### 48. Multi-Payment Orders
+**Description**: Retrieve orders that were paid using multiple payment methods.
+```sql
+SELECT Orders.order_id, COUNT(DISTINCT Payments.method) AS payment_method_count
+FROM Payments
+JOIN Orders ON Payments.order_id = Orders.order_id
+GROUP BY Orders.order_id
+HAVING payment_method_count > 1;
+```
+
+### 49. User Referral Sources
+**Description**: Identify how users were referred to the platform along with their purchase history.
+```sql
+SELECT Users.username, Users.referral_source, COUNT(Orders.order_id) AS order_count
+FROM Users
+LEFT JOIN Orders ON Users.user_id = Orders.user_id
+GROUP BY Users.user_id;
+```
+
+### 50. Geographical Sales Analysis
+**Description**: Analyze sales based on user locations.
+```sql
+SELECT Users.location, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+FROM Orders
+JOIN Users ON Orders.user_id = Users.user_id
+JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+GROUP BY Users.location;
+```
+
+### 51. Promotional Impact
+**Description**: Assess the impact of promotions on user purchases.
+```sql
+SELECT Promotions.name AS promotion_name, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+FROM Order_Items
+JOIN Products ON Order_Items.product_id = Products.product_id
+JOIN Promotions ON Products.promotion_id = Promotions.promotion_id
+GROUP BY Promotions.promotion_id;
+```
+
+### 52. User Wishlist Analysis
+**Description**: Retrieve items on users’ wishlists with product details.
+```sql
+SELECT Users.username, Products.name AS product_name
+FROM Wishlists
+JOIN Users ON Wishlists.user_id = Users.user_id
+JOIN Products ON Wishlists.product_id = Products.product_id;
+```
+
+Here are over 50 scenarios based on calculations using `GROUP BY` and `ORDER BY` in SQL, along with example queries for each scenario in an online shopping database context.
+
+### Scenarios with Examples
+
+1. **Total Sales by User**
+   - **Description**: Calculate the total sales amount for each user.
+   ```sql
+   SELECT Users.username, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+   FROM Users
+   JOIN Orders ON Users.user_id = Orders.user_id
+   JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+   GROUP BY Users.user_id
+   ORDER BY total_sales DESC;
+   ```
+
+2. **Average Order Value**
+   - **Description**: Find the average order value for each user.
+   ```sql
+   SELECT Users.username, AVG(Orders.total_amount) AS average_order_value
+   FROM Users
+   JOIN Orders ON Users.user_id = Orders.user_id
+   GROUP BY Users.user_id
+   ORDER BY average_order_value DESC;
+   ```
+
+3. **Total Quantity Sold by Product**
+   - **Description**: Sum the total quantity sold for each product.
+   ```sql
+   SELECT Products.name AS product_name, SUM(Order_Items.quantity) AS total_quantity_sold
+   FROM Products
+   JOIN Order_Items ON Products.product_id = Order_Items.product_id
+   GROUP BY Products.product_id
+   ORDER BY total_quantity_sold DESC;
+   ```
+
+4. **Monthly Sales Trends**
+   - **Description**: Analyze monthly sales totals.
+   ```sql
+   SELECT MONTH(Orders.order_date) AS order_month, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+   FROM Orders
+   JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+   GROUP BY order_month
+   ORDER BY order_month;
+   ```
+
+5. **Average Rating by Product**
+   - **Description**: Calculate the average rating for each product.
+   ```sql
+   SELECT Products.name AS product_name, AVG(Reviews.rating) AS average_rating
+   FROM Products
+   LEFT JOIN Reviews ON Products.product_id = Reviews.product_id
+   GROUP BY Products.product_id
+   ORDER BY average_rating DESC;
+   ```
+
+6. **Sales by Category**
+   - **Description**: Sum total sales for each product category.
+   ```sql
+   SELECT Categories.name AS category_name, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+   FROM Order_Items
+   JOIN Products ON Order_Items.product_id = Products.product_id
+   JOIN Categories ON Products.category_id = Categories.category_id
+   GROUP BY Categories.category_id
+   ORDER BY total_sales DESC;
+   ```
+
+7. **Top 10 Best-Selling Products**
+   - **Description**: Identify the top 10 products by sales.
+   ```sql
+   SELECT Products.name AS product_name, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+   FROM Order_Items
+   JOIN Products ON Order_Items.product_id = Products.product_id
+   GROUP BY Products.product_id
+   ORDER BY total_sales DESC
+   LIMIT 10;
+   ```
+
+8. **Sales Per User by Month**
+   - **Description**: Calculate monthly sales totals per user.
+   ```sql
+   SELECT Users.username, MONTH(Orders.order_date) AS order_month, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+   FROM Users
+   JOIN Orders ON Users.user_id = Orders.user_id
+   JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+   GROUP BY Users.user_id, order_month
+   ORDER BY Users.username, order_month;
+   ```
+
+9. **Average Time to Fulfill Orders**
+   - **Description**: Analyze average fulfillment time for each product.
+   ```sql
+   SELECT Products.name AS product_name, AVG(DATEDIFF(Orders.fulfillment_date, Orders.order_date)) AS average_fulfillment_time
+   FROM Orders
+   JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+   JOIN Products ON Order_Items.product_id = Products.product_id
+   GROUP BY Products.product_id;
+   ```
+
+10. **Count of Orders by Status**
+    - **Description**: Count how many orders are in each status (e.g., completed, pending).
+    ```sql
+    SELECT Orders.status, COUNT(*) AS order_count
+    FROM Orders
+    GROUP BY Orders.status
+    ORDER BY order_count DESC;
+    ```
+
+11. **Total Payments by Payment Method**
+    - **Description**: Sum payments made by each payment method.
+    ```sql
+    SELECT Payments.method AS payment_method, SUM(Payments.amount) AS total_payments
+    FROM Payments
+    GROUP BY Payments.method
+    ORDER BY total_payments DESC;
+    ```
+
+12. **User Review Count**
+    - **Description**: Count how many reviews each user has submitted.
+    ```sql
+    SELECT Users.username, COUNT(Reviews.review_id) AS review_count
+    FROM Users
+    LEFT JOIN Reviews ON Users.user_id = Reviews.user_id
+    GROUP BY Users.user_id
+    ORDER BY review_count DESC;
+    ```
+
+13. **Average Discount Given**
+    - **Description**: Calculate the average discount applied to orders.
+    ```sql
+    SELECT AVG(Order_Items.discount) AS average_discount
+    FROM Order_Items;
+    ```
+
+14. **Sales Growth by Month**
+    - **Description**: Analyze sales growth comparing months.
+    ```sql
+    SELECT MONTH(Orders.order_date) AS order_month, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+    FROM Orders
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    GROUP BY order_month
+    ORDER BY order_month;
+    ```
+
+15. **Top Customers**
+    - **Description**: Identify the top customers by total spend.
+    ```sql
+    SELECT Users.username, SUM(Order_Items.price * Order_Items.quantity) AS total_spend
+    FROM Users
+    JOIN Orders ON Users.user_id = Orders.user_id
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    GROUP BY Users.user_id
+    ORDER BY total_spend DESC
+    LIMIT 10;
+    ```
+
+16. **Sales by Region**
+    - **Description**: Sum total sales for each geographical region.
+    ```sql
+    SELECT Users.location, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+    FROM Users
+    JOIN Orders ON Users.user_id = Orders.user_id
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    GROUP BY Users.location
+    ORDER BY total_sales DESC;
+    ```
+
+17. **Average Product Price**
+    - **Description**: Calculate the average price of products in each category.
+    ```sql
+    SELECT Categories.name AS category_name, AVG(Products.price) AS average_price
+    FROM Products
+    JOIN Categories ON Products.category_id = Categories.category_id
+    GROUP BY Categories.category_id;
+    ```
+
+18. **Total Refunds by Product**
+    - **Description**: Sum total refunds for each product.
+    ```sql
+    SELECT Products.name AS product_name, SUM(Refunds.amount) AS total_refunds
+    FROM Refunds
+    JOIN Products ON Refunds.product_id = Products.product_id
+    GROUP BY Products.product_id;
+    ```
+
+19. **User Login Frequency**
+    - **Description**: Count the number of logins per user.
+    ```sql
+    SELECT Users.username, COUNT(User_Logins.login_id) AS login_count
+    FROM Users
+    JOIN User_Logins ON Users.user_id = User_Logins.user_id
+    GROUP BY Users.user_id
+    ORDER BY login_count DESC;
+    ```
+
+20. **Average Quantity per Order**
+    - **Description**: Calculate the average quantity of items ordered per order.
+    ```sql
+    SELECT Orders.order_id, AVG(Order_Items.quantity) AS average_quantity
+    FROM Orders
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    GROUP BY Orders.order_id;
+    ```
+
+21. **Total Sales by Year**
+    - **Description**: Sum total sales grouped by year.
+    ```sql
+    SELECT YEAR(Orders.order_date) AS order_year, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+    FROM Orders
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    GROUP BY order_year
+    ORDER BY order_year;
+    ```
+
+22. **Product Return Rates**
+    - **Description**: Calculate the return rate for each product.
+    ```sql
+    SELECT Products.name AS product_name, 
+           SUM(CASE WHEN Returns.returned = TRUE THEN 1 ELSE 0 END) / COUNT(Order_Items.product_id) AS return_rate
+    FROM Order_Items
+    JOIN Products ON Order_Items.product_id = Products.product_id
+    LEFT JOIN Returns ON Order_Items.order_item_id = Returns.order_item_id
+    GROUP BY Products.product_id;
+    ```
+
+23. **Total Reviews by Product**
+    - **Description**: Count how many reviews each product has received.
+    ```sql
+    SELECT Products.name AS product_name, COUNT(Reviews.review_id) AS total_reviews
+    FROM Products
+    LEFT JOIN Reviews ON Products.product_id = Reviews.product_id
+    GROUP BY Products.product_id;
+    ```
+
+24. **Monthly User Registration Count**
+    - **Description**: Count how many users registered each month.
+    ```sql
+    SELECT MONTH(Users.registration_date) AS registration_month, COUNT(*) AS user_count
+    FROM Users
+    GROUP BY registration_month
+    ORDER BY registration_month;
+    ```
+
+25. **Average Payment Amount**
+    - **Description**: Calculate the average payment amount per order.
+    ```sql
+    SELECT AVG(Payments.amount) AS average_payment
+    FROM Payments;
+    ```
+
+26. **Total Orders by User**
+    - **Description**: Count how many orders each user has placed.
+    ```sql
+
+
+    SELECT Users.username, COUNT(Orders.order_id) AS total_orders
+    FROM Users
+    LEFT JOIN Orders ON Users.user_id = Orders.user_id
+    GROUP BY Users.user_id;
+    ```
+
+27. **Category Review Averages**
+    - **Description**: Calculate average product ratings per category.
+    ```sql
+    SELECT Categories.name AS category_name, AVG(Reviews.rating) AS average_rating
+    FROM Categories
+    LEFT JOIN Products ON Categories.category_id = Products.category_id
+    LEFT JOIN Reviews ON Products.product_id = Reviews.product_id
+    GROUP BY Categories.category_id;
+    ```
+
+28. **Total Items Sold by Category**
+    - **Description**: Sum total items sold grouped by category.
+    ```sql
+    SELECT Categories.name AS category_name, SUM(Order_Items.quantity) AS total_items_sold
+    FROM Order_Items
+    JOIN Products ON Order_Items.product_id = Products.product_id
+    JOIN Categories ON Products.category_id = Categories.category_id
+    GROUP BY Categories.category_id;
+    ```
+
+29. **Sales by Promotion**
+    - **Description**: Calculate total sales generated from each promotion.
+    ```sql
+    SELECT Promotions.name AS promotion_name, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+    FROM Order_Items
+    JOIN Products ON Order_Items.product_id = Products.product_id
+    JOIN Promotions ON Products.promotion_id = Promotions.promotion_id
+    GROUP BY Promotions.promotion_id;
+    ```
+
+30. **Top Product Categories**
+    - **Description**: Identify the categories with the highest sales.
+    ```sql
+    SELECT Categories.name AS category_name, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+    FROM Order_Items
+    JOIN Products ON Order_Items.product_id = Products.product_id
+    JOIN Categories ON Products.category_id = Categories.category_id
+    GROUP BY Categories.category_id
+    ORDER BY total_sales DESC;
+    ```
+
+31. **User Spending Habits**
+    - **Description**: Analyze average spend per user.
+    ```sql
+    SELECT Users.username, AVG(Order_Items.price * Order_Items.quantity) AS average_spend
+    FROM Users
+    JOIN Orders ON Users.user_id = Orders.user_id
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    GROUP BY Users.user_id;
+    ```
+
+32. **Average Order Size**
+    - **Description**: Calculate the average number of items per order.
+    ```sql
+    SELECT Orders.order_id, AVG(Order_Items.quantity) AS average_order_size
+    FROM Orders
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    GROUP BY Orders.order_id;
+    ```
+
+33. **Total Discounts Given**
+    - **Description**: Calculate the total amount of discounts applied.
+    ```sql
+    SELECT SUM(Order_Items.discount) AS total_discount_given
+    FROM Order_Items;
+    ```
+
+34. **Product Performance Over Time**
+    - **Description**: Analyze sales for each product over the past year.
+    ```sql
+    SELECT Products.name AS product_name, MONTH(Orders.order_date) AS order_month, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+    FROM Orders
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    JOIN Products ON Order_Items.product_id = Products.product_id
+    WHERE Orders.order_date >= DATE_SUB(NOW(), INTERVAL 1 YEAR)
+    GROUP BY Products.product_id, order_month
+    ORDER BY Products.name, order_month;
+    ```
+
+35. **Customer Retention Rate**
+    - **Description**: Analyze how many customers placed more than one order.
+    ```sql
+    SELECT Users.username, COUNT(Orders.order_id) AS order_count
+    FROM Users
+    JOIN Orders ON Users.user_id = Orders.user_id
+    GROUP BY Users.user_id
+    HAVING order_count > 1;
+    ```
+
+36. **Most Active Users**
+    - **Description**: Identify users who have placed the most orders.
+    ```sql
+    SELECT Users.username, COUNT(Orders.order_id) AS order_count
+    FROM Users
+    JOIN Orders ON Users.user_id = Orders.user_id
+    GROUP BY Users.user_id
+    ORDER BY order_count DESC;
+    ```
+
+37. **Monthly Revenue by Category**
+    - **Description**: Calculate monthly revenue for each category.
+    ```sql
+    SELECT Categories.name AS category_name, MONTH(Orders.order_date) AS order_month, SUM(Order_Items.price * Order_Items.quantity) AS total_revenue
+    FROM Orders
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    JOIN Products ON Order_Items.product_id = Products.product_id
+    JOIN Categories ON Products.category_id = Categories.category_id
+    GROUP BY category_name, order_month
+    ORDER BY order_month, total_revenue DESC;
+    ```
+
+38. **Product Popularity Over Time**
+    - **Description**: Analyze how product sales change over the last few months.
+    ```sql
+    SELECT Products.name AS product_name, MONTH(Orders.order_date) AS order_month, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+    FROM Orders
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    JOIN Products ON Order_Items.product_id = Products.product_id
+    WHERE Orders.order_date >= DATE_SUB(NOW(), INTERVAL 6 MONTH)
+    GROUP BY product_name, order_month
+    ORDER BY order_month, total_sales DESC;
+    ```
+
+39. **Order Size Variation**
+    - **Description**: Determine the variation in order size across different users.
+    ```sql
+    SELECT Users.username, AVG(Order_Items.quantity) AS average_order_size, STDDEV(Order_Items.quantity) AS size_variation
+    FROM Users
+    JOIN Orders ON Users.user_id = Orders.user_id
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    GROUP BY Users.user_id;
+    ```
+
+40. **Product Demand Forecast**
+    - **Description**: Estimate future demand based on past sales.
+    ```sql
+    SELECT Products.name AS product_name, SUM(Order_Items.quantity) AS total_quantity_sold
+    FROM Order_Items
+    JOIN Products ON Order_Items.product_id = Products.product_id
+    WHERE Orders.order_date >= DATE_SUB(NOW(), INTERVAL 1 YEAR)
+    GROUP BY Products.product_id
+    ORDER BY total_quantity_sold DESC
+    LIMIT 10;
+    ```
+
+41. **Revenue by Time of Day**
+    - **Description**: Analyze revenue generated by different times of the day.
+    ```sql
+    SELECT HOUR(Orders.order_date) AS order_hour, SUM(Order_Items.price * Order_Items.quantity) AS total_revenue
+    FROM Orders
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    GROUP BY order_hour
+    ORDER BY order_hour;
+    ```
+
+42. **New vs. Returning Customers**
+    - **Description**: Compare sales from new and returning customers.
+    ```sql
+    SELECT IF(Orders.is_new_customer, 'New', 'Returning') AS customer_type, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+    FROM Orders
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    GROUP BY customer_type;
+    ```
+
+43. **Promotional Effectiveness**
+    - **Description**: Analyze how effective promotions are based on sales.
+    ```sql
+    SELECT Promotions.name AS promotion_name, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+    FROM Promotions
+    JOIN Products ON Promotions.promotion_id = Products.promotion_id
+    JOIN Order_Items ON Products.product_id = Order_Items.product_id
+    GROUP BY Promotions.promotion_id
+    ORDER BY total_sales DESC;
+    ```
+
+44. **Average Review Scores per Category**
+    - **Description**: Calculate average review scores for products in each category.
+    ```sql
+    SELECT Categories.name AS category_name, AVG(Reviews.rating) AS average_review_score
+    FROM Categories
+    LEFT JOIN Products ON Categories.category_id = Products.category_id
+    LEFT JOIN Reviews ON Products.product_id = Reviews.product_id
+    GROUP BY Categories.category_id;
+    ```
+
+45. **Order Frequency by User**
+    - **Description**: Analyze how frequently users place orders.
+    ```sql
+    SELECT Users.username, COUNT(Orders.order_id) AS order_count
+    FROM Users
+    LEFT JOIN Orders ON Users.user_id = Orders.user_id
+    GROUP BY Users.user_id
+    ORDER BY order_count DESC;
+    ```
+
+46. **Top-Selling Categories by Region**
+    - **Description**: Identify top-selling categories in each region.
+    ```sql
+    SELECT Users.location, Categories.name AS category_name, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+    FROM Users
+    JOIN Orders ON Users.user_id = Orders.user_id
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    JOIN Products ON Order_Items.product_id = Products.product_id
+    JOIN Categories ON Products.category_id = Categories.category_id
+    GROUP BY Users.location, Categories.category_id
+    ORDER BY Users.location, total_sales DESC;
+    ```
+
+47. **Average Price Change Over Time**
+    - **Description**: Track average price changes for products over time.
+    ```sql
+    SELECT Products.name AS product_name, MONTH(Price_Changes.change_date) AS change_month, AVG(Price_Changes.new_price) AS average_price
+    FROM Price_Changes
+    JOIN Products ON Price_Changes.product_id = Products.product_id
+    GROUP BY Products.product_id, change_month
+    ORDER BY Products.name, change_month;
+    ```
+
+48. **Total Users and Sales Comparison**
+    - **Description**: Compare total users against total sales.
+    ```sql
+    SELECT COUNT(DISTINCT Users.user_id) AS total_users, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+    FROM Users
+    JOIN Orders ON
+
+ Users.user_id = Orders.user_id
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id;
+    ```
+
+49. **Review Submission Rates**
+    - **Description**: Calculate the rate of reviews submitted compared to orders.
+    ```sql
+    SELECT Users.username, COUNT(Reviews.review_id) AS review_count, COUNT(Orders.order_id) AS order_count,
+           (COUNT(Reviews.review_id) / COUNT(Orders.order_id)) * 100 AS review_submission_rate
+    FROM Users
+    JOIN Orders ON Users.user_id = Orders.user_id
+    LEFT JOIN Reviews ON Users.user_id = Reviews.user_id
+    GROUP BY Users.user_id;
+    ```
+
+50. **Daily Sales Summary**
+    - **Description**: Provide a daily summary of sales.
+    ```sql
+    SELECT DATE(Orders.order_date) AS order_date, SUM(Order_Items.price * Order_Items.quantity) AS daily_sales
+    FROM Orders
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    GROUP BY order_date
+    ORDER BY order_date;
+    ```
+
+51. **Customer Lifetime Value**
+    - **Description**: Calculate the total spending of each customer.
+    ```sql
+    SELECT Users.username, SUM(Order_Items.price * Order_Items.quantity) AS lifetime_value
+    FROM Users
+    JOIN Orders ON Users.user_id = Orders.user_id
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    GROUP BY Users.user_id;
+    ```
+
+52. **Sales by Device Type**
+    - **Description**: Analyze sales by the device type used to place orders.
+    ```sql
+    SELECT Orders.device_type, SUM(Order_Items.price * Order_Items.quantity) AS total_sales
+    FROM Orders
+    JOIN Order_Items ON Orders.order_id = Order_Items.order_id
+    GROUP BY Orders.device_type
+    ORDER BY total_sales DESC;
+    ```
+
