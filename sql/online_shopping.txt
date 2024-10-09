@@ -1,4 +1,3 @@
-Creating over 50 assignments based on an online shopping database schema can cover a variety of scenarios involving data manipulation, querying, and database management. Below is a list of assignments with a brief description of each scenario. Each assignment includes a potential solution.
 
 Designing a MySQL database schema for an online shopping scenario involves several entities and their relationships. Below is a simplified example of a database schema that could support an online shopping system, along with a brief explanation of each table. 
 
