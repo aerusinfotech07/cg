@@ -1,0 +1,655 @@
+
+### Scenario:
+A school wants to track student exam results. They have a table that records students, their subjects, and their scores. The principal wants to know how many students passed each subject based on a passing score of 60.
+
+### MySQL Table Setup
+
+**1. Create Tables:**
+
+```sql
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+CREATE TABLE Subjects (
+    subject_id INT PRIMARY KEY,
+    subject_name VARCHAR(100)
+);
+
+CREATE TABLE ExamResults (
+    result_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT,
+    subject_id INT,
+    score INT,
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (subject_id) REFERENCES Subjects(subject_id)
+);
+```
+
+**2. Insert Sample Data:**
+
+```sql
+INSERT INTO Students (student_id, name) VALUES
+(1, 'Maria'),
+(2, 'John'),
+(3, 'Emily');
+
+INSERT INTO Subjects (subject_id, subject_name) VALUES
+(1, 'Math'),
+(2, 'Science'),
+(3, 'English');
+
+INSERT INTO ExamResults (student_id, subject_id, score) VALUES
+(1, 1, 58),
+(1, 2, 75),
+(1, 3, 90),
+(2, 1, 85),
+(2, 2, 55),
+(2, 3, 70),
+(3, 1, 95),
+(3, 2, 80),
+(3, 3, 88);
+
+
+
+```
+
+### Question:
+How many students passed in each subject?
+
+### MySQL Query to Find the Number of Students Who Passed Each Subject:
+
+```sql
+SELECT
+    s.subject_name,
+    COUNT(e.student_id) AS students_passed
+FROM
+    ExamResults e
+JOIN
+    Subjects s ON e.subject_id = s.subject_id
+WHERE
+    e.score >= 60
+GROUP BY
+    s.subject_name;
+```
+
+### Expected Result:
+This query will return a result set that shows how many students passed each subject:
+
+| subject_name | students_passed |
+|--------------|------------------|
+| Math         | 2                |
+| Science      | 2                |
+| English      | 3                |
+
+### Answer:
+Based on the exam results, the following number of students passed each subject:
+- **Math**: 2 students (John and Emily)
+- **Science**: 2 students (Maria and Emily)
+- **English**: 3 students (Maria, John, and Emily)
+
+
+
+### Scenarios and SQL Solutions
+
+1. **Scenario**: 
+Retrieve all students 
+select * from students
+who scored above 80 in Math.
+select * from ExamResults where score>80 and subject_id=1;
+
+select * from students in(select student_id from ExamResults where score>80 and subject_id=1);
+
+
+
+
+Products(id,name,price,quantity)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ```sql
+   SELECT s.name
+   FROM Students s
+   JOIN ExamResults e ON s.student_id = e.student_id
+   WHERE e.subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'Math') AND e.score > 80;
+   ```
+
+2. **Scenario**: Find the average score in Science.
+   ```sql
+   SELECT AVG(score) AS average_science_score
+   FROM ExamResults
+   WHERE subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'Science');
+   ```
+
+3. **Scenario**: List all students who failed in English (score below 60).
+   ```sql
+   SELECT s.name
+   FROM Students s
+   JOIN ExamResults e ON s.student_id = e.student_id
+   WHERE e.subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'English') AND e.score < 60;
+   ```
+
+4. **Scenario**: Count how many students passed each subject.
+   ```sql
+   SELECT s.subject_name, COUNT(e.student_id) AS students_passed
+   FROM ExamResults e
+   JOIN Subjects s ON e.subject_id = s.subject_id
+   WHERE e.score >= 60
+   GROUP BY s.subject_name;
+   ```
+
+5. **Scenario**: Get the highest score in Math.
+   ```sql
+   SELECT MAX(score) AS highest_math_score
+   FROM ExamResults
+   WHERE subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'Math');
+   ```
+
+6. **Scenario**: Find students with the lowest scores across all subjects.
+   ```sql
+   SELECT s.name, MIN(e.score) AS lowest_score
+   FROM Students s
+   JOIN ExamResults e ON s.student_id = e.student_id
+   GROUP BY s.student_id
+   ORDER BY lowest_score ASC;
+   ```
+
+7. **Scenario**: Retrieve students who scored above average in all subjects.
+   ```sql
+   SELECT s.name
+   FROM Students s
+   WHERE s.student_id IN (
+       SELECT e.student_id
+       FROM ExamResults e
+       GROUP BY e.student_id
+       HAVING AVG(e.score) > (
+           SELECT AVG(score) FROM ExamResults
+       )
+   );
+   ```
+
+8. **Scenario**: Show a breakdown of scores by subject for a specific student (e.g., Maria).
+   ```sql
+   SELECT sub.subject_name, er.score
+   FROM ExamResults er
+   JOIN Subjects sub ON er.subject_id = sub.subject_id
+   WHERE er.student_id = (SELECT student_id FROM Students WHERE name = 'Maria');
+   ```
+
+9. **Scenario**: Find the number of students who did not pass any subjects.
+   ```sql
+   SELECT COUNT(DISTINCT e.student_id) AS students_failed_all
+   FROM ExamResults e
+   GROUP BY e.student_id
+   HAVING MIN(e.score) < 60;
+   ```
+
+10. **Scenario**: Identify students who improved their scores in Math from the previous term.
+    ```sql
+    SELECT s.name
+    FROM Students s
+    JOIN ExamResults e1 ON s.student_id = e1.student_id AND e1.term = 'current'
+    JOIN ExamResults e2 ON s.student_id = e2.student_id AND e2.term = 'previous'
+    WHERE e1.subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'Math') AND e1.score > e2.score;
+    ```
+
+11. **Scenario**: List all subjects and the number of students who took each subject.
+    ```sql
+    SELECT s.subject_name, COUNT(e.student_id) AS number_of_students
+    FROM Subjects s
+    LEFT JOIN ExamResults e ON s.subject_id = e.subject_id
+    GROUP BY s.subject_name;
+    ```
+
+12. **Scenario**: Find students who scored the same in Math and Science.
+    ```sql
+    SELECT s.name
+    FROM Students s
+    JOIN ExamResults e1 ON s.student_id = e1.student_id
+    JOIN ExamResults e2 ON s.student_id = e2.student_id
+    WHERE e1.subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'Math')
+    AND e2.subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'Science')
+    AND e1.score = e2.score;
+    ```
+
+13. **Scenario**: Get the total number of exams taken by each student.
+    ```sql
+    SELECT s.name, COUNT(e.result_id) AS total_exams
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    GROUP BY s.student_id;
+    ```
+
+14. **Scenario**: Retrieve the students who scored the highest in any subject.
+    ```sql
+    SELECT s.name, e.score, sub.subject_name
+    FROM ExamResults e
+    JOIN Students s ON e.student_id = s.student_id
+    JOIN Subjects sub ON e.subject_id = sub.subject_id
+    WHERE e.score = (SELECT MAX(score) FROM ExamResults);
+    ```
+
+15. **Scenario**: Identify which subject has the highest average score.
+    ```sql
+    SELECT sub.subject_name, AVG(e.score) AS average_score
+    FROM ExamResults e
+    JOIN Subjects sub ON e.subject_id = sub.subject_id
+    GROUP BY sub.subject_name
+    ORDER BY average_score DESC
+    LIMIT 1;
+    ```
+
+16. **Scenario**: List students who need to retake a subject (score below 60).
+    ```sql
+    SELECT s.name, sub.subject_name
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    JOIN Subjects sub ON e.subject_id = sub.subject_id
+    WHERE e.score < 60;
+    ```
+
+17. **Scenario**: Find the total scores for each student across all subjects.
+    ```sql
+    SELECT s.name, SUM(e.score) AS total_score
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    GROUP BY s.student_id;
+    ```
+
+18. **Scenario**: Retrieve a list of students who scored above 90 in any subject.
+    ```sql
+    SELECT DISTINCT s.name
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    WHERE e.score > 90;
+    ```
+
+19. **Scenario**: Show the last three exam results for each student.
+    ```sql
+    SELECT s.name, e.score, sub.subject_name
+    FROM ExamResults e
+    JOIN Students s ON e.student_id = s.student_id
+    JOIN Subjects sub ON e.subject_id = sub.subject_id
+    WHERE (s.student_id, e.result_id) IN (
+        SELECT student_id, result_id
+        FROM ExamResults
+        ORDER BY result_id DESC
+        LIMIT 3
+    );
+    ```
+
+20. **Scenario**: Count how many students have improved their scores in all subjects compared to the previous term.
+    ```sql
+    SELECT COUNT(DISTINCT e1.student_id) AS students_improved
+    FROM ExamResults e1
+    JOIN ExamResults e2 ON e1.student_id = e2.student_id
+    WHERE e1.term = 'current' AND e2.term = 'previous' AND e1.score > e2.score;
+    ```
+
+21. **Scenario**: Find all students who scored less than 40 in any subject.
+    ```sql
+    SELECT DISTINCT s.name
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    WHERE e.score < 40;
+    ```
+
+22. **Scenario**: Get a summary of the number of students who passed and failed in each subject.
+    ```sql
+    SELECT sub.subject_name,
+           SUM(CASE WHEN e.score >= 60 THEN 1 ELSE 0 END) AS students_passed,
+           SUM(CASE WHEN e.score < 60 THEN 1 ELSE 0 END) AS students_failed
+    FROM ExamResults e
+    JOIN Subjects sub ON e.subject_id = sub.subject_id
+    GROUP BY sub.subject_name;
+    ```
+
+23. **Scenario**: Identify students who scored exactly the same in two different subjects.
+    ```sql
+    SELECT s.name
+    FROM Students s
+    JOIN ExamResults e1 ON s.student_id = e1.student_id
+    JOIN ExamResults e2 ON s.student_id = e2.student_id
+    WHERE e1.subject_id != e2.subject_id AND e1.score = e2.score;
+    ```
+
+24. **Scenario**: Calculate the difference between the highest and lowest scores in each subject.
+    ```sql
+    SELECT sub.subject_name, (MAX(e.score) - MIN(e.score)) AS score_difference
+    FROM ExamResults e
+    JOIN Subjects sub ON e.subject_id = sub.subject_id
+    GROUP BY sub.subject_name;
+    ```
+
+25. **Scenario**: Find the median score in History.
+    ```sql
+    SELECT AVG(score) AS median_history_score
+    FROM (
+        SELECT score
+        FROM ExamResults
+        WHERE subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'History')
+        ORDER BY score
+        LIMIT 2 - (SELECT COUNT(*) FROM ExamResults WHERE subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'History')) % 2
+        OFFSET (SELECT (COUNT(*) - 1) / 2 FROM ExamResults WHERE subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'History'))
+    ) AS
+
+ median_scores;
+    ```
+
+26. **Scenario**: List students who have the same scores across all subjects.
+    ```sql
+    SELECT s.name
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    GROUP BY s.student_id
+    HAVING COUNT(DISTINCT e.score) = 1;
+    ```
+
+27. **Scenario**: Retrieve the total number of students who passed each subject by year.
+    ```sql
+    SELECT sub.subject_name, YEAR(e.exam_date) AS exam_year, COUNT(e.student_id) AS students_passed
+    FROM ExamResults e
+    JOIN Subjects sub ON e.subject_id = sub.subject_id
+    WHERE e.score >= 60
+    GROUP BY sub.subject_name, YEAR(e.exam_date);
+    ```
+
+28. **Scenario**: Find students who scored better in their last exam compared to their average score.
+    ```sql
+    SELECT s.name
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    WHERE e.score > (
+        SELECT AVG(score)
+        FROM ExamResults
+        WHERE student_id = s.student_id
+    ) AND e.result_id = (
+        SELECT MAX(result_id)
+        FROM ExamResults
+        WHERE student_id = s.student_id
+    );
+    ```
+
+29. **Scenario**: Identify which students scored above 70 in both Math and Science.
+    ```sql
+    SELECT s.name
+    FROM Students s
+    JOIN ExamResults e1 ON s.student_id = e1.student_id
+    JOIN ExamResults e2 ON s.student_id = e2.student_id
+    WHERE e1.subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'Math') AND e1.score > 70
+      AND e2.subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'Science') AND e2.score > 70;
+    ```
+
+30. **Scenario**: Count the number of students who took exams in each term.
+    ```sql
+    SELECT term, COUNT(DISTINCT student_id) AS students_count
+    FROM ExamResults
+    GROUP BY term;
+    ```
+
+31. **Scenario**: List all students along with their average scores, sorted by average.
+    ```sql
+    SELECT s.name, AVG(e.score) AS average_score
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    GROUP BY s.student_id
+    ORDER BY average_score DESC;
+    ```
+
+32. **Scenario**: Find students who have not taken any exams.
+    ```sql
+    SELECT s.name
+    FROM Students s
+    LEFT JOIN ExamResults e ON s.student_id = e.student_id
+    WHERE e.student_id IS NULL;
+    ```
+
+33. **Scenario**: Retrieve the number of students who scored above the class average in a specific subject.
+    ```sql
+    SELECT COUNT(DISTINCT e.student_id) AS above_average_students
+    FROM ExamResults e
+    WHERE e.subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'Math')
+      AND e.score > (
+          SELECT AVG(score) FROM ExamResults WHERE subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'Math')
+      );
+    ```
+
+34. **Scenario**: List students who scored less than the average score in History.
+    ```sql
+    SELECT s.name
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    WHERE e.subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'History')
+      AND e.score < (SELECT AVG(score) FROM ExamResults WHERE subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'History'));
+    ```
+
+35. **Scenario**: Get the scores of students who are in the top 10% of their class.
+    ```sql
+    SELECT s.name, e.score
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    WHERE e.score >= (
+        SELECT MIN(score) FROM (
+            SELECT score
+            FROM ExamResults
+            ORDER BY score DESC
+            LIMIT (SELECT COUNT(*) * 0.1 FROM ExamResults)
+        ) AS top_10_percent
+    );
+    ```
+
+36. **Scenario**: Count how many students received the same score in a specific subject.
+    ```sql
+    SELECT e.score, COUNT(e.student_id) AS count_students
+    FROM ExamResults e
+    WHERE e.subject_id = (SELECT subject_id FROM Subjects WHERE subject_name = 'English')
+    GROUP BY e.score;
+    ```
+
+37. **Scenario**: List all subjects that had an average score above 75.
+    ```sql
+    SELECT sub.subject_name, AVG(e.score) AS average_score
+    FROM ExamResults e
+    JOIN Subjects sub ON e.subject_id = sub.subject_id
+    GROUP BY sub.subject_name
+    HAVING AVG(e.score) > 75;
+    ```
+
+38. **Scenario**: Identify students who improved their scores from the first to the last exam.
+    ```sql
+    SELECT s.name
+    FROM Students s
+    JOIN ExamResults e1 ON s.student_id = e1.student_id
+    JOIN ExamResults e2 ON s.student_id = e2.student_id
+    WHERE e1.term = 'first' AND e2.term = 'last' AND e2.score > e1.score;
+    ```
+
+39. **Scenario**: Get the subject with the highest number of failing students.
+    ```sql
+    SELECT sub.subject_name, COUNT(e.student_id) AS failing_students
+    FROM ExamResults e
+    JOIN Subjects sub ON e.subject_id = sub.subject_id
+    WHERE e.score < 60
+    GROUP BY sub.subject_name
+    ORDER BY failing_students DESC
+    LIMIT 1;
+    ```
+
+40. **Scenario**: Find students who have a perfect score in any subject.
+    ```sql
+    SELECT DISTINCT s.name
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    WHERE e.score = 100;
+    ```
+
+41. **Scenario**: List all students with their scores for the latest exam only.
+    ```sql
+    SELECT s.name, e.score
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    WHERE e.result_id = (
+        SELECT MAX(result_id)
+        FROM ExamResults
+        WHERE student_id = s.student_id
+    );
+    ```
+
+42. **Scenario**: Calculate the total score of students grouped by term.
+    ```sql
+    SELECT term, SUM(score) AS total_score
+    FROM ExamResults
+    GROUP BY term;
+    ```
+
+43. **Scenario**: Find all students who took the same number of exams.
+    ```sql
+    SELECT s.name, COUNT(e.result_id) AS exam_count
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    GROUP BY s.student_id
+    HAVING exam_count = (
+        SELECT COUNT(e1.result_id)
+        FROM ExamResults e1
+        GROUP BY e1.student_id
+        ORDER BY COUNT(e1.result_id)
+        LIMIT 1
+    );
+    ```
+
+44. **Scenario**: Identify subjects where more than 50% of students failed.
+    ```sql
+    SELECT sub.subject_name
+    FROM Subjects sub
+    JOIN ExamResults e ON sub.subject_id = e.subject_id
+    GROUP BY sub.subject_name
+    HAVING SUM(CASE WHEN e.score < 60 THEN 1 ELSE 0 END) > COUNT(e.student_id) / 2;
+    ```
+
+45. **Scenario**: Retrieve students who scored above their school's average score.
+    ```sql
+    SELECT s.name
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    WHERE e.score > (
+        SELECT AVG(score) FROM ExamResults
+    );
+    ```
+
+46. **Scenario**: Count the number of students who scored the same across all subjects.
+    ```sql
+    SELECT COUNT(DISTINCT e.student_id) AS same_scores_count
+    FROM ExamResults e
+    GROUP BY e.student_id
+    HAVING COUNT(DISTINCT e.score) = 1;
+    ```
+
+47. **Scenario**: List students with scores sorted by their respective averages.
+    ```sql
+    SELECT s.name, AVG(e.score) AS average_score
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    GROUP BY s.student_id
+    ORDER BY average_score DESC;
+    ```
+
+48. **Scenario**: Find all subjects where the median score is below 60.
+    ```sql
+    SELECT sub.subject_name
+    FROM Subjects sub
+    JOIN ExamResults e ON sub.subject_id = e.subject_id
+    GROUP BY sub.subject_name
+    HAVING AVG(e.score) < 60;  -- A simpler approach for demonstration
+    ```
+
+49. **Scenario**: Identify students who have the highest average scores in their grade.
+    ```sql
+    SELECT s.grade, s.name, AVG(e.score) AS average_score
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    GROUP BY s.grade, s.student_id
+    ORDER BY s.grade, average_score DESC;
+    ```
+
+50. **Scenario**: List all subjects along with the highest score in each.
+    ```sql
+    SELECT sub.subject_name, MAX(e.score) AS highest_score
+    FROM ExamResults e
+    JOIN Subjects sub ON e.subject_id = sub.subject_id
+    GROUP BY sub.subject_name;
+    ```
+
+51. **Scenario**: Find students who scored less than the average of their peers.
+    ```sql
+    SELECT s.name
+    FROM Students s
+    JOIN ExamResults e ON
+
+ s.student_id = e.student_id
+    WHERE e.score < (
+        SELECT AVG(score)
+        FROM ExamResults
+        WHERE student_id != s.student_id
+    );
+    ```
+
+52. **Scenario**: Count the number of subjects taken by each student.
+    ```sql
+    SELECT s.name, COUNT(DISTINCT e.subject_id) AS subjects_taken
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    GROUP BY s.student_id;
+    ```
+
+53. **Scenario**: Identify the most improved student based on their last two exams.
+    ```sql
+    SELECT s.name
+    FROM Students s
+    JOIN ExamResults e1 ON s.student_id = e1.student_id
+    JOIN ExamResults e2 ON s.student_id = e2.student_id
+    WHERE e1.term = 'last' AND e2.term = 'previous'
+    ORDER BY (e1.score - e2.score) DESC
+    LIMIT 1;
+    ```
+
+54. **Scenario**: Find the subjects with the least number of students passing.
+    ```sql
+    SELECT sub.subject_name, COUNT(e.student_id) AS passing_students
+    FROM Subjects sub
+    LEFT JOIN ExamResults e ON sub.subject_id = e.subject_id
+    WHERE e.score >= 60
+    GROUP BY sub.subject_name
+    ORDER BY passing_students ASC
+    LIMIT 5;
+    ```
+
+55. **Scenario**: List students who are in the bottom 10% of scores in their class.
+    ```sql
+    SELECT s.name
+    FROM Students s
+    JOIN ExamResults e ON s.student_id = e.student_id
+    WHERE e.score <= (
+        SELECT MIN(score) FROM (
+            SELECT score
+            FROM ExamResults
+            ORDER BY score
+            LIMIT (SELECT COUNT(*) * 0.1 FROM ExamResults)
+        ) AS bottom_10_percent
+    );
+    ```
+
+### Summary
+
+These scenarios cover a wide range of inquiries related to student exam results, including averages, counts, comparisons, and more. You can use these as a basis for further exploration or adapt them to your specific requirements. If you have more specific needs or further details you'd like included, just let me know!

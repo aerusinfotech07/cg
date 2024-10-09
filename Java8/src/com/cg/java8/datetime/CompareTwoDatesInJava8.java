@@ -47,4 +47,3 @@ public class CompareTwoDatesInJava8 {
     }
 }
 
-// http://www.mkyong.com/java/how-to-compare-dates-in-java/

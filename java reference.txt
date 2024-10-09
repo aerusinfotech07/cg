@@ -24,7 +24,8 @@ https://www.crsinfosolutions.com/best-practices-design-patterns-in-java/
 https://github.com/kunal-kushwaha/DSA-Bootcamp-Java/blob/main/assignments/08-strings.md
 
 https://github.com/KostiantynLuhovyi/java-strings.tasks-solution/tree/master
-
+//Good Reference
+https://jojozhuang.github.io/
 
 
 

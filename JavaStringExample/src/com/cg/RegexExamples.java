@@ -28,6 +28,22 @@ public class RegexExamples {
         String regex = "^[a-zA-Z]+$";
         return Pattern.matches(regex, str);
     }
+    
+    /*
+     * Valid IP Addresses
+192.168.0.1: Commonly used in home networks, this address consists of four numbers between 0 and 255.
+10.0.0.1: Often found in corporate networks, this address is part of a private IP range.
+172.16.0.1: This address falls within a private IP range and follows all the rules.
+127.0.0.1: Known as the loopback address, it refers back to your own device.
+Invalid IP Addresses
+256.168.0.1: Invalid because the first number exceeds 255.
+192.168.0.300: Invalid since the last number exceeds 255.
+192.168.1: Incomplete address; it lacks the required four numbers.
+192.168.01.1: Invalid due to the leading zero in “01.”
+192.168.0.0/24: Contains a subnet mask notation, which isn’t part of the IP address itself.
+0.0.0.0: Reserved for special purposes and can’t be assigned to a device.
+
+     */
 
     // 5. Check if a string is a valid IP address (IPv4)
     public static boolean isValidIPv4(String ip) {
