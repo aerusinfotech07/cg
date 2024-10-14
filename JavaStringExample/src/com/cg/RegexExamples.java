@@ -4,6 +4,12 @@ import java.util.regex.*;
 import java.util.*;
 
 public class RegexExamples {
+	
+	public static void main(String args[])
+	{
+		String str="This is a test  ing is fun test !";
+		System.out.println(extractWords("(test|fun)"));
+	}
 
     // 1. Check if a string is a valid email address
     public static boolean isValidEmail(String email) {
@@ -52,6 +58,7 @@ Invalid IP Addresses
     }
 
     // 6. Extract all digits from a string
+    //my value is 8090989898 and before it was 97897676556 and value is 67 3023
     public static List<String> extractDigits(String str) {
         String regex = "\\d+";
         Pattern pattern = Pattern.compile(regex);
@@ -64,6 +71,7 @@ Invalid IP Addresses
     }
 
     // 7. Replace all whitespace with a single space
+    //I love   india
     public static String replaceWhitespace(String str) {
         return str.replaceAll("\\s+", " ");
     }
@@ -121,7 +129,7 @@ Invalid IP Addresses
         return Pattern.matches(regex, zip);
     }
 
-    // 15. Extract all words from a string
+    // 15. Extract all words 12 from 56 a string
     public static List<String> extractWords(String str) {
         String regex = "\\b\\w+\\b";
         Pattern pattern = Pattern.compile(regex);
@@ -217,6 +225,7 @@ Invalid IP Addresses
     }
 
     // 26. Count the number of vowels in a string
+    //Count no of time digits(hello rohan my age is 23 year of birth is 2012 and 2011)
     public static int countVowels(String str) {
         String regex = "[aeiouAEIOU]";
         Pattern pattern = Pattern.compile(regex);

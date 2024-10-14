@@ -1,0 +1,1080 @@
+
+### String Functions
+
+1. **CONCAT()**
+   - **Description**: Joins two or more strings together.
+   - **Scenario**: You want to create a full name from first and last names.
+   - **Example**:
+     ```sql
+     SELECT CONCAT('John', ' ', 'Doe') AS FullName; 
+     -- Output: John Doe
+     ```
+
+2. **UPPER()**
+   - **Description**: Converts a string to uppercase.
+   - **Scenario**: You want to standardize usernames for case-insensitive comparison.
+   - **Example**:
+     ```sql
+     SELECT UPPER('john_doe') AS UpperUsername; 
+     -- Output: JOHN_DOE
+     ```
+
+3. **LOWER()**
+   - **Description**: Converts a string to lowercase.
+   - **Scenario**: Similar to UPPER, you want to prepare email addresses for comparison.
+   - **Example**:
+     ```sql
+     SELECT LOWER('John@Example.com') AS LowerEmail; 
+     -- Output: john@example.com
+     ```
+
+4. **SUBSTRING()**
+   - **Description**: Extracts a substring from a string.
+   - **Scenario**: You want to get the area code from a phone number.
+   - **Example**:
+     ```sql
+     SELECT SUBSTRING('123-456-7890', 1, 3) AS AreaCode; 
+     -- Output: 123
+     ```
+
+5. **LENGTH()**
+   - **Description**: Returns the length of a string.
+   - **Scenario**: You need to validate if a password meets minimum length requirements.
+   - **Example**:
+     ```sql
+     SELECT LENGTH('password123') AS PasswordLength; 
+     -- Output: 12
+     ```
+
+6. **TRIM()**
+   - **Description**: Removes leading and trailing spaces from a string.
+   - **Scenario**: Users may accidentally add spaces when entering their names.
+   - **Example**:
+     ```sql
+     SELECT TRIM('  Hello  ') AS TrimmedText; 
+     -- Output: Hello
+     ```
+
+7. **REPLACE()**
+   - **Description**: Replaces occurrences of a substring within a string.
+   - **Scenario**: You want to update an outdated term in a document.
+   - **Example**:
+     ```sql
+     SELECT REPLACE('Hello World', 'World', 'MySQL') AS UpdatedText; 
+     -- Output: Hello MySQL
+     ```
+
+8. **FIND_IN_SET()**
+   - **Description**: Finds the position of a string in a comma-separated list.
+   - **Scenario**: You want to check which item is present in a list of favorite fruits.
+   - **Example**:
+     ```sql
+     SELECT FIND_IN_SET('banana', 'apple,banana,cherry') AS Position; 
+     -- Output: 2
+     ```
+
+9. **CHAR_LENGTH()**
+   - **Description**: Returns the number of characters in a string.
+   - **Scenario**: You want to display the character count of a comment.
+   - **Example**:
+     ```sql
+     SELECT CHAR_LENGTH('Hello') AS CharacterCount; 
+     -- Output: 5
+     ```
+
+10. **LEFT()**
+    - **Description**: Returns the leftmost characters from a string.
+    - **Scenario**: You need the first two letters of a product code.
+    - **Example**:
+      ```sql
+      SELECT LEFT('ABCD1234', 2) AS ProductPrefix; 
+      -- Output: AB
+      ```
+
+### Numeric Functions
+
+11. **ABS()**
+    - **Description**: Returns the absolute value of a number.
+    - **Scenario**: You want to find the absolute difference in sales figures.
+    - **Example**:
+      ```sql
+      SELECT ABS(-10) AS AbsoluteValue; 
+      -- Output: 10
+      ```
+
+12. **ROUND()**
+    - **Description**: Rounds a number to a specified decimal place.
+    - **Scenario**: You need to round off a price for display.
+    - **Example**:
+      ```sql
+      SELECT ROUND(123.4547, 2) AS RoundedPrice; 
+      -- Output: 123.46
+      ```
+
+13. **FLOOR()**
+    - **Description**: Returns the largest integer less than or equal to a number.
+    - **Scenario**: You want to calculate how many full items can be bought with a given budget.
+    - **Example**:
+      ```sql
+      SELECT FLOOR(123.656) AS FloorValue; 
+      -- Output: 123
+      ```
+
+14. **CEIL()**
+    - **Description**: Returns the smallest integer greater than or equal to a number.
+    - **Scenario**: You want to round up the number of seats needed for an event.
+    - **Example**:
+      ```sql
+      SELECT CEIL(123.456) AS CeilValue; 
+      -- Output: 124
+      ```
+
+15. **RAND()**
+    - **Description**: Generates a random floating-point value between 0 and 1.
+    - **Scenario**: You want to randomly select a discount for a promotion.
+    - **Example**:
+      ```sql
+      SELECT RAND() AS RandomValue; 
+      -- Output: Random number between 0 and 1
+      ```
+
+16. **MOD()**
+    - **Description**: Returns the remainder of a division operation.
+    - **Scenario**: You want to determine if a number is even or odd.
+    - **Example**:
+      ```sql
+      SELECT MOD(10, 3) AS Remainder; 
+      -- Output: 1
+      ```
+
+17. **POW()**
+    - **Description**: Raises a number to the power of another.
+    - **Scenario**: You need to calculate the square of a number.
+    - **Example**:
+      ```sql
+      SELECT POW(2, 3) AS PowerValue; 
+      -- Output: 8
+      ```
+
+18. **SQRT()**
+    - **Description**: Returns the square root of a number.
+    - **Scenario**: You need to calculate the dimensions of a square from its area.
+    - **Example**:
+      ```sql
+      SELECT SQRT(16) AS SquareRoot; 
+      -- Output: 4
+      ```
+
+19. **GREATEST()**
+    - **Description**: Returns the largest value among its arguments.
+    - **Scenario**: You want to determine the highest score from multiple exams.
+    - **Example**:
+      ```sql
+      SELECT GREATEST(80, 90, 70) AS HighestScore; 
+      -- Output: 90
+      ```
+
+20. **LEAST()**
+    - **Description**: Returns the smallest value among its arguments.
+    - **Scenario**: You need the lowest temperature recorded during the week.
+    - **Example**:
+      ```sql
+      SELECT LEAST(22, 18, 25) AS LowestTemperature; 
+      -- Output: 18
+      ```
+
+### Date and Time Functions
+
+21. **NOW()**
+    - **Description**: Returns the current date and time.
+    - **Scenario**: You want to log the time of an event.
+    - **Example**:
+      ```sql
+      SELECT NOW() AS CurrentDateTime; 
+      -- Output: Current date and time
+      ```
+
+22. **CURDATE()**
+    - **Description**: Returns the current date.
+    - **Scenario**: You want to filter records based on today's date.
+    - **Example**:
+      ```sql
+      SELECT CURDATE() AS Today; 
+      -- Output: Current date
+      ```
+
+23. **CURTIME()**
+    - **Description**: Returns the current time.
+    - **Scenario**: You want to display the current time in a meeting schedule.
+    - **Example**:
+      ```sql
+      SELECT CURTIME() AS CurrentTime; 
+      -- Output: Current time
+      ```
+
+24. **DATE_ADD()**
+    - **Description**: Adds a time interval to a date.
+    - **Scenario**: You want to calculate a deadline by adding days to a start date.
+    - **Example**:
+      ```sql
+      SELECT DATE_ADD('2024-01-01', INTERVAL 10 DAY) AS NewDate; 
+      -- Output: 2024-01-11
+      ```
+
+25. **DATE_SUB()**
+    - **Description**: Subtracts a time interval from a date.
+    - **Scenario**: You need to determine a past date by subtracting days.
+    - **Example**:
+      ```sql
+      SELECT DATE_SUB('2024-01-01', INTERVAL 10 DAY) AS PastDate; 
+      -- Output: 2023-12-22
+      ```
+
+26. **DATEDIFF()**
+    - **Description**: Returns the difference in days between two dates.
+    - **Scenario**: You want to find out how many days remain until a project deadline.
+    - **Example**:
+      ```sql
+      SELECT DATEDIFF('2024-01-01', '2023-12-31') AS DaysDifference; 
+      -- Output: 1
+      ```
+
+27. **YEAR()**
+    - **Description**: Extracts the year from a date.
+    - **Scenario**: You want to group records by year for a report.
+    - **
+
+Example**:
+      ```sql
+      SELECT YEAR(NOW()) AS CurrentYear; 
+      -- Output: Current year
+      ```
+
+28. **MONTH()**
+    - **Description**: Extracts the month from a date.
+    - **Scenario**: You want to summarize sales data by month.
+    - **Example**:
+      ```sql
+      SELECT MONTH(NOW()) AS CurrentMonth; 
+      -- Output: Current month
+      ```
+
+29. **DAY()**
+    - **Description**: Extracts the day from a date.
+    - **Scenario**: You need to display the day of the month for records.
+    - **Example**:
+      ```sql
+      SELECT DAY(NOW()) AS CurrentDay; 
+      -- Output: Current day
+      ```
+
+30. **WEEKDAY()**
+    - **Description**: Returns the weekday index for a date (0 = Monday).
+    - **Scenario**: You want to find out which day of the week a specific date falls on.
+    - **Example**:
+      ```sql
+      SELECT WEEKDAY('2024-01-01') AS WeekdayIndex; 
+      -- Output: 0 (Monday)
+      ```
+
+### Control Flow Functions
+
+31. **IF()**
+    - **Description**: Returns one value if a condition is true, and another if false.
+    - **Scenario**: You want to assign a label based on a score.
+    - **Example**:
+      ```sql
+      SELECT IF(Score >= 50, 'Pass', 'Fail') AS Result FROM Students; 
+      ```
+
+32. **CASE**
+    - **Description**: Returns values based on multiple conditions.
+    - **Scenario**: You want to categorize products based on price ranges.
+    - **Example**:
+      ```sql
+      SELECT 
+          CASE 
+              WHEN Price < 10 THEN 'Cheap' 
+              WHEN Price < 50 THEN 'Affordable' 
+              ELSE 'Expensive' 
+          END AS PriceCategory 
+      FROM Products; 
+      ```
+
+33. **NULLIF()**
+    - **Description**: Returns NULL if two expressions are equal.
+    - **Scenario**: You want to avoid division by zero.
+    - **Example**:
+      ```sql
+      SELECT NULLIF(0, 0) AS Result; 
+      -- Output: NULL
+      ```
+
+34. **COALESCE()**
+    - **Description**: Returns the first non-null value from a list.
+    - **Scenario**: You want to display a default value for missing data.
+    - **Example**:
+      ```sql
+      SELECT COALESCE(NULL, NULL, NULL, NULL, NULL, 'Default Value', NULL, 'Another Value') AS FirstValue; 
+      -- Output: Default Value
+      ```
+
+35. **IFNULL()**
+    - **Description**: Returns a specified value if the expression is NULL.
+    - **Scenario**: You want to provide a fallback value for NULL fields.
+    - **Example**:
+      ```sql
+      SELECT IFNULL(Salary, 0) AS Salary FROM Employees; 
+	  SELECT sum(IFNULL(Salary, 0)) AS Salary FROM Employees; 
+      ```
+
+### Aggregate Functions
+
+36. **COUNT()**
+    - **Description**: Returns the number of rows that match a specified condition.
+    - **Scenario**: You want to count how many users are in the database.
+    - **Example**:
+      ```sql
+      SELECT COUNT(*) AS UserCount FROM Users; 
+      ```
+
+37. **SUM()**
+    - **Description**: Returns the total sum of a numeric column.
+    - **Scenario**: You want to calculate total sales for a month.
+    - **Example**:
+      ```sql
+      SELECT SUM(Sales) AS TotalSales FROM Orders; 
+      ```
+
+38. **AVG()**
+    - **Description**: Returns the average value of a numeric column.
+    - **Scenario**: You need to find the average salary of employees.
+    - **Example**:
+      ```sql
+      SELECT AVG(Salary) AS AverageSalary FROM Employees; 
+      ```
+
+39. **MIN()**
+    - **Description**: Returns the minimum value in a set.
+    - **Scenario**: You want to find the lowest price in a product catalog.
+    - **Example**:
+      ```sql
+      SELECT MIN(Price) AS LowestPrice FROM Products; 
+      ```
+
+40. **MAX()**
+    - **Description**: Returns the maximum value in a set.
+    - **Scenario**: You want to determine the highest score in a test.
+    - **Example**:
+      ```sql
+      SELECT MAX(Score) AS HighestScore FROM Exams; 
+      ```
+
+
+### Miscellaneous Functions
+
+56. **FORMAT()**
+    - **Description**: Formats a number as a string.
+    - **Scenario**: You want to display currency values with commas.
+    - **Example**:
+      ```sql
+      SELECT FORMAT(1234567.89, 2) AS FormattedValue; 
+      -- Output: 1,234,567.89
+      ```
+
+57. **COALESCE()**
+    - **Description**: Returns the first non-null value from a list of expressions.
+    - **Scenario**: You want to select the first available address from multiple fields.
+    - **Example**:
+      ```sql
+      SELECT COALESCE(address1, address2, 'No Address') AS Address FROM Customers; 
+      ```
+
+58. **UUID()**
+    - **Description**: Generates a universally unique identifier (UUID).
+    - **Scenario**: You need unique identifiers for records in a distributed system.
+    - **Example**:
+      ```sql
+      SELECT UUID() AS UniqueID; 
+      ```
+
+59. **IFNULL()**
+    - **Description**: Returns a specified value if the expression is NULL.
+    - **Scenario**: You want to replace NULL values in a report with a default message.
+    - **Example**:
+      ```sql
+      SELECT IFNULL(comment, 'No Comment') AS Comment FROM Feedback; 
+      ```
+
+60. **LAST_INSERT_ID()**
+    - **Description**: Returns the last automatically generated value.
+    - **Scenario**: You want to retrieve the ID of the last inserted record.
+    - **Example**:
+      ```sql
+      INSERT INTO Users (name) VALUES ('John');
+      SELECT LAST_INSERT_ID() AS LastID; 
+      ```
+
+### Additional Functions
+
+61. **BIT_LENGTH()**
+    - **Description**: Returns the length of a string in bits.
+    - **Scenario**: You want to measure the size of a binary file.
+    - **Example**:
+      ```sql
+      SELECT BIT_LENGTH('Hello') AS BitLength; 
+      ```
+
+62. **CHAR_LENGTH()**
+    - **Description**: Returns the number of characters in a string.
+    - **Scenario**: You want to validate username length.
+    - **Example**:
+      ```sql
+      SELECT CHAR_LENGTH('username') AS CharCount; 
+      ```
+
+63. **REVERSE()**
+    - **Description**: Reverses a string.
+    - **Scenario**: You want to create a palindrome checker.
+    - **Example**:
+      ```sql
+      SELECT REVERSE('abc') AS Reversed; 
+      -- Output: cba
+      ```
+
+64. **POSITION()**
+    - **Description**: Returns the position of the first occurrence of a substring.
+    - **Scenario**: You want to find the position of a word in a sentence.
+    - **Example**:
+      ```sql
+      SELECT POSITION('world' IN 'Hello world') AS Position; 
+      -- Output: 7
+      ```
+
+
+      ```
+
+66. **FIELD()**
+    - **Description**: Returns the index of the first argument in the list of subsequent arguments.
+    - **Scenario**: You want to determine the position of a specific color in a list.
+    - **Example**:
+      ```sql
+      SELECT FIELD('green', 'red', 'green', 'blue') AS ColorIndex; 
+      -- Output: 2
+      ```
+
+67. **TO_DAYS()**
+    - **Description**: Returns the date as a number of days since year 0.
+    - **Scenario**: You want to calculate the difference in days between two dates.
+    - **Example**:
+      ```sql
+      SELECT TO_DAYS('2024-01-01') - TO_DAYS('2023-01-01') AS DaysDifference; 
+      ```
+
+68. **FROM_DAYS()**
+    - **Description**: Converts a number of days since year 0 to a date.
+    - **Scenario**: You want to retrieve the date from a specific number of days.
+    - **Example**:
+      ```sql
+      SELECT FROM_DAYS(738124) AS Date; 
+      ```
+
+69. **LAST_DAY()**
+    - **Description**: Returns the last day of the month for a given date.
+    - **Scenario**: You want to find out the end of the month for billing purposes.
+    - **Example**:
+      ```sql
+      SELECT LAST_DAY('2024-01-15') AS EndOfMonth; 
+      -- Output: 2024-01-31
+      ```
+
+70. **EXTRACT()**
+    - **Description**: Retrieves subparts from a date or time value.
+    - **Scenario**: You want to get the month from a date.
+    - **Example**:
+      ```sql
+      SELECT EXTRACT(MONTH FROM '2024-01-01') AS Month; 
+      -- Output: 1
+      ```
+
+### Session Functions
+
+71. **USER()**
+    - **Description**: Returns the username and host name of the current MySQL user.
+    - **Scenario**: You want to audit user activities.
+    - **Example**:
+      ```sql
+      SELECT USER() AS CurrentUser; 
+      ```
+
+72. **CURRENT_USER()**
+    - **Description**: Returns the current user name and host name.
+    - **Scenario**: Similar to USER(), used for tracking sessions.
+    - **Example**:
+      ```sql
+      SELECT CURRENT_USER() AS CurrentSessionUser; 
+      ```
+
+73. **SESSION_USER()**
+    - **Description**: Returns the user name and host name for the current session.
+    - **Scenario**: Useful for debugging and auditing.
+    - **Example**:
+      ```sql
+      SELECT SESSION_USER() AS SessionUser; 
+      ```
+
+74. **PASSWORD()**
+    - **Description**: Returns a hashed version of a password.
+    - **Scenario**: You want to store passwords securely.
+    - **Example**:
+      ```sql
+      SELECT PASSWORD('my_password') AS HashedPassword; 
+      ```
+
+75. **LAST_INSERT_ID()**
+    - **Description**: Returns the last automatically generated value.
+    - **Scenario**: After inserting a record, you want to get its ID.
+    - **Example**:
+      ```sql
+      INSERT INTO Users (name) VALUES ('Alice');
+      SELECT LAST_INSERT_ID() AS LastUserID; 
+      ```
+
+### Group Functions
+
+81. **GROUP_CONCAT()**
+    - **Description**: Concatenates values from multiple rows into a single string.
+    - **Scenario**: You want to create a list of student names in a single field.
+    - **Example**:
+      ```sql
+      SELECT GROUP_CONCAT(name) AS StudentNames FROM Students; 
+      ```
+
+82. **COUNT(DISTINCT)**
+    - **Description**: Counts distinct values in a column.
+    - **Scenario**: You want to count unique users who logged in.
+    - **Example**:
+      ```sql
+      SELECT COUNT(DISTINCT user_id) AS UniqueUsers FROM Logins; 
+      ```
+
+83. **AVG(DISTINCT)**
+    - **Description**: Calculates the average of distinct values.
+    - **Scenario**: You want to find the average of unique scores.
+    - **Example**:
+      ```sql
+      SELECT AVG(DISTINCT score) AS AverageUniqueScore FROM Scores; 
+      ```
+
+84. **SUM(DISTINCT)**
+    - **Description**: Calculates the sum of
+
+ distinct values.
+    - **Scenario**: You want to sum unique sales figures.
+    - **Example**:
+      ```sql
+      SELECT SUM(DISTINCT sales) AS TotalUniqueSales FROM Orders; 
+      ```
+
+85. **COUNT(*)**
+    - **Description**: Counts all rows in a result set.
+    - **Scenario**: You want to count total entries in a table.
+      ```sql
+      SELECT COUNT(*) AS TotalEntries FROM Orders; 
+      ```
+
+### String Functions
+
+91. **SUBSTRING_INDEX()**
+    - **Description**: Returns a substring from a string before a specified number of occurrences of a delimiter.
+    - **Scenario**: You want to extract the first part of an email address.
+    - **Example**:
+      ```sql
+      SELECT SUBSTRING_INDEX('user@example.com', '@', 1) AS Username; 
+      ```
+
+92. **LPAD()**
+    - **Description**: Pads a string on the left with a specified character.
+    - **Scenario**: You want to format numbers with leading zeros.
+    - **Example**:
+      ```sql
+      SELECT LPAD(53, 3, '0') AS PaddedNumber; 
+      -- Output: 005
+      ```
+
+93. **RPAD()**
+    - **Description**: Pads a string on the right with a specified character.
+    - **Scenario**: You want to ensure all entries in a column are of the same length.
+    - **Example**:
+      ```sql
+      SELECT RPAD('abc', 5, 'x') AS PaddedString; 
+      -- Output: abcxx
+      ```
+
+94. **LTRIM()**
+    - **Description**: Removes leading spaces from a string.
+    - **Scenario**: You want to clean up user input.
+    - **Example**:
+      ```sql
+      SELECT LTRIM('   Hello') AS TrimmedString; 
+      -- Output: 'Hello'
+      ```
+
+95. **RTRIM()**
+    - **Description**: Removes trailing spaces from a string.
+    - **Scenario**: Similar to LTRIM(), but for the end of a string.
+    - **Example**:
+      ```sql
+      SELECT RTRIM('Hello   ') AS TrimmedString; 
+      -- Output: 'Hello'
+      ```
+
+### Date Functions
+
+96. **DATE_ADD()**
+    - **Description**: Adds an interval to a date.
+    - **Scenario**: You want to calculate a deadline from a start date.
+    - **Example**:
+      ```sql
+      SELECT DATE_ADD('2024-01-01', INTERVAL 10 DAY) AS NewDate; 
+      ```
+
+97. **DATE_SUB()**
+    - **Description**: Subtracts an interval from a date.
+    - **Scenario**: You want to find out what date was a week ago.
+    - **Example**:
+      ```sql
+      SELECT DATE_SUB('2024-01-01', INTERVAL 7 DAY) AS PreviousDate; 
+      ```
+
+98. **DATEDIFF()**
+    - **Description**: Returns the difference in days between two dates.
+    - **Scenario**: You want to know how many days until a project deadline.
+    - **Example**:
+      ```sql
+      SELECT DATEDIFF('2024-01-01', '2023-12-25') AS DaysUntilDeadline; 
+      ```
+
+99. **TIMESTAMPDIFF()**
+    - **Description**: Returns the difference between two date or datetime values.
+    - **Scenario**: You want to calculate the time between two events.
+    - **Example**:
+      ```sql
+      SELECT TIMESTAMPDIFF(HOUR, '2024-01-01 12:00:00', '2024-01-02 12:00:00') AS HoursDifference; 
+      ```
+
+100. **STR_TO_DATE()**
+    - **Description**: Converts a string to a date according to a specified format.
+    - **Scenario**: You want to convert user input into a date format.
+    - **Example**:
+      ```sql
+      SELECT STR_TO_DATE('12-31-2024', '%m-%d-%Y') AS ConvertedDate; 
+      ```
+
+
+### Date Functions in MySQL with Scenarios
+
+1. **NOW()**
+   - **Description**: Returns the current date and time.
+   - **Scenario**: You want to log the current timestamp for a new entry.
+   - **Example**: 
+     ```sql
+     INSERT INTO logs (entry_time) VALUES (NOW());
+     ```
+
+2. **CURDATE()**
+   - **Description**: Returns the current date.
+   - **Scenario**: You want to filter records from today.
+   - **Example**: 
+     ```sql
+     SELECT * FROM orders WHERE order_date = CURDATE();
+     ```
+
+3. **CURRENT_DATE()**
+   - **Description**: Alias for `CURDATE()`.
+   - **Scenario**: Similar to `CURDATE()`, you want the current date for comparisons.
+   - **Example**: 
+     ```sql
+     SELECT * FROM events WHERE event_date = CURRENT_DATE();
+     ```
+
+4. **DATE()**
+   - **Description**: Extracts the date part from a datetime expression.
+   - **Scenario**: You need to compare just the date part of a datetime.
+   - **Example**: 
+     ```sql
+     SELECT DATE(order_time) AS order_date FROM orders;
+     ```
+
+5. **MONTHNAME()**
+   - **Description**: Returns the name of the month for a given date.
+   - **Scenario**: You want to display the month names in a report.
+   - **Example**: 
+     ```sql
+     SELECT MONTHNAME(order_date) AS MonthName FROM orders;
+     ```
+
+6. **MONTH()**
+   - **Description**: Returns the month for a given date.
+   - **Scenario**: You want to aggregate sales by month.
+   - **Example**: 
+     ```sql
+     SELECT MONTH(order_date) AS Month, SUM(total) AS TotalSales FROM orders GROUP BY Month;
+     ```
+
+7. **YEAR()**
+   - **Description**: Returns the year for a given date.
+   - **Scenario**: You want to analyze yearly performance.
+   - **Example**: 
+     ```sql
+     SELECT YEAR(order_date) AS Year, COUNT(*) AS OrdersCount FROM orders GROUP BY Year;
+     ```
+
+8. **DAY()**
+   - **Description**: Returns the day of the month for a given date.
+   - **Scenario**: You want to find all orders placed on the 15th of any month.
+   - **Example**: 
+     ```sql
+     SELECT * FROM orders WHERE DAY(order_date) = 15;
+     ```
+
+9. **WEEKDAY()**
+   - **Description**: Returns the weekday index for a date (0 = Monday).
+   - **Scenario**: You want to determine if a date falls on a weekend.
+   - **Example**: 
+     ```sql
+     SELECT order_date, WEEKDAY(order_date) AS WeekdayIndex FROM orders WHERE WEEKDAY(order_date) IN (5, 6);
+     ```
+
+10. **LAST_DAY()**
+    - **Description**: Returns the last day of the month for a given date.
+    - **Scenario**: You need to find the last day for billing purposes.
+    - **Example**: 
+      ```sql
+      SELECT LAST_DAY(order_date) AS LastDayOfMonth FROM orders;
+      ```
+
+11. **DATE_FORMAT()**
+    - **Description**: Formats a date according to a specified format.
+    - **Scenario**: You want to display dates in a user-friendly format.
+    - **Example**: 
+      ```sql
+      SELECT DATE_FORMAT(order_date, '%Y-%m-%d') AS FormattedDate FROM orders;
+      ```
+
+12. **DATEDIFF()**
+    - **Description**: Returns the difference in days between two dates.
+    - **Scenario**: You want to calculate how many days until an event.
+    - **Example**: 
+      ```sql
+      SELECT DATEDIFF('2024-01-01', CURDATE()) AS DaysUntilEvent;
+      ```
+
+13. **DATE_ADD()**
+    - **Description**: Adds a specified time interval to a date.
+    - **Scenario**: You want to calculate a delivery date by adding days to the order date.
+    - **Example**: 
+      ```sql
+      SELECT DATE_ADD(order_date, INTERVAL 7 DAY) AS DeliveryDate FROM orders;
+      ```
+
+14. **DATE_SUB()**
+    - **Description**: Subtracts a specified time interval from a date.
+    - **Scenario**: You need to find the date a week before a given date.
+    - **Example**: 
+      ```sql
+      SELECT DATE_SUB(order_date, INTERVAL 7 DAY) AS OneWeekEarlier FROM orders;
+      ```
+
+15. **EXTRACT()**
+    - **Description**: Retrieves subparts from a date or time value.
+    - **Scenario**: You want to get the quarter of the year for reporting.
+    - **Example**: 
+      ```sql
+      SELECT EXTRACT(QUARTER FROM order_date) AS Quarter FROM orders;
+      ```
+
+16. **STR_TO_DATE()**
+    - **Description**: Converts a string to a date according to a specified format.
+    - **Scenario**: You want to convert user input dates to a date format.
+    - **Example**: 
+      ```sql
+      SELECT STR_TO_DATE('12-31-2024', '%m-%d-%Y') AS ConvertedDate;
+      ```
+
+17. **TO_DAYS()**
+    - **Description**: Returns the date as a number of days since year 0.
+    - **Scenario**: You want to compare how many days two dates are apart.
+    - **Example**: 
+      ```sql
+      SELECT TO_DAYS('2024-01-01') - TO_DAYS('2023-12-31') AS DayDifference;
+      ```
+
+18. **FROM_DAYS()**
+    - **Description**: Converts a number of days since year 0 to a date.
+    - **Scenario**: You want to find out what date corresponds to a specific day number.
+    - **Example**: 
+      ```sql
+      SELECT FROM_DAYS(738124) AS CorrespondingDate;
+      ```
+
+19. **TIMESTAMPDIFF()**
+    - **Description**: Returns the difference between two date or datetime values.
+    - **Scenario**: You want to calculate the hours between two timestamps.
+    - **Example**: 
+      ```sql
+      SELECT TIMESTAMPDIFF(HOUR, '2024-01-01 12:00:00', '2024-01-02 12:00:00') AS HoursDifference;
+      ```
+
+20. **TIMESTAMPADD()**
+    - **Description**: Adds a time interval to a date or datetime.
+    - **Scenario**: You want to calculate the date and time after adding a specific interval.
+    - **Example**: 
+      ```sql
+      SELECT TIMESTAMPADD(DAY, 10, '2024-01-01') AS NewDate;
+      ```
+
+21. **GET_FORMAT()**
+    - **Description**: Returns a format for date values.
+    - **Scenario**: You want to display dates in a specific format based on locale.
+    - **Example**: 
+      ```sql
+      SELECT GET_FORMAT(DATE, 'USA') AS USADateFormat;
+      ```
+
+22. **UNIX_TIMESTAMP()**
+    - **Description**: Returns the current date and time as a Unix timestamp.
+    - **Scenario**: You want to store a timestamp for tracking purposes.
+    - **Example**: 
+      ```sql
+      SELECT UNIX_TIMESTAMP(NOW()) AS CurrentTimestamp;
+      ```
+
+23. **FROM_UNIXTIME()**
+    - **Description**: Converts a Unix timestamp to a date.
+    - **Scenario**: You want to convert stored Unix timestamps back to human-readable dates.
+    - **Example**: 
+      ```sql
+      SELECT FROM_UNIXTIME(UNIX_TIMESTAMP()) AS HumanReadableDate;
+      ```
+
+24. **CONVERT_TZ()**
+    - **Description**: Converts a datetime value from one time zone to another.
+    - **Scenario**: You want to display event times in different time zones.
+    - **Example**: 
+      ```sql
+      SELECT CONVERT_TZ(order_time, 'UTC', 'America/New_York') AS NewYorkTime FROM orders;
+      ```
+
+25. **SEC_TO_TIME()**
+    - **Description**: Converts seconds to a time format.
+    - **Scenario**: You want to show total seconds in a readable time format.
+    - **Example**: 
+      ```sql
+      SELECT SEC_TO_TIME(3600) AS ReadableTime;  -- Output: '01:00:00'
+      ```
+
+26. **TIME_TO_SEC()**
+    - **Description**: Converts a time format to seconds.
+    - **Scenario**: You need to calculate the total time in seconds for an event.
+    - **Example**: 
+      ```sql
+      SELECT TIME_TO_SEC('01:00:00') AS TotalSeconds;
+      ```
+
+27. **TIME_FORMAT()**
+    - **Description**: Formats a time value according to a specified format.
+    - **Scenario**: You want to display time in a specific format.
+    - **Example**: 
+      ```sql
+      SELECT TIME_FORMAT(NOW(), '%H:%i:%s') AS FormattedTime;
+      ```
+
+28. **HOUR()**
+    - **Description**
+
+: Returns the hour for a given time.
+    - **Scenario**: You want to find orders placed in the morning (before 12 PM).
+    - **Example**: 
+      ```sql
+      SELECT * FROM orders WHERE HOUR(order_time) < 12;
+      ```
+
+29. **MINUTE()**
+    - **Description**: Returns the minute for a given time.
+    - **Scenario**: You want to analyze the time of day orders are placed.
+    - **Example**: 
+      ```sql
+      SELECT MINUTE(order_time) AS OrderMinute FROM orders;
+      ```
+
+30. **SECOND()**
+    - **Description**: Returns the second for a given time.
+    - **Scenario**: You want to log the exact time of events.
+    - **Example**: 
+      ```sql
+      SELECT SECOND(order_time) AS OrderSecond FROM orders;
+      ```
+
+31. **DAYOFWEEK()**
+    - **Description**: Returns the weekday index for a date (1 = Sunday).
+    - **Scenario**: You want to find sales data for weekends.
+    - **Example**: 
+      ```sql
+      SELECT * FROM sales WHERE DAYOFWEEK(sale_date) IN (1, 7);
+      ```
+
+32. **DAYOFMONTH()**
+    - **Description**: Returns the day of the month for a date.
+    - **Scenario**: You want to analyze monthly reports by day.
+    - **Example**: 
+      ```sql
+      SELECT DAYOFMONTH(order_date) AS Day FROM orders;
+      ```
+
+33. **DAYOFYEAR()**
+    - **Description**: Returns the day of the year for a date.
+    - **Scenario**: You want to find out how many days into the year an event is.
+    - **Example**: 
+      ```sql
+      SELECT DAYOFYEAR('2024-02-10') AS DayOfYear;
+      ```
+
+34. **QUARTER()**
+    - **Description**: Returns the quarter of the year for a date.
+    - **Scenario**: You want to summarize sales by quarter.
+    - **Example**: 
+      ```sql
+      SELECT QUARTER(order_date) AS SalesQuarter FROM orders;
+      ```
+
+35. **TIMESTAMP()**
+    - **Description**: Converts a date and time into a timestamp.
+    - **Scenario**: You want to store a specific date and time as a timestamp.
+    - **Example**: 
+      ```sql
+      SELECT TIMESTAMP('2024-01-01 12:00:00') AS TimestampValue;
+      ```
+
+36. **SET_TIMEZONE()**
+    - **Description**: Sets the session time zone.
+    - **Scenario**: You want to adjust your session to a specific time zone.
+    - **Example**: 
+      ```sql
+      SET time_zone = 'America/New_York';
+      ```
+
+37. **SEC_TO_TIME()**
+    - **Description**: Converts seconds to a time string.
+    - **Scenario**: You want to display duration in hours, minutes, and seconds.
+    - **Example**: 
+      ```sql
+      SELECT SEC_TO_TIME(3661) AS Duration;  -- Output: '01:01:01'
+      ```
+
+38. **TIME_ADD()**
+    - **Description**: Adds time to a time value.
+    - **Scenario**: You want to calculate the end time of an event.
+    - **Example**: 
+      ```sql
+      SELECT TIME_ADD('12:00:00', INTERVAL 1 HOUR) AS EndTime; 
+      ```
+
+39. **TIME_SUB()**
+    - **Description**: Subtracts time from a time value.
+    - **Scenario**: You want to determine the start time of an event.
+    - **Example**: 
+      ```sql
+      SELECT TIME_SUB('12:00:00', INTERVAL 30 MINUTE) AS StartTime; 
+      ```
+
+40. **IS_DATE()**
+    - **Description**: Checks if a value is a date.
+    - **Scenario**: You want to validate user input for dates.
+    - **Example**: 
+      ```sql
+      SELECT IS_DATE('2024-01-01') AS IsDate; 
+      ```
+
+41. **WEEK()**
+    - **Description**: Returns the week number for a date.
+    - **Scenario**: You want to report weekly sales.
+    - **Example**: 
+      ```sql
+      SELECT WEEK(order_date) AS WeekNumber, SUM(total) FROM orders GROUP BY WeekNumber;
+      ```
+
+42. **WEEKOFYEAR()**
+    - **Description**: Returns the week number of the year for a date.
+    - **Scenario**: You want to analyze performance by week of the year.
+    - **Example**: 
+      ```sql
+      SELECT WEEKOFYEAR(order_date) AS WeekOfYear FROM orders;
+      ```
+
+43. **FORMAT()**
+    - **Description**: Formats a number (or date) with a specified format.
+    - **Scenario**: You want to display monetary values in a formatted way.
+    - **Example**: 
+      ```sql
+      SELECT FORMAT(SUM(total), 2) AS TotalSales FROM orders;
+      ```
+
+44. **CURRENT_TIMESTAMP()**
+    - **Description**: Returns the current date and time, similar to `NOW()`.
+    - **Scenario**: You want a timestamp for when a record is inserted.
+    - **Example**: 
+      ```sql
+      INSERT INTO logs (entry_time) VALUES (CURRENT_TIMESTAMP());
+      ```
+
+45. **GET_FORMAT()**
+    - **Description**: Returns a format for date values.
+    - **Scenario**: You want to display dates in a specific locale format.
+    - **Example**: 
+      ```sql
+      SELECT GET_FORMAT(DATE, 'EUR') AS EuroFormattedDate;
+      ```
+
+46. **EXTRACT(MICROSECOND)**
+    - **Description**: Returns the microsecond part of a time value.
+    - **Scenario**: You want to capture high-resolution timestamps.
+    - **Example**: 
+      ```sql
+      SELECT EXTRACT(MICROSECOND FROM order_time) AS Microsecond FROM orders;
+      ```
+
+47. **TIMESTAMPDIFF()**
+    - **Description**: Calculates the difference between two datetime values.
+    - **Scenario**: You want to calculate how long it took to fulfill an order.
+    - **Example**: 
+      ```sql
+      SELECT TIMESTAMPDIFF(MINUTE, order_time, delivery_time) AS MinutesToDeliver FROM orders;
+      ```
+
+48. **WEEKDAY()**
+    - **Description**: Returns the weekday index (0 = Monday).
+    - **Scenario**: You want to find records from weekdays only.
+    - **Example**: 
+      ```sql
+      SELECT * FROM orders WHERE WEEKDAY(order_date) < 5;  -- Monday to Friday
+      ```
+
+49. **TIME_TO_SEC()**
+    - **Description**: Converts a time value to seconds.
+    - **Scenario**: You want to calculate total duration in seconds for events.
+    - **Example**: 
+      ```sql
+      SELECT TIME_TO_SEC('01:30:00') AS TotalSeconds; 
+      ```
+
+50. **DATEDIFF()**
+    - **Description**: Returns the difference in days between two dates.
+    - **Scenario**: You want to find out how long ago an event occurred.
+    - **Example**: 
+      ```sql
+      SELECT DATEDIFF(CURDATE(), event_date) AS DaysSinceEvent FROM events;
+      ```
+
+	 
+

@@ -1,0 +1,98 @@
+What is JDBC?
+JDBC API is a Java API that can access any kind of tabular data, especially data stored in a Relational Database. JDBC works with Java on a variety of platforms, such as Windows, Mac OS, and the various versions of UNIX.
+
+
+Why to Learn JDBC?
+JDBC stands for Java Database Connectivity, which is a standard Java API for database-independent connectivity between the Java programming language and a wide range of databases.
+
+The JDBC library includes APIs for each of the tasks mentioned below that are commonly associated with database usage.
+
+Making a connection to a database.
+
+Creating SQL or MySQL statements.
+
+Executing SQL or MySQL queries in the database.
+
+Viewing & Modifying the resulting records.
+
+Explore our latest online courses and learn new skills at your own pace. Enroll and become a certified expert to boost your career.
+
+Applications of JDBC
+Fundamentally, JDBC is a specification that provides a complete set of interfaces that allows for portable access to an underlying database. Java can be used to write different types of executables, such as −
+
+Java Applications
+
+Java Applets
+
+Java Servlets
+
+Java ServerPages (JSPs)
+
+Enterprise JavaBeans (EJBs).
+
+All of these different executables are able to use a JDBC driver to access a database, and take advantage of the stored data.
+
+JDBC provides the same capabilities as ODBC, allowing Java programs to contain database-independent code.
+
+
+The JDBC 4.0 Packages
+The java.sql and javax.sql are the primary packages for JDBC 4.0. This is the latest JDBC version at the time of writing this tutorial. It offers the main classes for interacting with your data sources.
+
+The new features in these packages include changes in the following areas −
+
+Automatic database driver loading.
+
+Exception handling improvements.
+
+Enhanced BLOB/CLOB functionality.
+
+Connection and statement interface enhancements.
+
+National character set support.
+
+SQL ROWID access.
+
+SQL 2003 XML data type support.
+
+Annotations.
+
+Interfaces and Classes of JDBC API
+Following is the list of mostly used interfaces and classes in JDBC API.
+
+DriverManager class − used to load a SQL driver to connect to database.
+
+Connection interface − used to make a connection to the database using database connection string and credentials.
+
+Statement interface − used to make a query to the database.
+
+PreparedStatement interface − used for a query with placeholder values.
+
+CallableStatement interface − used to called stored procedure or functions in database.
+
+ResultSet interface − represents the query results obtained from the database.
+
+ResultSetMetaData interface − represents the metadata of the result set.
+
+BLOB class −
+
+represents binary data stored in BLOB format in database table.
+CLOB class −
+
+represents text data like XML stored in database table
+
+Types of API in JDBC
+JDBC driver implementations vary because of the wide variety of operating systems and hardware platforms in which Java operates. Sun has divided the implementation types into four categories, Types 1, 2, 3, and 4, which is explained below −
+
+Type 1 − a JDBC bridge is used to access ODBC drivers installed on each client machine. For example, JDBC-ODBC Bridge driver in JDK 1.2.
+
+Type 2 − JDBC API calls are converted into native C/C++ API calls, which are unique to the database. These APIs are vendor specific and vendor provided driver is required to be installed. It is also called JDBC Native API. For example, Oracle Call Interface (OCI) driver.
+
+Type 3 − A three-tier approach is used to access databases. The JDBC clients use standard network sockets to communicate with a middleware application server. The socket information is then translated by the middleware application server into the call format required by the DBMS, and forwarded to the database server. It is also called JDBC-Net Pure Java driver.
+
+Type 4 − A pure Java-based driver communicates directly with the vendor's database through socket connection. This is the highest performance driver available for the database and is usually provided by the vendor itself. For example, MySQL's Connector/J driver to connect to MySQL database.
+
+Audience
+This tutorial is designed for Java programmers who would like to understand the JDBC framework in detail along with its architecture and actual usage.
+
+Prerequisites
+Before proceeding with this tutorial, you should have a good understanding of Java programming language. As you are going to deal with RDBMS, you should have prior exposure to SQL and Database concepts.
