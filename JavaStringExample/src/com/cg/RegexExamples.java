@@ -8,7 +8,7 @@ public class RegexExamples {
 	public static void main(String args[])
 	{
 		String str="This is a test  ing is fun test !";
-		System.out.println(extractWords("(test|fun)"));
+		System.out.println(isValidPasswordWithSymbol("#00Lord"));
 	}
 
     // 1. Check if a string is a valid email address
@@ -158,9 +158,37 @@ Invalid IP Addresses
         return Pattern.matches(regex, time);
     }
 
-    // 19. Validate a password (minimum 8 characters, at least one letter and one number)
+    // 19. Validate a password (minimum 8 characters, at least one letter and one number and Symbol)
+    /*
+     * Explanation of the Regex:
+		^ : Asserts the start of the string.
+		(?=.*[a-zA-Z]) : Ensures at least one letter (uppercase or lowercase) exists.
+		(?=.*\d) : Ensures at least one digit exists.
+		(?=.*[\W_]) : Ensures at least one special character exists (non-word character, including symbols).
+		.{8,} : Ensures the total length is at least 8 characters.
+		$ : Asserts the end of the string.
+
+     */
     public static boolean isValidPassword(String password) {
         String regex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
+        return Pattern.matches(regex, password);
+    }
+    // it must be at least 8 characters long, contain at least one letter, one number, and one symbol.
+    public static boolean isValidPasswordWithAnySymbol(String password) {
+        String regex = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[\\W_]).{8,}$";
+        return Pattern.matches(regex, password);
+    }
+    /*Explanation of the Updated Regex:
+	^ : Asserts the start of the string.
+	(?=.*[a-zA-Z]) : Ensures at least one letter (uppercase or lowercase) exists.
+	(?=.*\d) : Ensures at least one digit exists.
+	(?=.*[@$*#]) : Ensures at least one of the specified symbols (@, $, *, #) exists.
+	.{8,} : Ensures the total length is at least 8 characters.
+	$ : Asserts the end of the string.
+	*/
+ // it must be at least 8 characters long, contain at least one letter, one number, and one symbol (@, $,*,#).
+    public static boolean isValidPasswordWithSymbol(String password) {
+        String regex = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$*#]).{6,}$";
         return Pattern.matches(regex, password);
     }
 
