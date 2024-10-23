@@ -8,5 +8,30 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 <bean id="helloBean" class="com.cg.basic.HelloWorld">
 		<property name="name" value="Sameer" />
 	</bean>
+	
+	<bean id="emp" class="com.cg.basic.Employee">
+		<property name="id" value="101"/>
+		<property name="name" value="Ramesh"/>
+		<property name="sal" value="20000.00"/>
+		<property name="address" ref="address"></property>
+		
+	</bean>
+	
+	<bean id="address" class="com.cg.basic.Address">
+		<property name="id" value="101"/>
+		<property name="area" value="Pimpri"/>
+		<property name="city" value="Pune"/>
+		<property name="country" value="India"/>
+		
+	</bean>
+	
+	<bean id="pdf" class="com.cg.basic.PrintPDF"></bean>
+	<bean id="excel" class="com.cg.basic.PrintExcel"></bean>
+	<bean id="json" class="com.cg.basic.PrintJson"></bean>
+	<bean id="printUtility" class="com.cg.basic.PrintUtility">
+		<property name="printable" ref="json"></property>
+	</bean>
+	
+	
 
 </beans>
