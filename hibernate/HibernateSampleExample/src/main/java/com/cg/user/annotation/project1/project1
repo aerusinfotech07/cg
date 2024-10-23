@@ -1,0 +1,143 @@
+Here's an example of how to model a Hibernate application with the following relationships:
+
+1. **Employee** has one or many **Addresses** (one-to-many).
+2. **Employee** works at one **Company** (many-to-one).
+3. **Company** has one **Address** (one-to-one).
+
+### Entity Classes
+
+#### 1. Employee Class
+
+```java
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+public class Employee {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Address> addresses;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id")
+    private Company company;
+
+    // Getters and setters
+}
+```
+
+#### 2. Address Class
+
+```java
+import javax.persistence.*;
+
+@Entity
+public class Address {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String street;
+    private String city;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
+    // Getters and setters
+}
+```
+
+#### 3. Company Class
+
+```java
+import javax.persistence.*;
+
+@Entity
+public class Company {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
+    private Address address;
+
+    // Getters and setters
+}
+```
+
+### Example of Usage
+
+Here's an example of how you might use these classes in a service or repository method:
+
+```java
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
+public class EmployeeService {
+
+    private EntityManager entityManager;
+
+    public EmployeeService(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
+    public void saveEmployeeWithCompanyAndAddresses() {
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        try {
+            Company company = new Company();
+            company.setName("Tech Corp");
+
+            Address companyAddress = new Address();
+            companyAddress.setStreet("123 Tech Lane");
+            companyAddress.setCity("Silicon Valley");
+            company.setAddress(companyAddress);
+
+            Employee employee = new Employee();
+            employee.setName("John Doe");
+            employee.setCompany(company);
+
+            Address homeAddress = new Address();
+            homeAddress.setStreet("456 Elm Street");
+            homeAddress.setCity("Springfield");
+            homeAddress.setEmployee(employee);
+
+            Address workAddress = new Address();
+            workAddress.setStreet("789 Oak Avenue");
+            workAddress.setCity("Metropolis");
+            workAddress.setEmployee(employee);
+
+            employee.setAddresses(Set.of(homeAddress, workAddress));
+
+            entityManager.persist(company);  // Cascades to persist the address
+            entityManager.persist(employee);   // Cascades to persist addresses
+
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Summary
+
+- **One-to-Many**: The `Employee` can have multiple `Addresses`. The `mappedBy` attribute in the `Employee` class indicates that the `Address` is the owner of the relationship.
+- **Many-to-One**: The `Employee` works at one `Company`.
+- **One-to-One**: The `Company` has a single `Address`.
+
+This setup allows you to maintain clear relationships between employees, their addresses, and the companies they work for, all while ensuring that Hibernate handles the database interactions efficiently.

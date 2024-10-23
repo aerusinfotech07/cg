@@ -191,6 +191,21 @@ Invalid IP Addresses
         String regex = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$*#]).{6,}$";
         return Pattern.matches(regex, password);
     }
+    
+    /*To validate a password where the first four characters must be letters (uppercase or lowercase), and it should also include at least one digit, one of the specified symbols (@, $, *, #), and be at least 8 characters long, you can use the following regex pattern.
+	Updated Regex Pattern
+	regex
+	Copy code
+	^(?=[a-zA-Z]{4})(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$*#]).{8,}$
+	Explanation of the Updated Regex:
+	^ : Asserts the start of the string.
+	(?=[a-zA-Z]{4}) : Ensures that the first four characters are letters.
+	(?=.*[a-zA-Z]) : Ensures at least one letter exists in the password.
+	(?=.*\d) : Ensures at least one digit exists.
+	(?=.*[@$*#]) : Ensures at least one of the specified symbols exists.
+	.{8,} : Ensures the total length is at least 8 characters.
+	$ : Asserts the end of the string.
+	*/
 
     // 20. Extract hashtags from a string
     public static List<String> extractHashtags(String text) {
@@ -853,5 +868,33 @@ Invalid IP Addresses
     // 100. Count the number of unique characters in a string
     public static int countUniqueCharacters(String str) {
         return (int) str.chars().distinct().count();
+    }
+    
+    //101 To extract multiple matches from a string using regex in Java, you can use the Matcher class along with the appropriate regex patterns. Here’s how you can extract four-letter words and 10-digit phone numbers from a given string
+    public static void extractTextAndMobileNumber() {
+        String input = "Call me at 1234567890 or 9876543210. Also, check the words like test, code, and word.";
+
+        // Regex patterns
+        String fourLetterWordRegex = "\\b[a-zA-Z]{4}\\b";  // Matches 4-letter words
+        String phoneNumberRegex = "\\b\\d{10}\\b";          // Matches 10-digit phone numbers
+
+        // Extracting 4-letter words
+        List<String> fourLetterWords = extractMatches(input, fourLetterWordRegex);
+        System.out.println("Four-letter words: " + fourLetterWords);
+
+        // Extracting 10-digit phone numbers
+        List<String> phoneNumbers = extractMatches(input, phoneNumberRegex);
+        System.out.println("10-digit phone numbers: " + phoneNumbers);
+    }
+    private static List<String> extractMatches(String input, String regex) {
+        List<String> matches = new ArrayList<>();
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+
+        while (matcher.find()) {
+            matches.add(matcher.group());
+        }
+
+        return matches;
     }
 }

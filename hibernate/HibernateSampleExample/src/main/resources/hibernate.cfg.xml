@@ -12,7 +12,11 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
-		<property name="hbm2ddl.auto">update </property>
-		<mapping resource="user.hbm.xml" />
+		<property name="hbm2ddl.auto">update</property>
+		<!--<mapping resource="com/cg/user/user.hbm.xml" />
+		<mapping resource="com/cg/xmlmapping/Stock.hbm.xml"></mapping>-->
+		<!--<mapping class="com.cg.user.annotation.single.Stock"></mapping>-->
+		<mapping class="com.cg.user.annotation.query.Stock"></mapping>
+
 	</session-factory>
 </hibernate-configuration>
