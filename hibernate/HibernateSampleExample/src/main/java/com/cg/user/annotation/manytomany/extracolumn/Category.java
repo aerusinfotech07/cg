@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "category", catalog = "mkyongdb")
+@Table(name = "category", catalog = "cgdb")
 public class Category implements java.io.Serializable {
 
 	private Integer categoryId;

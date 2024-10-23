@@ -1,0 +1,17 @@
+
+	<bean id="CustomerBean" class="com.cg.common.Customer">
+	
+		<constructor-arg type="java.lang.String">
+			<value>cg</value>
+		</constructor-arg>
+		
+		<constructor-arg type="java.lang.String">
+			<value>188</value>
+		</constructor-arg>
+		
+		<constructor-arg type="int">
+			<value>28</value>
+		</constructor-arg>
+		
+	</bean>
+

@@ -1,0 +1,9 @@
+<bean id="CustomerBean" class="com.cg.common.Customer">
+		<property name="person">
+			<bean class="com.cg.common.Person">
+				<property name="name" value="cg" />
+				<property name="address" value="address1" />
+				<property name="age" value="28" />
+			</bean>
+		</property>
+	</bean>

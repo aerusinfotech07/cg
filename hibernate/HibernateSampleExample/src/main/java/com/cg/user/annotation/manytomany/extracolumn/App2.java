@@ -43,13 +43,13 @@ Hibernate:
         category0_.`DESC` as DESC2_1_0_,
         category0_.NAME as NAME1_0_ 
     from
-        mkyongdb.category category0_ 
+        cgdb.category category0_ 
     where
         category0_.CATEGORY_ID=?
 Hibernate: 
     insert 
     into
-        mkyongdb.stock
+        cgdb.stock
         (STOCK_CODE, STOCK_NAME) 
     values
         (?, ?)
@@ -60,14 +60,14 @@ Hibernate:
         stockcateg_.CREATED_BY as CREATED1_2_,
         stockcateg_.CREATED_DATE as CREATED2_2_ 
     from
-        mkyongdb.stock_category stockcateg_ 
+        cgdb.stock_category stockcateg_ 
     where
         stockcateg_.CATEGORY_ID=? 
         and stockcateg_.STOCK_ID=?
 Hibernate: 
     insert 
     into
-        mkyongdb.stock_category
+        cgdb.stock_category
         (CREATED_BY, CREATED_DATE, CATEGORY_ID, STOCK_ID) 
     values
         (?, ?, ?, ?)

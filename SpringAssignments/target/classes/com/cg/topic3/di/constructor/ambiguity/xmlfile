@@ -1,0 +1,16 @@
+<!--Spring-Customer.xml-->
+
+	<bean id="CustomerBean" class="com.cg.common.Customer">
+
+		<constructor-arg>
+			<value>cg</value>
+		</constructor-arg>
+		
+		<constructor-arg>
+			<value>188</value>
+		</constructor-arg>
+		
+		<constructor-arg>
+			<value>28</value>
+		</constructor-arg>
+        </bean>

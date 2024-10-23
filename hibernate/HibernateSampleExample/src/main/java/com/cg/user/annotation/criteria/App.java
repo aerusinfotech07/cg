@@ -146,11 +146,11 @@ public static void main(String[] args) {
 	   .add(Restrictions.ge("volume", 10000));
 
 	Restrictions.like
-	Make sure the stock name is start with ‘MKYONG’ and follow by any characters.
+	Make sure the stock name is start with ‘cg’ and follow by any characters.
 
 
 	Criteria criteria = session.createCriteria(StockDailyRecord.class)
-	   .add(Restrictions.like("stockName", "MKYONG%"));
+	   .add(Restrictions.like("stockName", "cg%"));
 
 	Restrictions.between
 	Make sure the date is between start date and end date.

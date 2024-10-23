@@ -1,0 +1,6 @@
+Spring examples to show you how to inject values into collections type (List, Set, Map, and Properties). 4 major collection types are supported :
+
+List – <list/>
+Set – <set/>
+Map – <map/>
+Properties – <props/>
