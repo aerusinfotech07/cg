@@ -18,7 +18,8 @@ class Base {
 class Derived extends Base {
 
 	// Overriding method as already up in above class
-	@Override public void display(int x)
+	//@Override
+	public void display(int x)
 	{
 		// Print statement when this method is called
 		System.out.println("Derived display(int )");
