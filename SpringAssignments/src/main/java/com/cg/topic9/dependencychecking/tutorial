@@ -1,0 +1,9 @@
+Dependency checking modes
+4 dependency checking modes are supported:
+
+none – No dependency checking.
+simple – If any properties of primitive type (int, long,double…) and collection types (map, list..) have not been set, UnsatisfiedDependencyException will be thrown.
+objects – If any properties of object type have not been set, UnsatisfiedDependencyException will be thrown.
+all – If any properties of any type have not been set, an UnsatisfiedDependencyException
+will be thrown.
+ The default mode is none

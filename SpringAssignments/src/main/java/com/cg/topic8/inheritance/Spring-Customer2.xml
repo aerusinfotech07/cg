@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<bean id="BaseCustomerMalaysia" class="com.cg.common.Customer" abstract="true">
+		<property name="country" value="Malaysia" />
+	</bean>
+
+	<bean id="CustomerBean" parent="BaseCustomerMalaysia">
+	    <property name="country" value="Japan" />
+		<property name="action" value="buy" />
+		<property name="type" value="1" />
+	</bean>
+</beans>

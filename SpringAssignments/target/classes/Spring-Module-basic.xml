@@ -18,18 +18,24 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	</bean>
 	
 	<bean id="address" class="com.cg.topic1.basic.Address">
+		<property name="country" value="India"/>
 		<property name="id" value="101"/>
 		<property name="area" value="Pimpri"/>
 		<property name="city" value="Pune"/>
-		<property name="country" value="India"/>
+		
 		
 	</bean>
 	
 	<bean id="pdf" class="com.cg.topic1.basic.PrintPDF"></bean>
 	<bean id="excel" class="com.cg.topic1.basic.PrintExcel"></bean>
 	<bean id="json" class="com.cg.topic1.basic.PrintJson"></bean>
+	
+	
 	<bean id="printUtility" class="com.cg.topic1.basic.PrintUtility">
-		<property name="printable" ref="json"></property>
+		<!--<property name="printable" ref="pdf"></property>-->
+		<constructor-arg>
+			<value>pdf</value>
+		</constructor-arg>
 	</bean>
 	
 	

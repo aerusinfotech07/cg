@@ -7,3 +7,8 @@
 		<property name="address" value="address1" />
 		<property name="age" value="28" />
 	</bean>
+	
+	
+	<bean id="company" class="com.cg.common.Company">
+		<property name="person" ref="PersonBean" />
+	</bean>

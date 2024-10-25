@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+<!--simple dependency checking
+Spring bean configuration file with ‘simple’ dependency checking mode.
+The ‘type’ property (primitive type or collection types) have not been set, an UnsatisfiedDependencyException will throw.
+
+
+-->
+<bean id="CustomerBean" class="com.cg.common.Customer" 
+         dependency-check="simple">
+
+		<property name="person" ref="PersonBean" />
+		<property name="action" value="buy" />
+	</bean>
+
+	<bean id="PersonBean" class="com.cg.common.Person">
+		<property name="name" value="cg" />
+		<property name="address" value="address ABC" />
+		<property name="age" value="29" />
+	</bean>
+</beans>

@@ -1,0 +1,65 @@
+Auto Components Scan Annotation Types
+In Spring 2.5, there are 4 types of auto components scan annotation types
+
+@Component – Indicates a auto scan component.
+@Repository – Indicates DAO component in the persistence layer.
+@Service – Indicates a Service component in the business layer.
+@Controller – Indicates a controller component in the presentation layer.
+
+You will noticed that all @Repository,@Service or @Controller are annotated with @Component. So, can we use just @Component for all the components for auto scanning? Yes, you can, and Spring will auto scan all your components with @Component annotated.
+
+It’s working fine, but not a good practice, for readability, you should always declare @Repository,@Service or @Controller for a specified layer to make your code more easier to read, as following :
+
+DAO layer
+
+
+package com.cg.customer.dao;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class CustomerDAO 
+{
+	@Override
+	public String toString() {
+		return "Hello , This is CustomerDAO";
+	}	
+}
+
+Service layer
+
+
+package com.cg.customer.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cg.customer.dao.CustomerDAO;
+
+@Service
+public class CustomerService 
+{
+	@Autowired
+	CustomerDAO customerDAO;
+
+	@Override
+	public String toString() {
+		return "CustomerService [customerDAO=" + customerDAO + "]";
+	}
+		
+}
+
+
+-------------------
+    <context:component-scan base-package="com.cg.customer" />
+    
+    <!--
+	<context:component-scan base-package="com.cg.customer" >
+		<context:include-filter type="regex" expression="com.cg.customer.dao.*DAO.*" />
+		<context:exclude-filter type="regex" expression="com.cg.customer.dao.*.*" />
+		
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		
+	</context:component-scan>
+
+-->

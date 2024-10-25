@@ -1,0 +1,3 @@
+Normally you declare all the beans or components in XML bean configuration file, so that Spring container can detect and register your beans or components. Actually, Spring is able to auto scan, detect and instantiate your beans from pre-defined project package, no more tedious beans declaration in in XML file.
+
+Following is a simple Spring project, including a customer service and dao layer. Let’s explore the different between declare components manually and auto components scanning in Spring.
