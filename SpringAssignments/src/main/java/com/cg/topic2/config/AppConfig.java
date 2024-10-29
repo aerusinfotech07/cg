@@ -11,6 +11,7 @@ public class AppConfig {
 	
     @Bean(name="helloBean123")
     public HelloWorld helloWorld() {
+    	
         return new HelloWorldImpl();
     }
 	
