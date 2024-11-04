@@ -1,0 +1,143 @@
+# Requirement Document for Hospital Management System
+
+## Project Overview
+
+The Hospital Management System is a web-based Spring Boot application designed to manage patient data. The application provides CRUD (Create, Read, Update, Delete) functionality for managing patient records and implements validation and exception handling. This document details the requirements, architecture, and functionality of the system.
+
+## Purpose
+
+The purpose of this application is to streamline the process of managing patient information, providing easy access to patient records while ensuring data integrity through validation and handling any exceptional cases gracefully.
+
+## Functional Requirements
+
+### 1. Patient Management
+
+The system should provide the following functionalities for managing patient records:
+
+#### 1.1 Create Patient
+- **Description**: Create a new patient record with details like first name, last name, date of birth, age, and address.
+- **Request**: POST `/api/patients`
+- **Input**:
+  - `firstName` (String): Required, non-blank
+  - `lastName` (String): Required, non-blank
+  - `dob` (String): Required, non-blank (format: YYYY-MM-DD)
+  - `age` (Integer): Required, positive integer
+  - `address` (String): Required, non-blank
+- **Validation**:
+  - All fields are mandatory.
+  - `age` must be a positive integer.
+- **Response**: Returns the created patient’s details along with a generated patient ID.
+- **Error Handling**: Return error messages if required fields are missing or invalid.
+
+#### 1.2 Retrieve Patient by ID
+- **Description**: Retrieve a patient's details by their ID.
+- **Request**: GET `/api/patients/{id}`
+- **Input**: `id` (Integer): Path variable, required.
+- **Response**: Patient details if the ID exists.
+- **Error Handling**: If the patient ID does not exist, return a `PatientNotFoundException`.
+
+#### 1.3 Retrieve All Patients
+- **Description**: Retrieve all patients' details in the system.
+- **Request**: GET `/api/patients`
+- **Response**: List of patient records.
+- **Error Handling**: Handle any unexpected errors during retrieval.
+
+#### 1.4 Update Patient by ID
+- **Description**: Update an existing patient's details.
+- **Request**: PUT `/api/patients/{id}`
+- **Input**: 
+  - Patient ID (`id`) in the path
+  - Updated patient details (same as creation fields)
+- **Response**: Updated patient details.
+- **Error Handling**: If the patient ID does not exist, return a `PatientNotFoundException`. If input validation fails, return validation errors.
+
+#### 1.5 Delete Patient by ID
+- **Description**: Delete a patient record by their ID.
+- **Request**: DELETE `/api/patients/{id}`
+- **Input**: `id` (Integer): Path variable, required.
+- **Response**: No content on successful deletion.
+- **Error Handling**: If the patient ID does not exist, return a `PatientNotFoundException`.
+
+### 2. Validation Requirements
+
+Each request for creating or updating a patient must follow these validation rules:
+- `firstName`, `lastName`, `dob`, and `address` must not be blank.
+- `age` must be a positive integer.
+- Errors should be descriptive, indicating the field and reason for failure.
+
+### 3. Exception Handling
+
+Global exception handling is required for the following cases:
+- **PatientNotFoundException**: Triggered when a patient ID does not exist. Returns a `404 NOT FOUND` status with an error message.
+- **Validation Errors**: Triggered when validation fails for patient data. Returns `400 BAD REQUEST` status with specific field error messages.
+
+## Non-Functional Requirements
+
+- **Performance**: The system should handle up to 1000 patient records with minimal latency.
+- **Reliability**: The application should handle concurrent requests reliably without data corruption or unexpected errors.
+- **Scalability**: The system should be able to expand to handle additional patient data as the hospital grows.
+- **Usability**: The API should be RESTful, with clear responses and error messages.
+
+## Technical Specifications
+
+- **Backend Framework**: Spring Boot 3.x
+- **Database**: H2 in-memory database for development and testing
+- **Language**: Java 17
+- **Build Tool**: Maven
+- **Dependencies**:
+  - Spring Boot Web
+  - Spring Data JPA
+  - Spring Boot Validation
+  - JUnit 5 and Mockito for testing
+
+## Architecture
+
+The application follows a layered architecture to separate concerns, including:
+
+1. **Model Layer**: Contains the `Patient` entity.
+2. **DTO Layer**: Contains `PatientDTO` for data transfer between layers.
+3. **Repository Layer**: Defines `PatientRepository` for CRUD operations on the database.
+4. **Service Layer**: Implements business logic in `PatientServiceImpl`.
+5. **Controller Layer**: Defines `PatientController` to handle HTTP requests.
+6. **Exception Layer**: Includes custom exceptions and a `GlobalExceptionHandler` for centralized error handling.
+
+## Test Cases
+
+The application includes unit and integration tests for both service and controller layers.
+
+### 1. Service Layer Tests (`PatientServiceImplTest`)
+- **Test Case 1**: Verify creating a patient with valid data returns a valid `PatientDTO`.
+- **Test Case 2**: Fetching a patient by ID returns the correct data.
+- **Test Case 3**: Fetching a non-existing patient by ID throws `PatientNotFoundException`.
+
+### 2. Controller Layer Tests (`PatientControllerTest`)
+- **Test Case 1**: Creating a patient with valid input should return `201 CREATED`.
+- **Test Case 2**: Fetching a patient by ID returns correct data.
+- **Test Case 3**: Fetching all patients returns a list.
+- **Test Case 4**: Attempting to fetch a non-existing patient should return `404 NOT FOUND`.
+
+## API Documentation
+
+| Endpoint             | Method | Description                  | Input                             | Response           |
+|----------------------|--------|------------------------------|-----------------------------------|---------------------|
+| `/api/patients`      | POST   | Create a new patient         | JSON body (PatientDTO)            | `201 Created`      |
+| `/api/patients/{id}` | GET    | Get patient by ID            | Path variable (ID)                | JSON (PatientDTO)  |
+| `/api/patients`      | GET    | Get all patients             | None                              | JSON Array         |
+| `/api/patients/{id}` | PUT    | Update patient by ID         | Path variable (ID), JSON body     | JSON (PatientDTO)  |
+| `/api/patients/{id}` | DELETE | Delete patient by ID         | Path variable (ID)                | `204 No Content`   |
+
+### Example JSON Payload for Patient Creation/Update
+
+```json
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "dob": "1990-01-01",
+    "age": 32,
+    "address": "123 Main St"
+}
+```
+
+## Conclusion
+
+This document outlines the requirements for developing a CRUD-based Hospital Management System. It provides an organized structure for managing patient records, ensuring data consistency through validation, and addressing common errors with exception handling. The system’s architecture and testing approach ensure a robust, maintainable application suited for a healthcare environment.
