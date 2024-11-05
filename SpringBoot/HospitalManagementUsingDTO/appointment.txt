@@ -1,0 +1,137 @@
+To maintain a many-to-many relationship between `Doctor` and `Patient`, you’ll need a joining entity, like `Appointment`, that represents each interaction between a doctor and a patient. This is especially suitable since each appointment can contain additional details (such as the appointment date, fees, and status).
+
+Here’s an example of how to set up this many-to-many relationship with `Doctor` and `Patient` using `Appointment` as the join table.
+
+### Step 1: Update Entities
+
+```java
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+@Table(name="doctor")
+public class Doctor {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String firstName;
+	private String lastName;
+	private String dob;
+	private int age;
+	private String address;
+
+	@ManyToMany
+	@JoinTable(
+		name = "appointment",
+		joinColumns = @JoinColumn(name = "doctor_id"),
+		inverseJoinColumns = @JoinColumn(name = "patient_id"))
+	private Set<Patient> patients;
+
+	// Getters and Setters
+}
+```
+
+```java
+@Entity
+@Table(name="patient")
+public class Patient {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String firstName;
+	private String lastName;
+	private String dob;
+	private int age;
+	private String address;
+
+	@ManyToMany(mappedBy = "patients")
+	private Set<Doctor> doctors;
+
+	// Getters and Setters
+}
+```
+
+### Step 2: Create the `Appointment` Join Table
+
+To store additional information about each interaction, let’s use an `Appointment` entity that links `Doctor` and `Patient`.
+
+```java
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name="appointment")
+public class Appointment {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int appointmentId;
+
+	@ManyToOne
+	@JoinColumn(name = "doctor_id", nullable = false)
+	private Doctor doctor;
+
+	@ManyToOne
+	@JoinColumn(name = "patient_id", nullable = false)
+	private Patient patient;
+
+	private Date appointmentDate;
+	private double fees;
+
+	@Enumerated(EnumType.STRING)
+	private StatusEnum status;
+
+	// Getters and Setters
+}
+
+public enum StatusEnum {
+    SCHEDULED,
+    COMPLETED,
+    CANCELED
+}
+```
+
+### Sample JSON Requests and Responses
+
+#### Request for creating an appointment
+
+```json
+{
+	"doctorId": 1,
+	"patientId": 1,
+	"appointmentDate": "2024-11-04T10:00:00",
+	"fees": 100.0,
+	"status": "SCHEDULED"
+}
+```
+
+#### Response for fetching appointment details
+
+```json
+{
+	"appointmentId": 1,
+	"doctor": {
+		"id": 1,
+		"firstName": "John",
+		"lastName": "Doe",
+		"dob": "1980-05-15",
+		"age": 43,
+		"address": "123 Main St"
+	},
+	"patient": {
+		"id": 1,
+		"firstName": "Jane",
+		"lastName": "Smith",
+		"dob": "1990-08-25",
+		"age": 34,
+		"address": "456 Elm St"
+	},
+	"appointmentDate": "2024-11-04T10:00:00",
+	"fees": 100.0,
+	"status": "SCHEDULED"
+}
+```
+
+This structure maintains the many-to-many relationship by linking `Doctor` and `Patient` via the `Appointment` entity, which also holds additional details specific to each appointment.

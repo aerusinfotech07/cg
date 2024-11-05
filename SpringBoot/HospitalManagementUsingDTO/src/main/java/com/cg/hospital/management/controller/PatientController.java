@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.hospital.management.dto.PatientAppointmentDTO;
 import com.cg.hospital.management.dto.PatientDto;
+import com.cg.hospital.management.service.AppointmentService;
 import com.cg.hospital.management.service.PatientService;
 
 import jakarta.validation.Valid;
@@ -25,6 +27,9 @@ public class PatientController {
 
     @Autowired
     private PatientService patientService;
+    
+    @Autowired
+    private AppointmentService appointmentService;
 
     @PostMapping
     public ResponseEntity<PatientDto> createPatient(@Valid @RequestBody PatientDto patientDTO) {
@@ -50,5 +55,12 @@ public class PatientController {
     public ResponseEntity<Void> deletePatient(@PathVariable int id) {
         patientService.deletePatient(id);
         return ResponseEntity.noContent().build();
+    }
+    
+
+
+    @GetMapping("/{patientId}/appointments")
+    public List<PatientAppointmentDTO> getAppointmentsByPatientId(@PathVariable int patientId) {
+        return appointmentService.getAppointmentsByPatientId(patientId);
     }
 }

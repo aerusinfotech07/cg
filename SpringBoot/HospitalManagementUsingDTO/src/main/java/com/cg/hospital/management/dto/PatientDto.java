@@ -1,5 +1,6 @@
 package com.cg.hospital.management.dto;
 
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
@@ -16,7 +17,8 @@ public class PatientDto {
     @NotBlank(message = "Date of birth is required.")
     private String dob;
 
-    @Min(value = 0, message = "Age must be a positive integer.")
+    @Min(value = 18, message = "Age must be more than 18.")
+    @Max(value = 60, message = "Age must be below 60.")
     private int age;
 
     @NotBlank(message = "Address is required.")
