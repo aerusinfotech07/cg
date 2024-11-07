@@ -19,10 +19,13 @@ import com.cg.hospital.management.dto.PatientDto;
 import com.cg.hospital.management.service.AppointmentService;
 import com.cg.hospital.management.service.PatientService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/patients")
+@Tag(name = "Patient Controller", description = "Operations related to patients")
 public class PatientController {
 
     @Autowired
@@ -31,11 +34,13 @@ public class PatientController {
     @Autowired
     private AppointmentService appointmentService;
 
+    @Operation(summary = "Create a new patient")
     @PostMapping
     public ResponseEntity<PatientDto> createPatient(@Valid @RequestBody PatientDto patientDTO) {
         return new ResponseEntity<>(patientService.createPatient(patientDTO), HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Get a patient by ID")
     @GetMapping("/{id}")
     public ResponseEntity<PatientDto> getPatientById(@PathVariable int id) {
         return ResponseEntity.ok(patientService.getPatientById(id));
