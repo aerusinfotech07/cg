@@ -26,8 +26,8 @@ public class PatientServiceImpl implements PatientService {
         patient.setDob(patientDTO.getDob());
         patient.setAge(patientDTO.getAge());
         patient.setAddress(patientDTO.getAddress());
-
-        patient = patientRepository.save(patient);
+        
+        //patient = patientRepository.save(patient);
 
         // Map entity to DTO
         patientDTO.setId(patient.getId());
