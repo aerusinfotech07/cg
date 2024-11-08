@@ -42,11 +42,14 @@ public class PatientController {
 
     @Operation(summary = "Get a patient by ID")
     @GetMapping("/{id}")
+   // @PreAuthorize("hasRole('PATIENT')")
     public ResponseEntity<PatientDto> getPatientById(@PathVariable int id) {
         return ResponseEntity.ok(patientService.getPatientById(id));
     }
 
     @GetMapping
+    //@PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasAnyRole('DOCTOR', 'PATIENT', 'ADMIN')")
     public ResponseEntity<List<PatientDto>> getAllPatients() {
         return ResponseEntity.ok(patientService.getAllPatients());
     }
