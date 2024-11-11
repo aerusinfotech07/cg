@@ -1,0 +1,84 @@
+Introduction
+Spring Boot has become a popular choice for developing enterprise-grade applications due to its ease of use, powerful features, and robust ecosystem. One aspect that often gets overlooked but is essential for any application, especially in a production environment, is logging. Logging is vital for tracking down issues, monitoring system health, and understanding application flow. Spring Boot provides a set of built-in tools for logging, and with the assistance of the Lombok library, developers can further simplify their logging approach using annotations like @Log and @Slf4j. This post will explore these annotations and how to effectively use them in Spring Boot applications.
+
+The Basics of Logging in Spring Boot
+When working with Spring Boot, developers are provided with a powerful and configurable logging system out-of-the-box. This section aims to give an overview of the essential elements and foundational knowledge of this system.
+
+Spring Boot’s Default Logging Framework
+Spring Boot, by default, includes the Simple Logging Facade for Java (SLF4J) coupled with Logback. SLF4J acts as an abstraction layer, meaning you can plug in your preferred logging framework at deployment time, while Logback serves as the default implementation. This combination gives developers a flexible and highly configurable logging setup.
+
+Understanding Logging Levels
+In the world of logging, not all messages are created equal. Messages are categorized by severity or importance, known as logging levels. Spring Boot supports the standard levels, which are:
+
+ERROR: Denotes that something failed, and the application might not be able to continue running.
+WARN: Indicates a potential problem that might not immediately affect functionality but warrants attention.
+INFO: Provides general information about the application’s operation. Typically used to confirm things are working as expected.
+DEBUG: Offers detailed insights for developers to diagnose issues or understand the flow.
+TRACE: Gives more granular details than DEBUG, often including iterative or repetitive processes.
+Each level is inclusive of the levels above it. For instance, if you set the level to WARN, you’ll also see ERROR messages, but not INFO, DEBUG, or TRACE.
+
+Configuring Logging in application.properties
+Spring Boot allows developers to configure the logging system using the application.properties (or application.yml) file. Here are some common configurations:
+
+Setting Global Logging Level: To set a base level for all loggers:
+logging.level.root=WARN
+Setting Specific Logging Level: To define a specific level for a particular package or class:
+logging.level.org.springframework.web=DEBUG
+logging.level.com.myapp.service=INFO
+Log File Output: By default, logs are printed to the console. If you want them saved to a file:
+logging.file.name=myapp.log
+Log File Rotation: For larger applications, logs can grow rapidly. To manage size, Spring Boot can rotate logs:
+logging.file.max-size=10MB
+logging.file.max-history=10
+Log Format Customization
+Spring Boot’s default log output is concise and developer-friendly. However, for specific requirements, you might want to customize the log pattern. Using logging.pattern.console and logging.pattern.file, you can define custom patterns for console and file outputs, respectively.
+
+For instance:
+
+logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg%n
+This pattern includes the timestamp, logger name (up to 36 characters), and the actual message.
+
+Introduction to Lombok and Logging Annotations
+Project Lombok is a boon for Java developers when it comes to reducing boilerplate code. While Java’s verbosity can be an advantage for understanding program logic, it can become a liability, especially with mundane tasks like logging setup. Here’s where Lombok steps in to streamline the process.
+
+What is Lombok?
+Lombok is a compile-time annotation processor. Instead of you writing repetitive code or relying on your IDE to generate it, Lombok provides annotations to instruct the compiler to generate the code on your behalf. This not only keeps your codebase cleaner but also makes the development process faster and less error-prone.
+
+Logging Annotations by Lombok
+While Lombok offers various annotations for diverse tasks, like @Data for getters, setters, and other common methods, we'll focus on the logging annotations:
+
+@Slf4j: This is the most commonly used logging annotation for Spring Boot applications. When applied to a class, it automatically creates a static SLF4J logger instance named log, targeting the SLF4J logging facade.
+@Slf4j
+public class MyService {
+    public void someServiceMethod() {
+        log.info("Service method called using @Slf4j");
+    }
+}
+@Log: This annotation is used for applications relying on the java.util.logging framework. Similar to @Slf4j, it provides a static logger instance named log.
+@Log
+public class LegacyService {
+    public void legacyMethod() {
+        log.info("Legacy method logged with @Log");
+    }
+}
+Benefits of Using Lombok’s Logging Annotations
+Consistency: Using annotations ensures that logging is set up consistently across the application. There’s a standardized way to introduce logging to any class.
+Reduced Boilerplate: No more manual logger instantiation in every class. This reduction in lines of code makes the application more maintainable.
+Focus on Business Logic: By eliminating repetitive tasks, developers can concentrate on business logic, resulting in better code quality and faster development cycles.
+Refactoring Ease: When class names change, there’s no need to adjust logger declarations. Lombok will automatically handle this during compilation.
+Integrating Lombok with Spring Boot
+To use Lombok with Spring Boot, simply add the Lombok dependency to your project’s build file:
+
+For Maven:
+
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>CheckLatestVersion</version>
+    <scope>provided</scope>
+</dependency>
+For Gradle:
+
+compileOnly 'org.projectlombok:lombok:CheckLatestVersion'
+annotationProcessor 'org.projectlombok:lombok:CheckLatestVersion'
+Note: Ensure you check for the latest version of Lombok when adding the dependency.

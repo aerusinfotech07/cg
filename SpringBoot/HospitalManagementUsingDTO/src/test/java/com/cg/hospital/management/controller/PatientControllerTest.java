@@ -84,7 +84,7 @@ public class PatientControllerTest {
                 .content("{\"firstName\":\"John\", \"lastName\":\"Doe\", \"dob\":\"1990-01-01\", \"age\":32, \"address\":\"123 Main St\"}"))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.firstName").value("John"))
-                .andExpect(jsonPath("$.lastName").value("Doe1"))
+                .andExpect(jsonPath("$.lastName").value("Doe"))
                 ;
 
         verify(patientService, times(1)).createPatient(any(PatientDto.class));

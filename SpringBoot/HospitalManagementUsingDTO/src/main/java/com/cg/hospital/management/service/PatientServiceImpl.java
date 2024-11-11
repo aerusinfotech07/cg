@@ -11,7 +11,10 @@ import com.cg.hospital.management.dto.PatientDto;
 import com.cg.hospital.management.exception.PatientNotFoundException;
 import com.cg.hospital.management.model.Patient;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class PatientServiceImpl implements PatientService {
 
     @Autowired
@@ -27,10 +30,11 @@ public class PatientServiceImpl implements PatientService {
         patient.setAge(patientDTO.getAge());
         patient.setAddress(patientDTO.getAddress());
         
-        //patient = patientRepository.save(patient);
+        patient = patientRepository.save(patient);
 
         // Map entity to DTO
         patientDTO.setId(patient.getId());
+        log.info("PatientServiceImpl method called using @Slf4j For createPatient");
         return patientDTO;
     }
 
@@ -43,6 +47,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public List<PatientDto> getAllPatients() {
+    	log.info("PatientServiceImpl method called using @Slf4j For getAllPatients");
         return patientRepository.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 

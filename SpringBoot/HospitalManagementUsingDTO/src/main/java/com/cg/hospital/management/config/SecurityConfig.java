@@ -45,18 +45,18 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-        		// Require ADMIN role for POST and PUT requests to /api/admin/**
                 .requestMatchers(HttpMethod.POST, "/api/admin/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.PUT, "/api/admin/**").hasRole("ADMIN")                    
-                // Allow all other HTTP methods on /api/admin/** without ADMIN role
+                .requestMatchers(HttpMethod.PUT, "/api/admin/**").hasRole("ADMIN")
                 .requestMatchers("/api/admin/**").permitAll()
-                .requestMatchers("/api/doctor/**").hasAnyRole("DOCTOR","ADMIN")
+                .requestMatchers("/api/doctor/**").hasAnyRole("DOCTOR", "ADMIN")
+                // Ensure only PATIENT role has access to /api/patient/**
                 .requestMatchers("/api/patient/**").hasRole("PATIENT")
                 .anyRequest().authenticated()
             )
-            .httpBasic(withDefaults()) // Enable basic authentication using withDefaults()
-            .csrf(csrf -> csrf.disable()); // Disable CSRF (can also use .csrf(csrf -> csrf.disable()) if you need to disable it entirely
+            .httpBasic(withDefaults()) // Enable basic authentication
+            .csrf(csrf -> csrf.disable()); // Disable CSRF
 
         return http.build();
     }
+
 }
