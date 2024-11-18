@@ -1,0 +1,271 @@
+If `Patient` and `Doctor` are managed by separate microservices, the `AppointmentService` microservice will not directly reference their entities. Instead, it will interact with `DoctorService` and `PatientService` via **Feign clients**. This approach keeps the microservices independent and follows best practices for service decomposition.
+
+Here's how you can set up `AppointmentService` to interact with `DoctorService` and `PatientService`:
+
+### Step 1: Define Feign Clients in `AppointmentService`
+
+Use Feign clients in `AppointmentService` to communicate with `DoctorService` and `PatientService` for retrieving doctor and patient data when needed.
+
+**DoctorClient.java**
+
+```java
+package com.example.appointmentservice.client;
+
+import com.example.appointmentservice.dto.DoctorDTO;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@FeignClient(name = "doctor-service") // Replace with the actual name in service registry
+public interface DoctorClient {
+
+    @GetMapping("/doctors/{id}")
+    DoctorDTO getDoctorById(@PathVariable("id") int id);
+}
+```
+
+**PatientClient.java**
+
+```java
+package com.example.appointmentservice.client;
+
+import com.example.appointmentservice.dto.PatientDTO;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@FeignClient(name = "patient-service") // Replace with the actual name in service registry
+public interface PatientClient {
+
+    @GetMapping("/patients/{id}")
+    PatientDTO getPatientById(@PathVariable("id") int id);
+}
+```
+
+### Step 2: Define DTOs for Patient and Doctor
+
+Define `DoctorDTO` and `PatientDTO` data transfer objects to represent the data received from the `DoctorService` and `PatientService`. These DTOs prevent direct dependency on the internal structures of the other services.
+
+**DoctorDTO.java**
+
+```java
+package com.example.appointmentservice.dto;
+
+public class DoctorDTO {
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String address;
+
+    // Getters and Setters
+}
+```
+
+**PatientDTO.java**
+
+```java
+package com.example.appointmentservice.dto;
+
+public class PatientDTO {
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String address;
+
+    // Getters and Setters
+}
+```
+
+### Step 3: Modify the Appointment Entity in `AppointmentService`
+
+In the `Appointment` entity, you’ll store only the `doctorId` and `patientId` as foreign keys, rather than embedding entire `Doctor` and `Patient` objects.
+
+**Appointment.java**
+
+```java
+package com.example.appointmentservice.model;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Entity
+public class Appointment {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int appointmentId;
+
+    @Temporal(TemporalType.DATE)
+    private Date appointmentDate;
+
+    private double fees;
+
+    @Enumerated(EnumType.STRING)
+    private StatusEnum status;
+
+    private int doctorId; // References a doctor in DoctorService
+    private int patientId; // References a patient in PatientService
+
+    // Getters and setters
+}
+```
+
+### Step 4: Use Feign Clients in AppointmentService to Retrieve Doctor and Patient Information
+
+The `AppointmentService` class can now utilize the Feign clients to retrieve doctor and patient information from their respective services. Here’s how the service might look:
+
+**AppointmentService.java**
+
+```java
+package com.example.appointmentservice.service;
+
+import com.example.appointmentservice.client.DoctorClient;
+import com.example.appointmentservice.client.PatientClient;
+import com.example.appointmentservice.dto.DoctorDTO;
+import com.example.appointmentservice.dto.PatientDTO;
+import com.example.appointmentservice.model.Appointment;
+import com.example.appointmentservice.repository.AppointmentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class AppointmentService {
+
+    @Autowired
+    private AppointmentRepository appointmentRepository;
+
+    @Autowired
+    private DoctorClient doctorClient;
+
+    @Autowired
+    private PatientClient patientClient;
+
+    public List<Appointment> getAllAppointments() {
+        return appointmentRepository.findAll();
+    }
+
+    public Optional<Appointment> getAppointmentById(int id) {
+        return appointmentRepository.findById(id);
+    }
+
+    public Appointment saveAppointment(Appointment appointment) {
+        // You may want to add validation logic here to verify doctor and patient exist
+        return appointmentRepository.save(appointment);
+    }
+
+    public Appointment updateAppointment(int id, Appointment appointmentDetails) {
+        Appointment appointment = appointmentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Appointment not found"));
+        appointment.setAppointmentDate(appointmentDetails.getAppointmentDate());
+        appointment.setFees(appointmentDetails.getFees());
+        appointment.setStatus(appointmentDetails.getStatus());
+        return appointmentRepository.save(appointment);
+    }
+
+    public void deleteAppointment(int id) {
+        appointmentRepository.deleteById(id);
+    }
+
+    public DoctorDTO getDoctorById(int doctorId) {
+        return doctorClient.getDoctorById(doctorId);
+    }
+
+    public PatientDTO getPatientById(int patientId) {
+        return patientClient.getPatientById(patientId);
+    }
+}
+```
+
+### Step 5: Define Endpoints in AppointmentController
+
+The `AppointmentController` can be set up to use the service to create appointments, and it can retrieve detailed information about doctors and patients via Feign clients.
+
+**AppointmentController.java**
+
+```java
+package com.example.appointmentservice.controller;
+
+import com.example.appointmentservice.dto.DoctorDTO;
+import com.example.appointmentservice.dto.PatientDTO;
+import com.example.appointmentservice.model.Appointment;
+import com.example.appointmentservice.service.AppointmentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/appointments")
+public class AppointmentController {
+
+    @Autowired
+    private AppointmentService appointmentService;
+
+    @GetMapping
+    public List<Appointment> getAllAppointments() {
+        return appointmentService.getAllAppointments();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Appointment> getAppointmentById(@PathVariable int id) {
+        return appointmentService.getAppointmentById(id);
+    }
+
+    @PostMapping
+    public Appointment createAppointment(@RequestBody Appointment appointment) {
+        return appointmentService.saveAppointment(appointment);
+    }
+
+    @PutMapping("/{id}")
+    public Appointment updateAppointment(@PathVariable int id, @RequestBody Appointment appointmentDetails) {
+        return appointmentService.updateAppointment(id, appointmentDetails);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteAppointment(@PathVariable int id) {
+        appointmentService.deleteAppointment(id);
+    }
+
+    @GetMapping("/doctor/{doctorId}")
+    public DoctorDTO getDoctorById(@PathVariable int doctorId) {
+        return appointmentService.getDoctorById(doctorId);
+    }
+
+    @GetMapping("/patient/{patientId}")
+    public PatientDTO getPatientById(@PathVariable int patientId) {
+        return appointmentService.getPatientById(patientId);
+    }
+}
+```
+
+### Step 6: Testing the Endpoints
+
+After setting up the microservices and their Feign clients, you can test the endpoints via Postman:
+
+1. **Get All Appointments**:
+   - `GET http://localhost:8080/appointments`
+   
+2. **Create Appointment**:
+   - `POST http://localhost:8080/appointments`
+   - Body:
+     ```json
+     {
+       "appointmentDate": "2023-12-12",
+       "fees": 150.0,
+       "status": "SCHEDULED",
+       "doctorId": 1,
+       "patientId": 2
+     }
+     ```
+
+3. **Get Doctor Details for an Appointment**:
+   - `GET http://localhost:8080/appointments/doctor/{doctorId}`
+   
+4. **Get Patient Details for an Appointment**:
+   - `GET http://localhost:8080/appointments/patient/{patientId}`
+
+This approach enables `AppointmentService` to manage appointment records while keeping `Doctor` and `Patient` data within their respective services, leveraging Feign clients for cross-service communication.

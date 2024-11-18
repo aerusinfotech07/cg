@@ -1,228 +1,34 @@
-2024-11-11T09:44:51.011+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] c.c.h.m.HospitalManagementApplication    : Starting HospitalManagementApplication using Java 17.0.11 with PID 14140 (C:\Personal\D Drive\cg\SpringBoot\HospitalManagementUsingDTO\target\classes started by Vilas Sangre in C:\Personal\D Drive\cg\SpringBoot\HospitalManagementUsingDTO)
-2024-11-11T09:44:51.015+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] c.c.h.m.HospitalManagementApplication    : No active profile set, falling back to 1 default profile: "default"
-2024-11-11T09:44:51.071+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-11-11T09:44:51.074+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-11-11T09:44:51.985+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-11-11T09:44:52.046+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 3 JPA repository interfaces.
-2024-11-11T09:44:52.935+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-11-11T09:44:52.962+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-11-11T09:44:52.962+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
-2024-11-11T09:44:53.068+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-11-11T09:44:53.069+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1993 ms
-2024-11-11T09:44:53.302+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-11-11T09:44:53.409+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.10.Final
-2024-11-11T09:44:53.450+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-11-11T09:44:53.679+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-11-11T09:44:53.701+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-11-11T09:44:53.949+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2ffb1533
-2024-11-11T09:44:53.951+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-11-11T09:44:53.990+05:30  WARN 14140 --- [HospitalManagement] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-11-11T09:44:53.992+05:30  WARN 14140 --- [HospitalManagement] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-11-11T09:44:54.748+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-11-11T09:44:54.830+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-11-11T09:44:55.154+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-11-11T09:44:56.273+05:30  WARN 14140 --- [HospitalManagement] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-11-11T09:44:57.170+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1c9d905b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5aba2ff1, org.springframework.security.web.context.SecurityContextHolderFilter@75f1dd20, org.springframework.security.web.header.HeaderWriterFilter@26e2248e, org.springframework.security.web.authentication.logout.LogoutFilter@113c96bc, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@150a7d64, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6c8722f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@704c50a6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@49c4cdd9, org.springframework.security.web.access.ExceptionTranslationFilter@3a4cd54c, org.springframework.security.web.access.intercept.AuthorizationFilter@2cfabc08]
-2024-11-11T09:44:57.633+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2024-11-11T09:44:57.678+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
-2024-11-11T09:44:57.691+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] c.c.h.m.HospitalManagementApplication    : Started HospitalManagementApplication in 7.054 seconds (process running for 7.506)
-2024-11-11T09:45:34.322+05:30  INFO 14140 --- [HospitalManagement] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-11-11T09:45:34.322+05:30  INFO 14140 --- [HospitalManagement] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-11-11T09:45:34.323+05:30  INFO 14140 --- [HospitalManagement] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-11-11T09:45:34.471+05:30  INFO 14140 --- [HospitalManagement] [http-nio-8080-exec-1] c.c.h.m.service.PatientServiceImpl       : PatientServiceImpl method called using @Slf4j For getAllPatients
-2024-11-11T09:46:31.036+05:30  INFO 14140 --- [HospitalManagement] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2024-11-11T09:46:31.067+05:30  INFO 14140 --- [HospitalManagement] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-11-11T09:46:31.069+05:30  INFO 14140 --- [HospitalManagement] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-11-11T09:46:31.075+05:30  INFO 14140 --- [HospitalManagement] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-11-11T09:46:31.145+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] c.c.h.m.HospitalManagementApplication    : Starting HospitalManagementApplication using Java 17.0.11 with PID 14140 (C:\Personal\D Drive\cg\SpringBoot\HospitalManagementUsingDTO\target\classes started by Vilas Sangre in C:\Personal\D Drive\cg\SpringBoot\HospitalManagementUsingDTO)
-2024-11-11T09:46:31.145+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] c.c.h.m.HospitalManagementApplication    : No active profile set, falling back to 1 default profile: "default"
-2024-11-11T09:46:31.340+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-11-11T09:46:31.357+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 3 JPA repository interfaces.
-2024-11-11T09:46:31.425+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-11-11T09:46:31.426+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-11-11T09:46:31.426+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
-2024-11-11T09:46:31.439+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-11-11T09:46:31.439+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 292 ms
-2024-11-11T09:46:31.461+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-11-11T09:46:31.462+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-11-11T09:46:31.465+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-11-11T09:46:31.466+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2024-11-11T09:46:31.478+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4f2a2897
-2024-11-11T09:46:31.478+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2024-11-11T09:46:31.479+05:30  WARN 14140 --- [HospitalManagement] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-11-11T09:46:31.479+05:30  WARN 14140 --- [HospitalManagement] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-11-11T09:46:31.553+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-11-11T09:46:31.583+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-11-11T09:46:31.720+05:30  WARN 14140 --- [HospitalManagement] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-11-11T09:46:31.963+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6e9a3f78, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7ad386f9, org.springframework.security.web.context.SecurityContextHolderFilter@378f6ad5, org.springframework.security.web.header.HeaderWriterFilter@22c26190, org.springframework.security.web.authentication.logout.LogoutFilter@8b77ee7, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5d692274, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@77dd44fe, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@755d5cae, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4d2fed8f, org.springframework.security.web.access.ExceptionTranslationFilter@3d67ecbf, org.springframework.security.web.access.intercept.AuthorizationFilter@a77b783]
-2024-11-11T09:46:32.010+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2024-11-11T09:46:32.018+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
-2024-11-11T09:46:32.021+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] c.c.h.m.HospitalManagementApplication    : Started HospitalManagementApplication in 0.893 seconds (process running for 101.835)
-2024-11-11T09:46:32.024+05:30  INFO 14140 --- [HospitalManagement] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2024-11-11T09:46:59.206+05:30  INFO 14140 --- [HospitalManagement] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
-2024-11-11T09:46:59.238+05:30  INFO 14140 --- [HospitalManagement] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-11-11T09:46:59.239+05:30  INFO 14140 --- [HospitalManagement] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
-2024-11-11T09:46:59.245+05:30  INFO 14140 --- [HospitalManagement] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
-2024-11-11 09:47:38,318 ERROR org.springframework.boot.SpringApplication [restartedMain] Application run failed
-java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.classic.pattern.LoggerConverter@51760f7e - failed to parse integer string [1.] java.lang.NumberFormatException: For input string: "1."
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:347)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:138)
-	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
-	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
-	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
-	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
-	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
-	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:370)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:330)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
-	at com.cg.hospital.management.HospitalManagementApplication.main(HospitalManagementApplication.java:10)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.classic.pattern.LoggerConverter@51760f7e - failed to parse integer string [1.] java.lang.NumberFormatException: For input string: "1."
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:277)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:255)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:81)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:61)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:189)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:332)
-	... 24 common frames omitted
-	Suppressed: java.lang.NumberFormatException: For input string: "1."
-		at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
-		at java.base/java.lang.Integer.parseInt(Integer.java:668)
-		at java.base/java.lang.Integer.parseInt(Integer.java:786)
-		at ch.qos.logback.classic.pattern.NamedConverter.start(NamedConverter.java:92)
-		at ch.qos.logback.core.pattern.ConverterUtil.startConverters(ConverterUtil.java:37)
-		at ch.qos.logback.core.pattern.PatternLayoutBase.start(PatternLayoutBase.java:90)
-		at ch.qos.logback.classic.encoder.PatternLayoutEncoder.start(PatternLayoutEncoder.java:28)
-		at ch.qos.logback.core.model.processor.ImplicitModelHandler.postHandleComplex(ImplicitModelHandler.java:208)
-		at ch.qos.logback.core.model.processor.ImplicitModelHandler.postHandle(ImplicitModelHandler.java:186)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:257)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:253)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:253)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.traversalLoop(DefaultProcessor.java:90)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.process(DefaultProcessor.java:106)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.processModel(GenericXMLConfigurator.java:208)
-		at org.springframework.boot.logging.logback.SpringBootJoranConfigurator.processModel(SpringBootJoranConfigurator.java:122)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:170)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:122)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:65)
-		at org.springframework.boot.logging.logback.LogbackLoggingSystem.configureByResourceUrl(LogbackLoggingSystem.java:287)
-		at org.springframework.boot.logging.logback.LogbackLoggingSystem.lambda$loadConfiguration$1(LogbackLoggingSystem.java:249)
-		at org.springframework.boot.logging.logback.LogbackLoggingSystem.withLoggingSuppressed(LogbackLoggingSystem.java:467)
-		at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:244)
-		... 28 common frames omitted
-2024-11-11 09:47:49,091 ERROR org.springframework.boot.SpringApplication [restartedMain] Application run failed
-java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.classic.pattern.LoggerConverter@505fc5a4 - failed to parse integer string [1.] java.lang.NumberFormatException: For input string: "1."
-ERROR in ch.qos.logback.classic.pattern.LoggerConverter@6c780252 - failed to parse integer string [1.] java.lang.NumberFormatException: For input string: "1."
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:347)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:138)
-	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
-	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
-	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
-	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
-	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
-	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:370)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:330)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
-	at com.cg.hospital.management.HospitalManagementApplication.main(HospitalManagementApplication.java:10)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.classic.pattern.LoggerConverter@505fc5a4 - failed to parse integer string [1.] java.lang.NumberFormatException: For input string: "1."
-ERROR in ch.qos.logback.classic.pattern.LoggerConverter@6c780252 - failed to parse integer string [1.] java.lang.NumberFormatException: For input string: "1."
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:277)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:255)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:81)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:61)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:189)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:332)
-	... 24 common frames omitted
-	Suppressed: java.lang.NumberFormatException: For input string: "1."
-		at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
-		at java.base/java.lang.Integer.parseInt(Integer.java:668)
-		at java.base/java.lang.Integer.parseInt(Integer.java:786)
-		at ch.qos.logback.classic.pattern.NamedConverter.start(NamedConverter.java:92)
-		at ch.qos.logback.core.pattern.ConverterUtil.startConverters(ConverterUtil.java:37)
-		at ch.qos.logback.core.pattern.PatternLayoutBase.start(PatternLayoutBase.java:90)
-		at ch.qos.logback.classic.encoder.PatternLayoutEncoder.start(PatternLayoutEncoder.java:28)
-		at ch.qos.logback.core.model.processor.ImplicitModelHandler.postHandleComplex(ImplicitModelHandler.java:208)
-		at ch.qos.logback.core.model.processor.ImplicitModelHandler.postHandle(ImplicitModelHandler.java:186)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:257)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:253)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:253)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.traversalLoop(DefaultProcessor.java:90)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.process(DefaultProcessor.java:106)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.processModel(GenericXMLConfigurator.java:208)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:170)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:122)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:65)
-		at ch.qos.logback.classic.util.DefaultJoranConfigurator.configureByResource(DefaultJoranConfigurator.java:68)
-		at ch.qos.logback.classic.util.DefaultJoranConfigurator.configure(DefaultJoranConfigurator.java:35)
-		at ch.qos.logback.classic.util.ContextInitializer.invokeConfigure(ContextInitializer.java:128)
-		at ch.qos.logback.classic.util.ContextInitializer.autoConfig(ContextInitializer.java:103)
-		at ch.qos.logback.classic.util.ContextInitializer.autoConfig(ContextInitializer.java:66)
-		at ch.qos.logback.classic.spi.LogbackServiceProvider.initializeLoggerContext(LogbackServiceProvider.java:52)
-		at ch.qos.logback.classic.spi.LogbackServiceProvider.initialize(LogbackServiceProvider.java:41)
-		at org.slf4j.LoggerFactory.bind(LoggerFactory.java:199)
-		at org.slf4j.LoggerFactory.performInitialization(LoggerFactory.java:186)
-		at org.slf4j.LoggerFactory.getProvider(LoggerFactory.java:496)
-		at org.slf4j.LoggerFactory.getILoggerFactory(LoggerFactory.java:482)
-		at org.slf4j.LoggerFactory.getLogger(LoggerFactory.java:431)
-		at org.apache.commons.logging.LogAdapter$Slf4jAdapter.createLocationAwareLog(LogAdapter.java:121)
-		at org.apache.commons.logging.LogAdapter.createLog(LogAdapter.java:95)
-		at org.apache.commons.logging.LogFactory.getLog(LogFactory.java:67)
-		at org.apache.commons.logging.LogFactory.getLog(LogFactory.java:59)
-		at org.springframework.boot.SpringApplication.<clinit>(SpringApplication.java:203)
-		at com.cg.hospital.management.HospitalManagementApplication.main(HospitalManagementApplication.java:10)
-	Suppressed: java.lang.NumberFormatException: For input string: "1."
-		at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
-		at java.base/java.lang.Integer.parseInt(Integer.java:668)
-		at java.base/java.lang.Integer.parseInt(Integer.java:786)
-		at ch.qos.logback.classic.pattern.NamedConverter.start(NamedConverter.java:92)
-		at ch.qos.logback.core.pattern.ConverterUtil.startConverters(ConverterUtil.java:37)
-		at ch.qos.logback.core.pattern.PatternLayoutBase.start(PatternLayoutBase.java:90)
-		at ch.qos.logback.classic.encoder.PatternLayoutEncoder.start(PatternLayoutEncoder.java:28)
-		at ch.qos.logback.core.model.processor.ImplicitModelHandler.postHandleComplex(ImplicitModelHandler.java:208)
-		at ch.qos.logback.core.model.processor.ImplicitModelHandler.postHandle(ImplicitModelHandler.java:186)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:257)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:253)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:253)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.traversalLoop(DefaultProcessor.java:90)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.process(DefaultProcessor.java:106)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.processModel(GenericXMLConfigurator.java:208)
-		at org.springframework.boot.logging.logback.SpringBootJoranConfigurator.processModel(SpringBootJoranConfigurator.java:122)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:170)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:122)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:65)
-		at org.springframework.boot.logging.logback.LogbackLoggingSystem.configureByResourceUrl(LogbackLoggingSystem.java:287)
-		at org.springframework.boot.logging.logback.LogbackLoggingSystem.lambda$loadConfiguration$1(LogbackLoggingSystem.java:249)
-		at org.springframework.boot.logging.logback.LogbackLoggingSystem.withLoggingSuppressed(LogbackLoggingSystem.java:467)
-		at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:244)
-		... 28 common frames omitted
+2024-11-11T11:00:36.983+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] c.c.h.m.HospitalManagementApplication    : Starting HospitalManagementApplication using Java 17.0.11 with PID 21044 (C:\Personal\D Drive\cg\SpringBoot\HospitalManagementUsingDTO\target\classes started by Vilas Sangre in C:\Personal\D Drive\cg\SpringBoot\HospitalManagementUsingDTO)
+2024-11-11T11:00:36.985+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] c.c.h.m.HospitalManagementApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-11T11:00:37.043+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-11T11:00:37.044+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-11T11:00:37.975+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-11T11:00:38.030+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 3 JPA repository interfaces.
+2024-11-11T11:00:39.068+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-11T11:00:39.092+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-11T11:00:39.093+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-11T11:00:39.193+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-11T11:00:39.194+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2148 ms
+2024-11-11T11:00:39.494+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-11T11:00:39.690+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.10.Final
+2024-11-11T11:00:39.740+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-11T11:00:39.945+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-11T11:00:39.968+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-11T11:00:40.194+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7789bfa9
+2024-11-11T11:00:40.196+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-11T11:00:40.257+05:30  WARN 21044 --- [HospitalManagement] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-11T11:00:40.258+05:30  WARN 21044 --- [HospitalManagement] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-11T11:00:41.054+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-11T11:00:41.116+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-11T11:00:41.409+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-11T11:00:42.318+05:30  WARN 21044 --- [HospitalManagement] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-11T11:00:43.146+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@602f5902, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@30cbb701, org.springframework.security.web.context.SecurityContextHolderFilter@22c59150, org.springframework.security.web.header.HeaderWriterFilter@6691696d, org.springframework.security.web.authentication.logout.LogoutFilter@1e68d2a9, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@62864640, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@9d91244, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1f8728a0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@20455b34, org.springframework.security.web.access.ExceptionTranslationFilter@48b54e29, org.springframework.security.web.access.intercept.AuthorizationFilter@76b05e8]
+2024-11-11T11:00:43.649+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-11-11T11:00:43.714+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-11-11T11:00:43.731+05:30  INFO 21044 --- [HospitalManagement] [restartedMain] c.c.h.m.HospitalManagementApplication    : Started HospitalManagementApplication in 7.097 seconds (process running for 7.53)
+2024-11-11T11:01:00.602+05:30  INFO 21044 --- [HospitalManagement] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-11T11:01:00.603+05:30  INFO 21044 --- [HospitalManagement] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-11T11:01:00.605+05:30  INFO 21044 --- [HospitalManagement] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-11-11T11:01:01.308+05:30  INFO 21044 --- [HospitalManagement] [http-nio-8080-exec-1] c.c.h.m.service.PatientServiceImpl       : PatientServiceImpl method called using @Slf4j For createPatient
+2024-11-11T14:13:10.569+05:30  WARN 21044 --- [HospitalManagement] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=33m57s628ms811µs200ns).
+2024-11-11T19:08:48.228+05:30  WARN 21044 --- [HospitalManagement] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h20m4s239ms435µs600ns).

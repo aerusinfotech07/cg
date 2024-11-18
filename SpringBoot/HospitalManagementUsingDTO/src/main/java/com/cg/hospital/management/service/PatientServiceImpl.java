@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PatientServiceImpl implements PatientService {
 
+	
     @Autowired
     private PatientRepository patientRepository;
 
@@ -40,6 +41,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public PatientDto getPatientById(int id) {
+    	log.info("PatientServiceImpl method called using @Slf4j For getPatientById "+id);
         Patient patient = patientRepository.findById(id)
                 .orElseThrow(() -> new PatientNotFoundException("Patient not found with id " + id));
         return mapToDTO(patient);
