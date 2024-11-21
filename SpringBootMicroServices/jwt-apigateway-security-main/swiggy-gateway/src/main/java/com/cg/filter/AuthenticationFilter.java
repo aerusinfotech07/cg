@@ -1,5 +1,6 @@
 package com.cg.filter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.cg.dto.RoleDTO;
 import com.cg.util.JwtUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.jsonwebtoken.Claims;
 
@@ -55,20 +57,30 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                 try {
                     // Validate token and extract claims
                     Claims claims = jwtUtil.validateTokenWithRoles(authHeader);
-                    List<RoleDTO> roles = claims.get("roles", List.class);
+                    List<?> rolesMap = claims.get("roles", List.class);
+                    List<RoleDTO> roles = new ArrayList<>();
+
+                    for (Object roleMap : rolesMap) {
+                        // Convert LinkedHashMap to RoleDTO
+                        ObjectMapper objectMapper = new ObjectMapper();
+
+                        RoleDTO role = objectMapper.convertValue(roleMap, RoleDTO.class);
+                        roles.add(role);
+                    }
                     System.out.println(roles);
                     // Role-based validation (example: allow only ADMIN role for specific routes)
                     String path = exchange.getRequest().getPath().toString();
                     System.out.println("Path="+path);
-	                    if(roles!=null && roles.size()>0) {
-	                    if (path.startsWith("/admin") && !roles.get(0).getName().equals("ROLE_ADMIN")) {
-	                        throw new RuntimeException("Unauthorized access for this role");
-	                    }
-	
-	                    if (path.startsWith("/user") && !roles.get(0).getName().equals("ROLE_USER")) {
-	                        throw new RuntimeException("Unauthorized access for this role");
-	                    }
+                    if (roles != null && roles.size() > 0) {
+                        String role = roles.get(0).getName();
+                        if (path.startsWith("/admin") && !"ROLE_ADMIN".equals(role)) {
+                            throw new RuntimeException("Unauthorized access for this role");
+                        }
+                        if (path.startsWith("/user") && !"ROLE_USER".equals(role)) {
+                            throw new RuntimeException("Unauthorized access for this role");
+                        }
                     }
+
 
                     
 
