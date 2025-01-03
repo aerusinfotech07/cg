@@ -5,6 +5,7 @@ package com.senario1;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class Employee {
     private String name;
@@ -29,6 +30,11 @@ class Employee {
 	public String getName() {
 		return name;
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [name=" + name + ", age=" + age + ", salary=" + salary + "]";
+	}
     
     
 }
@@ -40,6 +46,11 @@ public class Main {
             new Employee("Smith", 28, 60000),
             new Employee("Jack", 40, 70000)
         );
+        
+        List<Employee> employeesList= employees.stream()
+        		.filter(emp->emp.getAge()>35)
+        		.collect(Collectors.toList());
+        
         
         employees.forEach(emp->{
         	System.out.println(emp.getName()+" "+emp.getAge()+" "+emp.getSalary());

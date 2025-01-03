@@ -12,4 +12,4 @@ COPY ${JAR_FILE} app.jar
 ADD ${JAR_LIB_FILE} lib/
 
 # java -jar /usr/local/runme/app.jar
-ENTRYPOINT ["java","-jar","app.jar","https://www.google.com/"]
+ENTRYPOINT ["java","-jar","app.jar"]
