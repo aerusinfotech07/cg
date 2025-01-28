@@ -1,0 +1,472 @@
+**Scenario-Based MySQL Problems with Solutions**
+
+---
+
+### Scenario 1: Employee Database
+**Problem:** 
+You are tasked with creating a database for a company to manage employee records. The database must store information about employees, including their `id`, `name`, `age`, `department`, `salary`, and `date_of_joining`. Additionally, provide queries to:
+
+1. Retrieve employees earning more than $50,000.
+2. Find employees who joined in the last 3 years.
+3. List the average salary per department.
+4. Count the total number of employees in each department.
+5. Retrieve employees older than 40 years.
+6. Find the highest-paid employee in each department.
+7. List employees who joined in 2020.
+8. Retrieve the total salary expenditure for the company.
+9. Find employees whose names start with 'J'.
+10. Get the youngest employee in the company.
+11. List all employees sorted by their date of joining.
+12. Find employees in the IT department earning less than $60,000.
+13. Retrieve the department with the highest average salary.
+14. Count the number of employees who joined after 2018.
+15. Retrieve employees with salaries between $40,000 and $70,000.
+16. Find the second-highest-paid employee in the company.
+17. Retrieve the names of employees along with their experience (years since joining).
+18. Find employees whose salary is below the average salary.
+19. List departments with fewer than 5 employees.
+20. Retrieve employees who have not been assigned to any department.
+
+**Solution:**
+
+```sql
+-- Step 1: Create the table
+CREATE TABLE employees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    age INT,
+    department VARCHAR(50),
+    salary DECIMAL(10, 2),
+    date_of_joining DATE
+);
+
+-- Step 2: Insert sample data
+INSERT INTO employees (name, age, department, salary, date_of_joining) VALUES
+('John Doe', 30, 'IT', 60000, '2020-05-15'),
+('Jane Smith', 25, 'HR', 45000, '2021-03-10'),
+('Alice Brown', 35, 'Finance', 70000, '2018-12-01'),
+('Bob White', 40, 'IT', 50000, '2015-06-20');
+
+-- Query 1: Retrieve employees earning more than $50,000
+SELECT *
+FROM employees
+WHERE salary > 50000;
+
+-- Query 2: Find employees who joined in the last 3 years
+SELECT *
+FROM employees
+WHERE date_of_joining >= DATE_SUB(CURDATE(), INTERVAL 3 YEAR);
+
+-- Query 3: List the average salary per department
+SELECT department, AVG(salary) AS average_salary
+FROM employees
+GROUP BY department;
+
+-- Query 4: Count the total number of employees in each department
+SELECT department, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department;
+
+-- Query 5: Retrieve employees older than 40 years
+SELECT *
+FROM employees
+WHERE age > 40;
+
+-- Query 6: Find the highest-paid employee in each department
+SELECT department, MAX(salary) AS highest_salary
+FROM employees
+GROUP BY department;
+
+-- Query 7: List employees who joined in 2020
+SELECT *
+FROM employees
+WHERE YEAR(date_of_joining) = 2020;
+
+-- Query 8: Retrieve the total salary expenditure for the company
+SELECT SUM(salary) AS total_salary
+FROM employees;
+
+-- Query 9: Find employees whose names start with 'J'
+SELECT *
+FROM employees
+WHERE name LIKE 'J%';
+
+-- Query 10: Get the youngest employee in the company
+SELECT *
+FROM employees
+ORDER BY age ASC
+LIMIT 1;
+
+-- Query 11: List all employees sorted by their date of joining
+SELECT *
+FROM employees
+ORDER BY date_of_joining ASC;
+
+-- Query 12: Find employees in the IT department earning less than $60,000
+SELECT *
+FROM employees
+WHERE department = 'IT' AND salary < 60000;
+
+-- Query 13: Retrieve the department with the highest average salary
+SELECT department
+FROM employees
+GROUP BY department
+ORDER BY AVG(salary) DESC
+LIMIT 1;
+
+-- Query 14: Count the number of employees who joined after 2018
+SELECT COUNT(*) AS employee_count
+FROM employees
+WHERE date_of_joining > '2018-12-31';
+
+-- Query 15: Retrieve employees with salaries between $40,000 and $70,000
+SELECT *
+FROM employees
+WHERE salary BETWEEN 40000 AND 70000;
+
+-- Query 16: Find the second-highest-paid employee in the company
+SELECT *
+FROM employees
+ORDER BY salary DESC
+LIMIT 1 OFFSET 1;
+
+-- Query 17: Retrieve the names of employees along with their experience (years since joining)
+SELECT name, TIMESTAMPDIFF(YEAR, date_of_joining, CURDATE()) AS experience_years
+FROM employees;
+
+-- Query 18: Find employees whose salary is below the average salary
+SELECT *
+FROM employees
+WHERE salary < (SELECT AVG(salary) FROM employees);
+
+-- Query 19: List departments with fewer than 5 employees
+SELECT department
+FROM employees
+GROUP BY department
+HAVING COUNT(*) < 5;
+
+-- Query 20: Retrieve employees who have not been assigned to any department
+SELECT *
+FROM employees
+WHERE department IS NULL;
+```
+
+---
+
+### Scenario 2: Online Store Database
+**Problem:**
+Create a database to manage orders in an online store. The database should include tables for `customers`, `products`, and `orders`. Write queries to:
+
+1. Get all orders placed by a specific customer.
+2. Retrieve the total revenue generated.
+3. List the top 3 products with the highest sales.
+4. Retrieve all orders placed in the last month.
+5. Find customers who purchased more than 5 products in a single order.
+6. List customers who have never placed an order.
+7. Retrieve the most expensive product sold.
+8. Find the total revenue generated per product.
+9. Get the total quantity of each product sold.
+10. Retrieve orders sorted by order date.
+11. List customers who made purchases above $1,000.
+12. Retrieve the names of customers along with the total amount they spent.
+13. Find products that were never sold.
+14. List the most frequently purchased product.
+15. Retrieve the average order value.
+16. Find customers who placed orders in the last 7 days.
+17. Retrieve products sold in quantities of more than 10 units in a single order.
+18. Find orders placed by customers whose name starts with 'A'.
+19. Retrieve the total revenue generated for each customer.
+20. List customers who made multiple orders on the same day.
+
+**Solution:**
+
+```sql
+-- Step 1: Create the tables
+CREATE TABLE customers (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+CREATE TABLE products (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(100),
+    price DECIMAL(10, 2)
+);
+
+CREATE TABLE orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT,
+    product_id INT,
+    quantity INT,
+    order_date DATE,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+-- Step 2: Insert sample data
+INSERT INTO customers (name, email) VALUES
+('Alice', 'alice@example.com'),
+('Bob', 'bob@example.com');
+
+INSERT INTO products (product_name, price) VALUES
+('Laptop', 1000.00),
+('Phone', 500.00),
+('Tablet', 300.00);
+
+INSERT INTO orders (customer_id, product_id, quantity, order_date) VALUES
+(1, 1, 1, '2023-01-15'),
+(1, 2, 2, '2023-01-20'),
+(2, 1, 1, '2023-01-22'),
+(2, 3, 3, '2023-01-25');
+
+-- Query 1: Get all orders placed by a specific customer
+SELECT o.order_id, c.name, p.product_name, o.quantity, o.order_date
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+JOIN products p ON o.product_id = p.product_id
+WHERE c.name = 'Alice';
+
+-- Query 2: Retrieve the total revenue generated
+SELECT SUM(p.price * o.quantity) AS total_revenue
+FROM orders o
+JOIN products p ON o.product_id = p.product_id;
+
+-- Query 3: List the top 3 products with the highest sales
+SELECT p.product_name, SUM(o.quantity) AS total_sales
+FROM orders o
+JOIN products p ON o.product_id = p.product_id
+GROUP BY p.product_name
+ORDER BY total_sales DESC
+LIMIT 3;
+
+-- Query 4: Retrieve all orders placed in the last month
+SELECT *
+FROM orders
+WHERE order_date >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH);
+
+-- Query 5: Find customers who purchased more than 5 products in a single order
+SELECT c.name, o.order_id, o.quantity
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+WHERE o.quantity > 5;
+
+-- Query 6: List customers who have never placed an order
+SELECT *
+FROM customers
+WHERE customer_id NOT IN (SELECT DISTINCT customer_id FROM orders);
+
+-- Query 7: Retrieve the most expensive product sold
+SELECT p.product_name, MAX(p.price) AS highest_price
+FROM products p;
+
+-- Query 8: Find the total revenue generated per product
+SELECT p.product_name, SUM(o.quantity * p.price) AS revenue
+FROM orders o
+JOIN products p ON o.product_id = p.product_id
+GROUP BY p.product_id;
+
+-- Query 9: Get the total quantity of each product sold
+SELECT p.product_name, SUM(o.quantity) AS total_quantity
+FROM orders o
+JOIN products p ON o.product_id = p.product_id
+GROUP BY p.product_id;
+
+-- Query 10: Retrieve orders sorted by order date
+SELECT *
+FROM orders
+ORDER BY order_date ASC;
+
+-- Query 11: List customers who made purchases above $1,000
+SELECT DISTINCT c.name
+FROM customers c
+JOIN orders o ON c.customer_id = o.customer_id
+JOIN products p ON o.product_id = p.product_id
+WHERE (o.quantity * p.price) > 1000;
+
+-- Query 12: Retrieve the names of customers along with the total amount they spent
+SELECT c.name, SUM(o.quantity * p.price) AS total_spent
+FROM customers c
+JOIN orders o ON c.customer_id = o.customer_id
+JOIN products p ON o.product_id = p.product_id
+GROUP BY c.customer_id;
+
+-- Query 13: Find products that were never sold
+SELECT *
+FROM products
+WHERE product_id NOT IN (SELECT DISTINCT product_id FROM orders);
+
+-- Query 14: List the most frequently purchased product
+SELECT p.product_name, SUM(o.quantity) AS total_sales
+FROM orders o
+JOIN products p ON o.product_id = p.product_id
+GROUP BY p.product_id
+ORDER BY total_sales DESC
+LIMIT 1;
+
+-- Query 15: Retrieve the average order value
+SELECT AVG(o.quantity * p.price) AS avg_order_value
+FROM orders o
+JOIN products p ON o.product_id = p.product_id;
+
+-- Query 16: Find customers who placed orders in the last 7 days
+SELECT DISTINCT c.name
+FROM customers c
+JOIN orders o ON c.customer_id = o.customer_id
+WHERE o.order_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY);
+
+-- Query 17: Retrieve products sold in quantities of more than 10 units in a single order
+SELECT p.product_name, o.quantity
+FROM orders o
+JOIN products p ON o.product_id = p.product_id
+WHERE o.quantity > 10;
+
+-- Query 18: Find orders placed by customers whose name starts with 'A'
+SELECT o.order_id, c.name
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+WHERE c.name LIKE 'A%';
+
+-- Query 19: Retrieve the total revenue generated for each customer
+SELECT c.name, SUM(o.quantity * p.price) AS revenue
+FROM customers c
+JOIN orders o ON c.customer_id = o.customer_id
+JOIN products p ON o.product_id = p.product_id
+GROUP BY c.customer_id;
+
+-- Query 20: List customers who made multiple orders on the same day
+SELECT c.name, o.order_date, COUNT(o.order_id) AS order_count
+FROM customers c
+JOIN orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_id, o.order_date
+HAVING order_count > 1;
+```
+
+---
+
+### Scenario 3: University Database
+**Problem:**
+Build a database for managing courses, students, and enrollments at a university. Write queries to:
+
+1. Retrieve all students enrolled in a specific course.
+2. List courses with more than 10 students.
+3. Get the total number of students per department.
+4. Retrieve all students who are not enrolled in any course.
+5. Find courses offered by the "Computer Science" department.
+6. List students enrolled in more than 3 courses.
+7. Retrieve the names of students along with the courses they are enrolled in.
+8. Find departments with fewer than 20 students.
+9. Retrieve courses that no students have enrolled in.
+10. Count the total number of enrollments.
+11. List the top 3 most popular courses.
+
+**Solution:**
+
+```sql
+-- Step 1: Create the tables
+CREATE TABLE students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    department VARCHAR(50)
+);
+
+CREATE TABLE courses (
+    course_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_name VARCHAR(100),
+    department VARCHAR(50)
+);
+
+CREATE TABLE enrollments (
+    enrollment_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    course_id INT,
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
+
+-- Step 2: Insert sample data
+INSERT INTO students (name, department) VALUES
+('John Doe', 'Computer Science'),
+('Jane Smith', 'Mathematics'),
+('Alice Brown', 'Physics'),
+('Bob White', 'Computer Science');
+
+INSERT INTO courses (course_name, department) VALUES
+('Data Structures', 'Computer Science'),
+('Linear Algebra', 'Mathematics'),
+('Quantum Mechanics', 'Physics');
+
+INSERT INTO enrollments (student_id, course_id) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 1),
+(1, 2);
+
+-- Query 1: Retrieve all students enrolled in a specific course
+SELECT s.name, c.course_name
+FROM enrollments e
+JOIN students s ON e.student_id = s.student_id
+JOIN courses c ON e.course_id = c.course_id
+WHERE c.course_name = 'Data Structures';
+
+-- Query 2: List courses with more than 10 students
+SELECT c.course_name, COUNT(e.student_id) AS student_count
+FROM enrollments e
+JOIN courses c ON e.course_id = c.course_id
+GROUP BY c.course_id
+HAVING student_count > 10;
+
+-- Query 3: Get the total number of students per department
+SELECT s.department, COUNT(s.student_id) AS total_students
+FROM students s
+GROUP BY s.department;
+
+-- Query 4: Retrieve all students who are not enrolled in any course
+SELECT *
+FROM students
+WHERE student_id NOT IN (SELECT DISTINCT student_id FROM enrollments);
+
+-- Query 5: Find courses offered by the "Computer Science" department
+SELECT *
+FROM courses
+WHERE department = 'Computer Science';
+
+-- Query 6: List students enrolled in more than 3 courses
+SELECT s.name, COUNT(e.course_id) AS course_count
+FROM students s
+JOIN enrollments e ON s.student_id = e.student_id
+GROUP BY s.student_id
+HAVING course_count > 3;
+
+-- Query 7: Retrieve the names of students along with the courses they are enrolled in
+SELECT s.name, c.course_name
+FROM enrollments e
+JOIN students s ON e.student_id = s.student_id
+JOIN courses c ON e.course_id = c.course_id;
+
+-- Query 8: Find departments with fewer than 20 students
+SELECT department
+FROM students
+GROUP BY department
+HAVING COUNT(*) < 20;
+
+-- Query 9: Retrieve courses that no students have enrolled in
+SELECT *
+FROM courses
+WHERE course_id NOT IN (SELECT DISTINCT course_id FROM enrollments);
+
+-- Query 10: Count the total number of enrollments
+SELECT COUNT(*) AS total_enrollments
+FROM enrollments;
+
+-- Query 11: List the top 3 most popular courses
+SELECT c.course_name, COUNT(e.student_id) AS student_count
+FROM enrollments e
+JOIN courses c ON e.course_id = c.course_id
+GROUP BY c.course_id
+ORDER BY student_count DESC
+LIMIT 3;
+
+
+
