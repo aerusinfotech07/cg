@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class BookExample {
 
     private List<Book> getBooks() {
-        return List.of(
+        return Arrays.asList(
                 new Book("The Great Gatsby", "F. Scott Fitzgerald", 1925, Genre.FICTION, 8.5),
                 new Book("1984", "George Orwell", 1949, Genre.FICTION, 9.0),
                 new Book("To Kill a Mockingbird", "Harper Lee", 1960, Genre.FICTION, 9.2),
@@ -60,6 +60,7 @@ public class BookExample {
         // 5. Sorted: Sort books by rating in descending order
         List<Book> sortedByRating = bookList.stream()
                 .sorted(Comparator.comparingDouble(Book::getRating).reversed())
+                .limit(3)
                 .collect(Collectors.toList());
         System.out.println("Books sorted by rating (descending): " + sortedByRating);
 

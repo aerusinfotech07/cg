@@ -1,0 +1,279 @@
+Below are implementations of the examples in Java. These examples are simplified and can be extended as needed.
+
+---
+
+### 1. **Custom Linked List Implementation**
+```java
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+
+    public void addAtEnd(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+        Node current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = newNode;
+    }
+
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+        list.addAtEnd(1);
+        list.addAtEnd(2);
+        list.addAtEnd(3);
+        list.display();
+    }
+}
+```
+
+---
+
+### 2. **Student Record System Using HashMap**
+```java
+import java.util.HashMap;
+
+class Student {
+    int id;
+    String name;
+    int age;
+
+    Student(int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + id + ", Name: " + name + ", Age: " + age;
+    }
+}
+
+public class StudentSystem {
+    public static void main(String[] args) {
+        HashMap<Integer, Student> students = new HashMap<>();
+
+        // Add students
+        students.put(1, new Student(1, "Alice", 20));
+        students.put(2, new Student(2, "Bob", 22));
+
+        // Display student details
+        System.out.println(students.get(1));
+
+        // Remove a student
+        students.remove(2);
+
+        // Display all students
+        students.values().forEach(System.out::println);
+    }
+}
+```
+
+---
+
+### 3. **Maze Solver Using Stack**
+```java
+import java.util.Stack;
+
+public class MazeSolver {
+    static int[][] maze = {
+        {1, 0, 1, 1},
+        {1, 1, 0, 1},
+        {0, 1, 1, 0},
+        {1, 1, 1, 1}
+    };
+
+    static class Position {
+        int x, y;
+
+        Position(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    public static void main(String[] args) {
+        Stack<Position> stack = new Stack<>();
+        stack.push(new Position(0, 0));
+
+        while (!stack.isEmpty()) {
+            Position pos = stack.pop();
+            int x = pos.x, y = pos.y;
+
+            // Mark as visited
+            maze[x][y] = -1;
+
+            // Check exit
+            if (x == maze.length - 1 && y == maze[0].length - 1) {
+                System.out.println("Path found!");
+                return;
+            }
+
+            // Add neighbors
+            if (x + 1 < maze.length && maze[x + 1][y] == 1) stack.push(new Position(x + 1, y));
+            if (y + 1 < maze[0].length && maze[x][y + 1] == 1) stack.push(new Position(x, y + 1));
+        }
+
+        System.out.println("No path found.");
+    }
+}
+```
+
+---
+
+### 4. **Priority Queue for Task Scheduling**
+```java
+import java.util.PriorityQueue;
+
+class Task implements Comparable<Task> {
+    String description;
+    int priority;
+
+    Task(String description, int priority) {
+        this.description = description;
+        this.priority = priority;
+    }
+
+    @Override
+    public int compareTo(Task other) {
+        return Integer.compare(other.priority, this.priority); // Higher priority first
+    }
+
+    @Override
+    public String toString() {
+        return "Task: " + description + ", Priority: " + priority;
+    }
+}
+
+public class TaskScheduler {
+    public static void main(String[] args) {
+        PriorityQueue<Task> taskQueue = new PriorityQueue<>();
+
+        // Add tasks
+        taskQueue.add(new Task("Write report", 3));
+        taskQueue.add(new Task("Pay bills", 2));
+        taskQueue.add(new Task("Fix bugs", 5));
+
+        // Process tasks
+        while (!taskQueue.isEmpty()) {
+            System.out.println(taskQueue.poll());
+        }
+    }
+}
+```
+
+---
+
+### 5. **Binary Search Tree (BST) for Inventory Management**
+```java
+class Product {
+    int id;
+    String name;
+
+    Product(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+
+class BSTNode {
+    Product product;
+    BSTNode left, right;
+
+    BSTNode(Product product) {
+        this.product = product;
+    }
+}
+
+class BST {
+    BSTNode root;
+
+    public void add(Product product) {
+        root = addRec(root, product);
+    }
+
+    private BSTNode addRec(BSTNode node, Product product) {
+        if (node == null) return new BSTNode(product);
+
+        if (product.id < node.product.id) node.left = addRec(node.left, product);
+        else if (product.id > node.product.id) node.right = addRec(node.right, product);
+
+        return node;
+    }
+
+    public void inOrder() {
+        inOrderRec(root);
+    }
+
+    private void inOrderRec(BSTNode node) {
+        if (node != null) {
+            inOrderRec(node.left);
+            System.out.println(node.product.name + " (ID: " + node.product.id + ")");
+            inOrderRec(node.right);
+        }
+    }
+}
+
+public class InventorySystem {
+    public static void main(String[] args) {
+        BST inventory = new BST();
+        inventory.add(new Product(10, "Laptop"));
+        inventory.add(new Product(5, "Phone"));
+        inventory.add(new Product(20, "Tablet"));
+
+        inventory.inOrder();
+    }
+}
+```
+
+---
+
+Would you like implementations of the remaining examples or more in-depth explanations for any specific one?
+
+
+
+Understood! I'll prepare 25 examples for each topic you mentioned. Here's how I will organize the examples across different data structures:
+
+### Topics and Examples:
+1. **Custom Linked List** - 25 examples
+2. **HashMap and HashTable Applications** - 25 examples
+3. **Stack and Queue Applications** - 25 examples
+4. **Binary Search Tree (BST)** - 25 examples
+5. **Priority Queue and Heaps** - 25 examples
+6. **Graph Algorithms (BFS, DFS, Dijkstra)** - 25 examples
+7. **Sorting Algorithms** - 25 examples
+8. **Trie Applications** - 25 examples
+9. **Miscellaneous Data Structures (Set, Deque, etc.)** - 25 examples
+
+I'll begin preparing this for you. Which topic would you like me to start with?
+
+
+
+
+
+

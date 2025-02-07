@@ -1,0 +1,63 @@
+### Difference Between `@Bean` and `@Component` in Spring
+
+#### **1. `@Bean` (Method-Level Annotation)**
+- Used inside a `@Configuration` class to manually define beans.
+- The annotated method returns an instance of the bean.
+- Gives more control over the bean's creation and initialization.
+- Typically used for third-party classes or when more customization is needed.
+- The bean is automatically registered in the Spring container.
+
+**Example:**
+```java
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public MyService myService() {
+        return new MyService();
+    }
+}
+```
+Here, `myService()` explicitly defines a Spring bean.
+
+---
+
+#### **2. `@Component` (Class-Level Annotation)**
+- Used to mark a class as a Spring-managed component.
+- Requires component scanning (`@ComponentScan`) for automatic detection.
+- Works well for application-level components like services, repositories, and controllers.
+- A specialized form of `@Component` includes `@Service`, `@Repository`, and `@Controller`.
+
+**Example:**
+```java
+@Component
+public class MyService {
+    public void doSomething() {
+        System.out.println("Hello from MyService");
+    }
+}
+```
+Here, `MyService` is automatically detected and registered as a bean.
+
+---
+
+#### **Key Differences**
+1. **Declaration Style:**  
+   - `@Bean` is used on methods inside a `@Configuration` class.  
+   - `@Component` is used directly on a class.
+
+2. **Detection Method:**  
+   - `@Bean` requires manual declaration.  
+   - `@Component` is automatically detected through classpath scanning.
+
+3. **Use Case:**  
+   - `@Bean` is useful for configuring third-party libraries or when more control over bean instantiation is needed.  
+   - `@Component` is ideal for application-level classes that you control.
+
+4. **Customization & Dependencies:**  
+   - `@Bean` allows configuring dependencies and lifecycle methods explicitly.  
+   - `@Component` relies on dependency injection for initialization.
+
+**When to Use What?**  
+Use `@Component` for your own application's services, repositories, and controllers.  
+Use `@Bean` when dealing with external libraries or when fine-tuned control over bean creation is necessary.

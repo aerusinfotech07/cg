@@ -43,7 +43,7 @@ public class Main {
 
         List<Product> filteredProducts = products.stream()
             .filter(p -> "Electronics".equals(p.getCategory()))
-            .sorted(Comparator.comparingDouble(Product::getPrice))
+            .sorted(Comparator.comparingDouble(Product::getPrice).reversed())
             .collect(Collectors.toList());
         
        

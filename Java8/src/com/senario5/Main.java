@@ -10,15 +10,23 @@ class Book {
     private String title;
     private String author;
     private int year;
+    private double price;
 
-    // Constructor, getters, and setters
-    public Book(String title, String author, int year) {
-        this.title = title;
-        this.author = author;
-        this.year = year;
-    }
+    
+    public Book(String title, String author, int year, double price) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.year = year;
+		this.price = price;
+	}
 
-    public String getAuthor() {
+	public Book() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getAuthor() {
         return author;
     }
 
@@ -29,6 +37,28 @@ class Book {
     public int getYear() {
         return year;
     }
+    
+    
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
 
 	@Override
 	public String toString() {
@@ -41,17 +71,26 @@ class Book {
 public class Main {
     public static void main(String[] args) {
         List<Book> books = Arrays.asList(
-            new Book("Book A", "Author 1", 2000),
-            new Book("Book B", "Author 2", 2005),
-            new Book("Book C", "Author 1", 2010)
+            new Book("Book A", "Author 1", 2000,200),
+            new Book("Book B", "Author 2", 2005,345),
+            new Book("Book C", "Author 1", 2010,254),
+            new Book("Book D", "Author 1", 2010,45),
+            new Book("Book E", "Author 1", 2010,678),
+            new Book("Book F", "Author 4", 2005,1000)
         );
 
-        books.stream().collect(Collectors.groupingBy(Book::getAuthor)).forEach((k,v)->{
+        books.stream().collect(Collectors.groupingBy(Book::getYear,Collectors.summingDouble(Book::getPrice))).forEach((k,v)->{
+        	 System.out.println(k+" "+v);
+        });
+       
+        
+        
+        /*books.stream().collect(Collectors.groupingBy(Book::getAuthor)).forEach((k,v)->{
         	System.out.println(k+" "+v.size());
         	
         	
         });
-     
+     */
         
         
       

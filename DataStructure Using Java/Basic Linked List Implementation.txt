@@ -1,0 +1,570 @@
+
+Great! Let's start with **Custom Linked List** examples. I'll provide 25 different examples, covering a wide range of use cases for linked lists. Once we're done, we can proceed to the next topic.
+
+---
+
+## **25 Custom Linked List Examples**
+
+### **1. Basic Linked List Implementation**
+- Implement a singly linked list with `add`, `remove`, and `display` methods.
+
+---
+
+### **2. Doubly Linked List**
+- Implement a doubly linked list that supports traversing in both directions.
+
+---
+
+### **3. Circular Linked List**
+- Create a circular linked list where the last node points back to the first.
+
+---
+
+### **4. Reverse a Linked List**
+- Write a method to reverse the elements of a singly linked list.
+
+---
+
+### **5. Find Middle of a Linked List**
+- Use the slow and fast pointer technique to find the middle node of a linked list.
+
+---
+
+### **6. Detect and Remove Loop**
+- Use Floyd's Cycle Detection algorithm to find and remove a loop in the linked list.
+
+---
+
+### **7. Merge Two Sorted Linked Lists**
+- Merge two sorted linked lists into a single sorted list.
+
+---
+
+### **8. Remove Duplicates from a Linked List**
+- Traverse the list and remove any duplicate elements.
+
+---
+
+### **9. Check if a Linked List is a Palindrome**
+- Check if the linked list reads the same forwards and backwards.
+
+---
+
+### **10. Intersection of Two Linked Lists**
+- Find the intersection point of two linked lists.
+
+---
+
+### **11. Partition a Linked List**
+- Partition a linked list around a given value, such that all nodes less than the value come before the nodes greater than or equal to it.
+
+---
+
+### **12. Rotate a Linked List**
+- Rotate the linked list by a given number of positions.
+
+---
+
+### **13. Pairwise Swap Nodes**
+- Swap nodes in pairs (e.g., 1->2->3->4 becomes 2->1->4->3).
+
+---
+
+### **14. Flatten a Multilevel Linked List**
+- Flatten a multilevel linked list into a single-level list.
+
+---
+
+### **15. Remove Nth Node from the End**
+- Remove the Nth node from the end of the list in a single pass.
+
+---
+
+### **16. Add Two Numbers Represented by Linked Lists**
+- Add two numbers represented as linked lists and return the sum as a new list.
+
+---
+
+### **17. Clone a Linked List with Random Pointers**
+- Clone a linked list where each node has an additional random pointer.
+
+---
+
+### **18. Sort a Linked List**
+- Implement merge sort to sort a linked list.
+
+---
+
+### **19. Rearrange a Linked List**
+- Rearrange the list such that all even-positioned nodes follow the odd-positioned nodes.
+
+---
+
+### **20. Find Kth Node from End**
+- Find the Kth node from the end of the linked list.
+
+---
+
+### **21. Split a Linked List into Two Halves**
+- Split a linked list into two halves.
+
+---
+
+### **22. Delete a Node Without Head Reference**
+- Delete a node in the middle of a linked list when only the node itself is given.
+
+---
+
+### **23. Swap Two Nodes Without Swapping Data**
+- Swap two nodes in a linked list without swapping their data.
+
+---
+
+### **24. Segregate Even and Odd Nodes**
+- Rearrange the list so that all even nodes are grouped together, followed by odd nodes.
+
+---
+
+### **25. Convert Linked List to a Binary Search Tree**
+- Convert a sorted linked list into a balanced BST.
+
+
+// Example 1: Basic Linked List Implementation
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+
+    public void add(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
+
+// Example 2: Doubly Linked List Implementation
+class DoublyNode {
+    int data;
+    DoublyNode next;
+    DoublyNode prev;
+
+    DoublyNode(int data) {
+        this.data = data;
+        this.next = null;
+        this.prev = null;
+    }
+}
+
+class DoublyLinkedList {
+    DoublyNode head;
+
+    public void add(int data) {
+        DoublyNode newNode = new DoublyNode(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            DoublyNode current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+            newNode.prev = current;
+        }
+    }
+
+    public void display() {
+        DoublyNode current = head;
+        while (current != null) {
+            System.out.print(current.data + " <-> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
+
+// Example 3: Circular Linked List Implementation
+class CircularLinkedList {
+    Node head;
+
+    public void add(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            newNode.next = head;
+        } else {
+            Node current = head;
+            while (current.next != head) {
+                current = current.next;
+            }
+            current.next = newNode;
+            newNode.next = head;
+        }
+    }
+
+    public void display() {
+        if (head == null) return;
+        Node current = head;
+        do {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        } while (current != head);
+        System.out.println("(head)");
+    }
+}
+
+// Example 4: Reverse a Linked List
+class LinkedListReverse {
+    Node head;
+
+    public void add(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    public void reverse() {
+        Node prev = null, current = head, next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+    }
+
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
+
+// Example 5: Find Middle of a Linked List
+class LinkedListFindMiddle {
+    Node head;
+
+    public void add(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    public void findMiddle() {
+        if (head == null) {
+            System.out.println("The list is empty.");
+            return;
+        }
+        Node slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        System.out.println("Middle element: " + slow.data);
+    }
+
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
+
+// Example 6: Detect and Remove Loop
+class LinkedListDetectLoop {
+    Node head;
+
+    public void add(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    public void createLoop() {
+        if (head == null) return;
+        Node current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = head.next; // Create a loop for testing
+    }
+
+    public boolean detectAndRemoveLoop() {
+        Node slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                removeLoop(slow);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void removeLoop(Node loopNode) {
+        Node ptr1 = head;
+        Node ptr2 = loopNode;
+        while (ptr1.next != ptr2.next) {
+            ptr1 = ptr1.next;
+            ptr2 = ptr2.next;
+        }
+        ptr2.next = null;
+    }
+
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
+
+// Example 7: Merge Two Sorted Linked Lists
+class LinkedListMerge {
+    Node head;
+
+    public void add(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    public static Node merge(Node l1, Node l2) {
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+
+        if (l1.data < l2.data) {
+            l1.next = merge(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = merge(l1, l2.next);
+            return l2;
+        }
+    }
+
+    public void display(Node node) {
+        Node current = node;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
+
+// Example 8: Remove Duplicates from a Sorted Linked List
+class LinkedListRemoveDuplicates {
+    Node head;
+
+    public void add(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    public void removeDuplicates() {
+        Node current = head;
+        while (current != null && current.next != null) {
+            if (current.data == current.next.data) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+    }
+
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
+
+// Example 9: Check Palindrome in a Linked List
+class LinkedListPalindrome {
+    Node head;
+
+    public void add(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    public boolean isPalindrome() {
+        Node slow = head, fast = head;
+        Node prevSlow = null;
+        while (fast != null && fast.next != null) {
+            prevSlow = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        Node secondHalf = reverse(slow);
+        Node firstHalf = head;
+        boolean palindrome = true;
+
+        while (secondHalf != null) {
+            if (firstHalf.data != secondHalf.data) {
+                palindrome = false;
+                break;
+            }
+            firstHalf = firstHalf.next;
+            secondHalf = secondHalf.next;
+        }
+
+        reverse(slow);
+        if (prevSlow != null) {
+            prevSlow.next = slow;
+        }
+
+        return palindrome;
+    }
+
+    private Node reverse(Node node) {
+        Node prev = null, current = node;
+        while (current != null) {
+            Node next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        return prev;
+    }
+
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
+
+// Example 10: Rotate Linked List by K Positions
+class LinkedListRotate {
+    Node head;
+
+    public void add(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    public void rotate(int k) {
+        if (head == null || k == 0) return;
+
+        Node current = head;
+        int length = 1;
+        while (current.next != null) {
+            current = current.next;
+            length++;
+        }
+
+        k = k % length;
+        if (k == 0) return;
+
+        current.next = head;
+        int stepsToNewHead = length - k;
+        Node newTail = head;
+        for (int i = 1; i < stepsToNewHead; i++) {
+            newTail = newTail.next;
+        }
+        head = newTail.next;
+        newTail.next = null;
+    }
+
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}

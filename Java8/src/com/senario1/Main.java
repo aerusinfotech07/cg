@@ -4,8 +4,11 @@ package com.senario1;
 //Question: You have a list of employees with their names, ages, and salaries. Write a program to find the average salary of employees older than 30 using Java 8.
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 class Employee {
     private String name;
@@ -47,6 +50,25 @@ public class Main {
             new Employee("Jack", 40, 70000)
         );
         
+        double sumSaalary=employees.stream()
+        		.mapToDouble(Employee::getSalary)
+        		.sum();
+        long count=employees.stream().count();
+        
+        List<String> empNames=employees.stream()
+        .map(Employee::getName)
+        .map(String::toUpperCase)
+        .collect(Collectors.toList());
+        
+        List<String> empNamesWithCapital=empNames.stream()
+        		.map(String::toUpperCase)
+        		.collect(Collectors.toList());
+        
+        
+        
+        
+        
+        
         List<Employee> employeesList= employees.stream()
         		.filter(emp->emp.getAge()>35)
         		.collect(Collectors.toList());
@@ -68,6 +90,29 @@ public class Main {
         });
     
         
+        Collections.sort(employees,new Comparator<Employee>() {
+
+			@Override
+			public int compare(Employee o1, Employee o2) {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+        	
+		});
+        
+        
+        Collections.sort(employees,(p1,p2)->{
+        	return p1.getName().compareTo(p2.getName());
+        });
+        
+        Collections.sort(employees,Comparator.comparing(Employee::getSalary).reversed());
+        
+        double highestSlary=employees.get(0).getSalary();
+        
+        Stream<Employee> emp=employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).limit(1);
+        emp.findFirst().get().getSalary();
+        
+        double maxSalaryEmployee=employees.stream().max(Comparator.comparing(Employee::getSalary).reversed()).get().getSalary();
         
         List<Employee> empList=new ArrayList<>();
         empList.add( new Employee("John", 35, 50000));
