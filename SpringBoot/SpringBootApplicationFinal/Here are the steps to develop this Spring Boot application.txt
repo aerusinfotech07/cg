@@ -1,0 +1,63 @@
+Here are the steps to develop this Spring Boot application:
+
+### 1) Make a Spring Boot Starter Application
+- Use [Spring Initializr](https://start.spring.io/) to generate a Spring Boot project with Maven.
+- Select dependencies like **Spring Web, Spring Data JPA, and Validation**.
+- Extract and open the project in an IDE like IntelliJ IDEA or Eclipse.
+
+### 2) Add Required Dependencies  
+Ensure `pom.xml` contains:
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+</dependencies>
+```
+
+### 3) Follow a Layered Architecture  
+The project should have:
+- **Model Layer**: Defines entity (`Book`).
+- **DTO Layer**: Defines `BookRequestDTO` and `BookResponseDTO`.
+- **Repository Layer**: Interface extending `JpaRepository`.
+- **Service Layer**: Implements business logic and DTO transformations.
+- **Controller Layer**: Exposes REST endpoints.
+- **Exception Handling Layer**: Catches and handles exceptions.
+- **Validation Layer**: Ensures input correctness.
+
+### 4) Create Entity (Model)  
+Define the `Book` entity with JPA annotations. Already implemented in your code.
+
+### 5) Create Repository Interface  
+Create `BookRepository`:
+```java
+interface BookRepository extends JpaRepository<Book, Integer> {
+    List<Book> findByTitleContaining(String title); // Custom query method
+}
+```
+
+### 6) Implement Exception Handling  
+Already implemented via `GlobalExceptionHandler` and `BookNotFoundException`.
+
+### 7) Develop the Service Layer  
+- Accepts and returns DTOs.
+- Transforms `DTO -> Entity` before saving and `Entity -> DTO` before returning.
+
+### 8) Implement Controller Layer  
+- Handles CRUD endpoints with proper validation and response statuses.
+
+Your code already follows these steps, and it is well-structured. Let me know if you need refinements! 
