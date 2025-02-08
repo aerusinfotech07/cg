@@ -1,5 +1,6 @@
 package com.cg.book.dao;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,11 +11,13 @@ import com.cg.book.model.Book;
 import com.cg.book.model.Genre;
 
 @Repository
-public class BookDAOImpl implements BookDAO{	
-
-	@Override
-	public List<Book> findAll() {
-		return Arrays.asList(
+public class BookDAOImpl implements BookDAO{
+	
+	public List<Book> bookList=new ArrayList<>();
+	
+	public BookDAOImpl()
+	{
+		bookList.addAll(Arrays.asList(
                 new Book(1,"The Great Gatsby", "F. Scott Fitzgerald", 1925, Genre.FICTION, 8.5),
                 new Book(2,"1984", "George Orwell", 1949, Genre.FICTION, 9.0),
                 new Book(3,"To Kill a Mockingbird", "Harper Lee", 1960, Genre.FICTION, 9.2),
@@ -27,29 +30,47 @@ public class BookDAOImpl implements BookDAO{
                 new Book(10,"Dune", "Frank Herbert", 1965, Genre.SCIFI, 8.8),
                 new Book(11,"Becoming", "Michelle Obama", 2018, Genre.BIOGRAPHY, 9.5),
                 new Book(12,"The Alchemist", "Paulo Coelho", 1988, Genre.FICTION, 8.5),
-                new Book(13,"The Subtle Art of Not Giving a F*ck", "Mark Manson", 2016, Genre.NON_FICTION, 8.3),
+                new Book(13,"The Subtle Art of Not Giving ", "Mark Manson", 2016, Genre.NON_FICTION, 8.3),
                 new Book(14,"Gone Girl", "Gillian Flynn", 2012, Genre.MYSTERY, 8.1),
                 new Book(15,"Fahrenheit 451", "Ray Bradbury", 1953, Genre.SCIFI, 8.4),
                 new Book(16,"Pride and Prejudice", "Jane Austen", 1813, Genre.FICTION, 8.7)
-        );
+        ));
+	}
+	
+	@Override
+	public List<Book> findAll() {
+		return bookList;
 	}
 
 	@Override
 	public Book saveBook(Book book) {
 		// TODO Auto-generated method stub
-		return null;
+		book.setId(bookList.size()+1);
+		bookList.add(book);
+		return book;
 	}
 
 	@Override
-	public Book updateBook(Book book) {
-		// TODO Auto-generated method stub
-		return null;
+	public Book updateBook(int id,Book book) {
+		Book originalBook=bookList.get(id);
+		if(book.getId()!=0)
+			originalBook.setId(book.getId());
+		if(book.getTitle()!=null && book.getTitle().trim().length()>0)
+			originalBook.setTitle(book.getTitle());
+		if(book.getAuthor()!=null && book.getAuthor().trim().length()>0)
+			originalBook.setAuthor(book.getAuthor());
+		
+		
+		
+		bookList.set(id, originalBook);
+		return book;
 	}
 
 	@Override
 	public boolean deleteBook(int id) {
 		// TODO Auto-generated method stub
-		return false;
+		bookList.remove(id);
+		return true;
 	}
 
 	@Override

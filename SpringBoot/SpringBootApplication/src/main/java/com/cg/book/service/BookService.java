@@ -8,7 +8,7 @@ public interface BookService {
 	
 	List<Book> findAll();
 	Book saveBook(Book book);
-	Book updateBook(Book book);
+	Book updateBook(int id,Book book);
 	boolean deleteBook(int id);
 	List<Book> findByTitle(String title);
 
