@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Entity
-class Book {
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -35,11 +35,11 @@ class Book {
     // Getters and Setters
 }
 
-enum Genre {
+public enum Genre {
     FICTION, NON_FICTION, SCIENCE, HISTORY, FANTASY, BIOGRAPHY
 }
 
-class BookRequestDTO {
+public class BookRequestDTO {
     @NotBlank(message = "Title is required")
     private String title;
     
@@ -58,7 +58,7 @@ class BookRequestDTO {
     // Getters and Setters
 }
 
-class BookResponseDTO {
+public class BookResponseDTO {
     private int id;
     private String title;
     private String author;
@@ -78,10 +78,10 @@ class BookResponseDTO {
     // Getters
 }
 
-interface BookRepository extends JpaRepository<Book, Integer> {}
+public interface BookRepository extends JpaRepository<Book, Integer> {}
 
 @Service
-class BookService {
+public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
@@ -113,7 +113,7 @@ class BookService {
 
 @RestController
 @RequestMapping("/books")
-class BookController {
+public class BookController {
     @Autowired
     private BookService bookService;
 
@@ -140,14 +140,14 @@ class BookController {
 }
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-class BookNotFoundException extends RuntimeException {
+public class BookNotFoundException extends RuntimeException {
     public BookNotFoundException(String message) {
         super(message);
     }
 }
 
 @ControllerAdvice
-class GlobalExceptionHandler {
+public class GlobalExceptionHandler {
     @ExceptionHandler(BookNotFoundException.class)
     public ResponseEntity<String> handleBookNotFoundException(BookNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
