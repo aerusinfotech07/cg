@@ -1,3 +1,173 @@
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import java.util.List;
+import java.util.Optional;
+
+@Entity
+class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    
+    @NotBlank(message = "Title is required")
+    private String title;
+    
+    @NotBlank(message = "Author is required")
+    private String author;
+    
+    @Min(value = 1000, message = "Year should be a valid year")
+    private int year;
+    
+    @Enumerated(EnumType.STRING)
+    private Genre genre;
+    
+    @DecimalMin(value = "0.0", message = "Rating must be at least 0.0")
+    @DecimalMax(value = "5.0", message = "Rating must be at most 5.0")
+    private double rating;
+    
+    // Getters and Setters
+}
+
+enum Genre {
+    FICTION, NON_FICTION, SCIENCE, HISTORY, FANTASY, BIOGRAPHY
+}
+
+class BookRequestDTO {
+    @NotBlank(message = "Title is required")
+    private String title;
+    
+    @NotBlank(message = "Author is required")
+    private String author;
+    
+    @Min(value = 1000, message = "Year should be a valid year")
+    private int year;
+    
+    private Genre genre;
+    
+    @DecimalMin(value = "0.0", message = "Rating must be at least 0.0")
+    @DecimalMax(value = "5.0", message = "Rating must be at most 5.0")
+    private double rating;
+    
+    // Getters and Setters
+}
+
+class BookResponseDTO {
+    private int id;
+    private String title;
+    private String author;
+    private int year;
+    private Genre genre;
+    private double rating;
+    
+    public BookResponseDTO(Book book) {
+        this.id = book.getId();
+        this.title = book.getTitle();
+        this.author = book.getAuthor();
+        this.year = book.getYear();
+        this.genre = book.getGenre();
+        this.rating = book.getRating();
+    }
+    
+    // Getters
+}
+
+interface BookRepository extends JpaRepository<Book, Integer> {}
+
+@Service
+class BookService {
+    @Autowired
+    private BookRepository bookRepository;
+
+    public List<BookResponseDTO> getAllBooks() {
+        return bookRepository.findAll().stream().map(BookResponseDTO::new).toList();
+    }
+
+    public BookResponseDTO getBookById(int id) {
+        return new BookResponseDTO(bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException("Book not found with ID: " + id)));
+    }
+
+    public BookResponseDTO saveBook(BookRequestDTO bookRequestDTO) {
+        Book book = new Book();
+        book.setTitle(bookRequestDTO.getTitle());
+        book.setAuthor(bookRequestDTO.getAuthor());
+        book.setYear(bookRequestDTO.getYear());
+        book.setGenre(bookRequestDTO.getGenre());
+        book.setRating(bookRequestDTO.getRating());
+        return new BookResponseDTO(bookRepository.save(book));
+    }
+
+    public void deleteBook(int id) {
+        if (!bookRepository.existsById(id)) {
+            throw new BookNotFoundException("Book not found with ID: " + id);
+        }
+        bookRepository.deleteById(id);
+    }
+}
+
+@RestController
+@RequestMapping("/books")
+class BookController {
+    @Autowired
+    private BookService bookService;
+
+    @GetMapping
+    public List<BookResponseDTO> getAllBooks() {
+        return bookService.getAllBooks();
+    }
+
+    @GetMapping("/{id}")
+    public BookResponseDTO getBookById(@PathVariable int id) {
+        return bookService.getBookById(id);
+    }
+
+    @PostMapping
+    public ResponseEntity<BookResponseDTO> createBook(@RequestBody @Valid BookRequestDTO bookRequestDTO) {
+        return new ResponseEntity<>(bookService.saveBook(bookRequestDTO), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteBook(@PathVariable int id) {
+        bookService.deleteBook(id);
+        return ResponseEntity.noContent().build();
+    }
+}
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+class BookNotFoundException extends RuntimeException {
+    public BookNotFoundException(String message) {
+        super(message);
+    }
+}
+
+@ControllerAdvice
+class GlobalExceptionHandler {
+    @ExceptionHandler(BookNotFoundException.class)
+    public ResponseEntity<String> handleBookNotFoundException(BookNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        String errorMessage = ex.getBindingResult().getFieldErrors()
+                .stream()
+                .map(error -> error.getDefaultMessage())
+                .findFirst()
+                .orElse("Invalid request");
+        return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+    }
+}
+
+
+
+
+
 Here are the steps to develop this Spring Boot application:
 
 ### 1) Make a Spring Boot Starter Application
@@ -39,6 +209,256 @@ The project should have:
 - **Exception Handling Layer**: Catches and handles exceptions.
 - **Validation Layer**: Ensures input correctness.
 
+
+A **Layered Architecture** in a Spring Boot application ensures separation of concerns, making the code maintainable, testable, and scalable. Below is a detailed breakdown of each layer in your project:
+
+---
+
+## **1) Model Layer**  
+The **Model Layer** represents database entities and maps directly to tables using **JPA (Java Persistence API)**.  
+
+### **Example: `Book` Entity**  
+```java
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Book {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String title;
+    private String author;
+    private Double price;
+}
+```
+- Annotated with `@Entity`, representing a database table.  
+- Uses `@Id` and `@GeneratedValue` to define the primary key.  
+- Includes attributes like `title`, `author`, and `price`.
+
+---
+
+## **2) DTO Layer (Data Transfer Objects)**  
+DTOs encapsulate the data exchanged between the API and clients, ensuring better separation between layers.  
+
+### **Example: `BookRequestDTO` (For Input Data)**
+```java
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class BookRequestDTO {
+    private String title;
+    private String author;
+    private Double price;
+}
+```
+- Used for **creating/updating** a book.
+- Prevents exposing unnecessary fields (e.g., `id`).
+
+### **Example: `BookResponseDTO` (For Output Data)**
+```java
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class BookResponseDTO {
+    private Long id;
+    private String title;
+    private String author;
+    private Double price;
+}
+```
+- Ensures that only relevant fields are sent in responses.
+
+---
+
+## **3) Repository Layer**  
+The **Repository Layer** interacts with the database. It extends **JpaRepository** to provide CRUD operations.  
+
+### **Example: `BookRepository` Interface**
+```java
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface BookRepository extends JpaRepository<Book, Long> {
+    // Custom query methods (if needed) can be added here
+}
+```
+- Spring Data JPA automatically implements standard database operations.
+- Custom queries can be added using method names (e.g., `findByTitle(String title)`).
+
+---
+
+## **4) Service Layer**  
+This layer contains **business logic** and handles transformations between **DTOs and Entities**.
+
+### **Example: `BookService`**
+```java
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class BookService {
+    
+    private final BookRepository bookRepository;
+
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+
+    public BookResponseDTO createBook(BookRequestDTO bookRequestDTO) {
+        Book book = new Book(null, bookRequestDTO.getTitle(), bookRequestDTO.getAuthor(), bookRequestDTO.getPrice());
+        book = bookRepository.save(book);
+        return new BookResponseDTO(book.getId(), book.getTitle(), book.getAuthor(), book.getPrice());
+    }
+
+    public List<BookResponseDTO> getAllBooks() {
+        return bookRepository.findAll().stream()
+                .map(book -> new BookResponseDTO(book.getId(), book.getTitle(), book.getAuthor(), book.getPrice()))
+                .collect(Collectors.toList());
+    }
+}
+```
+- Converts **DTO → Entity** before saving.  
+- Converts **Entity → DTO** before returning responses.  
+- Ensures **business rules** are applied.
+
+---
+
+## **5) Controller Layer**  
+Exposes RESTful endpoints and interacts with the **Service Layer**.
+
+### **Example: `BookController`**
+```java
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/books")
+public class BookController {
+
+    private final BookService bookService;
+
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
+
+    @PostMapping
+    public ResponseEntity<BookResponseDTO> createBook(@RequestBody BookRequestDTO bookRequestDTO) {
+        return ResponseEntity.ok(bookService.createBook(bookRequestDTO));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<BookResponseDTO>> getAllBooks() {
+        return ResponseEntity.ok(bookService.getAllBooks());
+    }
+}
+```
+- `@PostMapping`: Accepts **book creation** requests.  
+- `@GetMapping`: Fetches **all books**.  
+- Uses `ResponseEntity` for **proper HTTP responses**.
+
+---
+
+## **6) Exception Handling Layer**  
+Handles errors and provides meaningful responses to clients.
+
+### **Example: `GlobalExceptionHandler`**
+```java
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<String> handleRuntimeException(RuntimeException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+}
+```
+- Catches **runtime exceptions** and returns `400 Bad Request`.  
+- Can be extended to handle **specific exceptions**.
+
+---
+
+## **7) Validation Layer**  
+Ensures input correctness using `@Valid` and `@NotBlank` annotations.
+
+### **Example: Update `BookRequestDTO` with Validation**
+```java
+import jakarta.validation.constraints.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class BookRequestDTO {
+
+    @NotBlank(message = "Title is required")
+    private String title;
+
+    @NotBlank(message = "Author is required")
+    private String author;
+
+    @Positive(message = "Price must be greater than 0")
+    private Double price;
+}
+```
+- `@NotBlank`: Ensures **title and author** are not empty.  
+- `@Positive`: Ensures **price is a positive number**.  
+
+### **Apply Validation in Controller**
+```java
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/books")
+public class BookController {
+
+    private final BookService bookService;
+
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
+
+    @PostMapping
+    public ResponseEntity<BookResponseDTO> createBook(@Valid @RequestBody BookRequestDTO bookRequestDTO) {
+        return ResponseEntity.ok(bookService.createBook(bookRequestDTO));
+    }
+}
+```
+- `@Valid`: Triggers **validation rules** before processing.  
+- Returns **400 Bad Request** if input is invalid.
+
+---
+
+## **Conclusion**  
+This architecture provides:  
+✅ **Separation of Concerns** – Each layer has a distinct responsibility.  
+✅ **Scalability** – Allows easy modification and expansion.  
+✅ **Maintainability** – Improves readability and debugging.  
+
+
 ### 4) Create Entity (Model)  
 Define the `Book` entity with JPA annotations. Already implemented in your code.
 
@@ -61,3 +481,4 @@ Already implemented via `GlobalExceptionHandler` and `BookNotFoundException`.
 - Handles CRUD endpoints with proper validation and response statuses.
 
 Your code already follows these steps, and it is well-structured. Let me know if you need refinements! 
+  
