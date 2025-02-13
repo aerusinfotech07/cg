@@ -8,6 +8,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -45,14 +46,14 @@ public class PatientServiceImplTest {
         patient.setLastName("Doe");
         patient.setDob("1990-01-01");
         patient.setAge(32);
-        patient.setAddress("123 Main St");
+        patient.setAddress(new ArrayList<>());
 
         patientDTO = new PatientDto();
         patientDTO.setFirstName("John");
         patientDTO.setLastName("Doe");
         patientDTO.setDob("1990-01-01");
         patientDTO.setAge(32);
-        patientDTO.setAddress("123 Main St");
+        patientDTO.setAddress(new ArrayList<>());
     }
 
     @Test

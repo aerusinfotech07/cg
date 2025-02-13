@@ -17,6 +17,11 @@ public class Address {
 	private String country;
 	private String state;
 	
+	//For Step1
+	/*@ManyToOne
+    @JoinColumn(name = "patient_id", nullable = false)
+    private Patient patient;
+	*/
 
 
 }

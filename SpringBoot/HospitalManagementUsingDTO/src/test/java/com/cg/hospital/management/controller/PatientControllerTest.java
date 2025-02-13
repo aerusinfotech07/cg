@@ -61,7 +61,7 @@ public class PatientControllerTest {
         patientDTO.setLastName("Doe");
         patientDTO.setDob("1990-01-01");
         patientDTO.setAge(32);
-        patientDTO.setAddress("123 Main St");
+        //patientDTO.setAddress("123 Main St");
 
         appointmentDTO = new PatientAppointmentDTO();
         appointmentDTO.setAppointmentId(1);
