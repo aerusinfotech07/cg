@@ -1,9 +1,21 @@
 package com.cg.hospital.management.model;
 
-import jakarta.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "appointment")
@@ -21,11 +33,14 @@ public class Appointment {
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
 
+    @JsonIgnore  // Prevents serialization issues
     @ManyToMany(mappedBy = "appointments")
     private Set<Patient> patients = new HashSet<>();
 
+    @JsonIgnore  // Prevents serialization issues
     @ManyToMany(mappedBy = "appointments")
     private Set<Doctor> doctors = new HashSet<>();
+
 
 	public int getAppointmentId() {
 		return appointmentId;

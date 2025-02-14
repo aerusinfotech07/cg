@@ -41,7 +41,6 @@ public class Doctor {
 	        joinColumns = @JoinColumn(name = "doctor_id"),
 	        inverseJoinColumns = @JoinColumn(name = "appointment_id")
 	    )
-	 @JsonManagedReference
 	    private Set<Appointment> appointments = new HashSet<>();
 	 
 	
