@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.hospital.management.dto.DoctorDTO;
 import com.cg.hospital.management.service.DoctorService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/doctors")
 public class DoctorController {
@@ -26,7 +28,7 @@ public class DoctorController {
     }
 
     @PostMapping
-    public ResponseEntity<DoctorDTO> save(@RequestBody DoctorDTO doctorDTO) {
+    public ResponseEntity<DoctorDTO> save(@Valid  @RequestBody DoctorDTO doctorDTO) {
         DoctorDTO savedDoctor = doctorService.save(doctorDTO);
         return ResponseEntity.ok(savedDoctor);
     }
