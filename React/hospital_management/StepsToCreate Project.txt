@@ -332,3 +332,116 @@ export default App;
 ```
 
 This completes your **CRUD Patient Management System**! 🚀 Let me know if you need further enhancements. 😊
+
+
+
+
+
+Here’s how you can add a **Navbar** component to your `App.js`, allowing navigation between the **Patient List** and **Add Patient** pages.
+
+---
+
+### 1️⃣ **Create `NavBar.js`**
+📌 **Location:** `src/components/NavBar.js`
+```javascript
+import React from "react";
+import { Link } from "react-router-dom";
+import "./NavBar.css"; // Import CSS for styling
+
+const NavBar = () => {
+  return (
+    <nav className="navbar">
+      <h2>Hospital Management</h2>
+      <ul>
+        <li>
+          <Link to="/">Patient List</Link>
+        </li>
+        <li>
+          <Link to="/add-patient">Add Patient</Link>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+export default NavBar;
+```
+
+---
+
+### 2️⃣ **Update `App.js` to Include Navbar**
+📌 **Modify `src/App.js`**
+```javascript
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar"; // Import NavBar
+import PatientList from "./components/patient/PatientList";
+import AddPatient from "./components/patient/AddPatient";
+import EditPatient from "./components/patient/EditPatient";
+import ViewPatient from "./components/patient/ViewPatient";
+
+function App() {
+  return (
+    <Router>
+      <NavBar /> {/* Add Navbar here */}
+      <Routes>
+        <Route path="/" element={<PatientList />} />
+        <Route path="/add-patient" element={<AddPatient />} />
+        <Route path="/edit-patient/:id" element={<EditPatient />} />
+        <Route path="/view-patient/:id" element={<ViewPatient />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+```
+
+---
+
+### 3️⃣ **Add Basic Navbar CSS**
+📌 **Create `src/components/NavBar.css`**
+```css
+.navbar {
+  background-color: #007bff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar h2 {
+  color: white;
+  margin: 0;
+}
+
+.navbar ul {
+  list-style-type: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+```
+
+---
+
+### 🎯 **Final Result:**
+Now, your app has a **navigation bar** at the top with:
+✅ **"Patient List"** - Takes you to `/`  
+✅ **"Add Patient"** - Takes you to `/add-patient`  
+
+Your app now looks cleaner and is easier to navigate! 🚀 Let me know if you need any tweaks! 😊
