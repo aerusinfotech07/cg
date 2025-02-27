@@ -29,6 +29,7 @@ public class PatientServiceImpl implements PatientService {
         patient.setLastName(patientDTO.getLastName());
         patient.setDob(patientDTO.getDob());
         patient.setAge(patientDTO.getAge());
+        if(patientDTO.getAddress()!=null)
         patient.setAddress(patientDTO.getAddress());
         
         patient = patientRepository.save(patient);

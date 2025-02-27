@@ -49,7 +49,7 @@ public class Patient {
 	*/
 	
 	//Step3
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
         name = "patient_address",
         joinColumns = @JoinColumn(name = "patient_id"),
