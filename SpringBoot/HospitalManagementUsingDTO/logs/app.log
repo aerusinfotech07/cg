@@ -86,3 +86,5 @@
 2025-02-27T11:49:14.016+05:30  INFO 18504 --- [HospitalManagement] [http-nio-8080-exec-10] c.c.h.m.service.PatientServiceImpl       : PatientServiceImpl method called using @Slf4j For getAllPatients
 2025-02-27T12:02:24.242+05:30  INFO 18504 --- [HospitalManagement] [http-nio-8080-exec-2] c.c.h.m.service.PatientServiceImpl       : PatientServiceImpl method called using @Slf4j For getAllPatients
 2025-02-27T12:02:24.278+05:30  INFO 18504 --- [HospitalManagement] [http-nio-8080-exec-3] c.c.h.m.service.PatientServiceImpl       : PatientServiceImpl method called using @Slf4j For getAllPatients
+2025-02-27T12:03:38.993+05:30  INFO 18504 --- [HospitalManagement] [http-nio-8080-exec-5] c.c.h.m.service.PatientServiceImpl       : PatientServiceImpl method called using @Slf4j For getAllPatients
+2025-02-27T12:03:39.015+05:30  INFO 18504 --- [HospitalManagement] [http-nio-8080-exec-6] c.c.h.m.service.PatientServiceImpl       : PatientServiceImpl method called using @Slf4j For getAllPatients

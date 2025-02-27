@@ -7,6 +7,9 @@ const NavBar = () => {
     <nav className="navbar">
       <h2>Hospital Management</h2>
       <ul>
+      <li>
+          <Link to="/">Home</Link>
+        </li>
         <li>
           <Link to="/patients">Patient List</Link>
         </li>
