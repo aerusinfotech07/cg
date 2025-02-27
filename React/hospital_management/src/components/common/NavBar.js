@@ -8,7 +8,7 @@ const NavBar = () => {
       <h2>Hospital Management</h2>
       <ul>
         <li>
-          <Link to="/">Patient List</Link>
+          <Link to="/patients">Patient List</Link>
         </li>
         <li>
           <Link to="/add-patient">Add Patient</Link>
