@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
+Built-By: Vilas
+Build-Jdk: 17.0.11
 Implementation-Title: spring-boot-basic-authentication
 Implementation-Version: 1.0
-Built-By: Vilas Sangre
 Implementation-Vendor-Id: pl.rmitula
-Build-Jdk: 1.8.0_401
-Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
- ot-starter-parent/spring-boot-basic-authentication
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/spring-boot-basic-authentication
 Created-By: Maven Integration for Eclipse
 

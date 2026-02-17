@@ -18,13 +18,13 @@ public class PrintUtility {
 		printable.print();
 	}
 
-	public PrintUtility(Printable printable) {
-		super();
+	
+	  public PrintUtility(Printable printable) { super(); this.printable =
+	  printable; }
+	 
+
+	public void setPrintable(Printable printable) {
 		this.printable = printable;
 	}
-
-	/*public void setPrintable(Printable printable) {
-		this.printable = printable;
-	}*/
 
 }

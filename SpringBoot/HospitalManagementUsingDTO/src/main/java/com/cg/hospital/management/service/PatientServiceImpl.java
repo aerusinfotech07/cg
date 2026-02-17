@@ -30,7 +30,7 @@ public class PatientServiceImpl implements PatientService {
         patient.setDob(patientDTO.getDob());
         patient.setAge(patientDTO.getAge());
         if(patientDTO.getAddress()!=null)
-        patient.setAddress(patientDTO.getAddress());
+        	patient.setAddress(patientDTO.getAddress());
         
         patient = patientRepository.save(patient);
 
@@ -51,7 +51,7 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public List<PatientDto> getAllPatients() {
     	log.info("PatientServiceImpl method called using @Slf4j For getAllPatients");
-        return patientRepository.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
+        return patientRepository.findAll().stream().map(this::mapToDTO).toList();
     }
 
     @Override

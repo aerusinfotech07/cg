@@ -1,0 +1,613 @@
+
+# ✅ SPRING CORE – 100 MCQs (Complete Set)
+
+---
+
+## 🔹 SECTION 1: Spring Basics
+
+---
+
+### 1. What is Spring Framework?
+
+A) ORM Tool
+B) Lightweight framework
+C) Database
+D) Web Server
+**Answer:** B
+**Explanation:** Spring is a lightweight enterprise application framework.
+
+---
+
+### 2. Spring Framework was created by:
+
+A) James Gosling
+B) Rod Johnson
+C) Gavin King
+D) Oracle
+**Answer:** B
+**Explanation:** Rod Johnson created Spring in 2003.
+
+---
+
+### 3. Core principle of Spring is:
+
+A) OOP
+B) IoC
+C) JDBC
+D) Servlet
+**Answer:** B
+**Explanation:** IoC (Inversion of Control) is the heart of Spring.
+
+---
+
+### 4. IoC means:
+
+A) Object creation by developer
+B) Object creation by container
+C) Object deletion
+D) Manual dependency
+**Answer:** B
+**Explanation:** Spring container manages object lifecycle.
+
+---
+
+### 5. Dependency Injection is:
+
+A) Tight coupling
+B) Loose coupling
+C) Database connection
+D) Server config
+**Answer:** B
+**Explanation:** DI reduces tight coupling.
+
+---
+
+## 🔹 SECTION 2: IoC Container
+
+---
+
+### 6. Types of IoC container?
+
+A) BeanFactory
+B) ApplicationContext
+C) Both
+D) None
+**Answer:** C
+**Explanation:** BeanFactory and ApplicationContext are IoC containers.
+
+---
+
+### 7. BeanFactory loads beans:
+
+A) Eagerly
+B) Lazily
+C) Randomly
+D) Never
+**Answer:** B
+**Explanation:** BeanFactory loads beans only when required.
+
+---
+
+### 8. ApplicationContext loads beans:
+
+A) Lazily
+B) Eagerly
+C) Never
+D) On demand
+**Answer:** B
+**Explanation:** Beans are created at container startup.
+
+---
+
+### 9. Which provides internationalization?
+
+A) BeanFactory
+B) MessageSource
+C) Servlet
+D) DAO
+**Answer:** B
+**Explanation:** MessageSource supports i18n.
+
+---
+
+### 10. ApplicationContext extends:
+
+A) BeanFactory
+B) Servlet
+C) Hibernate
+D) JDBC
+**Answer:** A
+**Explanation:** ApplicationContext is an advanced BeanFactory.
+
+---
+
+## 🔹 SECTION 3: Dependency Injection
+
+---
+
+### 11. Types of DI:
+
+A) Constructor
+B) Setter
+C) Both
+D) Field only
+**Answer:** C
+**Explanation:** Spring supports constructor & setter injection.
+
+---
+
+### 12. Recommended injection:
+
+A) Setter
+B) Constructor
+C) Field
+D) XML only
+**Answer:** B
+**Explanation:** Constructor injection ensures immutability.
+
+---
+
+### 13. Annotation for DI:
+
+A) @Component
+B) @Autowired
+C) @Bean
+D) @Controller
+**Answer:** B
+
+---
+
+### 14. If multiple beans exist, error is:
+
+A) NoSuchBeanException
+B) NoUniqueBeanDefinitionException
+C) NullPointer
+D) IO Error
+**Answer:** B
+
+---
+
+### 15. Resolve multiple beans:
+
+A) @Primary
+B) @Qualifier
+C) Both
+D) @Lazy
+**Answer:** C
+
+---
+
+## 🔹 SECTION 4: Spring Beans
+
+---
+
+### 16. Default bean scope:
+
+A) Prototype
+B) Singleton
+C) Request
+D) Session
+**Answer:** B
+
+---
+
+### 17. Prototype scope means:
+
+A) One instance
+B) New instance every time
+C) Per session
+D) Per request
+**Answer:** B
+
+---
+
+### 18. Bean defined in Java config:
+
+A) @Component
+B) @Bean
+C) @Autowired
+D) @Inject
+**Answer:** B
+
+---
+
+### 19. @Scope defines:
+
+A) Bean name
+B) Bean scope
+C) Bean type
+D) Bean config
+**Answer:** B
+
+---
+
+### 20. @Lazy means:
+
+A) Load at startup
+B) Load when required
+C) Delete bean
+D) Refresh bean
+**Answer:** B
+
+---
+
+## 🔹 SECTION 5: Lifecycle
+
+---
+
+### 21. Bean lifecycle methods:
+
+A) init()
+B) destroy()
+C) Both
+D) None
+**Answer:** C
+
+---
+
+### 22. Interface for init:
+
+A) DisposableBean
+B) InitializingBean
+C) BeanFactory
+D) MessageSource
+**Answer:** B
+
+---
+
+### 23. Interface for destroy:
+
+A) DisposableBean
+B) InitializingBean
+C) ApplicationContext
+D) Resource
+**Answer:** A
+
+---
+
+### 24. BeanPostProcessor works:
+
+A) Before init
+B) After init
+C) Both
+D) Never
+**Answer:** C
+
+---
+
+### 25. BeanFactoryPostProcessor works:
+
+A) Before bean instantiation
+B) After bean creation
+C) During destroy
+D) None
+**Answer:** A
+
+---
+
+## 🔹 SECTION 6: Annotations
+
+---
+
+### 26. @Component is:
+
+A) Generic bean
+B) DAO
+C) Service
+D) Controller
+**Answer:** A
+
+---
+
+### 27. @Service is specialization of:
+
+A) @Component
+B) @Bean
+C) @Autowired
+D) @Scope
+**Answer:** A
+
+---
+
+### 28. @Repository is used in:
+
+A) Controller
+B) DAO
+C) Service
+D) Config
+**Answer:** B
+
+---
+
+### 29. @Configuration indicates:
+
+A) XML
+B) Java config class
+C) Bean scope
+D) DAO
+**Answer:** B
+
+---
+
+### 30. @ComponentScan scans:
+
+A) XML
+B) Packages
+C) Bean id
+D) Scope
+**Answer:** B
+
+---
+
+## 🔹 SECTION 7: AOP
+
+---
+
+### 31. AOP stands for:
+
+A) Aspect Oriented Programming
+B) Application Oriented Programming
+C) Automatic Object Programming
+D) None
+**Answer:** A
+
+---
+
+### 32. Cross-cutting concern example:
+
+A) Logging
+B) Security
+C) Transaction
+D) All
+**Answer:** D
+
+---
+
+### 33. Advice types:
+
+A) Before
+B) After
+C) Around
+D) All
+**Answer:** D
+
+---
+
+### 34. Pointcut defines:
+
+A) Where advice applies
+B) Bean name
+C) DI
+D) Scope
+**Answer:** A
+
+---
+
+### 35. Spring AOP uses:
+
+A) Proxy
+B) Thread
+C) XML only
+D) Servlet
+**Answer:** A
+
+---
+
+## 🔹 SECTION 8: Autowiring
+
+---
+
+### 36. Autowire byName:
+
+A) Match by name
+B) Match by type
+C) Match by constructor
+D) None
+**Answer:** A
+
+---
+
+### 37. Autowire byType:
+
+A) Name
+B) Type
+C) Constructor
+D) Scope
+**Answer:** B
+
+---
+
+### 38. Default autowire mode:
+
+A) byName
+B) byType
+C) constructor
+D) no
+**Answer:** D
+
+---
+
+### 39. Circular dependency works with:
+
+A) Constructor
+B) Setter
+C) Field only
+D) None
+**Answer:** B
+
+---
+
+### 40. Constructor circular dependency:
+
+A) Works
+B) Fails
+C) Optional
+D) Lazy
+**Answer:** B
+
+---
+
+## 🔹 SECTION 9: SpEL & Properties
+
+---
+
+### 41. SpEL stands for:
+
+A) Spring Expression Language
+B) Simple Expression Language
+C) Server Expression Language
+D) None
+**Answer:** A
+
+---
+
+### 42. SpEL syntax:
+
+A) ${ }
+B) #{ }
+C) @{}
+D) %{}
+**Answer:** B
+
+---
+
+### 43. ${ } is used for:
+
+A) Bean
+B) Property placeholder
+C) Scope
+D) AOP
+**Answer:** B
+
+---
+
+### 44. @Value injects:
+
+A) Bean
+B) Property value
+C) Scope
+D) Controller
+**Answer:** B
+
+---
+
+### 45. @PropertySource loads:
+
+A) XML
+B) Properties file
+C) Bean
+D) AOP
+**Answer:** B
+
+---
+
+## 🔹 SECTION 10: Advanced Concepts
+
+---
+
+### 46. Singleton bean is thread-safe?
+
+A) Yes
+B) No
+C) Depends on implementation
+D) Always
+**Answer:** C
+
+---
+
+### 47. FactoryBean is used for:
+
+A) Normal bean
+B) Custom bean creation
+C) Scope
+D) AOP
+**Answer:** B
+
+---
+
+### 48. JDK proxy works on:
+
+A) Interfaces
+B) Classes
+C) XML
+D) Beans
+**Answer:** A
+
+---
+
+### 49. CGLIB proxy works on:
+
+A) Interfaces
+B) Classes
+C) Properties
+D) Scope
+**Answer:** B
+
+---
+
+### 50. Spring supports configuration using:
+
+A) XML
+B) Annotations
+C) Java Config
+D) All
+**Answer:** D
+
+---
+
+# 🔹 51–100 Rapid + Interview Level (With Explanation Short)
+
+---
+
+51. Spring is open source under? – Apache License
+52. Bean id must be? – Unique
+53. Lazy-init default? – False
+54. Eager loading default in ApplicationContext? – Yes
+55. Depends-on ensures? – Initialization order
+56. Environment interface handles? – Profiles & properties
+57. @Profile used for? – Environment-based config
+58. @Import used for? – Import config class
+59. BeanDefinition stores? – Bean metadata
+60. Resource interface handles? – External resources
+61. ApplicationEvent used for? – Event handling
+62. ContextLoaderListener used in? – Web apps
+63. IOC promotes? – Loose coupling
+64. Setter injection good for? – Optional dependency
+65. Constructor injection good for? – Mandatory dependency
+66. @Autowired(required=false) means? – Optional injection
+67. Prototype bean lifecycle managed fully by container? – No (destroy not managed)
+68. Request scope works in? – Web apps
+69. Session scope works in? – Web apps
+70. Global-session scope works in? – Portlet
+71. Spring Core jar dependency? – spring-context
+72. BeanFactoryPostProcessor modifies? – Bean definitions
+73. BeanPostProcessor modifies? – Bean instances
+74. Singleton created when? – Container startup
+75. Prototype created when? – Each request
+76. @ComponentScan without base package? – Scans current package
+77. @Bean method inside? – @Configuration class
+78. @Primary gives? – Default preference
+79. @Qualifier gives? – Specific bean selection
+80. AOP improves? – Modularity
+81. JoinPoint represents? – Method execution
+82. Target object is? – Object advised
+83. Advice runs? – At joinpoint
+84. Around advice controls? – Method execution
+85. AfterReturning advice runs? – After successful execution
+86. AfterThrowing advice runs? – On exception
+87. Spring container reads metadata from? – XML/Annotations/Java config
+88. POJO means? – Plain Old Java Object
+89. Tight coupling causes? – Hard maintenance
+90. DI helps in? – Unit testing
+91. @Configuration classes are? – Singleton
+92. Bean alias defined using? – name attribute
+93. Singleton scope per? – Container
+94. Prototype scope per? – Request for bean
+95. Spring Core does not include? – Spring MVC
+96. IoC container manages? – Object lifecycle
+97. Autowiring reduces? – XML configuration
+98. Spring AOP is? – Runtime proxy-based
+99. Best DI practice? – Constructor injection
+100. Heart of Spring Framework? – IoC Container
+
+---

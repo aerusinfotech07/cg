@@ -1,0 +1,525 @@
+
+---
+
+# ✅ SPRING MVC – 50 MCQs (With Solutions & Explanations)
+
+---
+
+## 🔹 Section 1: Basics of Spring MVC
+
+---
+
+### 1. What is the front controller in Spring MVC?
+
+A) Controller
+B) DispatcherServlet
+C) ViewResolver
+D) HandlerAdapter
+
+**Answer:** B
+
+**Explanation:**
+DispatcherServlet acts as the Front Controller. It receives all incoming HTTP requests and coordinates request handling.
+
+---
+
+### 2. Spring MVC follows which design pattern?
+
+A) Singleton
+B) MVC
+C) DAO
+D) Factory
+
+**Answer:** B
+
+**Explanation:**
+Spring MVC follows the Model-View-Controller pattern.
+
+---
+
+### 3. Which component maps requests to controllers?
+
+A) ViewResolver
+B) HandlerMapping
+C) Model
+D) BeanFactory
+
+**Answer:** B
+
+**Explanation:**
+HandlerMapping maps incoming request URLs to appropriate controller methods.
+
+---
+
+### 4. Which annotation marks a class as a controller?
+
+A) @Component
+B) @Controller
+C) @Service
+D) @Bean
+
+**Answer:** B
+
+**Explanation:**
+@Controller defines a Spring MVC controller class.
+
+---
+
+### 5. DispatcherServlet is configured in:
+
+A) web.xml
+B) application.properties
+C) pom.xml
+D) DAO
+
+**Answer:** A
+
+**Explanation:**
+In traditional Spring MVC, DispatcherServlet is configured in web.xml.
+
+---
+
+## 🔹 Section 2: Request Mapping
+
+---
+
+### 6. Which annotation maps HTTP requests?
+
+A) @Autowired
+B) @RequestMapping
+C) @Bean
+D) @ComponentScan
+
+**Answer:** B
+
+---
+
+### 7. To map only GET requests:
+
+A) @RequestMapping(method=GET)
+B) @GetMapping
+C) Both
+D) None
+
+**Answer:** C
+
+**Explanation:**
+@GetMapping is a shortcut for @RequestMapping(method=RequestMethod.GET).
+
+---
+
+### 8. To map POST requests:
+
+A) @PostMapping
+B) @RequestMapping
+C) Both
+D) None
+
+**Answer:** C
+
+---
+
+### 9. Which annotation extracts path variable?
+
+A) @RequestParam
+B) @PathVariable
+C) @ModelAttribute
+D) @RequestBody
+
+**Answer:** B
+
+---
+
+### 10. Which annotation extracts query parameters?
+
+A) @PathVariable
+B) @RequestParam
+C) @RequestBody
+D) @ResponseBody
+
+**Answer:** B
+
+---
+
+## 🔹 Section 3: Model & View
+
+---
+
+### 11. Model is used to:
+
+A) Handle DB
+B) Store data for view
+C) Handle servlet
+D) Inject dependency
+
+**Answer:** B
+
+---
+
+### 12. Which class represents both model and view?
+
+A) ModelMap
+B) Model
+C) ModelAndView
+D) View
+
+**Answer:** C
+
+---
+
+### 13. ViewResolver resolves:
+
+A) URL
+B) Controller
+C) Logical view name to actual view
+D) Bean
+
+**Answer:** C
+
+---
+
+### 14. Common ViewResolver:
+
+A) InternalResourceViewResolver
+B) BeanFactory
+C) DataSource
+D) HandlerMapping
+
+**Answer:** A
+
+---
+
+### 15. Default prefix/suffix example:
+
+A) /WEB-INF/views/ , .jsp
+B) /src/ , .html
+C) /static/ , .xml
+D) None
+
+**Answer:** A
+
+---
+
+## 🔹 Section 4: Form Handling
+
+---
+
+### 16. @ModelAttribute is used for:
+
+A) Inject bean
+B) Bind form data
+C) Handle exception
+D) Session
+
+**Answer:** B
+
+---
+
+### 17. @RequestBody is used for:
+
+A) JSON input
+B) JSP
+C) DB
+D) Bean
+
+**Answer:** A
+
+---
+
+### 18. @ResponseBody returns:
+
+A) View
+B) JSON/XML
+C) JSP page
+D) Bean
+
+**Answer:** B
+
+---
+
+### 19. @RestController is combination of:
+
+A) @Controller + @ResponseBody
+B) @Service + @Controller
+C) @Bean + @Component
+D) None
+
+**Answer:** A
+
+---
+
+### 20. Data binding is done by:
+
+A) DataBinder
+B) DispatcherServlet
+C) DAO
+D) BeanFactory
+
+**Answer:** A
+
+---
+
+## 🔹 Section 5: Exception Handling
+
+---
+
+### 21. Annotation for exception handling:
+
+A) @ExceptionHandler
+B) @Error
+C) @Catch
+D) @ControllerAdvice
+
+**Answer:** A
+
+---
+
+### 22. Global exception handling:
+
+A) @Controller
+B) @ControllerAdvice
+C) @Service
+D) @Component
+
+**Answer:** B
+
+---
+
+## 🔹 Section 6: Validation
+
+---
+
+### 23. Validation annotation:
+
+A) @Valid
+B) @Validated
+C) Both
+D) None
+
+**Answer:** C
+
+---
+
+### 24. BindingResult is used to:
+
+A) Store errors
+B) View
+C) Model
+D) DB
+
+**Answer:** A
+
+---
+
+## 🔹 Section 7: Session & Redirect
+
+---
+
+### 25. @SessionAttributes used for:
+
+A) DB
+B) Session data
+C) View
+D) Bean
+
+**Answer:** B
+
+---
+
+### 26. Redirect is done using:
+
+A) redirect:home
+B) forward:home
+C) Both
+D) None
+
+**Answer:** A
+
+---
+
+## 🔹 Section 8: Interceptors
+
+---
+
+### 27. Interceptor interface:
+
+A) HandlerInterceptor
+B) Servlet
+C) DAO
+D) View
+
+**Answer:** A
+
+---
+
+### 28. Interceptor methods:
+
+A) preHandle
+B) postHandle
+C) afterCompletion
+D) All
+
+**Answer:** D
+
+---
+
+## 🔹 Section 9: REST Concepts
+
+---
+
+### 29. HTTP methods in REST:
+
+A) GET
+B) POST
+C) PUT
+D) All
+
+**Answer:** D
+
+---
+
+### 30. @PutMapping is shortcut for:
+
+A) PUT request
+B) POST
+C) GET
+D) DELETE
+
+**Answer:** A
+
+---
+
+### 31. @DeleteMapping handles:
+
+A) Delete request
+B) Get request
+C) Post
+D) None
+
+**Answer:** A
+
+---
+
+## 🔹 Section 10: Advanced Concepts
+
+---
+
+### 32. Multipart file upload handled by:
+
+A) MultipartResolver
+B) ViewResolver
+C) DAO
+D) Model
+
+**Answer:** A
+
+---
+
+### 33. DispatcherServlet is:
+
+A) Servlet
+B) Bean
+C) DAO
+D) JSP
+
+**Answer:** A
+
+---
+
+### 34. Spring MVC is part of:
+
+A) Spring Core
+B) Spring Web
+C) Spring Boot
+D) Hibernate
+
+**Answer:** B
+
+---
+
+### 35. Controller methods return:
+
+A) String
+B) ModelAndView
+C) Object
+D) All
+
+**Answer:** D
+
+---
+
+## 🔹 Interview-Level Questions
+
+---
+
+### 36. What happens if no handler found?
+
+A) 404 error
+B) 500 error
+C) 200
+D) None
+
+**Answer:** A
+
+---
+
+### 37. HandlerAdapter is responsible for:
+
+A) Calling controller
+B) Resolving view
+C) DI
+D) Bean
+
+**Answer:** A
+
+---
+
+### 38. Spring MVC supports:
+
+A) JSP
+B) Thymeleaf
+C) JSON
+D) All
+
+**Answer:** D
+
+---
+
+### 39. ModelMap extends:
+
+A) HashMap
+B) List
+C) Set
+D) Queue
+
+**Answer:** A
+
+---
+
+### 40. WebDataBinder used for:
+
+A) Data binding
+B) AOP
+C) DI
+D) XML
+
+**Answer:** A
+
+---
+
+## 🔹 Rapid Revision (41–50)
+
+---
+
+41. @CrossOrigin used for? – CORS
+42. ViewResolver configured in? – XML/Java config
+43. Spring MVC works on? – Servlet API
+44. Default HTTP status success? – 200
+45. @ResponseStatus sets? – HTTP status
+46. HiddenHttpMethodFilter used for? – PUT/DELETE support
+47. Forward keeps same request? – Yes
+48. Redirect creates new request? – Yes
+49. DispatcherServlet loads config from? – servlet-config.xml
+50. Core of Spring MVC? – DispatcherServlet
+
+---

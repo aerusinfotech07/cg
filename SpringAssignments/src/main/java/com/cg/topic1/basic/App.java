@@ -9,8 +9,9 @@ public class App {
 				new ClassPathXmlApplicationContext(
 				"Spring-Module-basic.xml");
 
-		//HelloWorld obj = (HelloWorld) context.getBean("helloBean");
-		//obj.printHello();
+		/*
+		 * HelloWorld obj = (HelloWorld) context.getBean("helloBean"); obj.printHello();
+		 */
 		
 		//Address address=(Address)context.getBean("address");
 		
@@ -20,8 +21,10 @@ public class App {
 		//System.out.println(emp);
 		//System.out.println(address);
 		
-		PrintUtility printUtility = (PrintUtility) context.getBean("printUtility");
-		printUtility.printUtility();
+		
+		  PrintUtility printUtility = (PrintUtility) context.getBean("printUtility");
+		  printUtility.printUtility();
+		 
 		
 	}
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3310/stock_management?characterEncoding=UTF-8</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password"></property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="hbm2ddl.auto">update</property>
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.use_query_cache">true</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		<!--<mapping resource="com/cg/user/user.hbm.xml" />
+		<mapping resource="com/cg/xmlmapping/Stock.hbm.xml"></mapping>-->
+		<!--<mapping class="com.cg.user.annotation.single.Stock"></mapping>-->
+		<mapping class="com.cg.user.annotation.onetomany.Stock"></mapping>
+		<mapping class="com.cg.user.annotation.onetoone.StockDetail"></mapping>
+		<mapping class="com.cg.user.annotation.embedded.Employee"></mapping>
+		<mapping class="com.cg.user.annotation.secondlevelcache.Product"></mapping>
+
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,240 @@
+
+
+## 🔹 1️⃣ Entity Example (Same as Before)
+
+```java
+@Entity
+public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private String email;
+    private Double salary;
+    private String department;
+    private boolean active;
+}
+```
+
+---
+
+# 🔹 2️⃣ Basic Find By Department
+
+### 👉 Using Method Naming
+
+```java
+List<Employee> findByDepartment(String department);
+```
+
+### 👉 Using `@Query` (JPQL)
+
+```java
+@Query("SELECT e FROM Employee e WHERE e.department = :department")
+List<Employee> findByDepartment(@Param("department") String department);
+```
+
+---
+
+# 🔹 3️⃣ Greater Than Example
+
+### Method Naming
+
+```java
+List<Employee> findBySalaryGreaterThan(Double salary);
+```
+
+### Using `@Query`
+
+```java
+@Query("SELECT e FROM Employee e WHERE e.salary > :salary")
+List<Employee> findBySalaryGreaterThan(@Param("salary") Double salary);
+```
+
+---
+
+# 🔹 4️⃣ AND Condition
+
+### Method Naming
+
+```java
+List<Employee> findByDepartmentAndSalaryGreaterThan(String dept, Double salary);
+```
+
+### Using `@Query`
+
+```java
+@Query("SELECT e FROM Employee e WHERE e.department = :dept AND e.salary > :salary")
+List<Employee> findByDepartmentAndSalaryGreaterThan(
+        @Param("dept") String dept,
+        @Param("salary") Double salary);
+```
+
+---
+
+# 🔹 5️⃣ LIKE / Containing
+
+### Method Naming
+
+```java
+List<Employee> findByNameContaining(String keyword);
+```
+
+### Using `@Query`
+
+```java
+@Query("SELECT e FROM Employee e WHERE e.name LIKE %:keyword%")
+List<Employee> findByNameContaining(@Param("keyword") String keyword);
+```
+
+---
+
+# 🔹 6️⃣ Order By Example
+
+### Method Naming
+
+```java
+List<Employee> findTop5ByOrderBySalaryDesc();
+```
+
+### Using `@Query`
+
+```java
+@Query("SELECT e FROM Employee e ORDER BY e.salary DESC")
+List<Employee> findTop5BySalary(Pageable pageable);
+```
+
+Usage:
+
+```java
+PageRequest page = PageRequest.of(0, 5);
+employeeRepository.findTop5BySalary(page);
+```
+
+---
+
+# 🔹 7️⃣ Exists Example
+
+### Method Naming
+
+```java
+boolean existsByEmail(String email);
+```
+
+### Using `@Query`
+
+```java
+@Query("SELECT COUNT(e) > 0 FROM Employee e WHERE e.email = :email")
+boolean existsByEmail(@Param("email") String email);
+```
+
+OR (better approach):
+
+```java
+@Query("SELECT COUNT(e) FROM Employee e WHERE e.email = :email")
+Long countByEmail(@Param("email") String email);
+```
+
+---
+
+# 🔹 8️⃣ Count Example
+
+### Method Naming
+
+```java
+long countByDepartment(String department);
+```
+
+### Using `@Query`
+
+```java
+@Query("SELECT COUNT(e) FROM Employee e WHERE e.department = :dept")
+long countByDepartment(@Param("dept") String dept);
+```
+
+---
+
+# 🔹 9️⃣ Boolean Field Example
+
+### Method Naming
+
+```java
+List<Employee> findByActiveTrue();
+```
+
+### Using `@Query`
+
+```java
+@Query("SELECT e FROM Employee e WHERE e.active = true")
+List<Employee> findActiveEmployees();
+```
+
+---
+
+# 🔹 🔟 Using Native Query
+
+If you want raw SQL:
+
+```java
+@Query(value = "SELECT * FROM employee WHERE department = :dept", nativeQuery = true)
+List<Employee> findByDepartmentNative(@Param("dept") String dept);
+```
+
+---
+
+# 🔥 When Should You Use `@Query`?
+
+| Use Method Naming | Use `@Query`      |
+| ----------------- | ----------------- |
+| Simple queries    | Complex queries   |
+| Small conditions  | Joins             |
+| Basic filtering   | Subqueries        |
+| Quick development | Native SQL needed |
+
+---
+
+# 🎯 Example With Join (Advanced)
+
+Suppose Employee has ManyToOne relation with Department:
+
+```java
+@Query("SELECT e FROM Employee e JOIN e.department d WHERE d.name = :deptName")
+List<Employee> findByDepartmentName(@Param("deptName") String deptName);
+```
+
+---
+
+# ⚠ Important Notes
+
+1. JPQL uses **Entity name and field names** (NOT table/column names)
+2. Native query uses **table & column names**
+3. Always use `@Param` with named parameters
+4. Use `Pageable` for pagination
+
+---
+
+# 🚀 Complete Repository Example
+
+```java
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+
+    @Query("SELECT e FROM Employee e WHERE e.department = :department")
+    List<Employee> findByDepartment(@Param("department") String department);
+
+    @Query("SELECT e FROM Employee e WHERE e.salary > :salary")
+    List<Employee> findBySalaryGreaterThan(@Param("salary") Double salary);
+
+    @Query("SELECT e FROM Employee e WHERE e.name LIKE %:keyword%")
+    List<Employee> findByNameContaining(@Param("keyword") String keyword);
+
+    @Query("SELECT COUNT(e) FROM Employee e WHERE e.department = :dept")
+    long countByDepartment(@Param("dept") String dept);
+
+    @Query(value = "SELECT * FROM employee WHERE department = :dept", nativeQuery = true)
+    List<Employee> findByDepartmentNative(@Param("dept") String dept);
+}
+```
+
+---
+

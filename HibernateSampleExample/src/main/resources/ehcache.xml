@@ -1,0 +1,17 @@
+<ehcache>
+    <!-- Default cache settings used unless overridden by a named cache -->
+    <defaultCache
+        maxEntriesLocalHeap="1000"
+        eternal="false"
+        timeToIdleSeconds="300"
+        timeToLiveSeconds="600"
+        statistics="true" />
+
+    <!-- Cache region for Product entity -->
+    <cache name="com.cg.user.annotation.secondlevelcache.Product"
+           maxEntriesLocalHeap="500"
+           eternal="false"
+           timeToIdleSeconds="300"
+           timeToLiveSeconds="600"
+           statistics="true" />
+</ehcache>

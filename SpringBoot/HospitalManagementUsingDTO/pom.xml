@@ -113,6 +113,11 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+	            <groupId>org.sonarsource.scanner.maven</groupId>
+	            <artifactId>sonar-maven-plugin</artifactId>
+	            <version>v25.3.0.104237</version>
+	        </plugin>
 		</plugins>
 	</build>
 

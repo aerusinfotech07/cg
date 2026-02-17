@@ -60,3 +60,103 @@ button {
   padding: 8px 12px;
   cursor: pointer;
 }
+
+
+.container {
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+td {
+  color: #333;
+}
+
+/* Filter Inputs */
+table input {
+  width: 95%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Button Styling */
+button {
+  padding: 6px 12px;
+  margin: 3px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:nth-child(1) {
+  background-color: #28a745; /* Edit - Green */
+  color: white;
+}
+
+button:nth-child(2) {
+  background-color: #dc3545; /* Delete - Red */
+  color: white;
+}
+
+button:nth-child(3) {
+  background-color: #17a2b8; /* View - Blue */
+  color: white;
+}
+
+/* No Data Found Message */
+.no-data {
+  text-align: center;
+  font-weight: bold;
+  color: #777;
+  padding: 12px;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  table input {
+    font-size: 12px;
+  }
+
+  button {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}

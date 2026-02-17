@@ -11,6 +11,7 @@ public class Customer
 	private Set<Object> sets;
 	private Map<Object, Object> maps;
 	private Properties pros;
+	
 	public List<Object> getLists() {
 		return lists;
 	}

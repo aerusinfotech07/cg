@@ -1,0 +1,236 @@
+
+In **Spring Data JPA**, you can create query methods just by following a specific **method naming convention**. You don’t need to write JPQL or SQL manually — Spring generates queries automatically.
+
+It works based on:
+
+```
+findBy + PropertyName + Condition
+```
+
+---
+
+# 🔹 1. Basic Example
+
+Assume we have an entity:
+
+```java
+@Entity
+public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private String email;
+    private Double salary;
+    private String department;
+}
+```
+
+Repository:
+
+```java
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+
+}
+```
+
+---
+
+# 🔹 2. Basic Finder Methods
+
+| Method                          | Meaning                             |
+| ------------------------------- | ----------------------------------- |
+| `findByName(String name)`       | Select * from employee where name=? |
+| `findByEmail(String email)`     | Find employee by email              |
+| `findByDepartment(String dept)` | Find employees by department        |
+
+### Example:
+
+```java
+List<Employee> findByDepartment(String department);
+```
+
+---
+
+# 🔹 3. Comparison Keywords
+
+Spring supports many keywords:
+
+| Keyword      | Example                                     | SQL Meaning            |
+| ------------ | ------------------------------------------- | ---------------------- |
+| GreaterThan  | `findBySalaryGreaterThan(Double salary)`    | salary > ?             |
+| LessThan     | `findBySalaryLessThan(Double salary)`       | salary < ?             |
+| Between      | `findBySalaryBetween(Double s1, Double s2)` | salary between ? and ? |
+| Like         | `findByNameLike(String name)`               | name like ?            |
+| StartingWith | `findByNameStartingWith(String prefix)`     | name like 'A%'         |
+| EndingWith   | `findByNameEndingWith(String suffix)`       | name like '%A'         |
+| Containing   | `findByNameContaining(String word)`         | name like '%word%'     |
+
+---
+
+# 🔹 4. AND / OR Conditions
+
+### AND Condition
+
+```java
+List<Employee> findByDepartmentAndSalaryGreaterThan(String dept, Double salary);
+```
+
+SQL:
+
+```sql
+SELECT * FROM employee WHERE department=? AND salary>?
+```
+
+---
+
+### OR Condition
+
+```java
+List<Employee> findByDepartmentOrSalaryLessThan(String dept, Double salary);
+```
+
+---
+
+# 🔹 5. Sorting
+
+```java
+List<Employee> findByDepartmentOrderBySalaryAsc(String dept);
+```
+
+```java
+List<Employee> findByDepartmentOrderBySalaryDesc(String dept);
+```
+
+---
+
+# 🔹 6. Count, Exists, Delete
+
+| Method                           | Purpose         |
+| -------------------------------- | --------------- |
+| `countByDepartment(String dept)` | Count employees |
+| `existsByEmail(String email)`    | Check if exists |
+| `deleteByEmail(String email)`    | Delete record   |
+
+---
+
+# 🔹 7. Top / First
+
+```java
+Employee findTopByOrderBySalaryDesc();
+```
+
+Get highest salary employee.
+
+```java
+List<Employee> findTop3ByDepartment(String dept);
+```
+
+---
+
+# 🔹 8. Ignore Case
+
+```java
+List<Employee> findByNameIgnoreCase(String name);
+```
+
+```java
+List<Employee> findByDepartmentIgnoreCase(String dept);
+```
+
+---
+
+# 🔹 9. In and Not In
+
+```java
+List<Employee> findByDepartmentIn(List<String> departments);
+```
+
+```java
+List<Employee> findByDepartmentNotIn(List<String> departments);
+```
+
+---
+
+# 🔹 10. Boolean Example
+
+If entity has:
+
+```java
+private boolean active;
+```
+
+Then:
+
+```java
+List<Employee> findByActiveTrue();
+List<Employee> findByActiveFalse();
+```
+
+---
+
+# 🔹 11. Complete Example Repository
+
+```java
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+
+    List<Employee> findByDepartment(String department);
+
+    List<Employee> findBySalaryGreaterThan(Double salary);
+
+    List<Employee> findByDepartmentAndSalaryGreaterThan(String dept, Double salary);
+
+    List<Employee> findByNameContaining(String keyword);
+
+    List<Employee> findTop5ByOrderBySalaryDesc();
+
+    boolean existsByEmail(String email);
+
+    long countByDepartment(String department);
+}
+```
+
+---
+
+# 🔥 Important Rules
+
+1. Method must start with:
+
+   * `findBy`
+   * `readBy`
+   * `getBy`
+   * `countBy`
+   * `deleteBy`
+   * `existsBy`
+
+2. Property names must exactly match entity field names.
+
+3. CamelCase is mandatory.
+
+4. Return type can be:
+
+   * `List<T>`
+   * `Optional<T>`
+   * `Page<T>`
+   * `Slice<T>`
+   * `Long`
+   * `Boolean`
+
+---
+
+# 🎯 Advanced Example (Pagination)
+
+```java
+Page<Employee> findByDepartment(String department, Pageable pageable);
+```
+
+Usage:
+
+```java
+PageRequest pageRequest = PageRequest.of(0, 5);
+Page<Employee> page = employeeRepository.findByDepartment("IT", pageRequest);
+```
+
+

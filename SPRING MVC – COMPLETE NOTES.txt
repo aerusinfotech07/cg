@@ -1,0 +1,581 @@
+
+
+---
+
+# 🌱 SPRING MVC – COMPLETE NOTES
+
+---
+
+# 1️⃣ What is Spring MVC?
+
+**Spring MVC (Model-View-Controller)** is a web framework built on top of the Spring Framework for developing **Java-based web applications**.
+
+It follows the **MVC Design Pattern**.
+
+It is part of the **Spring Web module**.
+
+---
+
+# 2️⃣ MVC Architecture Overview
+
+## 🔷 MVC Full Form
+
+* **M** → Model
+* **V** → View
+* **C** → Controller
+
+---
+
+## 🔷 MVC Architecture Diagram
+
+```
+            Client (Browser)
+                  |
+                  | HTTP Request
+                  v
+        -----------------------
+        |  DispatcherServlet  |  <-- Front Controller
+        -----------------------
+                  |
+        -----------------------
+        |      Controller      |
+        -----------------------
+                  |
+        -----------------------
+        |        Model         |
+        -----------------------
+                  |
+        -----------------------
+        |        View          |
+        -----------------------
+                  |
+                  v
+            HTTP Response
+```
+
+---
+
+# 3️⃣ Components of Spring MVC
+
+---
+
+## 1️⃣ DispatcherServlet (Front Controller)
+
+👉 Core of Spring MVC
+👉 Handles all incoming requests
+
+### Responsibilities:
+
+* Receives HTTP request
+* Delegates request to Controller
+* Receives response
+* Sends response back to client
+
+It is configured in:
+
+* `web.xml` (Traditional)
+* Or automatically via Spring Boot
+
+---
+
+## 2️⃣ Controller
+
+Handles user request logic.
+
+```java
+@Controller
+public class HomeController {
+
+    @RequestMapping("/home")
+    public String home() {
+        return "home";
+    }
+}
+```
+
+### Important Annotations:
+
+* `@Controller`
+* `@RestController`
+* `@RequestMapping`
+* `@GetMapping`
+* `@PostMapping`
+* `@PathVariable`
+* `@RequestParam`
+
+---
+
+## 3️⃣ Model
+
+Used to pass data from Controller to View.
+
+```java
+@GetMapping("/welcome")
+public String welcome(Model model) {
+    model.addAttribute("name", "John");
+    return "welcome";
+}
+```
+
+Model stores:
+
+* Business data
+* Objects
+* Lists
+* Maps
+
+---
+
+## 4️⃣ View
+
+Responsible for displaying data.
+
+Common View Technologies:
+
+* JSP
+* Thymeleaf
+* HTML
+* FreeMarker
+
+Example (JSP):
+
+```jsp
+<h1>Welcome ${name}</h1>
+```
+
+---
+
+# 4️⃣ Complete Request Flow in Spring MVC
+
+Let’s understand step-by-step:
+
+---
+
+## 🔄 Request Processing Flow Diagram
+
+```
+1. Client sends HTTP Request
+2. DispatcherServlet receives request
+3. HandlerMapping identifies Controller
+4. Controller processes request
+5. Controller returns Model + View Name
+6. ViewResolver resolves view
+7. View renders response
+8. Response sent back to client
+```
+
+---
+
+## 🔷 Detailed Flow Diagram
+
+```
+Client
+  |
+  v
+DispatcherServlet
+  |
+  |----> HandlerMapping
+  |
+  |----> Controller
+  |
+  |----> ModelAndView
+  |
+  |----> ViewResolver
+  |
+  v
+View (JSP/HTML)
+  |
+  v
+Client Response
+```
+
+---
+
+# 5️⃣ Important Spring MVC Components Explained
+
+---
+
+## 🔹 HandlerMapping
+
+Finds which controller method should handle the request.
+
+Example:
+
+```
+URL: /home
+Mapped to → HomeController.home()
+```
+
+---
+
+## 🔹 HandlerAdapter
+
+Executes the controller method.
+
+---
+
+## 🔹 ViewResolver
+
+Resolves logical view name to actual file.
+
+Example:
+
+```
+Controller returns: "home"
+ViewResolver maps to: /WEB-INF/views/home.jsp
+```
+
+Configuration Example:
+
+```xml
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="prefix" value="/WEB-INF/views/" />
+    <property name="suffix" value=".jsp" />
+</bean>
+```
+
+---
+
+# 6️⃣ Spring MVC Configuration Types
+
+---
+
+## 🔷 1. XML Based Configuration
+
+### web.xml
+
+```xml
+<servlet>
+    <servlet-name>spring</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>spring</servlet-name>
+    <url-pattern>/</url-pattern>
+</servlet-mapping>
+```
+
+---
+
+## 🔷 2. Java Configuration
+
+```java
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = "com.example")
+public class WebConfig {
+}
+```
+
+---
+
+## 🔷 3. Spring Boot Configuration
+
+No web.xml required.
+
+Just:
+
+```java
+@SpringBootApplication
+public class App {
+    public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
+    }
+}
+```
+
+---
+
+# 7️⃣ Controller Annotations Explained
+
+---
+
+## 🔹 @RequestMapping
+
+```java
+@RequestMapping(value="/save", method=RequestMethod.POST)
+```
+
+---
+
+## 🔹 @GetMapping
+
+```java
+@GetMapping("/users")
+```
+
+---
+
+## 🔹 @PostMapping
+
+```java
+@PostMapping("/users")
+```
+
+---
+
+## 🔹 @PathVariable
+
+```java
+@GetMapping("/user/{id}")
+public String getUser(@PathVariable int id) {
+}
+```
+
+---
+
+## 🔹 @RequestParam
+
+```java
+@GetMapping("/search")
+public String search(@RequestParam String keyword) {
+}
+```
+
+---
+
+# 8️⃣ Form Handling in Spring MVC
+
+---
+
+## 🔷 HTML Form
+
+```html
+<form action="saveUser" method="post">
+    Name: <input type="text" name="name"/>
+    <input type="submit"/>
+</form>
+```
+
+---
+
+## 🔷 Controller
+
+```java
+@PostMapping("/saveUser")
+public String saveUser(@ModelAttribute User user) {
+    return "success";
+}
+```
+
+---
+
+## 🔷 @ModelAttribute
+
+Binds form data to Java object automatically.
+
+---
+
+# 9️⃣ Validation in Spring MVC
+
+---
+
+## Step 1: Add Validation Dependency
+
+```xml
+<dependency>
+    <groupId>jakarta.validation</groupId>
+</dependency>
+```
+
+---
+
+## Step 2: Add Validation in Model
+
+```java
+public class User {
+
+    @NotNull
+    private String name;
+
+    @Size(min=3)
+    private String password;
+}
+```
+
+---
+
+## Step 3: Use @Valid
+
+```java
+@PostMapping("/register")
+public String register(@Valid User user, BindingResult result) {
+    if(result.hasErrors()) {
+        return "form";
+    }
+    return "success";
+}
+```
+
+---
+
+# 🔟 Exception Handling in Spring MVC
+
+---
+
+## Using @ExceptionHandler
+
+```java
+@ExceptionHandler(Exception.class)
+public String handleException() {
+    return "error";
+}
+```
+
+---
+
+## Using @ControllerAdvice
+
+```java
+@ControllerAdvice
+public class GlobalExceptionHandler {
+}
+```
+
+---
+
+# 1️⃣1️⃣ REST in Spring MVC
+
+---
+
+## @RestController
+
+```java
+@RestController
+public class ApiController {
+
+    @GetMapping("/api/users")
+    public List<User> getUsers() {
+        return userList;
+    }
+}
+```
+
+### Difference:
+
+| @Controller       | @RestController    |
+| ----------------- | ------------------ |
+| Returns View      | Returns JSON       |
+| Used for MVC apps | Used for REST APIs |
+
+---
+
+# 1️⃣2️⃣ Spring MVC vs Spring Boot
+
+| Feature       | Spring MVC        | Spring Boot  |
+| ------------- | ----------------- | ------------ |
+| Configuration | Manual            | Auto         |
+| web.xml       | Required          | Not Required |
+| Server        | External (Tomcat) | Embedded     |
+| Setup         | Complex           | Simple       |
+
+---
+
+# 1️⃣3️⃣ Advantages of Spring MVC
+
+✅ Loose coupling
+✅ Separation of concerns
+✅ Easy testing
+✅ Flexible view technology
+✅ Powerful validation
+✅ REST support
+✅ Exception handling
+
+---
+
+# 1️⃣4️⃣ Real Project Layered Architecture
+
+```
+Controller
+    ↓
+Service
+    ↓
+Repository (DAO)
+    ↓
+Database
+```
+
+Example:
+
+```
+UserController
+    ↓
+UserService
+    ↓
+UserRepository
+    ↓
+MySQL
+```
+
+---
+
+# 1️⃣5️⃣ Interview Questions on Spring MVC
+
+---
+
+### 1. What is DispatcherServlet?
+
+Front Controller of Spring MVC.
+
+### 2. What is difference between @Controller and @RestController?
+
+@Controller → View
+@RestController → JSON
+
+### 3. What is ModelAndView?
+
+Object containing model data and view name.
+
+### 4. What is ViewResolver?
+
+Maps logical view name to actual file.
+
+### 5. Explain request flow in Spring MVC?
+
+Client → DispatcherServlet → Controller → Model → View → Response
+
+---
+
+# 📌 Summary Diagram (Complete Flow)
+
+```
+Browser
+   |
+   v
+DispatcherServlet
+   |
+HandlerMapping
+   |
+Controller
+   |
+Service Layer
+   |
+Repository
+   |
+Database
+   |
+Controller returns ModelAndView
+   |
+ViewResolver
+   |
+JSP/HTML
+   |
+Response to Browser
+```
+
+---
+
+# 🎯 Final Conclusion
+
+Spring MVC is:
+
+* A powerful web framework
+* Based on MVC pattern
+* Uses DispatcherServlet as Front Controller
+* Supports REST
+* Easy to integrate with Spring Boot
+* Used in enterprise Java applications
+
+---
+

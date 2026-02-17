@@ -8,7 +8,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 <bean id="helloBean" class="com.cg.topic1.basic.HelloWorld">
 		<property name="name" value="Sameer" />
 	</bean>
-	
+	<!-- 
 	<bean id="emp" class="com.cg.topic1.basic.Employee">
 		<property name="id" value="101"/>
 		<property name="name" value="Ramesh"/>
@@ -25,19 +25,29 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		
 		
 	</bean>
-	
+	-->
 	<bean id="pdf" class="com.cg.topic1.basic.PrintPDF"></bean>
 	<bean id="excel" class="com.cg.topic1.basic.PrintExcel"></bean>
 	<bean id="json" class="com.cg.topic1.basic.PrintJson"></bean>
 	
 	
 	<bean id="printUtility" class="com.cg.topic1.basic.PrintUtility">
-		<!--<property name="printable" ref="pdf"></property>-->
+		<!-- <property name="printable" ref="pdf"></property> -->
 		<constructor-arg>
-			<value>pdf</value>
+			<ref bean="pdf" />
 		</constructor-arg>
+	</bean> 
+	
+	
+	<bean id="PersonBean" class="com.cg.topic4.innerbean.Person">
+		<property name="name" value="cg" />
+		<property name="address" value="address1" />
+		<property name="age" value="28" />
 	</bean>
 	
 	
+	<bean id="company" class="com.cg.topic4.innerbean.Company">
+		<property name="peerson" ref="PersonBean" />
+	</bean>
 
 </beans>

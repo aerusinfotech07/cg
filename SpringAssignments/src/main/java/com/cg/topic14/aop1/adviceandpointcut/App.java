@@ -14,6 +14,7 @@ public class App
 				.getBean("customerServiceProxy");
 		System.out.println("*************************");
 		cust.printName();
+		cust.printURL();
 		
     	
     }

@@ -1,0 +1,427 @@
+
+
+### **1. What is the main feature of Spring Core?**
+
+A) ORM
+B) Dependency Injection
+C) REST API
+D) Microservices
+
+**Answer:** B) Dependency Injection
+
+**Explanation:**
+Spring Core mainly provides **Dependency Injection (DI)** and **Inversion of Control (IoC)**, which help in loosely coupling components.
+
+---
+
+### **2. What does IoC stand for?**
+
+A) Inversion of Class
+B) Injection of Class
+C) Inversion of Control
+D) Injection of Context
+
+**Answer:** C) Inversion of Control
+
+**Explanation:**
+IoC means the control of object creation and dependency management is transferred from the programmer to the Spring container.
+
+---
+
+### **3. Which container is used in Spring Core?**
+
+A) Servlet Container
+B) IoC Container
+C) EJB Container
+D) Web Container
+
+**Answer:** B) IoC Container
+
+**Explanation:**
+Spring uses an **IoC Container** to create, configure, and manage beans.
+
+---
+
+### **4. Which are the two types of IoC containers?**
+
+A) BeanFactory & ApplicationContext
+B) DispatcherServlet & BeanFactory
+C) WebContext & AppContext
+D) SpringContainer & CoreContainer
+
+**Answer:** A) BeanFactory & ApplicationContext
+
+**Explanation:**
+
+* **BeanFactory** – Basic container
+* **ApplicationContext** – Advanced container with enterprise features
+
+---
+
+### **5. Which is the most commonly used container in Spring?**
+
+A) BeanFactory
+B) ApplicationContext
+C) ServletContext
+D) WebApplicationContext
+
+**Answer:** B) ApplicationContext
+
+**Explanation:**
+ApplicationContext provides advanced features like AOP integration, event propagation, and message sources.
+
+---
+
+### **6. What is a Spring Bean?**
+
+A) Java Object
+B) Managed Java Object
+C) Database Object
+D) Servlet Object
+
+**Answer:** B) Managed Java Object
+
+**Explanation:**
+A Spring Bean is a Java object that is created, configured, and managed by the Spring IoC container.
+
+---
+
+### **7. Default scope of Spring Bean is?**
+
+A) prototype
+B) request
+C) singleton
+D) session
+
+**Answer:** C) singleton
+
+**Explanation:**
+By default, Spring creates only one instance of a bean per container.
+
+---
+
+### **8. Which annotation is used to define a bean in Spring?**
+
+A) @Bean
+B) @Component
+C) @Service
+D) All of the above
+
+**Answer:** D) All of the above
+
+**Explanation:**
+
+* `@Bean` → Used in configuration class
+* `@Component`, `@Service` → Used for component scanning
+
+---
+
+### **9. Which annotation is used for dependency injection?**
+
+A) @Inject
+B) @Autowired
+C) @Resource
+D) All of the above
+
+**Answer:** D) All of the above
+
+**Explanation:**
+Spring supports multiple injection annotations including `@Autowired`.
+
+---
+
+### **10. Constructor Injection is preferred because?**
+
+A) It is faster
+B) It ensures mandatory dependencies
+C) It reduces memory
+D) It increases performance
+
+**Answer:** B) It ensures mandatory dependencies
+
+**Explanation:**
+Constructor injection ensures that required dependencies are provided at object creation time.
+
+---
+
+### **11. Which file is used for XML configuration?**
+
+A) application.xml
+B) spring.xml
+C) web.xml
+D) config.xml
+
+**Answer:** B) spring.xml
+
+**Explanation:**
+Typically, `spring.xml` is used to configure beans in XML-based configuration.
+
+---
+
+### **12. Which annotation is used to define configuration class?**
+
+A) @Configuration
+B) @Config
+C) @Component
+D) @Bean
+
+**Answer:** A) @Configuration
+
+**Explanation:**
+`@Configuration` marks a class as a source of bean definitions.
+
+---
+
+### **13. What is the purpose of @ComponentScan?**
+
+A) Scan database
+B) Scan packages for components
+C) Scan XML
+D) Scan properties
+
+**Answer:** B) Scan packages for components
+
+**Explanation:**
+It scans specified packages for classes annotated with stereotype annotations.
+
+---
+
+### **14. Which lifecycle method runs after bean initialization?**
+
+A) destroy()
+B) init()
+C) afterPropertiesSet()
+D) finalize()
+
+**Answer:** C) afterPropertiesSet()
+
+**Explanation:**
+`afterPropertiesSet()` is called after dependency injection.
+
+---
+
+### **15. Which interface defines bean lifecycle methods?**
+
+A) BeanFactory
+B) ApplicationContext
+C) InitializingBean
+D) DisposableBean
+
+**Answer:** C) InitializingBean
+
+**Explanation:**
+`InitializingBean` provides `afterPropertiesSet()` method.
+
+---
+
+### **16. Prototype scope means?**
+
+A) One instance per container
+B) Multiple instances
+C) One per request
+D) One per session
+
+**Answer:** B) Multiple instances
+
+**Explanation:**
+Each request for a bean returns a new instance.
+
+---
+
+### **17. Which scope is used in web applications per HTTP request?**
+
+A) singleton
+B) prototype
+C) request
+D) session
+
+**Answer:** C) request
+
+**Explanation:**
+A new bean instance is created per HTTP request.
+
+---
+
+### **18. Which annotation is specialization of @Component?**
+
+A) @Service
+B) @Repository
+C) @Controller
+D) All of the above
+
+**Answer:** D) All of the above
+
+**Explanation:**
+All are stereotype annotations derived from @Component.
+
+---
+
+### **19. What is autowiring?**
+
+A) Manual wiring
+B) Automatic dependency injection
+C) XML wiring
+D) Servlet wiring
+
+**Answer:** B) Automatic dependency injection
+
+**Explanation:**
+Spring automatically resolves and injects dependencies.
+
+---
+
+### **20. Which autowiring mode injects by type?**
+
+A) byName
+B) byType
+C) constructor
+D) none
+
+**Answer:** B) byType
+
+**Explanation:**
+Spring matches the property type with bean type.
+
+---
+
+### **21. What happens if multiple beans of same type exist?**
+
+A) Error
+B) Random selection
+C) First loaded selected
+D) Ignored
+
+**Answer:** A) Error
+
+**Explanation:**
+Spring throws `NoUniqueBeanDefinitionException` unless `@Qualifier` is used.
+
+---
+
+### **22. Which annotation resolves multiple bean conflict?**
+
+A) @Primary
+B) @Qualifier
+C) Both A & B
+D) @Component
+
+**Answer:** C) Both A & B
+
+**Explanation:**
+
+* `@Primary` → Default bean
+* `@Qualifier` → Specific bean selection
+
+---
+
+### **23. What is BeanFactory?**
+
+A) Advanced container
+B) Basic IoC container
+C) Database factory
+D) Web container
+
+**Answer:** B) Basic IoC container
+
+**Explanation:**
+BeanFactory provides basic DI support.
+
+---
+
+### **24. Which interface supports internationalization?**
+
+A) MessageSource
+B) LocaleResolver
+C) ResourceBundle
+D) ContextLoader
+
+**Answer:** A) MessageSource
+
+**Explanation:**
+Spring uses `MessageSource` for i18n.
+
+---
+
+### **25. Which class loads XML configuration?**
+
+A) ClassPathXmlApplicationContext
+B) AnnotationConfigApplicationContext
+C) BeanFactory
+D) WebContext
+
+**Answer:** A) ClassPathXmlApplicationContext
+
+**Explanation:**
+It loads XML from classpath.
+
+---
+
+### **26. What is Lazy Initialization?**
+
+A) Bean created at startup
+B) Bean created when requested
+C) Bean deleted
+D) Bean destroyed
+
+**Answer:** B) Bean created when requested
+
+**Explanation:**
+`lazy-init="true"` delays bean creation.
+
+---
+
+### **27. What is eager initialization?**
+
+A) Bean created on demand
+B) Bean created at container startup
+C) Bean destroyed early
+D) Prototype bean
+
+**Answer:** B) Bean created at container startup
+
+**Explanation:**
+Singleton beans are eagerly created by default.
+
+---
+
+### **28. Which annotation is used to mark a class as repository?**
+
+A) @Component
+B) @Repository
+C) @Service
+D) @Controller
+
+**Answer:** B) @Repository
+
+**Explanation:**
+@Repository indicates DAO layer and enables exception translation.
+
+---
+
+### **29. What is Spring Expression Language (SpEL)?**
+
+A) Query language
+B) Template engine
+C) Expression language for bean manipulation
+D) SQL language
+
+**Answer:** C) Expression language for bean manipulation
+
+**Explanation:**
+SpEL allows runtime evaluation of expressions.
+
+---
+
+### **30. What is the advantage of Spring Core?**
+
+A) Tight coupling
+B) Hard coding
+C) Loose coupling
+D) No configuration
+
+**Answer:** C) Loose coupling
+
+**Explanation:**
+Spring promotes loose coupling through DI, making applications flexible and maintainable.
+
+

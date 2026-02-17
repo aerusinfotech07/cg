@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${user.id == null} ? 'New User' : 'Edit User'">User Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container mt-4">
+    <h1 th:text="${user.id == null} ? 'Add New User' : 'Edit User'">User Form</h1>
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+    <form th:object="${user}" th:action="${user.id == null} ? @{/users} : @{/users/{id}(id=${user.id})}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <div class="form-group">
+            <label>Name</label>
+            <input th:field="*{name}" class="form-control" required="required"/>
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Username</label>
+            <input th:field="*{username}" class="form-control" required="required"/>
+            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input th:field="*{email}" type="email" class="form-control" required="required"/>
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Phone</label>
+            <input th:field="*{phone}" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label>Website</label>
+            <input th:field="*{website}" class="form-control"/>
+        </div>
+        <h5 class="mt-3">Address</h5>
+        <div class="form-group" th:if="${user.address != null}">
+            <label>Street</label>
+            <input th:field="*{address.street}" class="form-control"/>
+        </div>
+        <div class="form-group" th:if="${user.address != null}">
+            <label>Suite</label>
+            <input th:field="*{address.suite}" class="form-control"/>
+        </div>
+        <div class="form-group" th:if="${user.address != null}">
+            <label>City</label>
+            <input th:field="*{address.city}" class="form-control"/>
+        </div>
+        <div class="form-group" th:if="${user.address != null}">
+            <label>Zipcode</label>
+            <input th:field="*{address.zipcode}" class="form-control"/>
+        </div>
+        <div class="form-row" th:if="${user.address != null and user.address.geo != null}">
+            <div class="form-group col-md-6">
+                <label>Lat</label>
+                <input th:field="*{address.geo.lat}" class="form-control"/>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Lng</label>
+                <input th:field="*{address.geo.lng}" class="form-control"/>
+            </div>
+        </div>
+        <h5 class="mt-3">Company</h5>
+        <div class="form-group" th:if="${user.company != null}">
+            <label>Company Name</label>
+            <input th:field="*{company.name}" class="form-control"/>
+        </div>
+        <div class="form-group" th:if="${user.company != null}">
+            <label>Catch Phrase</label>
+            <input th:field="*{company.catchPhrase}" class="form-control"/>
+        </div>
+        <div class="form-group" th:if="${user.company != null}">
+            <label>BS</label>
+            <input th:field="*{company.bs}" class="form-control"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a th:href="@{/users}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

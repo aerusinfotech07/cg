@@ -11,7 +11,7 @@ public class App
                 new FileSystemResource("src/main/java/com/cg/topic14/aop1/aspectJ/Spring-Customer.xml"));
         
 		CustomerBo customer = (CustomerBo) context.getBean("customerBo");
-		customer.addCustomer();
+		//customer.addCustomer();
 		
 		//customer.addCustomerReturnValue();
 		
