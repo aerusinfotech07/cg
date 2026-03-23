@@ -1,0 +1,23 @@
+JAAS and container authentication
+================================
+
+The container (e.g. Tomcat) performs authentication on behalf of the web application.
+How the container gets users/passwords is "pluggable":
+
+- Tomcat: Realm (MemoryRealm, JDBCRealm, JNDIRealm, etc.)
+- JAAS: Java Authentication and Authorization Service provides a standard way to
+  plug in custom LoginModules (e.g. database, LDAP, custom logic).
+
+To use JAAS with Tomcat:
+1. Implement a Realm that uses JAAS (or use Tomcat's JAASRealm).
+2. Configure a login.config for JAAS (LoginModule classes).
+3. The container calls your Realm to authenticate; the Realm can delegate to JAAS.
+
+Your web app only declares in web.xml:
+- Which URLs are protected (security-constraint)
+- Which role is required (auth-constraint)
+- How to log in (login-config: FORM, BASIC, etc.)
+
+The container uses the configured Realm (or JAAS) to verify j_username/j_password
+and to assign roles. The application code just uses request.getUserPrincipal()
+and request.isUserInRole("role").

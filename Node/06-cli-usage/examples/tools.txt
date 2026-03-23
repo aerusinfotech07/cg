@@ -1,0 +1,11 @@
+﻿# tools.txt
+# nvm
+nvm install 18.16.0
+nvm use 18.16.0
+nvm ls
+
+# npm
+npm init
+npm install
+npm update
+npm audit

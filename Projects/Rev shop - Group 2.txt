@@ -1,0 +1,40 @@
+Application Overview
+
+RevShop is a secure console-based e-commerce application for both buyers and sellers. Buyers can browse products, manage shopping carts, place orders, and review purchases. Sellers can manage inventory, add products, view orders, and monitor stock levels. The application is designed with a modular architecture that can be extended to a microservices-based web application in future phases.
+
+Core Functional Requirements
+
+As a Buyer, I should be able to:
+
+Register on the platform
+Login using email and password
+View product details including price, description, and user reviews
+Browse products by category or search by keywords
+Add or remove products from cart with quantity
+Checkout and enter shipping and billing information
+Receive in-app notifications when an order is placed
+View order history
+Review and rate products
+Save products as favorites
+Make payment using simulated payment methods
+As a Seller, I should be able to:
+
+Register as a seller with email, password, and business details
+Login using email and password
+Manage product inventory (add, update, delete)
+Add new products with price, description, and category
+View all placed orders for their products
+Receive in-app notifications when a user places an order
+Set discounted price along with maximum retail price (MRP)
+View product reviews and ratings
+Set inventory threshold values and get console alerts when stock is low
+Standard Functional Scope
+
+Registered users should be able to log in, change password, and request forgotten password recovery (through security questions or password hint).
+
+Definition of Done
+
+Working console application demonstration
+Sharing the associates' code repo for technical evaluation with:
+ERD Diagram
+Application Architecture Diagram (showing modular/layered design)

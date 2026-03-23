@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 200" font-family="Segoe UI, Arial, sans-serif" font-size="11">
+  <rect width="620" height="200" fill="#f8fafc"/>
+  <text x="310" y="22" text-anchor="middle" font-weight="bold" fill="#0f172a">Batch vs streaming (conceptual)</text>
+  <rect x="25" y="40" width="270" height="140" rx="10" fill="#eff6ff" stroke="#3b82f6"/>
+  <text x="160" y="62" text-anchor="middle" font-weight="bold" fill="#1e40af">Batch</text>
+  <rect x="45" y="75" width="100" height="28" rx="4" fill="#fff" stroke="#93c5fd"/>
+  <text x="95" y="93" text-anchor="middle" fill="#1e3a8a">Files / snapshot</text>
+  <text x="175" y="93" fill="#64748b">&#8594;</text>
+  <rect x="195" y="75" width="85" height="28" rx="4" fill="#fff" stroke="#93c5fd"/>
+  <text x="237" y="93" text-anchor="middle" fill="#1e3a8a">Scheduled job</text>
+  <text x="175" y="128" fill="#64748b">&#8595;</text>
+  <rect x="95" y="118" width="130" height="28" rx="4" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="160" y="136" text-anchor="middle" fill="#1e40af">Tables updated</text>
+  <rect x="325" y="40" width="270" height="140" rx="10" fill="#ecfdf5" stroke="#10b981"/>
+  <text x="460" y="62" text-anchor="middle" font-weight="bold" fill="#065f46">Streaming</text>
+  <rect x="345" y="75" width="70" height="28" rx="4" fill="#fff" stroke="#6ee7b7"/>
+  <text x="380" y="93" text-anchor="middle" fill="#047857">Events</text>
+  <text x="430" y="93" fill="#64748b">&#8594;</text>
+  <rect x="445" y="75" width="70" height="28" rx="4" fill="#fff" stroke="#6ee7b7"/>
+  <text x="480" y="93" text-anchor="middle" fill="#047857">Stream bus</text>
+  <text x="530" y="93" fill="#64748b">&#8594;</text>
+  <rect x="535" y="75" width="50" height="28" rx="4" fill="#fff" stroke="#6ee7b7"/>
+  <text x="560" y="93" text-anchor="middle" fill="#047857" font-size="10">Transforms</text>
+  <text x="460" y="128" text-anchor="middle" fill="#64748b">&#8595;</text>
+  <rect x="395" y="118" width="130" height="28" rx="4" fill="#a7f3d0" stroke="#059669"/>
+  <text x="460" y="136" text-anchor="middle" fill="#065f46">Tables / views</text>
+</svg>

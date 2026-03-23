@@ -1,0 +1,487 @@
+
+Q1. Python is:
+A. Compiled language
+B. Interpreted language
+C. Both
+D. None
+
+Correct Ans: B
+
+
+
+Q2. Which of the following is immutable?
+A. List
+B. Dictionary
+C. Tuple
+D. Set
+
+Correct Ans: C
+
+
+
+Q3. Which keyword is used to define a function?
+A. function
+B. def
+C. func
+D. define
+
+Correct Ans: B
+
+
+
+Q4. Which data type is used to store key-value pairs?
+A. List
+B. Tuple
+C. Dictionary
+D. Set
+
+Correct Ans: C
+
+
+
+Q5. Which operator is used for exponentiation?
+A. ^
+B. 
+C. //
+D. %
+
+Correct Ans: B
+
+
+
+Q6. Which keyword is used for exception handling?
+A. catch
+B. try-except
+C. error
+D. handle
+
+Correct Ans: B
+
+
+
+Q7. Which function converts string to integer?
+A. str()
+B. int()
+C. float()
+D. bool()
+
+Correct Ans: B
+
+
+
+Q8. Which collection type removes duplicates automatically?
+A. List
+B. Tuple
+C. Set
+D. Dictionary
+
+Correct Ans: C
+
+
+
+Q9. What does `len()` do?
+A. Returns type
+B. Returns length
+C. Returns value
+D. Returns index
+
+Correct Ans: B
+
+
+
+Q10. Which keyword is used for inheritance?
+A. inherit
+B. extends
+C. class
+D. super
+
+Correct Ans: C
+
+
+
+Q11. Which method is constructor in Python?
+A. start
+B. init
+C. create
+D. new
+
+Correct Ans: B
+
+
+
+Q12. Which of the following is mutable?
+A. String
+B. Tuple
+C. List
+D. Integer
+
+Correct Ans: C
+
+
+
+Q13. Which function is used to read user input?
+A. input()
+B. read()
+C. scan()
+D. get()
+
+Correct Ans: A
+
+
+
+Q14. What does `break` do?
+A. Skips iteration
+B. Ends loop
+C. Restarts loop
+D. Pauses loop
+
+Correct Ans: B
+
+
+
+Q15. What does `continue` do?
+A. Ends loop
+B. Skips current iteration
+C. Restarts program
+D. None
+
+Correct Ans: B
+
+
+
+Q16. Which module is used for math operations?
+A. calc
+B. math
+C. num
+D. operator
+
+Correct Ans: B
+
+
+
+Q17. JSON stands for:
+A. Java Syntax Object Notation
+B. JavaScript Object Notation
+C. Java System Object
+D. None
+
+Correct Ans: B
+
+
+
+Q18. Which symbol is used for comments?
+A. //
+B. #
+C. /* */
+D. --
+
+Correct Ans: B
+
+
+
+Q19. Which function converts Python object to JSON string?
+A. json.load()
+B. json.dumps()
+C. json.read()
+D. json.write()
+
+Correct Ans: B
+
+
+
+Q20. Which function is used to open a file?
+A. file()
+B. open()
+C. read()
+D. write()
+
+Correct Ans: B
+
+
+
+Q21. Which mode is used to append data in file?
+A. r
+B. w
+C. a
+D. x
+
+Correct Ans: C
+
+
+
+Q22. Which concept hides data?
+A. Inheritance
+B. Polymorphism
+C. Encapsulation
+D. Abstraction
+
+Correct Ans: C
+
+
+
+Q23. Which loop is used for iteration over sequence?
+A. while
+B. for
+C. do-while
+D. loop
+
+Correct Ans: B
+
+
+
+Q24. What does `range()` return?
+A. list
+B. tuple
+C. range object
+D. set
+
+Correct Ans: C
+
+
+
+Q25. Which function checks type?
+A. check()
+B. typeof()
+C. type()
+D. isinstance()
+
+Correct Ans: C
+
+
+
+Q26.
+
+```python
+print("Hello" + "Python")
+```
+
+A. Hello Python
+B. HelloPython
+C. Error
+D. None
+
+Correct Ans: B
+
+
+
+Q27.
+
+```python
+x = [1,2,3]
+x.append(4)
+print(x)
+```
+
+A. [1,2,3]
+B. [1,2,3,4]
+C. Error
+D. None
+
+Correct Ans: B
+
+
+
+Q28.
+
+```python
+print(10 // 3)
+```
+
+A. 3
+B. 3.33
+C. 4
+D. Error
+
+Correct Ans: A
+
+
+
+Q29.
+
+```python
+print(bool(""))
+```
+
+A. True
+B. False
+C. Error
+D. None
+
+Correct Ans: B
+
+
+
+Q30.
+
+```python
+x = "5"
+print(x * 2)
+```
+
+A. 10
+B. 55
+C. Error
+D. None
+
+Correct Ans: B
+
+
+
+Q31.
+
+```python
+l = [1,2,3]
+print(len(l))
+```
+
+A. 2
+B. 3
+C. 4
+D. Error
+
+Correct Ans: B
+
+
+
+Q32.
+
+```python
+print([i for i in range(3)])
+```
+
+A. [1,2,3]
+B. [0,1,2]
+C. Error
+D. None
+
+Correct Ans: B
+
+
+
+Q33.
+
+```python
+print(23)
+```
+
+A. 6
+B. 8
+C. 9
+D. Error
+
+Correct Ans: B
+
+
+
+Q34.
+
+```python
+print(type(3.14))
+```
+
+A. int
+B. float
+C. double
+D. string
+
+Correct Ans: B
+
+
+
+Q35.
+
+```python
+print("abc".upper())
+```
+
+A. abc
+B. ABC
+C. Error
+D. None
+
+Correct Ans: B
+
+
+
+Q36.
+
+```python
+d = {"a":1}
+print(d["a"])
+```
+
+A. a
+B. 1
+C. Error
+D. None
+
+Correct Ans: B
+
+
+
+Q37.
+
+```python
+for i in range(2):
+    print(i)
+```
+
+A. 1 2
+B. 0 1
+C. 0 1 2
+D. Error
+
+Correct Ans: B
+
+
+
+Q38.
+
+```python
+def add(a,b):
+    return a+b
+
+print(add(2,3))
+```
+
+A. 5
+B. 23
+C. Error
+D. None
+
+Correct Ans: A
+
+
+
+Q39.
+
+```python
+try:
+    print(10/0)
+except:
+    print("Error")
+```
+
+A. Error
+B. Crash
+C. 0
+D. None
+
+Correct Ans: A
+
+
+
+Q40.
+
+```python
+import math
+print(math.sqrt(9))
+```
+
+A. 3
+B. 3.0
+C. Error
+D. None
+
+Correct Ans: B
+

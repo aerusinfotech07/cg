@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>W3Schools React useRef Examples</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8fb;
+        --card: #ffffff;
+        --text: #1f2933;
+        --muted: #52606d;
+        --accent: #2f80ed;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      header {
+        padding: 24px 16px 8px;
+        text-align: center;
+      }
+      header h1 { margin: 0 0 8px; font-size: 24px; }
+      header p { margin: 0; color: var(--muted); }
+      .grid {
+        display: grid;
+        gap: 16px;
+        padding: 16px;
+        max-width: 960px;
+        margin: 0 auto 24px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+      .card {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      }
+      .card h2 { margin-top: 0; font-size: 18px; }
+      .muted { color: var(--muted); font-size: 14px; }
+      button {
+        padding: 8px 12px;
+        border: none;
+        background: var(--accent);
+        color: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      input {
+        padding: 8px 10px;
+        border: 1px solid #cbd2d9;
+        border-radius: 6px;
+        width: 100%;
+        margin-top: 8px;
+      }
+      .row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>React useRef Examples</h1>
+      <p>Based on the W3Schools useRef tutorial.</p>
+    </header>
+
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" src="./app.js"></script>
+  </body>
+</html>

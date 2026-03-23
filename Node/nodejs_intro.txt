@@ -1,0 +1,41 @@
+﻿Node.js Introduction
+
+What You'll Learn
+- Install and run Node.js
+- Core concepts: modules and the event loop
+- Build web servers and APIs
+- Work with databases and files
+- Deploy Node.js applications
+
+What is Node.js?
+- Free, open-source JavaScript runtime for Windows, Mac, Linux, and more
+- Runs JavaScript outside the browser for server-side development
+- Built on Chrome's V8 engine for scalable network applications
+
+Why Node.js?
+- Handles many simultaneous connections with minimal overhead
+- Great for real-time apps, APIs/microservices, data streaming, CLI tools, and server-side web apps
+- Non-blocking, event-driven architecture is efficient for I/O-heavy workloads
+
+Asynchronous Programming
+- Uses asynchronous (non-blocking) programming
+- Keeps working while waiting for file reads or database calls
+- Handles many tasks at once efficiently
+
+What Can Node.js Do?
+- Web servers: fast, scalable network apps
+- File operations: read, write, manage files
+- Database interaction: MongoDB, MySQL, and more
+- APIs: REST and GraphQL services
+- Real-time: WebSockets for live apps
+- CLI tools: command-line applications
+
+What is a Node.js File?
+- Server-side code files, usually .js extension
+- Started with the node command
+- Run tasks when events happen (e.g., web requests)
+- Use JavaScript syntax
+
+Node.js Versions & LTS
+- New major version every six months
+- Use LTS (Long Term Support) for production

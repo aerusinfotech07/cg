@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+  <rect width="560" height="300" fill="#f8fafc"/>
+  <text x="280" y="24" text-anchor="middle" font-weight="bold" font-size="14" fill="#0f172a">Ingestion to consumption (medallion-style)</text>
+  <g transform="translate(30,45)">
+    <rect width="120" height="32" rx="6" fill="#fef3c7" stroke="#d97706"/>
+    <text x="60" y="21" text-anchor="middle" fill="#92400e">Batch ETL</text>
+    <rect x="140" width="120" height="32" rx="6" fill="#fef3c7" stroke="#d97706"/>
+    <text x="200" y="21" text-anchor="middle" fill="#92400e">Streaming</text>
+    <rect x="280" width="120" height="32" rx="6" fill="#fef3c7" stroke="#d97706"/>
+    <text x="340" y="21" text-anchor="middle" fill="#92400e">API / SaaS</text>
+  </g>
+  <line x1="280" y1="85" x2="280" y2="105" stroke="#64748b" stroke-width="2"/>
+  <rect x="160" y="105" width="240" height="40" rx="8" fill="#fed7aa" stroke="#ea580c" stroke-width="2"/>
+  <text x="280" y="130" text-anchor="middle" font-weight="bold" fill="#9a3412">Storage: Raw / Bronze</text>
+  <line x1="280" y1="145" x2="280" y2="165" stroke="#64748b" stroke-width="2"/>
+  <rect x="160" y="165" width="240" height="40" rx="8" fill="#bfdbfe" stroke="#2563eb" stroke-width="2"/>
+  <text x="280" y="190" text-anchor="middle" font-weight="bold" fill="#1e40af">Curated / Silver</text>
+  <line x1="280" y1="205" x2="280" y2="225" stroke="#64748b" stroke-width="2"/>
+  <rect x="160" y="225" width="240" height="40" rx="8" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
+  <text x="280" y="250" text-anchor="middle" font-weight="bold" fill="#166534">Serving / Gold</text>
+  <line x1="400" y1="245" x2="460" y2="245" stroke="#64748b" stroke-width="2"/>
+  <polygon points="460,245 470,240 470,250" fill="#64748b"/>
+  <rect x="470" y="220" width="80" height="50" rx="6" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="510" y="242" text-anchor="middle" font-size="11" fill="#334155">BI / DS</text>
+  <text x="510" y="258" text-anchor="middle" font-size="11" fill="#334155">ML / Apps</text>
+</svg>

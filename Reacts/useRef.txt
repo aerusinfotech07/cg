@@ -1,0 +1,158 @@
+React useRef Hook
+The useRef Hook allows you to persist values between renders.
+
+It can be used to store a mutable value that does not cause a re-render when updated.
+
+It can be used to access a DOM element directly.
+
+Does Not Cause Re-renders
+If we tried to count how many times our application renders using the useState Hook, we would be caught in an infinite loop since this Hook itself causes a re-render.
+
+To avoid this, we can use the useRef Hook.
+
+Example:Get your own React.js Server
+Use useRef to track application renders.
+
+import { useState, useRef, useEffect } from "react";
+
+const UseRefExample = () => {
+    const [inputValue, setInputValue] = useState("");
+    const renderCountRef = useRef(0);
+
+    // Increase render count after every render
+    useEffect(() => {
+        renderCountRef.current = renderCountRef.current + 1;
+    });
+
+    return (
+        <section>
+            <h3>useRef Render Counter Example</h3>
+
+            <p>Type in the input field:</p>
+
+            <input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder="Start typing..."
+            />
+
+            <h4>Render Count: {renderCountRef.current}</h4>
+        </section>
+    );
+};
+
+export default UseRefExample;
+
+
+useRef() only returns one item. It returns an Object called current.
+
+When we initialize useRef we set the initial value: useRef(0).
+
+It's like doing this: const count = {current: 0}. We can access the count by using count.current.
+
+
+Accessing DOM Elements
+The useRef Hook is often used to access DOM elements directly.
+
+First, we create a ref using the useRef Hook: const inputElement = useRef();.
+
+Then, we attach the ref to a DOM element using the ref attribute in JSX: <input type="text" ref={inputElement} />.
+
+Finally, we can access the DOM element using the current property: inputElement.current.
+
+Example:
+Use useRef to focus the input:
+
+import { useRef, useState } from "react";
+
+const UseRefExample = () => {
+    const inputRef = useRef(null);
+    const renderCountRef = useRef(0);
+    const [value, setValue] = useState("");
+
+    // Count renders using useRef (does not trigger re-render)
+    renderCountRef.current += 1;
+
+    const focusInput = () => {
+        inputRef.current?.focus();
+    };
+
+    return (
+        <section>
+            <h3>useRef Example</h3>
+
+            <div>Render count (ref): {renderCountRef.current}</div>
+
+            <div>
+                <input
+                    type="text"
+                    ref={inputRef}
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                    placeholder="Focus me with the button"
+                />
+
+                <button type="button" onClick={focusInput}>
+                    Focus Input
+                </button>
+            </div>
+        </section>
+    );
+};
+
+export default UseRefExample;
+
+
+In the example, the input field gets focus when the button is clicked, because the onClick function calls inputElement.current.focus().
+
+Tracking State Changes
+The useRef Hook can also be used to keep track of previous state values.
+
+This is because we are able to persist useRef values between renders.
+
+Example:
+Use useRef to keep track of previous state values:
+
+import { useRef, useState, useEffect } from "react";
+
+const UseRefExample = () => {
+    const [inputValue, setInputValue] = useState("");
+    const previousInputValueRef = useRef("");
+    const renderCountRef = useRef(0);
+
+    // Count renders
+    renderCountRef.current += 1;
+
+    // Store previous value
+    useEffect(() => {
+        previousInputValueRef.current = inputValue;
+    }, [inputValue]);
+
+    return (
+        <section>
+            <h3>useRef Previous Value Example</h3>
+
+            <div>Render count (ref): {renderCountRef.current}</div>
+
+            <div>
+                <input
+                    type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    placeholder="Type something..."
+                />
+            </div>
+
+            <h4>Current Value: {inputValue}</h4>
+            <h4>Previous Value: {previousInputValueRef.current}</h4>
+        </section>
+    );
+};
+
+export default UseRefExample;
+
+
+This time we use a combination of useState, useEffect, and useRef to keep track of the previous state.
+
+In the useEffect, we are updating the useRef current value each time the inputValue is updated by entering text into the input field.

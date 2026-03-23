@@ -1,0 +1,101 @@
+
+
+A. Python Intro / Get Started / Syntax**
+
+1. Write a Python program to print“Welcome to Python Programming”**.
+2. Write a program that prints yourname, age, and city** on separate lines.
+3. Write a program that prints a simplepattern** using `*`.
+4. Identify and fixsyntax errors** in a given Python code snippet.
+5. Write a program that demonstratescase sensitivity** in Python variables.
+
+---
+
+B. Python Output**
+
+6. Print the sentence: *Python is easy to learn* using `print()`.
+7. Printmultiple values** in a single `print()` statement.
+8. Print numbers1 to 5** in a single line separated by spaces.
+9. Print yourfull name** using two `print()` statements.
+10. Print the result of10 + 20** directly inside `print()`.
+
+---
+
+C. Python Comments**
+
+11. Write a program that usessingle-line comments**.
+12. Write a program that usesmulti-line comments**.
+13. Add comments to explain each line of a simple program.
+14. Comment out a line of code and observe the output.
+15. Write a program where comments describe the program purpose.
+
+---
+
+D. Python Variables**
+
+16. Declare a variable to store yourname** and print it.
+17. Store two numbers in variables and print theirsum**.
+18. Swap two numbers using variables.
+19. Assign thesame value** to multiple variables in one line.
+20. Change the value of a variable and print both values.
+
+---
+
+E. Python Data Types**
+
+21. Create variables of typeint, float, string, boolean**.
+22. Print thetype** of each variable using `type()`.
+23. Store your age as an integer and height as a float.
+24. Store a sentence and check its data type.
+25. Identify the data type of user-defined values.
+
+---
+
+F. Python Numbers**
+
+26. Add two integer numbers and display the result.
+27. Performdivision** of two numbers and print the output.
+28. Find theremainder** of two numbers.
+29. Convert an integer to a float.
+30. Perform arithmetic operations (+, -, *, /) on two numbers.
+
+---
+
+G. Python Casting**
+
+31. Convert a string number `"100"` into an integer.
+32. Convert a float value to an integer.
+33. Convert an integer to a string and print its type.
+34. Add an integer and a float after type casting.
+35. Take a number as string input and convert it to integer.
+
+---
+
+H. Python Strings**
+
+36. Create a string and print its length.
+37. Access thefirst and last character** of a string.
+38. Convert a string touppercase**.
+39. Concatenate two strings and print the result.
+40. Check whether a word exists inside a string.
+
+---
+
+I. Python Booleans**
+
+41. Compare two numbers and print the boolean result.
+42. Check if a number isgreater than 10**.
+43. Print the result of logicalAND** andOR** operations.
+44. Store boolean values and print their types.
+45. Write a program that evaluates a true/false condition.
+
+---
+
+J. Python Operators**
+
+46. Demonstratearithmetic operators** using two numbers.
+47. Demonstratecomparison operators** (`==`, `!=`, `>`, `<`).
+48. Demonstrateassignment operators** (`+=`, `-=`, `*=`).
+49. Use logical operators to compare multiple conditions.
+50. Write a program that shows the difference between `=` and `==`.
+
+

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 100" font-family="Segoe UI, Arial, sans-serif" font-size="11">
+  <rect width="800" height="100" fill="#f8fafc"/>
+  <defs>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#475569"/></marker>
+  </defs>
+  <g transform="translate(15,35)">
+    <rect width="88" height="36" rx="6" fill="#e0e7ff" stroke="#4f46e5"/>
+    <text x="44" y="23" text-anchor="middle" fill="#312e81">Generate</text>
+    <line x1="88" y1="18" x2="98" y2="18" stroke="#475569" marker-end="url(#a)"/>
+    <rect x="98" width="88" height="36" rx="6" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="142" y="23" text-anchor="middle" fill="#1e40af">Collect</text>
+    <line x1="186" y1="18" x2="196" y2="18" stroke="#475569" marker-end="url(#a)"/>
+    <rect x="196" width="72" height="36" rx="6" fill="#cffafe" stroke="#0891b2"/>
+    <text x="232" y="23" text-anchor="middle" fill="#155e75">Store</text>
+    <line x1="268" y1="18" x2="278" y2="18" stroke="#475569" marker-end="url(#a)"/>
+    <rect x="278" width="88" height="36" rx="6" fill="#d1fae5" stroke="#059669"/>
+    <text x="322" y="23" text-anchor="middle" fill="#065f46">Process</text>
+    <line x1="366" y1="18" x2="376" y2="18" stroke="#475569" marker-end="url(#a)"/>
+    <rect x="376" width="64" height="36" rx="6" fill="#fef3c7" stroke="#d97706"/>
+    <text x="408" y="23" text-anchor="middle" fill="#92400e">Use</text>
+    <line x1="440" y1="18" x2="450" y2="18" stroke="#475569" marker-end="url(#a)"/>
+    <rect x="450" width="88" height="36" rx="6" fill="#fce7f3" stroke="#db2777"/>
+    <text x="494" y="23" text-anchor="middle" fill="#9d174d">Archive</text>
+    <line x1="538" y1="18" x2="548" y2="18" stroke="#475569" marker-end="url(#a)"/>
+    <rect x="548" width="72" height="36" rx="6" fill="#f3f4f6" stroke="#6b7280"/>
+    <text x="584" y="23" text-anchor="middle" fill="#374151">Delete</text>
+  </g>
+  <text x="400" y="18" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f172a">Data lifecycle (high level)</text>
+</svg>

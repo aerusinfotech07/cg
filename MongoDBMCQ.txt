@@ -1,0 +1,339 @@
+
+ Section 1: Relational Databases & SQL Basics
+
+ 1. Which SQL command is used to retrieve data from a database?
+
+A. INSERT
+B. UPDATE
+C. SELECT
+D. DELETE
+
+ **Answer:** C. SELECT
+
+
+
+ 2. Which SQL statement is used to add new records into a table?
+
+A. INSERT
+B. ADD
+C. CREATE
+D. UPDATE
+
+ **Answer:** A. INSERT
+
+
+
+ 3. Which SQL clause is used to filter records?
+
+A. GROUP BY
+B. WHERE
+C. ORDER BY
+D. HAVING
+
+ **Answer:** B. WHERE
+
+
+
+ 4. Which SQL statement modifies existing data in a table?
+
+A. UPDATE
+B. INSERT
+C. MODIFY
+D. ALTER
+
+ **Answer:** A. UPDATE
+
+
+
+ 5. Which SQL command removes records from a table?
+
+A. REMOVE
+B. DELETE
+C. DROP
+D. ERASE
+
+ **Answer:** B. DELETE
+
+
+
+ 6. Which SQL join returns matching records from both tables?
+
+A. LEFT JOIN
+B. RIGHT JOIN
+C. INNER JOIN
+D. FULL JOIN
+
+ **Answer:** C. INNER JOIN
+
+
+
+ 7. What is the purpose of indexing in relational databases?
+
+A. Store backup data
+B. Improve query performance
+C. Delete duplicate data
+D. Encrypt database
+
+ **Answer:** B. Improve query performance
+
+
+
+ 8. A query inside another query is called:
+
+A. Nested Query
+B. Subquery
+C. Inner Query
+D. Multi Query
+
+ **Answer:** B. Subquery
+
+
+
+ Section 2: Introduction to MongoDB
+
+ 9. MongoDB is classified as which type of database?
+
+A. Relational Database
+B. Document Database
+C. Graph Database
+D. Hierarchical Database
+
+ **Answer:** B. Document Database
+
+
+
+ 10. MongoDB stores data in the form of:
+
+A. Tables
+B. Rows
+C. Documents
+D. Cells
+
+ **Answer:** C. Documents
+
+
+
+ 11. MongoDB belongs to which database category?
+
+A. SQL
+B. NoSQL
+C. Object Database
+D. Hierarchical Database
+
+ **Answer:** B. NoSQL
+
+
+
+ 12. Which format does MongoDB use to store documents?
+
+A. XML
+B. JSON
+C. BSON
+D. CSV
+
+ **Answer:** C. BSON
+
+
+
+ 13. BSON stands for:
+
+A. Binary Serialized Object Notation
+B. Binary JavaScript Object Notation
+C. Basic Serialized Object Notation
+D. Binary Structured Object Notation
+
+ **Answer:** B. Binary JavaScript Object Notation
+
+
+
+ 14. Which of the following is a feature of MongoDB?
+
+A. Schema-less design
+B. Horizontal scaling
+C. High performance
+D. All of the above
+
+ **Answer:** D. All of the above
+
+
+
+ 15. MongoDB is best suited for:
+
+A. Highly structured financial systems
+B. Applications requiring flexible schema
+C. Spreadsheet data storage
+D. Only relational systems
+
+ **Answer:** B. Applications requiring flexible schema
+
+
+
+ Section 3: MongoDB Installation & Setup
+
+ 16. Which command starts the MongoDB server?
+
+A. mongo
+B. mongod
+C. mongodb
+D. mongos
+
+ **Answer:** B. mongod
+
+
+
+ 17. Which command is used to connect to MongoDB shell?
+
+A. mongo
+B. mongod
+C. connect
+D. db
+
+ **Answer:** A. mongo
+
+
+
+ 18. MongoDB Compass is:
+
+A. MongoDB server
+B. GUI tool for MongoDB
+C. Query language
+D. Backup software
+
+ **Answer:** B. GUI tool for MongoDB
+
+
+
+ 19. MongoDB Atlas is:
+
+A. MongoDB CLI tool
+B. Local database server
+C. Cloud database service
+D. Database driver
+
+ **Answer:** C. Cloud database service
+
+
+
+ 20. Default MongoDB port number is:
+
+A. 3306
+B. 27017
+C. 8080
+D. 1521
+
+ **Answer:** B. 27017
+
+
+
+ Section 4: MongoDB Data Model
+
+ 21. A MongoDB database contains:
+
+A. Tables
+B. Collections
+C. Rows
+D. Views
+
+ **Answer:** B. Collections
+
+
+
+ 22. A MongoDB collection contains:
+
+A. Documents
+B. Tables
+C. Records
+D. Rows
+
+ **Answer:** A. Documents
+
+
+
+ 23. MongoDB supports which schema type?
+
+A. Fixed schema
+B. Dynamic schema
+C. Relational schema
+D. Static schema
+
+ **Answer:** B. Dynamic schema
+
+
+
+ 24. Which data type is supported in MongoDB?
+
+A. String
+B. Object
+C. Array
+D. All of the above
+
+ **Answer:** D. All of the above
+
+
+
+ Section 5: CRUD Operations
+
+ 25. Which method inserts a single document in MongoDB?
+
+A. insertOne()
+B. addOne()
+C. createOne()
+D. putOne()
+
+ **Answer:** A. insertOne()
+
+
+
+ 26. Which method inserts multiple documents?
+
+A. insertMultiple()
+B. insertMany()
+C. addMany()
+D. createMany()
+
+ **Answer:** B. insertMany()
+
+
+
+ 27. Which method retrieves multiple documents?
+
+A. find()
+B. select()
+C. search()
+D. query()
+
+ **Answer:** A. find()
+
+
+
+ 28. Which MongoDB method retrieves a single document?
+
+A. findSingle()
+B. findOne()
+C. getOne()
+D. selectOne()
+
+ **Answer:** B. findOne()
+
+
+
+ 29. Which operator is used to update a field value in MongoDB?
+
+A. $update
+B. $set
+C. $change
+D. $modify
+
+ **Answer:** B. $set
+
+
+
+ 30. Which method deletes multiple documents?
+
+A. removeMany()
+B. deleteMany()
+C. dropMany()
+D. removeAll()
+
+ **Answer:** B. deleteMany()
+

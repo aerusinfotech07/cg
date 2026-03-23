@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Training Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+        .container {
+            width: 700px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 6px;
+            margin: 5px 0 10px 0;
+        }
+        .inline {
+            width: auto;
+            margin-right: 10px;
+        }
+        .error {
+			color: red;
+			font-size: 14px;
+			display: block;   /* ✅ Forces new line */
+			margin-bottom: 8px;
+		}
+        button {
+            padding: 10px 15px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Training Registration Form</h2>
+
+    <form onsubmit="return validateForm();">
+
+        <!-- TEXT -->
+        <label>Full Name *</label>
+        <input type="text" id="name">
+        <span id="nameError" class="error"></span>
+
+        <!-- EMAIL -->
+        <label>Email *</label>
+        <input type="email" id="email">
+        <span id="emailError" class="error"></span>
+
+        <!-- PASSWORD -->
+        <label>Password *</label>
+        <input type="password" id="password">
+        <span id="passwordError" class="error"></span>
+
+        <!-- NUMBER -->
+        <label>Mobile Number *</label>
+        <input type="number" id="mobile">
+        <span id="mobileError" class="error"></span>
+
+        <!-- DATE -->
+        <label>Date of Birth *</label>
+        <input type="date" id="dob">
+        <span id="dobError" class="error"></span>
+
+        <!-- RADIO -->
+        <label>Gender *</label><br>
+        <input type="radio" name="gender" value="Male" class="inline"> Male
+        <input type="radio" name="gender" value="Female" class="inline"> Female
+        <input type="radio" name="gender" value="Other" class="inline"> Other
+        <br>
+        <span id="genderError" class="error"></span>
+
+        <!-- CHECKBOX -->
+        <label>Skills *</label><br>
+        <input type="checkbox" name="skills" value="Java" class="inline"> Java
+        <input type="checkbox" name="skills" value="Python" class="inline"> Python
+        <input type="checkbox" name="skills" value="JavaScript" class="inline"> JavaScript
+        <br>
+        <span id="skillsError" class="error"></span>
+
+        <!-- DROPDOWN -->
+        <label>Country *</label>
+        <select id="country">
+            <option value="">-- Select Country --</option>
+            <option>India</option>
+            <option>USA</option>
+            <option>UK</option>
+        </select>
+        <span id="countryError" class="error"></span>
+
+        <!-- MULTI SELECT LIST -->
+        <label>Preferred Training Mode *</label>
+        <select id="mode" multiple>
+            <option>Online</option>
+            <option>Classroom</option>
+            <option>Weekend</option>
+        </select>
+        <span id="modeError" class="error"></span>
+
+        <!-- TEXTAREA -->
+        <label>Address</label>
+        <textarea rows="3"></textarea>
+
+        <!-- FILE -->
+        <label>Upload Resume</label>
+        <input type="file">
+
+        <!-- COLOR -->
+        <label>Favorite Color</label>
+        <input type="color">
+
+        <!-- RANGE -->
+        <label>Experience (0-10 Years)</label>
+        <input type="range" min="0" max="10">
+
+        <!-- TIME -->
+        <label>Preferred Contact Time</label>
+        <input type="time">
+
+        <br><br>
+        <button type="submit">Register</button>
+
+    </form>
+</div>
+
+<script>
+function validateForm() {
+
+    let valid = true;
+
+    // Clear previous errors
+    document.querySelectorAll(".error").forEach(e => e.innerHTML = "");
+
+    // Name
+    if (document.getElementById("name").value.trim() === "") {
+        document.getElementById("nameError").innerHTML = "Name is required";
+        valid = false;
+    }
+
+    // Email
+    if (document.getElementById("email").value.trim() === "") {
+        document.getElementById("emailError").innerHTML = "Email is required";
+        valid = false;
+    }
+
+    // Password
+    if (document.getElementById("password").value.length < 6) {
+        document.getElementById("passwordError").innerHTML = "Password must be at least 6 characters";
+        valid = false;
+    }
+
+    // Mobile
+    if (document.getElementById("mobile").value.length !== 10) {
+        document.getElementById("mobileError").innerHTML = "Mobile must be 10 digits";
+        valid = false;
+    }
+
+    // DOB (Age >= 18)
+    let dob = new Date(document.getElementById("dob").value);
+    let age = new Date().getFullYear() - dob.getFullYear();
+    if (!document.getElementById("dob").value || age < 18) {
+        document.getElementById("dobError").innerHTML = "Age must be 18 or above";
+        valid = false;
+    }
+
+    // Gender
+    if (!document.querySelector('input[name="gender"]:checked')) {
+        document.getElementById("genderError").innerHTML = "Select gender";
+        valid = false;
+    }
+
+    // Skills
+    if (document.querySelectorAll('input[name="skills"]:checked').length === 0) {
+        document.getElementById("skillsError").innerHTML = "Select at least one skill";
+        valid = false;
+    }
+
+    // Country
+    if (document.getElementById("country").value === "") {
+        document.getElementById("countryError").innerHTML = "Select country";
+        valid = false;
+    }
+
+    // Multi Select
+    if ([...document.getElementById("mode").options].filter(o => o.selected).length === 0) {
+        document.getElementById("modeError").innerHTML = "Select training mode";
+        valid = false;
+    }
+
+    return valid;
+}
+</script>
+
+</body>
+</html>

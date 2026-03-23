@@ -1,0 +1,63 @@
+﻿1. Node.js Command Line Usage
+- Node.js provides a CLI to run JavaScript files, manage packages, debug apps, and more.
+- Run commands in a terminal/command prompt.
+- Windows: Command Prompt, PowerShell, Windows Terminal
+- macOS/Linux: Terminal
+
+2. Basic Node.js Commands
+- Run a JavaScript file: `node app.js`
+- Run with arguments: `node app.js arg1 arg2`
+- Watch mode: `node --watch app.js`
+
+3. Using the REPL
+- Start REPL: `node`
+- Common REPL commands:
+  - `.help` (help)
+  - `.exit` (quit)
+
+4. Command Line Arguments
+- Access with `process.argv`.
+- `process.argv[2]` is the first user argument.
+
+5. Environment Variables
+- Access with `process.env`.
+- Example: `NODE_ENV=production MY_VARIABLE=test node env.js`
+
+6. Debugging Node.js Applications
+- Inspector: `node --inspect app.js`
+- Break on first line: `node --inspect-brk app.js`
+- Custom port: `node --inspect=9222 app.js`
+- Remote debug: `node --inspect=0.0.0.0:9229 app.js`
+
+7. Chrome DevTools Debugging
+1. Start with `node --inspect app.js`
+2. Open `chrome://inspect`
+3. Click "Open dedicated DevTools for Node"
+4. Set breakpoints and debug
+
+8. Common CLI Tools
+- nvm (Node Version Manager)
+  - `nvm install 18.16.0`
+  - `nvm use 18.16.0`
+  - `nvm ls`
+- npm (Node Package Manager)
+  - `npm init`
+  - `npm install`
+  - `npm update`
+  - `npm audit`
+
+9. Common Command Line Flags
+- Version: `node --version` or `-v`
+- V8 options: `node --v8-options`
+- Help: `node --help`
+
+10. Runtime Behavior Flags
+- Syntax check: `node --check app.js`
+- Trace warnings: `node --trace-warnings app.js`
+- Max memory: `node --max-old-space-size=4096 app.js`
+- Preload module: `node --require dotenv/config app.js`
+
+11. Performance and Optimization
+- ES module loader: `node --experimental-modules app.mjs`
+- Experimental REPL await: `node --experimental-repl-await`
+- Worker threads: `node --experimental-worker`

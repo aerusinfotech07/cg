@@ -1,0 +1,24 @@
+﻿Quick Start - JavaScript Essentials for Node.js
+
+Overview
+- These examples can run in the browser console or in Node.js with a .js file.
+- Focus: core JavaScript concepts needed before Node.js.
+
+JavaScript Fundamentals You Should Know
+- Variables
+- Functions
+- Objects
+- Arrays
+- Asynchronous programming (callbacks, promises, async/await)
+- ES6+ features
+
+Key JavaScript Concepts (Summary)
+- Variables: let (mutable), const (immutable), var (legacy)
+- Functions: regular, arrow, and object methods
+- Objects & Arrays: organize data
+- Modules: require() (CommonJS) and import/export (ES6)
+- Error handling: try/catch
+
+Notes
+- ES6+ features are standard in modern Node.js.
+- Async code is critical for non-blocking behavior.

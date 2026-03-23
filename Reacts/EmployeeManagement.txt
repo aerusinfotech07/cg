@@ -1,0 +1,406 @@
+
+We will build:
+
+* ✅ Add Employee
+* ✅ View Employees
+* ✅ Update Employee
+* ✅ Delete Employee
+* ✅ Backend API connection using Axios
+
+---
+
+# 🏗️ Project Architecture
+
+We will create:
+
+### 🔹 Frontend (React)
+
+* React (Vite or Create React App)
+* Axios
+* useState
+* useEffect
+* Simple CSS or Bootstrap
+
+### 🔹 Backend (Example)
+
+You can connect to:
+
+* Spring Boot (since you work with Java)
+* Node.js
+* JSON Server (for testing)
+
+For now, I’ll assume backend API:
+
+```
+GET     /employees
+GET     /employees/{id}
+POST    /employees
+PUT     /employees/{id}
+DELETE  /employees/{id}
+```
+
+---
+
+# ✅ STEP 1: Create React Project
+
+### Option 1 (Recommended – Vite)
+
+```bash
+npm create vite@latest employee-management
+cd employee-management
+npm install
+npm run dev
+```
+
+### Install Axios
+
+```bash
+npm install axios
+```
+
+---
+
+# ✅ STEP 2: Project Folder Structure
+
+Inside `src` create:
+
+```
+src/
+ ├── components/
+ │     ├── EmployeeList.jsx
+ │     ├── EmployeeForm.jsx
+ │     └── EmployeeService.js
+ ├── App.jsx
+ └── main.jsx
+```
+
+---
+
+# ✅ STEP 3: Create Axios Service (API Layer)
+
+### 📁 EmployeeService.js
+
+```javascript
+import axios from "axios";
+
+const BASE_URL = "http://localhost:8080/employees";
+
+export const getEmployees = () => {
+    return axios.get(BASE_URL);
+};
+
+export const getEmployeeById = (id) => {
+    return axios.get(`${BASE_URL}/${id}`);
+};
+
+export const createEmployee = (employee) => {
+    return axios.post(BASE_URL, employee);
+};
+
+export const updateEmployee = (id, employee) => {
+    return axios.put(`${BASE_URL}/${id}`, employee);
+};
+
+export const deleteEmployee = (id) => {
+    return axios.delete(`${BASE_URL}/${id}`);
+};
+```
+
+---
+
+### 🔎 Why Service Layer?
+
+* Keeps API logic separate
+* Clean architecture
+* Easy maintenance
+* Reusable
+
+Since you work in Spring projects, this is similar to a service layer in backend.
+
+---
+
+# ✅ STEP 4: Create Employee List Component
+
+### 📁 EmployeeList.jsx
+
+```javascript
+import React, { useEffect, useState } from "react";
+import { getEmployees, deleteEmployee } from "./EmployeeService";
+
+const EmployeeList = ({ onEdit }) => {
+
+    const [employees, setEmployees] = useState([]);
+
+    useEffect(() => {
+        loadEmployees();
+    }, []);
+
+    const loadEmployees = () => {
+        getEmployees()
+            .then((response) => {
+                setEmployees(response.data);
+            })
+            .catch((error) => {
+                console.error("Error fetching employees", error);
+            });
+    };
+
+    const handleDelete = (id) => {
+        deleteEmployee(id)
+            .then(() => {
+                loadEmployees();
+            })
+            .catch((error) => {
+                console.error("Error deleting employee", error);
+            });
+    };
+
+    return (
+        <div>
+            <h2>Employee List</h2>
+            <table border="1" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {employees.map((emp) => (
+                        <tr key={emp.id}>
+                            <td>{emp.id}</td>
+                            <td>{emp.name}</td>
+                            <td>{emp.email}</td>
+                            <td>{emp.department}</td>
+                            <td>
+                                <button onClick={() => onEdit(emp)}>Edit</button>
+                                <button onClick={() => handleDelete(emp.id)}>Delete</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
+};
+
+export default EmployeeList;
+```
+
+---
+
+# 🔎 Explanation
+
+### 🔹 useEffect
+
+Runs once when component loads → Fetch employees.
+
+### 🔹 useState
+
+Stores employee list in memory.
+
+### 🔹 deleteEmployee
+
+After delete → reload list.
+
+---
+
+# ✅ STEP 5: Create Employee Form (Add & Update)
+
+### 📁 EmployeeForm.jsx
+
+```javascript
+import React, { useEffect, useState } from "react";
+import { createEmployee, updateEmployee } from "./EmployeeService";
+
+const EmployeeForm = ({ selectedEmployee, onSave }) => {
+
+    const [employee, setEmployee] = useState({
+        name: "",
+        email: "",
+        department: ""
+    });
+
+    useEffect(() => {
+        if (selectedEmployee) {
+            setEmployee(selectedEmployee);
+        }
+    }, [selectedEmployee]);
+
+    const handleChange = (e) => {
+        setEmployee({
+            ...employee,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (employee.id) {
+            updateEmployee(employee.id, employee)
+                .then(() => {
+                    onSave();
+                    resetForm();
+                });
+        } else {
+            createEmployee(employee)
+                .then(() => {
+                    onSave();
+                    resetForm();
+                });
+        }
+    };
+
+    const resetForm = () => {
+        setEmployee({
+            name: "",
+            email: "",
+            department: ""
+        });
+    };
+
+    return (
+        <div>
+            <h2>{employee.id ? "Update Employee" : "Add Employee"}</h2>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    value={employee.name}
+                    onChange={handleChange}
+                />
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={employee.email}
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    name="department"
+                    placeholder="Department"
+                    value={employee.department}
+                    onChange={handleChange}
+                />
+                <button type="submit">
+                    {employee.id ? "Update" : "Save"}
+                </button>
+            </form>
+        </div>
+    );
+};
+
+export default EmployeeForm;
+```
+
+---
+
+# 🔎 Explanation
+
+### 🔹 Controlled Components
+
+Input value controlled by state.
+
+### 🔹 Dynamic Submit
+
+If `id exists` → Update
+Else → Create
+
+---
+
+# ✅ STEP 6: Connect Everything in App.jsx
+
+```javascript
+import React, { useState } from "react";
+import EmployeeList from "./components/EmployeeList";
+import EmployeeForm from "./components/EmployeeForm";
+
+function App() {
+
+    const [selectedEmployee, setSelectedEmployee] = useState(null);
+
+    const handleEdit = (employee) => {
+        setSelectedEmployee(employee);
+    };
+
+    const handleSave = () => {
+        setSelectedEmployee(null);
+        window.location.reload(); // simple refresh
+    };
+
+    return (
+        <div>
+            <h1>Employee Management System</h1>
+            <EmployeeForm
+                selectedEmployee={selectedEmployee}
+                onSave={handleSave}
+            />
+            <EmployeeList onEdit={handleEdit} />
+        </div>
+    );
+}
+
+export default App;
+```
+
+---
+
+# ✅ STEP 7: Backend Example (Spring Boot)
+
+Since you work with Spring, here is sample entity:
+
+```java
+@Entity
+public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private String email;
+    private String department;
+}
+```
+
+Controller:
+
+```java
+@RestController
+@CrossOrigin("*")
+@RequestMapping("/employees")
+public class EmployeeController {
+
+    @Autowired
+    private EmployeeRepository repository;
+
+    @GetMapping
+    public List<Employee> getAll() {
+        return repository.findAll();
+    }
+
+    @PostMapping
+    public Employee save(@RequestBody Employee emp) {
+        return repository.save(emp);
+    }
+
+    @PutMapping("/{id}")
+    public Employee update(@PathVariable Long id,
+                           @RequestBody Employee emp) {
+        emp.setId(id);
+        return repository.save(emp);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        repository.deleteById(id);
+    }
+}
+```
+

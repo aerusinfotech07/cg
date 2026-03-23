@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EXAMPLE: Switch to BASIC authentication by replacing <login-config> in web.xml with this.
+     No custom login page; browser shows a built-in username/password dialog.
+     Credentials are sent with every request (Base64-encoded). Use with HTTPS. -->
+<login-config>
+  <auth-method>BASIC</auth-method>
+  <realm-name>Security Demo Realm</realm-name>
+</login-config>

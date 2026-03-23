@@ -1,0 +1,581 @@
+
+
+
+## 1.NumPy
+
+### 1. E-commerce Sales Analysis
+
+An e-commerce company stores daily sales in a Python list. Convert the list into a NumPy array and calculate the average sales.
+
+**Sample Input**
+
+```python
+sales = [1200, 1500, 1800, 2000, 1700]
+```
+
+**Expected Output**
+
+```
+NumPy Array: [1200 1500 1800 2000 1700]
+Average Sales: 1640
+```
+
+---
+
+### 2. Temperature Monitoring System
+
+Convert the list of temperature readings into a NumPy array and find the maximum temperature.
+
+**Sample Input**
+
+```python
+temperature = [30, 32, 31, 35, 34]
+```
+
+**Expected Output**
+
+```
+Temperature Array: [30 32 31 35 34]
+Maximum Temperature: 35
+```
+
+---
+
+## 2. Getting Started
+
+### 3. Check NumPy Version
+
+Write a program to display the installed NumPy version.
+
+**Sample Input**
+
+```
+Import numpy
+```
+
+**Expected Output**
+
+```
+NumPy Version: 1.x.x
+```
+
+---
+
+### 4. Array Type Checking
+
+Create a NumPy array and print its type.
+
+**Sample Input**
+
+```python
+arr = [10, 20, 30]
+```
+
+**Expected Output**
+
+```
+Array: [10 20 30]
+Type: <class 'numpy.ndarray'>
+```
+
+---
+
+# 3. Creating Arrays
+
+### 5. Weekly Bank Transactions
+
+Create a NumPy array to store daily transactions for a week.
+
+**Sample Input**
+
+```python
+transactions = [2000, 1500, 1800, 2200, 2500, 1700, 2100]
+```
+
+**Expected Output**
+
+```
+Transactions Array:
+[2000 1500 1800 2200 2500 1700 2100]
+```
+
+---
+
+### 6. Student Marks (2D Array)
+
+Create a 2D array representing marks of students in three subjects.
+
+**Sample Input**
+
+```python
+marks = [
+[78, 85, 90],
+[88, 79, 92],
+[70, 75, 80]
+]
+```
+
+**Expected Output**
+
+```
+Marks Matrix:
+[[78 85 90]
+ [88 79 92]
+ [70 75 80]]
+```
+
+---
+
+# 4. Array Indexing
+
+### 7. Retrieve Employee Salary
+
+Retrieve the salary of the 3rd employee.
+
+**Sample Input**
+
+```python
+salaries = [30000, 35000, 40000, 45000]
+```
+
+**Expected Output**
+
+```
+Third Employee Salary: 40000
+```
+
+---
+
+### 8. Negative Indexing
+
+Retrieve the last mark using negative indexing.
+
+**Sample Input**
+
+```python
+marks = [60, 70, 80, 90]
+```
+
+**Expected Output**
+
+```
+Last Mark: 90
+```
+
+---
+
+# 5. Array Slicing
+
+### 9. First Quarter Sales
+
+Extract sales data for the first three months.
+
+**Sample Input**
+
+```python
+sales = [5000, 7000, 8000, 6500, 7200, 9000]
+```
+
+**Expected Output**
+
+```
+First Quarter Sales: [5000 7000 8000]
+```
+
+---
+
+### 10. Sensor Data Extraction
+
+Extract readings from index 2 to 5.
+
+**Sample Input**
+
+```python
+data = [10, 15, 20, 25, 30, 35, 40]
+```
+
+**Expected Output**
+
+```
+Extracted Data: [20 25 30]
+```
+
+---
+
+# 6. Data Types
+
+### 11. Convert Integer Array to Float
+
+Convert account balances into float type.
+
+**Sample Input**
+
+```python
+balances = [1000, 2000, 3000]
+```
+
+**Expected Output**
+
+```
+Float Array: [1000. 2000. 3000.]
+Data Type: float64
+```
+
+---
+
+### 12. Convert Numbers to String
+
+Convert array elements into strings.
+
+**Sample Input**
+
+```python
+numbers = [1,2,3]
+```
+
+**Expected Output**
+
+```
+Array: ['1' '2' '3']
+```
+
+---
+
+# 7. Copy vs View
+
+### 13. Demonstrate Copy
+
+Modify copied array and show original remains unchanged.
+
+**Sample Input**
+
+```
+Original Array: [1 2 3 4]
+Modify copy[0] = 10
+```
+
+**Expected Output**
+
+```
+Original Array: [1 2 3 4]
+Copied Array: [10 2 3 4]
+```
+
+---
+
+### 14. Demonstrate View
+
+Modify view and show original also changes.
+
+**Sample Input**
+
+```
+Original Array: [1 2 3 4]
+Modify view[0] = 10
+```
+
+**Expected Output**
+
+```
+Original Array: [10 2 3 4]
+View Array: [10 2 3 4]
+```
+
+---
+
+# 8. Array Shape
+
+### 15. Find Shape of Dataset
+
+Find shape of student marks dataset.
+
+**Sample Input**
+
+```
+[[70,80,90],
+ [60,75,85]]
+```
+
+**Expected Output**
+
+```
+Shape: (2,3)
+```
+
+---
+
+# 9. Array Reshape
+
+### 16. Reshape 1D to 3x4 Matrix
+
+**Sample Input**
+
+```python
+arr = [1,2,3,4,5,6,7,8,9,10,11,12]
+```
+
+**Expected Output**
+
+```
+[[ 1  2  3  4]
+ [ 5  6  7  8]
+ [ 9 10 11 12]]
+```
+
+---
+
+### 17. Flatten Array
+
+**Sample Input**
+
+```
+[[1,2,3],
+ [4,5,6]]
+```
+
+**Expected Output**
+
+```
+[1 2 3 4 5 6]
+```
+
+---
+
+# 10. Array Iterating
+
+### 18. Print Each Sales Value
+
+**Sample Input**
+
+```
+[1000,2000,3000]
+```
+
+**Expected Output**
+
+```
+1000
+2000
+3000
+```
+
+---
+
+### 19. Iterate Through 2D Array
+
+**Sample Input**
+
+```
+[[1,2],
+ [3,4]]
+```
+
+**Expected Output**
+
+```
+1
+2
+3
+4
+```
+
+---
+
+# 11. Array Join
+
+### 20. Combine Employee IDs
+
+**Sample Input**
+
+```
+arr1 = [101,102]
+arr2 = [103,104]
+```
+
+**Expected Output**
+
+```
+Combined Array:
+[101 102 103 104]
+```
+
+---
+
+### 21. Join 2D Arrays
+
+**Sample Input**
+
+```
+A =
+[[1,2],
+ [3,4]]
+
+B =
+[[5,6],
+ [7,8]]
+```
+
+**Expected Output**
+
+```
+[[1 2]
+ [3 4]
+ [5 6]
+ [7 8]]
+```
+
+---
+
+# 12. Array Split
+
+### 22. Split Student Marks
+
+**Sample Input**
+
+```
+[10,20,30,40,50,60]
+```
+
+**Expected Output**
+
+```
+[array([10,20]), array([30,40]), array([50,60])]
+```
+
+---
+
+# 13. Array Search
+
+### 23. Find Index of Product
+
+**Sample Input**
+
+```
+products = [101,102,103,104]
+Search: 103
+```
+
+**Expected Output**
+
+```
+Index: 2
+```
+
+---
+
+### 24. Find All Matching Values
+
+**Sample Input**
+
+```
+prices = [100,200,300,200]
+Search: 200
+```
+
+**Expected Output**
+
+```
+Indexes: [1 3]
+```
+
+---
+
+# 14. Array Sort
+
+### 25. Sort Student Marks
+
+**Sample Input**
+
+```
+[78,65,90,82]
+```
+
+**Expected Output**
+
+```
+Sorted Array: [65 78 82 90]
+```
+
+---
+
+### 26. Sort Product Prices
+
+**Sample Input**
+
+```
+[450,200,300,150]
+```
+
+**Expected Output**
+
+```
+[150 200 300 450]
+```
+
+---
+
+# 15. Array Filter
+
+### 27. Filter Salaries Above 50,000
+
+**Sample Input**
+
+```
+[45000,52000,61000,48000]
+```
+
+**Expected Output**
+
+```
+[52000 61000]
+```
+
+---
+
+### 28. Filter Marks Greater Than 80
+
+**Sample Input**
+
+```
+[65,72,85,90,60]
+```
+
+**Expected Output**
+
+```
+[85 90]
+```
+
+---
+
+### 29. Filter Even Numbers
+
+**Sample Input**
+
+```
+[1,2,3,4,5,6,7,8]
+```
+
+**Expected Output**
+
+```
+[2 4 6 8]
+```
+
+---
+
+### 30. Filter Transactions Greater Than 10,000
+
+**Sample Input**
+
+```
+[5000,12000,8000,15000,7000]
+```
+
+**Expected Output**
+
+```
+[12000 15000]
+```
+
+---

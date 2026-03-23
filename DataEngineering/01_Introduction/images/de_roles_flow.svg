@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="720" height="200" fill="#f8fafc"/>
+  <rect x="20" y="30" width="200" height="140" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="120" y="55" text-anchor="middle" font-weight="bold" fill="#0c4a6e">Data sources</text>
+  <text x="120" y="80" text-anchor="middle" fill="#334155">Apps &amp; DBs</text>
+  <text x="120" y="100" text-anchor="middle" fill="#334155">APIs &amp; Files</text>
+  <text x="120" y="120" text-anchor="middle" fill="#334155">Streams &amp; Logs</text>
+  <line x1="220" y1="100" x2="250" y2="100" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="250" y="40" width="200" height="120" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="350" y="95" text-anchor="middle" font-weight="bold" fill="#1e3a8a">Data Engineering</text>
+  <text x="350" y="118" text-anchor="middle" fill="#334155">Pipelines &amp; Storage</text>
+  <line x1="450" y1="100" x2="480" y2="100" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="480" y="25" width="220" height="150" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+  <text x="590" y="50" text-anchor="middle" font-weight="bold" fill="#065f46">Consumers</text>
+  <text x="590" y="75" text-anchor="middle" fill="#334155">Analytics &amp; BI</text>
+  <text x="590" y="95" text-anchor="middle" fill="#334155">Data Science &amp; ML</text>
+  <text x="590" y="115" text-anchor="middle" fill="#334155">Products &amp; APIs</text>
+</svg>

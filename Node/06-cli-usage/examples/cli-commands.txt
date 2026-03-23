@@ -1,0 +1,29 @@
+﻿# cli-commands.txt
+# Run a JavaScript file
+node app.js
+
+# Run with additional arguments
+node app.js arg1 arg2
+
+# Run in watch mode (restarts on file changes)
+node --watch app.js
+
+# Debugging examples
+node --inspect app.js
+node --inspect-brk app.js
+node --inspect=9222 app.js
+node --inspect=0.0.0.0:9229 app.js
+
+# Flags
+node --version
+node --v8-options
+node --help
+node --check app.js
+node --trace-warnings app.js
+node --max-old-space-size=4096 app.js
+node --require dotenv/config app.js
+
+# Performance/experimental
+node --experimental-modules app.mjs
+node --experimental-repl-await
+node --experimental-worker

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python REST API + Axios</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { font-size: 1.25rem; }
+    button { margin: 0.25rem; padding: 0.4rem 0.8rem; cursor: pointer; }
+    input { margin: 0.25rem; padding: 0.4rem; width: 120px; }
+    pre { background: #f4f4f4; padding: 1rem; overflow: auto; font-size: 0.85rem; }
+    .section { margin: 1.5rem 0; }
+    .error { color: #c00; }
+  </style>
+</head>
+<body>
+  <h1>Python REST API + Axios</h1>
+  <p>Ensure the API is running: <code>uvicorn RestAPI-Axios.examples.api_main:app --port 8000</code></p>
+
+  <div class="section">
+    <h2>GET /items</h2>
+    <button onclick="listItems()">List all items</button>
+    <pre id="list-output">Click to fetch</pre>
+  </div>
+
+  <div class="section">
+    <h2>GET /items/{id}</h2>
+    <input type="number" id="get-id" value="1" min="1" placeholder="ID">
+    <button onclick="getItem()">Get item</button>
+    <pre id="get-output">-</pre>
+  </div>
+
+  <div class="section">
+    <h2>POST /items</h2>
+    <input type="text" id="post-name" placeholder="Name" value="New Item">
+    <input type="number" id="post-price" placeholder="Price" value="9.99" step="0.01">
+    <button onclick="createItem()">Create item</button>
+    <pre id="post-output">-</pre>
+  </div>
+
+  <div class="section">
+    <h2>PUT /items/{id}</h2>
+    <input type="number" id="put-id" value="1" min="1" placeholder="ID">
+    <input type="text" id="put-name" placeholder="Name" value="Updated">
+    <input type="number" id="put-price" placeholder="Price" value="0" step="0.01">
+    <button onclick="updateItem()">Update item</button>
+    <pre id="put-output">-</pre>
+  </div>
+
+  <div class="section">
+    <h2>DELETE /items/{id}</h2>
+    <input type="number" id="del-id" value="1" min="1" placeholder="ID">
+    <button onclick="deleteItem()">Delete item</button>
+    <pre id="del-output">-</pre>
+  </div>
+
+  <script>
+    const API_BASE = 'http://127.0.0.1:8000';
+
+    function show(el, data, isError) {
+      el.textContent = typeof data === 'string' ? data : JSON.stringify(data, null, 2);
+      el.className = isError ? 'error' : '';
+    }
+
+    async function listItems() {
+      const el = document.getElementById('list-output');
+      try {
+        const res = await axios.get(API_BASE + '/items');
+        show(el, res.data);
+      } catch (err) {
+        show(el, err.response?.data || err.message, true);
+      }
+    }
+
+    async function getItem() {
+      const id = document.getElementById('get-id').value;
+      const el = document.getElementById('get-output');
+      try {
+        const res = await axios.get(API_BASE + '/items/' + id);
+        show(el, res.data);
+      } catch (err) {
+        show(el, err.response?.data || err.message, true);
+      }
+    }
+
+    async function createItem() {
+      const name = document.getElementById('post-name').value;
+      const price = parseFloat(document.getElementById('post-price').value);
+      const el = document.getElementById('post-output');
+      try {
+        const res = await axios.post(API_BASE + '/items', { name, price });
+        show(el, res.data);
+      } catch (err) {
+        show(el, err.response?.data || err.message, true);
+      }
+    }
+
+    async function updateItem() {
+      const id = document.getElementById('put-id').value;
+      const name = document.getElementById('put-name').value;
+      const price = parseFloat(document.getElementById('put-price').value);
+      const el = document.getElementById('put-output');
+      try {
+        const res = await axios.put(API_BASE + '/items/' + id, { name, price });
+        show(el, res.data);
+      } catch (err) {
+        show(el, err.response?.data || err.message, true);
+      }
+    }
+
+    async function deleteItem() {
+      const id = document.getElementById('del-id').value;
+      const el = document.getElementById('del-output');
+      try {
+        const res = await axios.delete(API_BASE + '/items/' + id);
+        show(el, res.data);
+      } catch (err) {
+        show(el, err.response?.data || err.message, true);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" font-family="Segoe UI, Arial, sans-serif" font-size="11">
+  <rect width="520" height="320" fill="#f8fafc"/>
+  <text x="260" y="28" text-anchor="middle" font-weight="bold" font-size="14" fill="#0f172a">Data sources (categories)</text>
+  <ellipse cx="260" cy="70" rx="90" ry="24" fill="#e0e7ff" stroke="#4338ca" stroke-width="2"/>
+  <text x="260" y="75" text-anchor="middle" font-weight="bold" fill="#312e81">Data Sources</text>
+  <line x1="260" y1="94" x2="260" y2="110" stroke="#64748b"/>
+  <line x1="260" y1="110" x2="130" y2="130" stroke="#64748b"/><line x1="260" y1="110" x2="260" y2="130" stroke="#64748b"/><line x1="260" y1="110" x2="390" y2="130" stroke="#64748b"/>
+  <rect x="60" y="130" width="140" height="70" rx="6" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="130" y="152" text-anchor="middle" font-weight="bold" fill="#1e40af">Databases</text>
+  <text x="130" y="172" text-anchor="middle" fill="#334155">OLTP, NoSQL</text>
+  <text x="130" y="188" text-anchor="middle" fill="#334155">Warehouses</text>
+  <rect x="190" y="130" width="140" height="70" rx="6" fill="#fef3c7" stroke="#d97706"/>
+  <text x="260" y="152" text-anchor="middle" font-weight="bold" fill="#92400e">Applications</text>
+  <text x="260" y="172" text-anchor="middle" fill="#334155">SaaS, APIs</text>
+  <text x="260" y="188" text-anchor="middle" fill="#334155">Web / mobile</text>
+  <rect x="320" y="130" width="140" height="70" rx="6" fill="#d1fae5" stroke="#059669"/>
+  <text x="390" y="152" text-anchor="middle" font-weight="bold" fill="#065f46">Files &amp; streams</text>
+  <text x="390" y="172" text-anchor="middle" fill="#334155">Object storage</text>
+  <text x="390" y="188" text-anchor="middle" fill="#334155">Queues, buses</text>
+  <line x1="130" y1="200" x2="200" y2="230" stroke="#64748b"/><line x1="260" y1="200" x2="260" y2="230" stroke="#64748b"/><line x1="390" y1="200" x2="320" y2="230" stroke="#64748b"/>
+  <rect x="180" y="230" width="160" height="50" rx="6" fill="#fce7f3" stroke="#db2777"/>
+  <text x="260" y="252" text-anchor="middle" font-weight="bold" fill="#9d174d">External</text>
+  <text x="260" y="268" text-anchor="middle" fill="#334155">Partners, public data</text>
+</svg>

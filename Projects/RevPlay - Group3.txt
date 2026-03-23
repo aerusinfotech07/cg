@@ -1,0 +1,46 @@
+Application Overview
+
+RevPlay is a console-based music streaming application that allows users to access a library of songs, artists, playlists, albums, and podcasts. Users can search for content, mark favorites, manage playlists, and simulate music playback. Musicians/artists can create profiles to showcase their music. The application is designed with a modular architecture that can be extended to a microservices-based web/mobile application in future phases.
+
+Core Functional Requirements
+
+As a User, I should be able to:
+
+Register and create an account
+Login to my account
+Search the library of songs, artists, playlists, podcasts, and albums by keywords
+Browse content by categories (genre, artist, album)
+Mark songs as favorites
+View my favorite songs list
+Simulate music player controls (play, pause, skip, repeat) - text-based simulation
+Create private or public playlists with name and description
+Add songs to my playlists
+Remove songs from my playlists
+View all my playlists
+Update playlist details (name, description, privacy settings)
+Delete playlists created by me
+View public playlists created by other users
+View recently played songs
+View listening history
+As a Musician/Artist, I should be able to:
+
+Register as an artist with email, password, and artist details
+Login to my account
+Create and manage my artist profile (bio, genre, social media links)
+Upload songs with details (title, album, genre, duration, release date)
+Create albums and add songs to albums
+View my uploaded songs and albums
+Update song/album information
+Delete my songs/albums
+View play count and statistics for my songs
+See which users have added my songs to favorites
+Standard Functional Scope
+
+Registered users (both listeners and artists) should be able to log in, change password, and request forgotten password recovery (through security questions or password hint).
+
+Definition of Done
+
+Working console application demonstration with all core features
+Sharing the associates' code repo for technical evaluation with:
+ERD Diagram showing database relationships
+Application Architecture Diagram (modular/layered design)

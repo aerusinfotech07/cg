@@ -1,0 +1,127 @@
+Application Overview
+
+Rev Workforce is a console-based Human Resource Management (HRM) application designed to streamline employee management, leave tracking, and performance review processes. The system supports three user roles: Employees, Managers, and Admins, each with specific functionalities. The application is designed with a modular architecture that can be extended to a microservices-based web application in future phases.
+
+Core Functional Requirements
+
+As an Employee, I should be able to:
+
+Authentication & Profile:
+
+Login to my account using employee ID and password
+Edit basic profile information (phone number, address, emergency contact)
+View my reporting manager details
+Leave Management Module:
+
+View available leave balance (Casual, Sick, Paid leaves)
+Apply for leave with date range, leave type, and reason
+View all applied leaves with status (Pending/Approved/Rejected)
+View company holiday calendar
+View manager's name and contact while applying for leave
+Cancel pending leave applications
+Receive in-app notifications when leave is approved or rejected
+Performance Management Module:
+
+Create annual performance review document including:
+Key deliverables achieved
+Major accomplishments
+Areas of improvement
+Self-assessment rating
+Set goals and targets for the year with:
+Goal description
+Deadline
+Weightage/Priority (High/Medium/Low)
+Success metrics
+View goals progress and status
+Update goal progress periodically
+View manager's feedback on performance review
+Receive notifications when manager provides feedback
+Additional Features:
+
+View upcoming employee birthdays
+View work anniversaries of colleagues
+View company announcements
+Access employee directory
+As a Manager, I should be able to:
+
+Note: All managers are employees, so they have access to all employee features plus the following:
+
+Leave Management Module:
+
+View list of direct reportees (employees reporting to me)
+View leave applications from my team members
+Approve or reject leave requests with comments
+View team leave calendar
+View leave balance of team members
+Receive in-app notifications when team member applies for leave
+Performance Management Module:
+
+Review performance documents submitted by direct reportees
+Provide detailed feedback on employee performance reviews
+Rate employee performance (1-5 scale or rating system)
+Review employee goals and provide guidance
+Track goal completion status of team members
+Receive notifications when employee submits performance review
+Generate team performance summary reports
+Team Management:
+
+View team structure and hierarchy
+View team attendance summary
+Access team member profiles
+As an Admin, I should be able to:
+
+Employee Management:
+
+Add new employees with complete details:
+Personal information (name, email, phone, address, DOB)
+Employment details (employee ID, department, designation, joining date)
+Manager assignment
+Salary information
+Update employee information
+View all employee details
+Deactivate/reactivate employee accounts
+Assign/change reporting managers
+Search employees by name, ID, department, or designation
+Leave Management:
+
+Configure leave types and policies
+Assign leave quotas to employees:
+Casual Leave (CL)
+Sick Leave (SL)
+Paid Leave (PL)
+Privilege Leave
+Adjust leave balances manually if needed
+Revoke or cancel approved leaves (with manager approval)
+View all employee leave information and statistics
+Generate leave reports (department-wise, employee-wise)
+Set company holiday calendar
+System Configuration:
+
+Manage departments and designations
+Configure performance review cycles
+Set system-wide policies
+View system audit logs
+Standard Functional Scope
+
+Authentication & Security:
+
+All registered users can log in using employee ID/email and password
+Users can change their password (requires current password verification)
+Forgotten password recovery through security questions or password reset by admin
+Session management with automatic logout after inactivity
+Notification System:
+
+In-app notifications stored in database
+Display unread notification count on login
+Notification types:
+Leave approval/rejection
+Performance review feedback
+Birthday/anniversary reminders
+System announcements
+Definition of Done
+
+Working Console Application Demonstration with all core features functional
+Code Repository Submission including:
+Complete source code with proper package structure
+ERD (Entity Relationship Diagram) showing all tables and relationships
+Application Architecture Diagram (layered architecture with role-based modules)

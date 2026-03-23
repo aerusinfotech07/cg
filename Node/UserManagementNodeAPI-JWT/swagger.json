@@ -1,0 +1,190 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "User Management API (JWT)",
+    "description": "REST API with JWT authentication. **Step 1:** Call `POST /auth/login` with username and password to get a token. **Step 2:** Click **Authorize** and enter `Bearer <your-token>`. **Step 3:** Call protected `/api/users` endpoints.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    { "url": "http://localhost:8084", "description": "Local" }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Enter the token from POST /auth/login (without the word Bearer)"
+      }
+    },
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "username": { "type": "string" },
+          "email": { "type": "string" },
+          "phone": { "type": "string" },
+          "website": { "type": "string" },
+          "address": { "$ref": "#/components/schemas/Address" },
+          "company": { "$ref": "#/components/schemas/Company" }
+        }
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "street": { "type": "string" },
+          "suite": { "type": "string" },
+          "city": { "type": "string" },
+          "zipcode": { "type": "string" },
+          "geo": { "$ref": "#/components/schemas/Geo" }
+        }
+      },
+      "Geo": {
+        "type": "object",
+        "properties": { "lat": { "type": "string" }, "lng": { "type": "string" } }
+      },
+      "Company": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "catchPhrase": { "type": "string" },
+          "bs": { "type": "string" }
+        }
+      },
+      "LoginRequest": {
+        "type": "object",
+        "required": ["username", "password"],
+        "properties": {
+          "username": { "type": "string", "example": "admin" },
+          "password": { "type": "string", "example": "admin123" }
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "token": { "type": "string" },
+          "type": { "type": "string", "example": "Bearer" },
+          "expiresIn": { "type": "string", "example": "24h" },
+          "user": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "integer" },
+              "username": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "security": [],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Login (get JWT token)",
+        "description": "Returns a JWT token. Use this token in Authorization: Bearer <token> for protected endpoints.",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/LoginRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LoginResponse" }
+              }
+            }
+          },
+          "400": { "description": "Username and password required" },
+          "401": { "description": "Invalid username or password" }
+        }
+      }
+    },
+    "/api/users": {
+      "get": {
+        "summary": "Get all users",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "List of users", "content": { "application/json": { "schema": { "type": "array", "items": { "$ref": "#/components/schemas/User" } } } } },
+          "401": { "description": "Unauthorized" }
+        }
+      },
+      "post": {
+        "summary": "Create user",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "username", "email"],
+                "properties": {
+                  "name": {}, "username": {}, "email": {}, "phone": {}, "website": {},
+                  "address": { "$ref": "#/components/schemas/Address" },
+                  "company": { "$ref": "#/components/schemas/Company" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Created" },
+          "400": { "description": "Validation error" },
+          "401": { "description": "Unauthorized" }
+        }
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "summary": "Get user by ID",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "responses": { "200": {}, "401": {}, "404": {} }
+      },
+      "put": {
+        "summary": "Update user",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object" } } } },
+        "responses": { "200": {}, "401": {}, "404": {} }
+      },
+      "delete": {
+        "summary": "Delete user",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "responses": { "200": {}, "401": {}, "404": {} }
+      }
+    },
+    "/api/users/username/{username}": {
+      "get": {
+        "summary": "Get user by username",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "username", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": {}, "401": {}, "404": {} }
+      }
+    },
+    "/api/users/email/{email}": {
+      "get": {
+        "summary": "Get user by email",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "email", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": {}, "401": {}, "404": {} }
+      }
+    }
+  }
+}

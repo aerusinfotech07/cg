@@ -1,0 +1,450 @@
+
+This follows MongoDB best practices.
+
+---
+
+# ============================================
+
+# UserManagement – MongoDB Structure & Sample Data
+
+# Database: usermanagement
+
+# ============================================
+
+---
+
+# 🟢 Create Database (mongosh)
+
+```javascript
+use usermanagement
+```
+
+---
+
+# ============================================
+
+# COLLECTION STRUCTURE (MongoDB Style)
+
+# ============================================
+
+Instead of:
+
+* geo table
+* address table
+* company table
+* users table
+
+We embed them like this:
+
+```
+users
+ ├── name
+ ├── username
+ ├── email
+ ├── phone
+ ├── website
+ ├── address
+ │     ├── street
+ │     ├── suite
+ │     ├── city
+ │     ├── zipcode
+ │     └── geo
+ │           ├── lat
+ │           └── lng
+ └── company
+       ├── name
+       ├── catchPhrase
+       └── bs
+```
+
+---
+
+# ============================================
+
+# Insert Users Sample Records
+
+# ============================================
+
+```javascript
+db.users.insertMany([
+{
+  name: "Leanne Graham",
+  username: "Bret",
+  email: "Sincere@april.biz",
+  phone: "1-770-736-8031 x56442",
+  website: "hildegard.org",
+  address: {
+    street: "Kulas Light",
+    suite: "Apt. 556",
+    city: "Gwenborough",
+    zipcode: "92998-3874",
+    geo: { lat: "-37.3159", lng: "81.1496" }
+  },
+  company: {
+    name: "Romaguera-Crona",
+    catchPhrase: "Multi-layered client-server neural-net",
+    bs: "harness real-time e-markets"
+  }
+},
+{
+  name: "Ervin Howell",
+  username: "Antonette",
+  email: "Shanna@melissa.tv",
+  phone: "010-692-6593 x09125",
+  website: "anastasia.net",
+  address: {
+    street: "Victor Plains",
+    suite: "Suite 879",
+    city: "Wisokyburgh",
+    zipcode: "90566-7771",
+    geo: { lat: "-43.9509", lng: "-34.4618" }
+  },
+  company: {
+    name: "Deckow-Crist",
+    catchPhrase: "Proactive didactic contingency",
+    bs: "synergize scalable supply-chains"
+  }
+},
+{
+  name: "Clementine Bauch",
+  username: "Samantha",
+  email: "Nathan@yesenia.net",
+  phone: "1-463-123-4447",
+  website: "ramiro.info",
+  address: {
+    street: "Douglas Extension",
+    suite: "Suite 847",
+    city: "McKenziehaven",
+    zipcode: "59590-4157",
+    geo: { lat: "-68.6102", lng: "-47.0653" }
+  },
+  company: {
+    name: "Romaguera-Jacobson",
+    catchPhrase: "Face to face bifurcated interface",
+    bs: "e-enable strategic applications"
+  }
+}
+])
+```
+
+(You can repeat similar structure for remaining records.)
+
+---
+
+# ============================================
+
+# Employees Collection
+
+# ============================================
+
+```javascript
+db.employees.insertMany([
+{
+  name: "Ravi Kumar",
+  employee_code: "EMP101",
+  email: "ravi@company.com",
+  phone: "9876543210",
+  designation: "Developer",
+  department: "IT",
+  join_date: new Date("2022-03-15"),
+  salary: 60000,
+  address: {
+    street: "MG Road",
+    city: "Pune",
+    zipcode: "411001"
+  }
+},
+{
+  name: "Neha Joshi",
+  employee_code: "EMP102",
+  email: "neha@company.com",
+  phone: "9876501234",
+  designation: "HR",
+  department: "HR",
+  join_date: new Date("2021-07-10"),
+  salary: 50000,
+  address: {
+    street: "FC Road",
+    city: "Mumbai",
+    zipcode: "400001"
+  }
+}
+])
+```
+
+---
+
+# ============================================
+
+# Sample Test Queries
+
+# ============================================
+
+## 🔍 Find All Users
+
+```javascript
+db.users.find().pretty()
+```
+
+## 🔍 Find User by City
+
+```javascript
+db.users.find({ "address.city": "Gwenborough" })
+```
+
+## 🔍 Find by Company Name
+
+```javascript
+db.users.find({ "company.name": "Deckow-Crist" })
+```
+
+## 🔍 Update Salary
+
+```javascript
+db.employees.updateOne(
+  { employee_code: "EMP101" },
+  { $set: { salary: 65000 } }
+)
+```
+
+## 🔍 Delete User
+
+```javascript
+db.users.deleteOne({ username: "Bret" })
+```
+
+---
+
+# ============================================
+
+# Compass Usage
+
+# ============================================
+
+In **MongoDB Compass**:
+
+1. Create database → `usermanagement`
+2. Create collection → `users`
+3. Paste JSON documents in “Insert Document”
+
+
+
+* Database: `usermanagement`
+* Collections: `users`, `employees`
+* Embedded: `address`, `geo`, `company`
+* Unique fields: `username`, `email`, `employee_code`
+
+
+# 🟢 SECTION 1: Basic Retrieval (1–10)
+
+---
+
+### 1️⃣ Find all users who live in city **Gwenborough**.
+
+---
+
+### 2️⃣ Retrieve users whose company name is **Deckow-Crist**.
+
+---
+
+### 3️⃣ Find user with username **Bret**.
+
+---
+
+### 4️⃣ List users whose zipcode starts with `"9"`.
+
+---
+
+### 5️⃣ Retrieve employees working in **IT department**.
+
+---
+
+### 6️⃣ Find employees who joined after **2022-01-01**.
+
+---
+
+### 7️⃣ Retrieve all users whose latitude is negative.
+
+---
+
+### 8️⃣ Find employees with salary greater than 55,000.
+
+---
+
+### 9️⃣ Display only name and email of all users.
+
+---
+
+### 🔟 Count total number of employees.
+
+---
+
+# 🟢 SECTION 2: Filtering & Logical Conditions (11–20)
+
+---
+
+### 1️⃣1️⃣ Find users living in **Pune OR Mumbai**.
+
+---
+
+### 1️⃣2️⃣ Find employees from IT department AND salary > 60,000.
+
+---
+
+### 1️⃣3️⃣ Retrieve users whose company name contains word **"Group"**.
+
+---
+
+### 1️⃣4️⃣ Find employees whose designation is either HR or Developer.
+
+---
+
+### 1️⃣5️⃣ Get users where longitude is greater than 50.
+
+---
+
+### 1️⃣6️⃣ Find employees not working in HR department.
+
+---
+
+### 1️⃣7️⃣ Retrieve users whose email ends with `.biz`.
+
+---
+
+### 1️⃣8️⃣ Find users whose street contains word `"Suite"`.
+
+---
+
+### 1️⃣9️⃣ Find employees with salary between 50,000 and 80,000.
+
+---
+
+### 2️⃣0️⃣ Retrieve users whose name starts with `"C"`.
+
+---
+
+# 🟢 SECTION 3: Update Scenarios (21–30)
+
+---
+
+### 2️⃣1️⃣ Increase salary of all IT employees by 10%.
+
+---
+
+### 2️⃣2️⃣ Update city of user `Bret` to `"Pune"`.
+
+---
+
+### 2️⃣3️⃣ Add new field `status: "Active"` to all employees.
+
+---
+
+### 2️⃣4️⃣ Change company catchPhrase of `"Deckow-Crist"`.
+
+---
+
+### 2️⃣5️⃣ Update zipcode of all users in `"Wisokyburgh"`.
+
+---
+
+### 2️⃣6️⃣ Add bonus field to employees with salary > 70,000.
+
+---
+
+### 2️⃣7️⃣ Update join_date of specific employee.
+
+---
+
+### 2️⃣8️⃣ Remove `website` field from one user.
+
+---
+
+### 2️⃣9️⃣ Change designation from `"HR"` to `"HR Manager"`.
+
+---
+
+### 3️⃣0️⃣ Add new nested field inside address: `country: "India"` for all users.
+
+---
+
+# 🟢 SECTION 4: Delete Scenarios (31–35)
+
+---
+
+### 3️⃣1️⃣ Delete user whose username is `"Samantha"`.
+
+---
+
+### 3️⃣2️⃣ Remove employees with salary less than 45,000.
+
+---
+
+### 3️⃣3️⃣ Delete users belonging to specific company.
+
+---
+
+### 3️⃣4️⃣ Remove all employees in QA department.
+
+---
+
+### 3️⃣5️⃣ Delete users whose latitude is less than -60.
+
+---
+
+# 🟢 SECTION 5: Aggregation Scenarios (36–45)
+
+---
+
+### 3️⃣6️⃣ Count number of users per city.
+
+---
+
+### 3️⃣7️⃣ Count employees per department.
+
+---
+
+### 3️⃣8️⃣ Calculate average salary per department.
+
+---
+
+### 3️⃣9️⃣ Find highest salary employee.
+
+---
+
+### 4️⃣0️⃣ Find lowest salary employee.
+
+---
+
+### 4️⃣1️⃣ Calculate total salary expense of company.
+
+---
+
+### 4️⃣2️⃣ Group users by company name and count.
+
+---
+
+### 4️⃣3️⃣ Find departments where average salary > 60,000.
+
+---
+
+### 4️⃣4️⃣ Sort employees by salary descending.
+
+---
+
+### 4️⃣5️⃣ Find top 3 highest paid employees.
+
+---
+
+# 🟢 SECTION 6: Index & Performance (46–50)
+
+---
+
+### 4️⃣6️⃣ Create index on `users.email`. Why is it useful?
+
+---
+
+### 4️⃣7️⃣ Create compound index on employees:
+
+```
+{ department: 1, salary: -1 }
+```

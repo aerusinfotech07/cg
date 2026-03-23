@@ -1,0 +1,204 @@
+## ✅ What is Axios?
+
+**Axios** is a **promise-based HTTP client** used to make requests from:
+
+* 🌐 Browser (React, Angular, Vue, etc.)
+* 🟢 Node.js (Backend)
+
+It is mainly used to communicate with a **backend server (API)**.
+
+---
+
+# 🔹 Simple Definition
+
+👉 **Axios helps your frontend talk to the backend.**
+
+Example:
+
+* Fetch employees from database
+* Save employee data
+* Update employee
+* Delete employee
+
+All this is done using HTTP requests like:
+
+* GET
+* POST
+* PUT
+* DELETE
+
+---
+
+# 🔹 Why We Use Axios in React?
+
+In React, we need to:
+
+* Fetch data when component loads
+* Send form data to server
+* Update database records
+* Delete records
+
+Axios makes this easy and clean.
+
+---
+
+# 🔹 Example Without Axios (Using Fetch)
+
+```javascript
+fetch("http://localhost:8080/employees")
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+---
+
+# 🔹 Same Example Using Axios (Cleaner)
+
+```javascript
+import axios from "axios";
+
+axios.get("http://localhost:8080/employees")
+     .then(response => {
+         console.log(response.data);
+     });
+```
+
+👉 Axios automatically converts JSON.
+👉 Cleaner syntax.
+👉 Better error handling.
+
+---
+
+# 🔹 Install Axios
+
+```bash
+npm install axios
+```
+
+---
+
+# 🔹 Basic Axios Syntax
+
+### 1️⃣ GET Request
+
+```javascript
+axios.get("/employees")
+```
+
+Used for: Fetch data
+
+---
+
+### 2️⃣ POST Request
+
+```javascript
+axios.post("/employees", {
+    name: "John",
+    email: "john@gmail.com"
+});
+```
+
+Used for: Create data
+
+---
+
+### 3️⃣ PUT Request
+
+```javascript
+axios.put("/employees/1", updatedData);
+```
+
+Used for: Update data
+
+---
+
+### 4️⃣ DELETE Request
+
+```javascript
+axios.delete("/employees/1");
+```
+
+Used for: Delete data
+
+---
+
+# 🔹 Axios Response Structure
+
+```javascript
+axios.get("/employees")
+  .then(response => {
+      console.log(response.data);   // actual data
+      console.log(response.status); // 200
+      console.log(response.headers);
+  });
+```
+
+Important:
+
+* `response.data` → actual API data
+* `response.status` → HTTP status code
+
+---
+
+# 🔹 Axios Error Handling
+
+```javascript
+axios.get("/employees")
+  .then(response => {
+      console.log(response.data);
+  })
+  .catch(error => {
+      console.error(error);
+  });
+```
+
+---
+
+# 🔹 Advantages of Axios
+
+| Feature                | Why Important               |
+| ---------------------- | --------------------------- |
+| Automatic JSON parsing | No need for response.json() |
+| Interceptors           | Add token automatically     |
+| Timeout support        | Control request time        |
+| Request cancellation   | Stop request                |
+| Better error handling  | Cleaner than fetch          |
+
+---
+
+# 🔹 Real-World Usage (With Token)
+
+```javascript
+axios.get("/employees", {
+    headers: {
+        Authorization: "Bearer " + token
+    }
+});
+```
+
+---
+
+# 🔹 Axios vs Fetch
+
+| Axios          | Fetch           |
+| -------------- | --------------- |
+| Auto JSON      | Manual JSON     |
+| Better errors  | Basic errors    |
+| Interceptors   | No interceptors |
+| Cleaner syntax | More code       |
+
+---
+
+# 🔥 Simple Explanation
+
+Imagine:
+
+* React = Customer
+* Backend (Spring Boot) = Restaurant
+* Axios = Waiter
+
+Customer gives order → Waiter sends to kitchen → Kitchen prepares → Waiter brings back.
+
+Axios is that waiter 🍽️
+
+

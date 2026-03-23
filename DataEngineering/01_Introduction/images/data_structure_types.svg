@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 160" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+  <rect width="560" height="160" fill="#f8fafc"/>
+  <text x="280" y="24" text-anchor="middle" font-weight="bold" fill="#0f172a">Data by structure</text>
+  <rect x="30" y="45" width="150" height="95" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="105" y="68" text-anchor="middle" font-weight="bold" fill="#1e3a8a">Structured</text>
+  <text x="105" y="92" text-anchor="middle" fill="#334155">Tables, SQL</text>
+  <text x="105" y="112" text-anchor="middle" fill="#64748b" font-size="11">Fixed schema</text>
+  <rect x="205" y="45" width="150" height="95" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="280" y="68" text-anchor="middle" font-weight="bold" fill="#92400e">Semi-structured</text>
+  <text x="280" y="92" text-anchor="middle" fill="#334155">JSON, Avro</text>
+  <text x="280" y="112" text-anchor="middle" fill="#64748b" font-size="11">Flexible schema</text>
+  <rect x="380" y="45" width="150" height="95" rx="8" fill="#f3e8ff" stroke="#9333ea" stroke-width="2"/>
+  <text x="455" y="68" text-anchor="middle" font-weight="bold" fill="#6b21a8">Unstructured</text>
+  <text x="455" y="92" text-anchor="middle" fill="#334155">Text, media</text>
+  <text x="455" y="112" text-anchor="middle" fill="#64748b" font-size="11">No table schema</text>
+</svg>

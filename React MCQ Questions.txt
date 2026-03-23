@@ -1,0 +1,443 @@
+
+---
+
+1. What is React?
+
+A. Database
+B. JavaScript Library
+C. Programming Language
+D. Framework
+
+Answer: B
+Explanation: React is a JavaScript library for building UI.
+
+---
+
+2. React was developed by:
+
+A. Google
+B. Microsoft
+C. Facebook
+D. Amazon
+
+Answer: C
+Explanation: React was developed by Facebook (Meta).
+
+---
+
+3. What is JSX?
+
+A. Java Syntax Extension
+B. JavaScript XML
+C. JSON XML
+D. JavaScript Extension
+
+Answer: B
+Explanation: JSX stands for JavaScript XML and allows writing HTML inside JavaScript.
+
+---
+
+4. Which method is used to render React content?
+
+A. ReactDOM.create()
+B. React.render()
+C. ReactDOM.render()
+D. renderDOM()
+
+Answer: C
+Explanation: ReactDOM.render() renders content into DOM (React 17 and earlier).
+
+---
+
+5. What is a React Component?
+
+A. HTML File
+B. CSS File
+C. Reusable UI Block
+D. Database Table
+
+Answer: C
+Explanation: Components are reusable UI building blocks.
+
+---
+
+6. Which of the following is a Functional Component?
+
+A.
+
+```js
+function App() {
+  return <h1>Hello</h1>;
+}
+```
+
+B.
+
+```js
+class App {}
+```
+
+C. Both
+D. None
+
+Answer: A
+Explanation: Functional component is a JavaScript function returning JSX.
+
+---
+
+7. Props are:
+
+A. Internal state
+B. Read-only inputs to components
+C. Database values
+D. Hooks
+
+Answer: B
+Explanation: Props are read-only data passed from parent to child.
+
+---
+
+8. State in React is:
+
+A. External variable
+B. Local component data
+C. CSS property
+D. API
+
+Answer: B
+Explanation: State stores dynamic data inside a component.
+
+---
+
+9. Which Hook is used for state?
+
+A. useData
+B. useState
+C. useEffect
+D. useHook
+
+Answer: B
+
+---
+
+10. Which Hook is used for side effects?
+
+A. useState
+B. useEffect
+C. useReducer
+D. useMemo
+
+Answer: B
+
+---
+
+11. What does useEffect run by default?
+
+A. Only once
+B. On every render
+C. On click
+D. Never
+
+Answer: B
+Explanation: Without dependency array, it runs on every render.
+
+---
+
+12. What is the correct way to create state?
+
+A.
+
+```js
+const count = 0;
+```
+
+B.
+
+```js
+const [count, setCount] = useState(0);
+```
+
+C.
+
+```js
+let count = useState(0);
+```
+
+D. None
+
+Answer: B
+
+---
+
+13. Keys in React are used for:
+
+A. Styling
+B. Identifying list elements
+C. State management
+D. Routing
+
+Answer: B
+
+---
+
+14. Which is correct event handling?
+
+A.
+
+```js
+<button onclick="handleClick()">
+```
+
+B.
+
+```js
+<button onClick={handleClick}>
+```
+
+C.
+
+```js
+<button click={handleClick}>
+```
+
+D. None
+
+Answer: B
+
+---
+
+15. What is the default export?
+
+A.
+
+```js
+export default App;
+```
+
+B.
+
+```js
+export App;
+```
+
+C.
+
+```js
+default export App;
+```
+
+D. None
+
+Answer: A
+
+---
+
+16. React uses which DOM?
+
+A. Real DOM
+B. Virtual DOM
+C. XML DOM
+D. HTML DOM
+
+Answer: B
+
+---
+
+17. What is Fragment used for?
+
+A. Styling
+B. Returning multiple elements without extra div
+C. State
+D. Routing
+
+Answer: B
+
+---
+
+18. Which is correct JSX syntax?
+
+A.
+
+```js
+<h1 class="title">
+```
+
+B.
+
+```js
+<h1 className="title">
+```
+
+C.
+
+```js
+<h1 classname="title">
+```
+
+D. None
+
+Answer: B
+
+---
+
+19. Controlled component means:
+
+A. Form controlled by React state
+B. HTML form
+C. CSS control
+D. API control
+
+Answer: A
+
+---
+
+20. What is lifting state up?
+
+A. Delete state
+B. Share state via parent
+C. Move state to server
+D. Use Redux
+
+Answer: B
+
+---
+
+21. Which hook replaces componentDidMount?
+
+A. useState
+B. useEffect with []
+C. useMemo
+D. useRef
+
+Answer: B
+
+---
+
+22. React Router is used for:
+
+A. Database
+B. Styling
+C. Navigation
+D. API
+
+Answer: C
+
+---
+
+23. Which method updates state correctly?
+
+A.
+
+```js
+count = 5;
+```
+
+B.
+
+```js
+setCount(5);
+```
+
+C.
+
+```js
+updateCount(5);
+```
+
+D. None
+
+Answer: B
+
+---
+
+24. What is useRef used for?
+
+A. DOM reference
+B. API
+C. Routing
+D. Styling
+
+Answer: A
+
+---
+
+25. What is the default port for React app?
+
+A. 8080
+B. 3000
+C. 4200
+D. 5000
+
+Answer: B
+
+---
+
+26. Which hook is used for performance optimization?
+
+A. useMemo
+B. useState
+C. useData
+D. useAPI
+
+Answer: A
+
+---
+
+27. Props are passed as:
+
+A.
+
+```js
+<Component name="John" />
+```
+
+B.
+
+```js
+<Component(name="John") />
+```
+
+C.
+
+```js
+<Component>{name="John"}</Component>
+```
+
+D. None
+
+Answer: A
+
+---
+
+28. What happens when state changes?
+
+A. Page reload
+B. Component re-renders
+C. Nothing
+D. API call
+
+Answer: B
+
+---
+
+29. React follows which pattern?
+
+A. MVC
+B. MVVM
+C. Component-Based Architecture
+D. Monolithic
+
+Answer: C
+
+---
+
+30. Which file is entry point in Create React App?
+
+A. index.html
+B. App.js
+C. index.js
+D. main.js
+
+Answer: C
+
+---

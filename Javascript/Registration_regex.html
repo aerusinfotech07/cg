@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regex Registration Form - Training Example</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f4f7;
+        }
+        .container {
+            width: 760px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 6px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 6px;
+            margin-bottom: 5px;
+        }
+        .inline {
+            width: auto;
+        }
+        .error {
+            color: red;
+            display: block;     /* line break after error */
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        button {
+            padding: 10px 15px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        pre {
+            background: #f8f8f8;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Training Registration Form (Regex Validation)</h2>
+
+<form onsubmit="return validateForm();">
+
+    <!-- NAME -->
+    <label>Full Name *</label>
+    <input type="text" id="name">
+    <span id="nameError" class="error"></span>
+
+    <!-- EMAIL -->
+    <label>Email *</label>
+    <input type="text" id="email">
+    <span id="emailError" class="error"></span>
+
+    <!-- PASSWORD -->
+    <label>Password *</label>
+    <input type="text" id="password">
+    <span id="passwordError" class="error"></span>
+
+    <!-- MOBILE -->
+    <label>Mobile Number *</label>
+    <input type="text" id="mobile">
+    <span id="mobileError" class="error"></span>
+
+    <!-- DOB -->
+    <label>Date of Birth (DD-MM-YYYY) *</label>
+    <input type="text" id="dob" placeholder="DD-MM-YYYY">
+    <span id="dobError" class="error"></span>
+
+    <!-- GENDER -->
+    <label>Gender *</label><br>
+    <input type="radio" name="gender" value="M" class="inline"> Male
+    <input type="radio" name="gender" value="F" class="inline"> Female
+    <br>
+    <span id="genderError" class="error"></span>
+
+    <!-- SKILLS -->
+    <label>Skills *</label><br>
+    <input type="checkbox" name="skills" value="Java" class="inline"> Java
+    <input type="checkbox" name="skills" value="Python" class="inline"> Python
+    <input type="checkbox" name="skills" value="JS" class="inline"> JavaScript
+    <br>
+    <span id="skillsError" class="error"></span>
+
+    <!-- COUNTRY -->
+    <label>Country *</label>
+    <select id="country">
+        <option value="">-- Select Country --</option>
+        <option>India</option>
+        <option>USA</option>
+    </select>
+    <span id="countryError" class="error"></span>
+
+    <!-- MODE -->
+    <label>Training Mode *</label>
+    <select id="mode" multiple>
+        <option>Online</option>
+        <option>Classroom</option>
+        <option>Weekend</option>
+    </select>
+    <span id="modeError" class="error"></span>
+
+    <button type="submit">Register</button>
+
+</form>
+
+<hr>
+
+<h3>📘 REGEX EXPLANATION (IMPORTANT)</h3>
+
+<pre>
+EMAIL REGEX USED:
+
+^[^\s@]+@[^\s@]+\.[^\s@]{2,}$
+
+[^\s@]+  → Any character EXCEPT space and '@'
+@         → Exactly one '@' symbol
+\.        → Dot character
+{2,}      → Minimum 2 characters (com, in, org)
+
+WHY '@' IS EXCLUDED INSIDE [ ] ?
+To ensure '@' appears ONLY ONCE and only in the middle.
+</pre>
+
+</div>
+
+<script>
+/* ============================
+   REGEX DEFINITIONS
+   ============================ */
+
+const nameRegex = /^[A-Za-z ]{3,}$/;
+/*
+ ^           → start
+ [A-Za-z ]   → letters and space only
+ {3,}        → minimum 3 characters
+ $           → end
+*/
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+//const emailRegex3 = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+//const emailRegex4 = /^[a-zA-Z0-9]+([._-][a-zA-Z0-9]+)*@ [a-zA-Z0-9]+(\.[a-zA-Z]{2,})+$/;
+
+/*
+ [^\s@]+  → username / domain text (no space, no @)
+ @         → exactly one '@'
+ \.        → dot
+ {2,}      → domain extension length
+*/
+
+const mobileRegex = /^[6-9][0-9]{9}$/;
+/* Indian mobile number */
+
+Day 01-10 11-19 20 21-29 30 31
+Month 01-10 11 12
+
+const dobRegex = /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19|20)\d{2}$/;
+/* DD-MM-YYYY format */
+
+const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+/* 1 uppercase, 1 digit, min 6 chars 
+(?=.*[A-Z]) → At least ONE uppercase letter
+
+This is called a positive lookahead.
+
+(?=.*[A-Z])
+
+Meaning:
+
+(?=...) → condition that must be true
+
+.* → any characters (0 or more)
+
+[A-Z] → at least one capital letter
+
+✔ Does not consume characters
+✔ Just checks the condition
+
+*/
+
+/* ============================
+   MAIN FORM VALIDATION
+   ============================ */
+function validateForm() {
+
+    clearErrors();
+    let valid = true;
+
+    if (!validateName()) valid = false;
+    if (!validateEmail()) valid = false;
+    if (!validatePassword()) valid = false;
+    if (!validateMobile()) valid = false;
+    if (!validateDOB()) valid = false;
+    if (!validateGender()) valid = false;
+    if (!validateSkills()) valid = false;
+    if (!validateCountry()) valid = false;
+    if (!validateMode()) valid = false;
+
+    return valid;
+}
+
+/* ============================
+   FIELD METHODS
+   ============================ */
+
+function validateName() {
+    if (!nameRegex.test(name.value)) {
+        nameError.innerHTML = "Name must have at least 3 letters";
+        return false;
+    }
+    return true;
+}
+
+function validateEmail() {
+    if (!emailRegex.test(email.value)) {
+        emailError.innerHTML = "Enter valid email address";
+        return false;
+    }
+    return true;
+}
+
+function validatePassword() {
+    if (!passwordRegex.test(password.value)) {
+        passwordError.innerHTML =
+            "Password must contain 1 capital, 1 number, min 6 chars";
+        return false;
+    }
+    return true;
+}
+
+function validateMobile() {
+    if (!mobileRegex.test(mobile.value)) {
+        mobileError.innerHTML = "Enter valid 10-digit mobile number";
+        return false;
+    }
+    return true;
+}
+
+function validateDOB() {
+    if (!dobRegex.test(dob.value)) {
+        dobError.innerHTML = "DOB must be DD-MM-YYYY";
+        return false;
+    }
+    return true;
+}
+
+function validateGender() {
+    if (!document.querySelector('input[name="gender"]:checked')) {
+        genderError.innerHTML = "Select gender";
+        return false;
+    }
+    return true;
+}
+
+function validateSkills() {
+    if (document.querySelectorAll('input[name="skills"]:checked').length === 0) {
+        skillsError.innerHTML = "Select at least one skill";
+        return false;
+    }
+    return true;
+}
+
+function validateCountry() {
+    if (country.value === "") {
+        countryError.innerHTML = "Select country";
+        return false;
+    }
+    return true;
+}
+
+function validateMode() {
+    if ([...mode.options].filter(o => o.selected).length === 0) {
+        modeError.innerHTML = "Select training mode";
+        return false;
+    }
+    return true;
+}
+
+/* ============================
+   COMMON METHOD
+   ============================ */
+function clearErrors() {
+    document.querySelectorAll(".error").forEach(e => e.innerHTML = "");
+}
+</script>
+
+</body>
+</html>
